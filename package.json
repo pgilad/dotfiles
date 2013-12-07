@@ -1,0 +1,35 @@
+{
+    "name"            : "devtools",
+    "version"         : "0.1.0",
+    "description"     : "Collection of dev tools for a starting dev project",
+    "homepage"        : "https://github.com/pgilad/devtools",
+    "bugs"            : "https://github.com/pgilad/devtools/issues",
+    "author"          : {
+        "name" : "Gilad Peleg",
+        "email": "giladp007@gmail.com"
+    },
+    "keywords"        : [
+        "devtools"
+    ],
+    "main"            : "Gruntfile.js",
+    "engines"         : {
+        "node": ">= 0.8.0"
+    },
+    "repository"      : {
+        "type": "git",
+        "url" : "https://github.com/pgilad/devtools.git"
+    },
+    "licenses"        : [
+        {
+            "type": "MIT"
+        }
+    ],
+    "devDependencies" : {
+    },
+    "peerDependencies": {
+    },
+    "scripts"         : {
+    },
+    "dependencies"    : {
+    }
+}
