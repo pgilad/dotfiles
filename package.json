@@ -1,35 +1,29 @@
 {
-    "name"            : "devtools",
-    "version"         : "0.1.0",
-    "description"     : "Collection of dev tools for a starting dev project",
-    "homepage"        : "https://github.com/pgilad/devtools",
-    "bugs"            : "https://github.com/pgilad/devtools/issues",
-    "author"          : {
-        "name" : "Gilad Peleg",
+    "name": "dotfiles",
+    "version": "1.0.0",
+    "description": "My dotfiles for starting a project or generally editing",
+    "homepage": "https://github.com/pgilad/dotfiles",
+    "bugs": "https://github.com/pgilad/dotfiles/issues",
+    "author": {
+        "name": "Gilad Peleg",
         "email": "giladp007@gmail.com"
     },
-    "keywords"        : [
-        "devtools"
+    "keywords": [
+        "dotfiles"
     ],
-    "main"            : "Gruntfile.js",
-    "engines"         : {
+    "main": "Gruntfile.js",
+    "engines": {
         "node": ">= 0.8.0"
     },
-    "repository"      : {
+    "repository": {
         "type": "git",
-        "url" : "https://github.com/pgilad/devtools.git"
+        "url": "https://github.com/pgilad/dotfiles.git"
     },
-    "licenses"        : [
-        {
-            "type": "MIT"
-        }
-    ],
-    "devDependencies" : {
-    },
-    "peerDependencies": {
-    },
-    "scripts"         : {
-    },
-    "dependencies"    : {
-    }
+    "licenses": [{
+        "type": "MIT"
+    }],
+    "devDependencies": {},
+    "peerDependencies": {},
+    "scripts": {},
+    "dependencies": {}
 }

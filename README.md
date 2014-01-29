@@ -1,4 +1,4 @@
-devtools
+dotfiles
 ========
 
-Collection of configs, schemes, dotfiles, and anything to help a starting dev project
+My collection of configs, schemes, dotfiles, and anything to help a starting dev project
