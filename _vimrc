@@ -1,85 +1,18 @@
 "@author Gilad Peleg
 
-"set Vim to be non-backwards compatible with vi
+"So 2014...
 set nocompatible
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Bundle related plugins
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"set file type detection off
-filetype on
-filetype off
-set rtp+=~/vimfiles/bundle/vundle/
-call vundle#rc('$HOME/vimfiles/bundle/')
-
-"My Bundles
-Bundle 'gmarik/vundle'
-Bundle 'L9'
-Bundle 'FuzzyFinder'
-"Awesome plugin for file/path/buffer search with ctrl-p
-Bundle 'kien/ctrlp.vim'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/nerdcommenter'
-"Add indent guides
-Bundle 'nathanaelkane/vim-indent-guides'
-" Show marks on side to quick jump
-"Bundle 'vim-scripts/ShowMarks'
-""""""""""""""""
-"  filestypes  "
-""""""""""""""""
-"javascript support
-Bundle 'jelera/vim-javascript-syntax'
-Bundle 'pangloss/vim-javascript'
-Bundle 'groenewege/vim-less'
-Bundle 'elzr/vim-json'
-Bundle 'moll/vim-node'
-"Git support
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-abolish.git'
-Bundle 'tpope/vim-repeat'
-"incorporate buffer drawer
-Bundle 'jeetsukumaran/vim-buffergator'
-Bundle 'sjl/gundo.vim'
-Bundle 'kien/rainbow_parentheses.vim'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'maxbrunsfeld/vim-yankstack'
-Bundle 'godlygeek/tabular'
-Bundle 'terryma/vim-multiple-cursors'
-"vim jade support
-Bundle 'digitaltoad/vim-jade'
-Bundle 'itspriddle/vim-jquery.git'
-Bundle 'jtratner/vim-flavored-markdown.git'
-"Add vim airline
-Bundle 'bling/vim-airline'
-Bundle 'AndrewRadev/switch.vim'
-" Snippets
-Bundle 'SirVer/ultisnips'
-"manipulate function arguments using , as text object
-Bundle 'PeterRincker/vim-argumentative'
-"auto add closing tag
-Bundle 'Raimondi/delimitMate'
-
-""""""""""""""""""
-"  lint & style  "
-""""""""""""""""""
-Bundle 'maksimr/vim-jsbeautify'
-Bundle 'einars/js-beautify'
-"syntax linting
-Bundle 'scrooloose/syntastic'
-"Comma and semi-colon
-Bundle 'lfilho/cosco.vim'
-""""""""""""""""""
-"  colorschemes  "
-""""""""""""""""""
-Bundle 'nanotech/jellybeans.vim'
-Bundle 'Lokaltog/vim-distinguished'
-Bundle 'tomasr/molokai'
-" Bundle 'tpope/vim-vividchalk'
+"""""""""""""""""""""""""""
+"  Vundle Initialization  "
+"""""""""""""""""""""""""""
+let b:bundles_file=expand("~/.dotfiles/bundles.vim") "buffer local var
+if filereadable(b:bundles_file)
+    exec "source " . b:bundles_file
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => VIM user interface
+" => Current working directories and fonts according to location
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if hostname() ==? "GILAD"
     set lines=55
@@ -98,6 +31,10 @@ elseif hostname() ==? "GILAD-PC"
         cd d:\development\repositories
     endif
 endif
+
+""""""""
+"  UI  "
+""""""""
 
 " Set 7 lines to the cursor - when moving vertically using j/k
 set scrolloff=3
@@ -140,7 +77,8 @@ set smartcase
 set infercase " ignore case in autocomplete
 
 " global regex is on by default
-set gdefault
+"set gdefault "This confused me a bit. need to work on it
+
 set hlsearch "highlight search"
 set incsearch "increment search
 
@@ -221,6 +159,14 @@ else
     set clipboard=unnamed
 endif
 
+"""""""""""
+"  folds  "
+"""""""""""
+
+set foldmethod=indent   "fold based on indent
+set foldnestmax=3       "deepest fold is 3 levels
+set nofoldenable        "dont fold by default
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts and gui options
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -231,15 +177,16 @@ colorscheme jellybeans
 
 " Set extra options when running in GUI mode
 if has("gui_running")
-    set go-=m
-    set go-=T
-    set go-=r
-    set go-=L
-    set go-=b
+    set go-=m "remove menu
+    set go-=T "remove toolbar
+    set go-=r "remove right scrollbar
+    set go-=L "remove left scrollbar
+    set go-=b "remove bottom scrollbar
 endif
 
 " good for setting NERDTree width after toggles
 set winfixwidth
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
