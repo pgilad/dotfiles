@@ -25,6 +25,7 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'groenewege/vim-less'
 Bundle 'elzr/vim-json'
 Bundle 'moll/vim-node'
+Bundle 'skammer/vim-css-color'
 "Git support
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'

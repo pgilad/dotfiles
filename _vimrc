@@ -362,6 +362,14 @@ let g:indent_guides_enable_on_vim_startup = 1
 "let g:config_Beautifier.js.brace_style = 'collapse'
 "let g:config_Beautifier.js.space_before_conditional =1
 
+
+"""""""""""""""""
+"  buffergator  "
+"""""""""""""""""
+let g:buffergator_display_regime = "bufname" " display only buffer name by default
+let g:buffergator_viewport_split_policy = "B" "since nerdtree opens on left
+let g:buffergator_sort_regime = "mru" "who cares about buffer number. sort by most recently used
+
 """"""""""""""""""""""
 " ctrl-p custom ignore paths
 """"""""""""""""""""""
