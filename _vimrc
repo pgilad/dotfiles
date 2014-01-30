@@ -15,16 +15,14 @@ endif
 " => Current working directories and fonts according to location
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if hostname() ==? "GILAD"
-    set lines=55
-    set columns=200
+    simalt ~x "full screen
     set gfn=consolas:h11
     "Set working dir
     if isdirectory('c:\repositories\Appstrio\managment_app')
         cd c:\repositories\chromeBuilder
     endif
 elseif hostname() ==? "GILAD-PC"
-    set lines=55
-    set columns=180
+    simalt ~x "full screen
     set gfn=consolas:h9
     "Set working dir
     if isdirectory('d:\development\repositories')
