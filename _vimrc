@@ -15,6 +15,8 @@ endif
 " => Current working directories and fonts according to location
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if hostname() ==? "GILAD"
+    set lines=999
+    set columns=999
     simalt ~x "full screen
     set gfn=consolas:h11
     "Set working dir
@@ -22,12 +24,16 @@ if hostname() ==? "GILAD"
         cd c:\repositories\chromeBuilder
     endif
 elseif hostname() ==? "GILAD-PC"
-    simalt ~x "full screen
+    set lines=999
+    set columns=999
     set gfn=consolas:h9
     "Set working dir
     if isdirectory('d:\development\repositories')
         cd d:\development\repositories
     endif
+else
+    simalt ~x
+    set gfn=consolas:h9
 endif
 
 """"""""
@@ -42,7 +48,8 @@ set wildmenu
 set wildmode=longest,list,full
 set wildignore=*.o,*~,*.pyc
 
-set viewoptions=folds,options,cursor
+set viewoptions=folds,options,cursor,unix,slash
+set shortmess+=filmnrxoOtT
 " required so far for vundle to work. wish it was otherwise
 set noshellslash
 
@@ -367,6 +374,19 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:buffergator_display_regime = "bufname" " display only buffer name by default
 let g:buffergator_viewport_split_policy = "B" "since nerdtree opens on left
 let g:buffergator_sort_regime = "mru" "who cares about buffer number. sort by most recently used
+
+"""""""""""""""
+"  syntastic  "
+"""""""""""""""
+let g:syntastic_mode_map = { 'mode': 'passive',
+            \ 'active_filetypes': ['javascript', 'json'],
+            \ 'passive_filetypes': [] }
+
+"""""""""""""
+"  airline  "
+"""""""""""""
+let g:airline_left_sep  = '›' " Slightly fancier than '>'
+let g:airline_right_sep = '‹' " Slightly fancier than '<'
 
 """"""""""""""""""""""
 " ctrl-p custom ignore paths
