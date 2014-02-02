@@ -42,6 +42,7 @@ Bundle 'terryma/vim-multiple-cursors'
 "vim jade support
 Bundle 'digitaltoad/vim-jade'
 Bundle 'itspriddle/vim-jquery.git'
+Bundle 'kchmck/vim-coffee-script'
 Bundle 'jtratner/vim-flavored-markdown.git'
 "Add vim airline
 Bundle 'bling/vim-airline'

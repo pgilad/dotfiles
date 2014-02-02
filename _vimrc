@@ -248,8 +248,9 @@ let g:maplocalleader = ","
 
 " <F3>: Gundo
 nnoremap <F3> :<C-u>GundoToggle<CR>
+nnoremap <f5> :RainbowParenthesesToggle<cr>
+nnoremap <silent> <F12>c :silent !start "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" %<CR>
 
-"Set mapping key definitions
 nnoremap <leader><tab> :NERDTreeToggle<CR>
 
 " switch between 0 and ^
@@ -273,7 +274,6 @@ vnoremap > >gv
 "Clears the search highlight
 nnoremap <silent> <leader>ch :nohlsearch<CR>
 nnoremap <silent> <leader>ls :set list!<CR>
-nnoremap <silent> <F12>c :silent !start "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" %<CR>
 
 "<leader>w: Close current buffer
 nnoremap <leader>wc :bdelete<cr>
@@ -284,9 +284,12 @@ nnoremap <silent> <leader>cp :let @+=expand("%:p")<cr>:echo "Copied current file
 
 " <leader>n: NERDTreeFind find current file in the tree
 nnoremap <silent> <leader>n :NERDTreeFind<cr> :wincmd p<cr>
+"Open current dir
+nnoremap <silent> <leader>nc :NERDTreeCWD<cr>
 
 " quickly edit or source $MYVIMRC
 nnoremap <silent> <leader>ev :edit $MYVIMRC<cr>
+nnoremap <silent> <leader>eb :edit ~/.dotfiles/bundles.vim<cr>
 nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
 
 "<leader>cd: Switch to the directory of the open buffer
@@ -305,9 +308,8 @@ cnoremap <c-h> <s-left>
 cnoremap <c-l> <s-right>
 
 " Ctrl-r: Easier search and replace
-vnoremap <c-r> "hy:%s/<c-r>h//c<left><left><left>
+vnoremap <c-r> "hy:%s/<c-r>h//gc<left><left><left>
 
-nnoremap <f5> :RainbowParenthesesToggle<cr>
 
 """"""""""""""""""""""
 " Configure delimitMate
