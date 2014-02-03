@@ -39,47 +39,36 @@ endif
 """"""""
 "  UI  "
 """"""""
+set scrolloff=3 " Set 7 lines to the cursor - when moving vertically using j/k
 
-" Set 7 lines to the cursor - when moving vertically using j/k
-set scrolloff=3
-
-" Turn on the WiLd menu
-set wildmenu
+set wildmenu " Turn on the WiLd menu
 set wildmode=longest,list,full
 set wildignore=*.o,*~,*.pyc
 
 set viewoptions=folds,options,cursor,unix,slash
 set shortmess+=filmnrxoOtT
-" required so far for vundle to work. wish it was otherwise
-set noshellslash
+set noshellslash " required so far for vundle to work. wish it was otherwise
 
-" list of suffixes to add when using gf
-set suffixesadd+=.js
+set suffixesadd+=.js " list of suffixes to add when using gf
 
-"Always show current position
-set ruler
+set ruler "Always show current position
 
-" Height of the command bar
-set cmdheight=1
+set cmdheight=1 " Height of the command bar
 
-"show partial commands
-set showcmd
-set showmode
+set showcmd "show partial commands
+set showmode "show which mode i'm on
 
 " I don't work with octal numbers so make vim treat padded numbers as decimals as well
 set nrformats=
 
-" A buffer becomes hidden when it is abandoned
-set hidden
+set hidden " A buffer becomes hidden when it is abandoned
 
-" Configure backspace so it acts as it should act
-set backspace=eol,start,indent
+set backspace=eol,start,indent "configure backspace the expected way
 set whichwrap+=<,>,h,l
 
-" Ignore case when searching
-set ignorecase
-set smartcase
-set infercase " ignore case in autocomplete
+set ignorecase "ignore case when searching
+set smartcase "be smart about searching
+set infercase "ignore case in autocomplete
 
 " global regex is on by default
 "set gdefault "This confused me a bit. need to work on it
@@ -87,79 +76,62 @@ set infercase " ignore case in autocomplete
 set hlsearch "highlight search"
 set incsearch "increment search
 
-" Don't redraw while executing macros (good performance config)
-set lazyredraw
+set lazyredraw " Don't redraw while executing macros (good performance config)
 
-" For regular expressions turn magic on
-set magic
+set magic " For regular expressions turn magic on
 
-" Show matching brackets when text indicator is over them
-set showmatch
-" How many tenths of a second to blink when matching brackets
-set mat=2
+set showmatch " Show matching brackets when text indicator is over them
+set mat=2 " How many tenths of a second to blink when matching brackets
 
-" No annoying sound on errors
-set noerrorbells
+set noerrorbells " No annoying sound on errors
 set novisualbell
 set t_vb=
 set tm=500
 
-"show line number
-set number relativenumber
-set cursorline
+set number "show line number
+set relativenumber "line numbers are relative
+set cursorline "highlight where cursor is
 
-" turn word wrap off
-set nowrap
+set nowrap " turn word wrap off
+set ttyfast " fast terminal redraw
 
-" fast terminal redraw
-set ttyfast
-
-"when changing - mark block end with $
-set cpoptions+=$
+set cpoptions+=$ "when changing - mark block end with $
 set virtualedit=onemore
 
-"highlight problematic chars
-set listchars=tab:>-,trail:~,nbsp:.,extends:>
-set list
+set listchars=tab:>-,trail:~,nbsp:.,extends:> "highlight problematic chars
+set list "show problematic chars
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Sets how many lines of history VIM has to remember
-set history=700
+set history=700 " Sets how many lines of history VIM has to remember
 
-set nomodeline
+set nomodeline "security issue
 
-" Always splits to the right and below
-set splitright
+set splitright " Always splits to the right and below
 set splitbelow
 
-" 256bit terminal
-set t_Co=256
+set t_Co=256 " 256bit terminal
 
-" Enable filetype plugins
-filetype plugin indent on
+filetype plugin on
+filetype indent on " Enable filetype plugins
 
 set mouse=a "enable mouse
 set mousehide "hide mouse cursor while typing
 
-" Set to auto read when a file is changed from the outside
-set autoread
+set autoread " Set to auto read when a file is changed from the outside
 
-" Set utf8 as standard encoding and en_US as the standard language
-set encoding=utf-8
+set encoding=utf-8 " Set utf8 as standard encoding and en_US as the standard language
 scriptencoding utf-8
 
-" show filename in windows title
-set title
+set title " show filename in windows title
 
-" Don't reset cursor to start of line when moving around.
-set nostartofline
+set nostartofline " Don't reset cursor to start of line when moving around.
 
 " Writes to the unnamed register also writes to the * and + registers. This
 " makes it easy to interact with the system clipboard
-if has ('unnamedplus')
-    set clipboard=unnamedplus
+if has('unnamedplus')
+    set clipboard=unnamedplus "linux/mac"
 else
     set clipboard=unnamed
 endif
@@ -167,7 +139,6 @@ endif
 """""""""""
 "  folds  "
 """""""""""
-
 set foldmethod=indent   "fold based on indent
 set foldnestmax=3       "deepest fold is 3 levels
 set nofoldenable        "dont fold by default
@@ -209,38 +180,34 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Use spaces instead of tabs
-set expandtab smarttab
+set expandtab " Use spaces instead of tabs
+set smarttab
 
-" 1 tab == 4 spaces
+" default params
 set shiftwidth=4 tabstop=4 softtabstop=4
-" < and > round to nearest multiple of tabstop
-set shiftround
+set shiftround " < and > round to nearest multiple of tabstop
 
-" Linebreak on 500 characters
-set linebreak
+set linebreak " Linebreak on 500 characters
 set tw=500
 
-set autoindent smartindent
+set autoindent
+set smartindent
 
 """"""""""""""""""""""""""""""
 " => Status line
 """"""""""""""""""""""""""""""
-" Always show the status line
-set laststatus=2
+set laststatus=2 " Always show the status line
 
 """"""""""""""""""""""""""""""
 " => Spelling
 """"""""""""""""""""""""""""""
-
-" Configure the spelling language and file.
 set spelllang=en_us
 set spellfile=~/vimfiles/spell/en.utf-8.add
 set nospell
 
-"""""""""""""""""""""""""""""""
-"======= Start mappings =======
-"""""""""""""""""""""""""""""""
+""""""""""""""
+"  Mappings  "
+""""""""""""""
 let mapleader = ","
 let maplocalleader = ","
 let g:mapleader = ","
@@ -310,7 +277,6 @@ cnoremap <c-l> <s-right>
 " Ctrl-r: Easier search and replace
 vnoremap <c-r> "hy:%s/<c-r>h//gc<left><left><left>
 
-
 """"""""""""""""""""""
 " Configure delimitMate
 """"""""""""""""""""""
@@ -369,7 +335,6 @@ let g:indent_guides_enable_on_vim_startup = 1
 "let g:config_Beautifier.js.brace_style = 'collapse'
 "let g:config_Beautifier.js.space_before_conditional =1
 
-
 """""""""""""""""
 "  buffergator  "
 """""""""""""""""
@@ -397,12 +362,17 @@ let g:ctrlp_custom_ignore = 'node_modules\|.idea\|.git\|workspace\|bower_compone
 " set ctrp options
 let g:ctrlp_show_hidden = 1
 
+""""""""""""""""""""""
+"  custom functions  "
+""""""""""""""""""""""
 " Removes trailing spaces
 function! TrimWhiteSpace()
     %s/\s\+$//e
 endfunction
 
-" auto trim whitespace in these files
+""""""""""""""""""""""""
+"  Autogroup commands  "
+""""""""""""""""""""""""
 augroup my_auto_commands
     autocmd!
     " saving on lost focus
