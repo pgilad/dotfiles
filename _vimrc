@@ -393,6 +393,8 @@ augroup my_auto_commands
     autocmd FileType javascript,css,json nnoremap <buffer> <silent> <leader>; :call cosco#commaOrSemiColon()<cr>
     autocmd FileType javascript,css,json inoremap <buffer> <silent> <leader>; <ESC>:call cosco#commaOrSemiColon()<cr>a
 
+    " autocomplete
+    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
     " beautify
     autocmd FileType javascript,json nnoremap <buffer> <leader>js :call JsBeautify()<cr>
     autocmd FileType html nnoremap <buffer> <leader>js :call HtmlBeautify()<cr>
