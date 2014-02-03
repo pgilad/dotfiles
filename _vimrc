@@ -43,7 +43,12 @@ set scrolloff=3 " Set 7 lines to the cursor - when moving vertically using j/k
 
 set wildmenu " Turn on the WiLd menu
 set wildmode=longest,list,full
-set wildignore=*.o,*~,*.pyc
+" file types
+set wildignore+=*.o,*~,*.pyc
+set wildignore+=**/node_modules/**
+set wildignore+=.idea/**
+set wildignore+=.git/**
+set wildignore+=**/bower_components/**
 
 set viewoptions=folds,options,cursor,unix,slash
 set shortmess+=filmnrxoOtT
@@ -362,7 +367,12 @@ let g:ctrlp_custom_ignore = 'node_modules\|.idea\|.git\|workspace\|bower_compone
 " set ctrp options
 let g:ctrlp_show_hidden = 1
 
-""""""""""""""""""""""
+""""""""""""""""""""""""""
+"  Used javascript libs  "
+""""""""""""""""""""""""""
+let g:used_javascript_libs = 'underscore,angularjs,jquery'
+
+"""""""""""""""""""""
 "  custom functions  "
 """"""""""""""""""""""
 " Removes trailing spaces
