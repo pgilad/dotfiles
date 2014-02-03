@@ -380,6 +380,11 @@ function! TrimWhiteSpace()
     %s/\s\+$//e
 endfunction
 
+function! VisualModeBeautify(vStart, vEnd)
+    echom "running JsBeautify(" . a:vStart . ", " . a:vEnd . ")"
+    call JsBeautify(a:vStart, a:vEnd)
+endfunction
+
 """"""""""""""""""""""""
 "  Autogroup commands  "
 """"""""""""""""""""""""
@@ -397,6 +402,8 @@ augroup my_auto_commands
     autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
     " beautify
     autocmd FileType javascript,json nnoremap <buffer> <leader>js :call JsBeautify()<cr>
+    autocmd FileType javascript,json vnoremap <buffer> <silent> <leader>js :<c-u>call VisualModeBeautify(line("'<"),line("'>"))<cr>
+
     autocmd FileType html nnoremap <buffer> <leader>js :call HtmlBeautify()<cr>
     autocmd FileType css,less nnoremap <buffer> <leader>js :call CSSBeautify()<cr>
 
