@@ -20,7 +20,7 @@ if hostname() ==? "GILAD"
     simalt ~x "full screen
     set gfn=consolas:h11
     "Set working dir
-    if isdirectory('c:\repositories\Appstrio\managment_app')
+    if isdirectory('c:\repositories\wint')
         cd c:\repositories\chromeBuilder
     endif
 elseif hostname() ==? "GILAD-PC"
