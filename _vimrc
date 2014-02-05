@@ -402,10 +402,6 @@ augroup my_auto_commands
     autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
     " beautify
     autocmd FileType javascript,json nnoremap <buffer> <leader>js :call JsBeautify()<cr>
-    function! VisualModeBeautify(vStart, vEnd)
-        echom "running JsBeautify(" . a:vStart . ", " . a:vEnd . ")"
-        call JsBeautify(a:vStart, a:vEnd)
-    endfunction
     autocmd FileType javascript,json vnoremap <buffer> <silent> <leader>js :<c-u>call VisualModeBeautify(line("'<"),line("'>"))<cr>
 
     autocmd FileType html nnoremap <buffer> <leader>js :call HtmlBeautify()<cr>
