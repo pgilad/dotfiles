@@ -50,7 +50,7 @@ set wildignore+=.idea/**
 set wildignore+=.git/**
 set wildignore+=**/bower_components/**
 
-set viewoptions=folds,options,cursor,unix,slash
+set viewoptions=folds,options,cursor,slash
 set shortmess+=filmnrxoOtT
 set noshellslash " required so far for vundle to work. wish it was otherwise
 
