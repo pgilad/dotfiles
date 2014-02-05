@@ -43,7 +43,6 @@ set scrolloff=3 " Set 7 lines to the cursor - when moving vertically using j/k
 
 set wildmenu " Turn on the WiLd menu
 set wildmode=longest,list,full
-" file types
 set wildignore+=*.o,*~,*.pyc
 set wildignore+=**/node_modules/**
 set wildignore+=.idea/**
@@ -113,8 +112,8 @@ set history=700 " Sets how many lines of history VIM has to remember
 
 set nomodeline "security issue
 
-set splitright " Always splits to the right and below
-set splitbelow
+set splitright " Always splits to the right
+set splitbelow " and below
 
 set t_Co=256 " 256bit terminal
 
@@ -207,6 +206,12 @@ set laststatus=2 " Always show the status line
 " => Spelling
 """"""""""""""""""""""""""""""
 set spelllang=en_us
+let b:spell_file=expand("~/vimfiles/spell/") " Spell file
+" if spell dir doesn't exist- create it
+if !isdirectory(b:spell_file)
+    exec '!mkdir ' . b:spell_file
+endif
+
 set spellfile=~/vimfiles/spell/en.utf-8.add
 set nospell
 
@@ -218,12 +223,16 @@ let maplocalleader = ","
 let g:mapleader = ","
 let g:maplocalleader = ","
 
-" <F3>: Gundo
-nnoremap <F3> :<C-u>GundoToggle<CR>
-nnoremap <f5> :RainbowParenthesesToggle<cr>
-nnoremap <silent> <F12>c :silent !start "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" %<CR>
+" See undo tree
+nnoremap <F3> :GundoToggle<cr>
+" set spell check
+nnoremap <F4> :setlocal spell!<cr>
+" set rainbow parent
+nnoremap <F5> :RainbowParenthesesToggle<cr>
+" open in chrome
+nnoremap <silent> <F12>c :silent !start "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" %<cr>
 
-nnoremap <leader><tab> :NERDTreeToggle<CR>
+nnoremap <leader><tab> :NERDTreeToggle<cr>
 
 " switch between 0 and ^
 noremap 0 ^
@@ -244,7 +253,7 @@ vnoremap < <gv
 vnoremap > >gv
 
 "Clears the search highlight
-nnoremap <silent> <leader>ch :nohlsearch<CR>
+nnoremap <silent> <space> :nohlsearch<CR>
 nnoremap <silent> <leader>ls :set list!<CR>
 
 "<leader>w: Close current buffer
