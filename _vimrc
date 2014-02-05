@@ -413,7 +413,7 @@ augroup my_auto_commands
 
     " set filestypes
     autocmd BufRead,BufNewFile *.ajs setlocal filetype=javascript
-    autocmd BufRead,BufNewFile *.jshintrc setlocal filetype=json
+    autocmd BufRead,BufNewFile *.jshintrc,*.bowerrc setlocal filetype=json
 
     " reload vimrc when saved
     autocmd BufWritePost $MYVIMRC source $MYVIMRC

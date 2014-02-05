@@ -16,9 +16,6 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'nathanaelkane/vim-indent-guides'
 " Show marks on side to quick jump
 "Bundle 'vim-scripts/ShowMarks'
-""""""""""""""""
-"  filestypes  "
-""""""""""""""""
 "javascript support
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'pangloss/vim-javascript'
@@ -39,6 +36,7 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'editorconfig/editorconfig-vim'
 Bundle 'maxbrunsfeld/vim-yankstack'
 Bundle 'godlygeek/tabular'
+" Bundle 'Shougo/neocomplcache.vim'
 Bundle 'terryma/vim-multiple-cursors'
 "vim jade support
 Bundle 'digitaltoad/vim-jade'
