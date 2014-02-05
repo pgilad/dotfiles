@@ -8,7 +8,7 @@ set nocompatible
 """""""""""""""""""""""""""
 let b:bundles_file=expand("~/.dotfiles/bundles.vim") "buffer local var
 if filereadable(b:bundles_file)
-    exec "source " . b:bundles_file
+    silent exec "source " . b:bundles_file
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -176,8 +176,12 @@ set nowritebackup
 set noswapfile
 
 " persistant undo file
-if exists('+undofile')
+if has('persistent_undo')
     set undofile
+    let b:undo_dir=expand("~/vimfiles/.cache/undo/")
+    if !isdirectory(b:undo_dir)
+       silent exec '!mkdir ' . b:undo_dir
+    endif
     set undodir=~/vimfiles/.cache/undo/
 endif
 
@@ -206,10 +210,10 @@ set laststatus=2 " Always show the status line
 " => Spelling
 """"""""""""""""""""""""""""""
 set spelllang=en_us
-let b:spell_file=expand("~/vimfiles/spell/") " Spell file
+let b:spell_dir=expand("~/vimfiles/spell/") " Spell file
 " if spell dir doesn't exist- create it
-if !isdirectory(b:spell_file)
-    exec '!mkdir ' . b:spell_file
+if !isdirectory(b:spell_dir)
+    silent exec '!mkdir ' . b:spell_dir
 endif
 
 set spellfile=~/vimfiles/spell/en.utf-8.add
@@ -268,9 +272,13 @@ nnoremap <silent> <leader>n :NERDTreeFind<cr> :wincmd p<cr>
 "Open current dir
 nnoremap <silent> <leader>nc :NERDTreeCWD<cr>
 
-" quickly edit or source $MYVIMRC
+" quickly edit $MYVIMRC
 nnoremap <silent> <leader>ev :edit $MYVIMRC<cr>
+" quickly edit bundles
 nnoremap <silent> <leader>eb :edit ~/.dotfiles/bundles.vim<cr>
+" quickly edit plugins
+nnoremap <silent> <leader>ep :edit ~/.dotfiles/plugins.vim<cr>
+" quickly source myvimrc
 nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
 
 "<leader>cd: Switch to the directory of the open buffer
@@ -279,11 +287,6 @@ nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 " Switch commands.
 nnoremap <silent> <leader>sw :Switch<CR>
 
-let g:switch_custom_definitions =
-            \ [
-            \   ['/', '\\']
-            \ ]
-
 " Ctrl-[hl]: Move left/right by word
 cnoremap <c-h> <s-left>
 cnoremap <c-l> <s-right>
@@ -291,97 +294,15 @@ cnoremap <c-l> <s-right>
 " Ctrl-r: Easier search and replace
 vnoremap <c-r> "hy:%s/<c-r>h//gc<left><left><left>
 
-""""""""""""""""""""""
-" Configure delimitMate
-""""""""""""""""""""""
-let delimitMate_expand_cr=1
+"""""""""""""""""""""""""""
+"  Plugins Confi          "
+"""""""""""""""""""""""""""
+let b:plugins_config=expand("~/.dotfiles/plugins.vim") "buffer local var
+if filereadable(b:plugins_config)
+    silent exec "source " . b:plugins_config
+endif
 
 """"""""""""""""""""""
-" set nerdtree options
-""""""""""""""""""""""
-let NERDTreeShowBookmarks=1
-let NERDTreeShowHidden=1
-let NERDTreeIgnore=['\~$', '\.swp$', '\.hg', '\.svn', '\.bzr']
-
-"""""""""""""""
-"  NerdSpace  "
-"""""""""""""""
-" Always leave a space between the comment character and the comment
-let NERDSpaceDelims=1
-
-""""""""""""""""
-"  Yank Stack  "
-""""""""""""""""
-let g:yankstack_map_keys = 0
-nmap <leader>p <Plug>yankstack_substitute_older_paste
-imap <leader>p <Plug>yankstack_substitute_older_paste
-nmap <leader>P <Plug>yankstack_substitute_newer_paste
-imap <leader>P <Plug>yankstack_substitute_newer_paste
-
-"""""""""""""""
-"  ShowMarks  "
-"""""""""""""""
-"let g:showmarks_enable = 1
-"let g:showmarks_textlower = "\t"
-"let g:showmarks_textupper = "\t"
-"let g:showmarks_textother = "\t"
-"let g:showmarks_ignoretype = "hqm" "help quickfix and non modifiable
-
-"""""""""""""""
-"  UltiSnips  "
-"""""""""""""""
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
-"""""""""""""""""""
-"  Indent Guides  "
-"""""""""""""""""""
-let g:indent_guides_enable_on_vim_startup = 1
-
-""""""""""""""
-"  beautify  "
-""""""""""""""
-"let g:config_Beautifier.js.indent_style = 'space'
-"let g:config_Beautifier.js.indent_space = 4
-"let g:config_Beautifier.js.keep_function_indentation=1
-"let g:config_Beautifier.js.keep_array_indentation=1
-"let g:config_Beautifier.js.brace_style = 'collapse'
-"let g:config_Beautifier.js.space_before_conditional =1
-
-"""""""""""""""""
-"  buffergator  "
-"""""""""""""""""
-let g:buffergator_display_regime = "bufname" " display only buffer name by default
-let g:buffergator_viewport_split_policy = "B" "since nerdtree opens on left
-let g:buffergator_sort_regime = "mru" "who cares about buffer number. sort by most recently used
-
-"""""""""""""""
-"  syntastic  "
-"""""""""""""""
-let g:syntastic_mode_map = { 'mode': 'passive',
-            \ 'active_filetypes': ['javascript', 'json'],
-            \ 'passive_filetypes': [] }
-
-"""""""""""""
-"  airline  "
-"""""""""""""
-let g:airline_left_sep  = '›' " Slightly fancier than '>'
-let g:airline_right_sep = '‹' " Slightly fancier than '<'
-
-""""""""""""""""""""""
-" ctrl-p custom ignore paths
-""""""""""""""""""""""
-let g:ctrlp_custom_ignore = 'node_modules\|.idea\|.git\|workspace\|bower_components\'
-" set ctrp options
-let g:ctrlp_show_hidden = 1
-
-""""""""""""""""""""""""""
-"  Used javascript libs  "
-""""""""""""""""""""""""""
-let g:used_javascript_libs = 'underscore,angularjs,jquery'
-
-"""""""""""""""""""""
 "  custom functions  "
 """"""""""""""""""""""
 " Removes trailing spaces
