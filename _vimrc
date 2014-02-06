@@ -20,16 +20,18 @@ if hostname() ==? "GILAD"
     simalt ~x "full screen
     set gfn=consolas:h11
     "Set working dir
-    if isdirectory('c:\repositories\wint')
-        cd c:\repositories\chromeBuilder
+    let b:home_dir = 'c:\repositories\wint'
+    if isdirectory(b:home_dir)
+        exec 'cd ' . b:home_dir
     endif
 elseif hostname() ==? "GILAD-PC"
     set lines=999
     set columns=999
     set gfn=consolas:h9
+    let b:home_dir = 'd:\development\repositories'
     "Set working dir
-    if isdirectory('d:\development\repositories')
-        cd d:\development\repositories
+    if isdirectory(b:home_dir)
+        exec 'cd ' . b:home_dir
     endif
 else
     simalt ~x
