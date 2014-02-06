@@ -4,7 +4,7 @@
 set nocompatible
 
 """""""""""""""""""""""""""
-"  Vundle Initialization  "
+"  Bundle Initialization  "
 """""""""""""""""""""""""""
 let b:bundles_file=expand("~/.dotfiles/bundles.vim") "buffer local var
 if filereadable(b:bundles_file)
@@ -51,7 +51,7 @@ set wildignore+=**/bower_components/**
 
 set viewoptions=folds,options,cursor,slash
 set shortmess+=filmnrxoOtT
-set noshellslash " required so far for vundle to work. wish it was otherwise
+set shellslash " required so far for vundle to work. wish it was otherwise
 
 set suffixesadd+=.js " list of suffixes to add when using gf
 

@@ -1,73 +1,82 @@
 "set file type detection off
 filetype on
 filetype off
-set rtp+=~/vimfiles/bundle/vundle/
-call vundle#rc('$HOME/vimfiles/bundle/')
+" Switch from Vundle -> NeoBundle
+" set runtimepath+=~/vimfiles/bundle/vundle/
+" call vundle#rc('$HOME/vimfiles/bundle/')
+set runtimepath+=~/vimfiles/bundle/neobundle.vim/
+
+call neobundle#rc(expand('~/vimfiles/bundle/'))
 
 "My Bundles
-Bundle 'gmarik/vundle'
-Bundle 'L9'
-Bundle 'FuzzyFinder'
+"NeoBundle 'gmarik/vundle'
+NeoBundleFetch 'Shougo/neobundle.vim'
+NeoBundle 'L9'
+NeoBundle 'FuzzyFinder'
 "Awesome plugin for file/path/buffer search with ctrl-p
-Bundle 'kien/ctrlp.vim'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/nerdcommenter'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'scrooloose/nerdcommenter'
 "Add indent guides
-Bundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'nathanaelkane/vim-indent-guides'
 " Show marks on side to quick jump
-"Bundle 'vim-scripts/ShowMarks'
+"NeoBundle 'vim-scripts/ShowMarks'
 "javascript support
-Bundle 'jelera/vim-javascript-syntax'
-Bundle 'pangloss/vim-javascript'
-Bundle 'groenewege/vim-less'
-Bundle 'elzr/vim-json'
-Bundle 'moll/vim-node'
-Bundle 'skammer/vim-css-color'
+NeoBundle 'jelera/vim-javascript-syntax'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'groenewege/vim-less'
+NeoBundle 'elzr/vim-json'
+NeoBundle 'moll/vim-node'
+NeoBundle 'skammer/vim-css-color'
 "Git support
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-abolish.git'
-Bundle 'tpope/vim-repeat'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-abolish.git'
+NeoBundle 'tpope/vim-repeat'
 "incorporate buffer drawer
-Bundle 'jeetsukumaran/vim-buffergator'
-Bundle 'sjl/gundo.vim'
-Bundle 'kien/rainbow_parentheses.vim'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'editorconfig/editorconfig-vim'
-Bundle 'maxbrunsfeld/vim-yankstack'
-Bundle 'godlygeek/tabular'
-" Bundle 'Shougo/neocomplcache.vim'
-Bundle 'terryma/vim-multiple-cursors'
+NeoBundle 'jeetsukumaran/vim-buffergator'
+NeoBundle 'sjl/gundo.vim'
+NeoBundle 'kien/rainbow_parentheses.vim'
+NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'editorconfig/editorconfig-vim'
+NeoBundle 'maxbrunsfeld/vim-yankstack'
+NeoBundle 'godlygeek/tabular'
+" NeoBundle 'Shougo/neocomplcache.vim'
+NeoBundle 'terryma/vim-multiple-cursors'
 "vim jade support
-Bundle 'digitaltoad/vim-jade'
-Bundle 'itspriddle/vim-jquery.git'
-Bundle 'heavenshell/vim-jsdoc'
-Bundle 'othree/javascript-libraries-syntax.vim'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'jtratner/vim-flavored-markdown.git'
+NeoBundle 'digitaltoad/vim-jade'
+NeoBundle 'itspriddle/vim-jquery.git'
+NeoBundle 'heavenshell/vim-jsdoc'
+NeoBundle 'othree/javascript-libraries-syntax.vim'
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'jtratner/vim-flavored-markdown.git'
 "Add vim airline
-Bundle 'bling/vim-airline'
-Bundle 'AndrewRadev/switch.vim'
+NeoBundle 'bling/vim-airline'
+NeoBundle 'AndrewRadev/switch.vim'
 " Snippets
-Bundle 'SirVer/ultisnips'
+NeoBundle 'SirVer/ultisnips'
 "manipulate function arguments using , as text object
-Bundle 'PeterRincker/vim-argumentative'
+NeoBundle 'PeterRincker/vim-argumentative'
 "auto add closing tag
-Bundle 'Raimondi/delimitMate'
+NeoBundle 'Raimondi/delimitMate'
 
 """"""""""""""""""
 "  lint & style  "
 """"""""""""""""""
-Bundle 'maksimr/vim-jsbeautify'
-Bundle 'einars/js-beautify'
+NeoBundle 'maksimr/vim-jsbeautify'
+NeoBundle 'einars/js-beautify'
 "syntax linting
-Bundle 'scrooloose/syntastic'
+NeoBundle 'scrooloose/syntastic'
 "Comma and semi-colon
-Bundle 'lfilho/cosco.vim'
+NeoBundle 'lfilho/cosco.vim'
 """"""""""""""""""
 "  colorschemes  "
 """"""""""""""""""
-Bundle 'nanotech/jellybeans.vim'
-Bundle 'Lokaltog/vim-distinguished'
-Bundle 'tomasr/molokai'
-" Bundle 'tpope/vim-vividchalk'
+NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'Lokaltog/vim-distinguished'
+NeoBundle 'tomasr/molokai'
+" NeoBundle 'tpope/vim-vividchalk'
+"
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
