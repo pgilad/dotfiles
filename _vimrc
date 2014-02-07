@@ -236,7 +236,7 @@ nnoremap <F4> :setlocal spell!<cr>
 " set rainbow parent
 nnoremap <F5> :RainbowParenthesesToggle<cr>
 " open in chrome
-nnoremap <silent> <F12>c :silent !start "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" %<cr>
+nnoremap <silent> <F12>c :silent !start "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" %:p<cr>
 
 nnoremap <leader><tab> :NERDTreeToggle<cr>
 
