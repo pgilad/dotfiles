@@ -312,11 +312,6 @@ function! TrimWhiteSpace()
     %s/\s\+$//e
 endfunction
 
-" function! VisualModeBeautify(vStart, vEnd)
-    " echom "running JsBeautify(" . a:vStart . ", " . a:vEnd . ")"
-    " call JsBeautify(a:vStart, a:vEnd)
-" endfunction
-
 """"""""""""""""""""""""
 "  Autogroup commands  "
 """"""""""""""""""""""""
