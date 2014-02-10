@@ -53,7 +53,7 @@ set wildignore+=**/bower_components/**
 
 set viewoptions=folds,options,cursor,slash
 set shortmess+=filmnrxoOtT
-set shellslash " required so far for vundle to work. wish it was otherwise
+set noshellslash " required so far for vundle to work. wish it was otherwise
 
 set suffixesadd+=.js " list of suffixes to add when using gf
 
@@ -295,6 +295,9 @@ cnoremap <c-l> <s-right>
 
 " Ctrl-r: Easier search and replace
 vnoremap <c-r> "hy:%s/<c-r>h//gc<left><left><left>
+
+" copy editorconfig from .dotfiles to current path
+nnoremap <leader>de :exec '!copy ' . expand('~/.dotfiles/.editorconfig') . ' ' . expand('%:p:h/')<cr>
 
 """""""""""""""""""""""""""
 "  Plugins Confi          "

@@ -16,6 +16,7 @@ let delimitMate_expand_cr=1
 """"""""""""""""""""""
 let NERDTreeShowBookmarks=1
 let NERDTreeShowHidden=1
+let NERDTreeWinSize=30
 let NERDTreeIgnore=['\~$', '\.swp$', '\.hg', '\.svn', '\.bzr']
 
 """""""""""""""
