@@ -182,7 +182,7 @@ if has('persistent_undo')
     set undofile
     let b:undo_dir=expand("~/vimfiles/.cache/undo/")
     if !isdirectory(b:undo_dir)
-       silent exec '!mkdir ' . b:undo_dir
+        silent exec '!mkdir ' . b:undo_dir
     endif
     set undodir=~/vimfiles/.cache/undo/
 endif
