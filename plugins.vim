@@ -16,8 +16,26 @@ let delimitMate_expand_cr=1
 """"""""""""""""""""""
 let NERDTreeShowBookmarks=1
 let NERDTreeShowHidden=1
+let NERDTreeQuitOnOpen=0
+let NERDTreeShowLineNumbers=0
 let NERDTreeWinSize=30
-let NERDTreeIgnore=['\~$', '\.swp$', '\.hg', '\.svn', '\.bzr']
+let NERDTreeIgnore=['\~$', '\.swp$', '\.hg', '\.svn', '\.bzr', '\.git']
+
+""""""""""""""""
+"  Tabularize  "
+""""""""""""""""
+nnoremap <Leader>a& :Tabularize /&<CR>
+vnoremap <Leader>a& :Tabularize /&<CR>
+nnoremap <Leader>a= :Tabularize /=<CR>
+vnoremap <Leader>a= :Tabularize /=<CR>
+nnoremap <Leader>a: :Tabularize /:<CR>
+vnoremap <Leader>a: :Tabularize /:<CR>
+nnoremap <Leader>a:: :Tabularize /:\zs<CR>
+vnoremap <Leader>a:: :Tabularize /:\zs<CR>
+nnoremap <Leader>a, :Tabularize /,<CR>
+vnoremap <Leader>a, :Tabularize /,<CR>
+nnoremap <Leader>a<Bar> :Tabularize /<Bar><CR>
+vnoremap <Leader>a<Bar> :Tabularize /<Bar><CR>
 
 """""""""""""""
 "  NerdSpace  "
@@ -89,7 +107,11 @@ let g:airline_right_sep = '‹' " Slightly fancier than '<'
 " ctrl-p custom ignore paths
 """"""""""""""""""""""
 let g:ctrlp_custom_ignore = 'node_modules\|.idea\|.git\|workspace\|bower_components\'
-" set ctrp options
+let g:ctrlp_root_markers = ['.git']
+let g:ctrlp_max_height = 10 " maxiumum height of match window
+let g:ctrlp_switch_buffer = 'et' " jump to a file if it's open already
+let g:ctrlp_clear_cache_on_exit=0 " speed up by not removing clearing cache evertime
+let g:ctrlp_mruf_max = 250 " number of recently opened files
 let g:ctrlp_show_hidden = 1
 
 """"""""""""""""""""""""""

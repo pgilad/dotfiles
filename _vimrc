@@ -20,7 +20,7 @@ if hostname() ==? "GILAD"
     simalt ~x "full screen
     set gfn=consolas:h11
     "Set working dir
-    let b:home_dir = 'c:\repositories\wint'
+    let b:home_dir = 'c:\repositories\gamestab'
     if isdirectory(b:home_dir)
         exec 'cd ' . b:home_dir
     endif
