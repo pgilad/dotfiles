@@ -47,6 +47,7 @@ set wildmenu " Turn on the WiLd menu
 set wildmode=longest,list,full
 set wildignore+=*.o,*~,*.pyc
 set wildignore+=**/node_modules/**
+set wildignore+=build/
 set wildignore+=.idea/**
 set wildignore+=.git/**
 set wildignore+=**/bower_components/**
