@@ -25,7 +25,7 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 """"""""""""""""""""""""
 "  File Types Plugins  "
 """"""""""""""""""""""""
-NeoBundle 'jelera/vim-javascript-syntax'
+NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
 NeoBundleLazy 'pangloss/vim-javascript', {'autoload':{'filetypes':['javascript']}}
 NeoBundleLazy 'maksimr/vim-jsbeautify', {'autoload':{'filetypes':['javascript']}}
 NeoBundleLazy 'kchmck/vim-coffee-script', {'autoload':{'filetypes':['coffee']}}
@@ -38,7 +38,7 @@ NeoBundleLazy 'digitaltoad/vim-jade', {'autoload':{'filetypes':['jade']}}
 NeoBundleLazy 'gregsexton/MatchTag', {'autoload':{'filetypes':['html','xml']}}
 NeoBundleLazy 'leshill/vim-json', {'autoload':{'filetypes':['javascript','json']}}
 NeoBundle 'elzr/vim-json'
-NeoBundleLazy 'mmalecki/vim-node.js', {'autoload':{'filetypes':['javascript']}}
+" NeoBundleLazy 'mmalecki/vim-node.js', {'autoload':{'filetypes':['javascript']}}
 NeoBundle 'moll/vim-node'
 NeoBundle 'itspriddle/vim-jquery.git'
 NeoBundle 'heavenshell/vim-jsdoc'
@@ -56,7 +56,7 @@ NeoBundle 'jeetsukumaran/vim-buffergator'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'kien/rainbow_parentheses.vim'
 NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundleLazy 'editorconfig/editorconfig-vim', {'autoload':{'insert':1}}
+NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'maxbrunsfeld/vim-yankstack'
 NeoBundleLazy 'godlygeek/tabular', {'autoload':{'commands':'Tabularize'}}
 " NeoBundle 'Shougo/neocomplcache.vim'

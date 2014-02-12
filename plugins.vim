@@ -117,4 +117,4 @@ let g:ctrlp_show_hidden = 1
 """"""""""""""""""""""""""
 "  Used javascript libs  "
 """"""""""""""""""""""""""
-let g:used_javascript_libs = 'underscore,angularjs,jquery'
+let g:used_javascript_libs = 'underscore,angularjs,jquery,jasmine'
