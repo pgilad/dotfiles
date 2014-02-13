@@ -5,17 +5,15 @@ filetype off
 " set runtimepath+=~/vimfiles/bundle/vundle/
 " call vundle#rc('$HOME/vimfiles/bundle/')
 set runtimepath+=~/vimfiles/bundle/neobundle.vim/
-
 call neobundle#rc(expand('~/vimfiles/bundle/'))
 
 "My Bundles
-"NeoBundle 'gmarik/vundle'
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'L9'
 NeoBundle 'FuzzyFinder'
 "Awesome plugin for file/path/buffer search with ctrl-p
 NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'scrooloose/nerdtree'
+NeoBundleLazy 'scrooloose/nerdtree', {'autoload':{'commands':['NERDTreeToggle','NERDTreeFind']}}
 NeoBundle 'scrooloose/nerdcommenter'
 "Add indent guides
 NeoBundle 'nathanaelkane/vim-indent-guides'
@@ -45,6 +43,10 @@ NeoBundle 'heavenshell/vim-jsdoc'
 NeoBundleLazy 'othree/javascript-libraries-syntax.vim', {'autoload':{'filetypes':['javascript','coffee','ls','typescript']}}
 NeoBundleLazy 'tpope/vim-markdown', {'autoload':{'filetypes':['markdown']}}
 NeoBundle 'jtratner/vim-flavored-markdown.git'
+
+""""""""""""
+"  others  "
+""""""""""""
 "Git support
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-surround'
@@ -61,6 +63,22 @@ NeoBundle 'maxbrunsfeld/vim-yankstack'
 NeoBundleLazy 'godlygeek/tabular', {'autoload':{'commands':'Tabularize'}}
 " NeoBundle 'Shougo/neocomplcache.vim'
 NeoBundle 'terryma/vim-multiple-cursors'
+
+"""""""""""""""
+"  Searching  "
+"""""""""""""""
+if executable('ag')
+    NeoBundle 'ervandew/ag'    "good for regex escaping
+    " NeoBundle 'rking/ag.vim' "great for quickfix mappings
+    let g:ackprg = "ag --nogroup --column --smart-case --follow"
+endif
+
+NeoBundleLazy 'EasyGrep', {'autoload':{'commands':'GrepOptions'}} "{{{
+let g:EasyGrepRecursive=1
+let g:EasyGrepAllOptionsInExplorer=1
+let g:EasyGrepCommand=1
+nnoremap <leader>vo :GrepOptions<cr>
+
 "vim jade support
 "Add vim airline
 NeoBundle 'bling/vim-airline'
@@ -99,6 +117,4 @@ NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'tomasr/molokai'
 NeoBundle 'tpope/vim-vividchalk'
 "
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
 NeoBundleCheck

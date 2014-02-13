@@ -3,6 +3,10 @@
 "So 2014...
 set nocompatible
 
+let s:is_windows = has('win32') || has('win64')
+let s:is_cygwin = has('win32unix')
+let s:is_macvim = has('gui_macvim')
+
 """""""""""""""""""""""""""
 "  Bundle Initialization  "
 """""""""""""""""""""""""""
@@ -14,36 +18,31 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Current working directories and fonts according to location
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set lines=999
+set columns=999
+
 if hostname() ==? "GILAD"
-    set lines=999
-    set columns=999
-    simalt ~x "full screen
+    " simalt ~x "full screen
     set gfn=consolas:h11
-    "Set working dir
     let b:home_dir = 'c:\repositories\gamestab'
-    if isdirectory(b:home_dir)
-        exec 'cd ' . b:home_dir
-    endif
 elseif hostname() ==? "GILAD-PC"
-    set lines=999
-    set columns=999
     set gfn=consolas:h9
     let b:home_dir = 'd:\development\repositories'
-    "Set working dir
-    if isdirectory(b:home_dir)
-        exec 'cd ' . b:home_dir
-    endif
 else
-    simalt ~x
+    " simalt ~x
     set gfn=consolas:h9
 endif
 
+if isdirectory(b:home_dir)
+    exec 'cd ' . b:home_dir
+endif
 """"""""
 "  UI  "
 """"""""
 set scrolloff=3 " Set 7 lines to the cursor - when moving vertically using j/k
 
 set wildmenu " Turn on the WiLd menu
+set wildignorecase
 set wildmode=longest,list,full
 set wildignore+=*.o,*~,*.pyc
 set wildignore+=**/node_modules/**
@@ -52,88 +51,59 @@ set wildignore+=.idea/**
 set wildignore+=.git/**
 set wildignore+=**/bower_components/**
 
-set viewoptions=folds,options,cursor,slash
+set viewoptions=folds,options,cursor,slash,unix
 set shortmess+=filmnrxoOtT
-set noshellslash " required so far for vundle to work. wish it was otherwise
-
-set suffixesadd+=.js " list of suffixes to add when using gf
-
-set ruler "Always show current position
-
-set cmdheight=1 " Height of the command bar
-
-set showcmd "show partial commands
-set showmode "show which mode i'm on
-
-" I don't work with octal numbers so make vim treat padded numbers as decimals as well
-set nrformats=
-
-set hidden " A buffer becomes hidden when it is abandoned
-
-set backspace=eol,start,indent "configure backspace the expected way
+set noshellslash
+set suffixesadd+=.js                            " list of suffixes to add when using gf
+set ruler                                       " Always show current position
+set cmdheight=1                                 " Height of the command bar
+set showcmd                                     " show partial commands
+set showmode                                    " show which mode i'm on
+set nrformats-=octal                            " no octal numbers
+set hidden                                      " A buffer becomes hidden when it is abandoned
+set showfulltag
+set backspace=eol,start,indent                " configure backspace the expected way
 set whichwrap+=<,>,h,l
-
-set ignorecase "ignore case when searching
-set smartcase "be smart about searching
-set infercase "ignore case in autocomplete
-
-" global regex is on by default
-"set gdefault "This confused me a bit. need to work on it
-
-set hlsearch "highlight search"
-set incsearch "increment search
-
-set lazyredraw " Don't redraw while executing macros (good performance config)
-
-set magic " For regular expressions turn magic on
-
-set showmatch " Show matching brackets when text indicator is over them
-set mat=2 " How many tenths of a second to blink when matching brackets
-
-set noerrorbells " No annoying sound on errors
+set ignorecase                                " ignore case when searching
+set smartcase                                 " be smart about searching
+set infercase                                 " ignore case in autocomplete
+set hlsearch                                  " highlight search
+set incsearch                                 " increment search
+set lazyredraw                                " Don't redraw while executing macros (good performance config)
+set magic                                     " For regular expressions turn magic on
+set showmatch                                 " Show matching brackets when text indicator is over them
+set mat=2                                     " How many tenths of a second to blink when matching brackets
+set noerrorbells                              " No annoying sound on errors
 set novisualbell
 set t_vb=
 set tm=500
-
-set number "show line number
-set relativenumber "line numbers are relative
-set cursorline "highlight where cursor is
-
-set nowrap " turn word wrap off
-set ttyfast " fast terminal redraw
-
-set cpoptions+=$ "when changing - mark block end with $
+set number                                    " show line number
+set relativenumber                            " line numbers are relative
+set cursorline                                " highlight where cursor is
+set nowrap                                    " turn word wrap off
+set ttyfast                                   " fast terminal redraw
+set cpoptions+=$                              " when changing - mark block end with $
 set virtualedit=onemore
-
-set listchars=tab:>-,trail:~,nbsp:.,extends:> "highlight problematic chars
-set list "show problematic chars
+set listchars=tab:>-,trail:~,nbsp:.,extends:> " highlight problematic chars
+set list                                      " show problematic chars
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set history=700 " Sets how many lines of history VIM has to remember
-
-set nomodeline "security issue
-
-set splitright " Always splits to the right
-set splitbelow " and below
-
-set t_Co=256 " 256bit terminal
-
+set history=700      " Sets how many lines of history VIM has to remember
+set nomodeline       " security issue
+set splitright       " Always splits to the right
+set splitbelow       " and below
+set t_Co=256         " 256bit terminal
 filetype plugin on
-filetype indent on " Enable filetype plugins
-
-set mouse=a "enable mouse
-set mousehide "hide mouse cursor while typing
-
-set autoread " Set to auto read when a file is changed from the outside
-
-set encoding=utf-8 " Set utf8 as standard encoding and en_US as the standard language
+filetype indent on   " Enable filetype plugins
+set mouse=a          " enable mouse
+set mousehide        " hide mouse cursor while typing
+set autoread         " Set to auto read when a file is changed from the outside
+set encoding=utf-8   " Set utf8 as standard encoding and en_US as the standard language
 scriptencoding utf-8
-
-set title " show filename in windows title
-
-set nostartofline " Don't reset cursor to start of line when moving around.
+set title            " show filename in windows title
+set nostartofline    " Don't reset cursor to start of line when moving around.
 
 " Writes to the unnamed register also writes to the * and + registers. This
 " makes it easy to interact with the system clipboard
@@ -147,7 +117,8 @@ endif
 "  folds  "
 """""""""""
 set foldmethod=indent   "fold based on indent
-set foldnestmax=3       "deepest fold is 3 levels
+set foldnestmax=5       "deepest fold is 3 levels
+set foldlevelstart=99
 set nofoldenable        "dont fold by default
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -160,15 +131,14 @@ colorscheme jellybeans
 
 " Set extra options when running in GUI mode
 if has("gui_running")
-    set go-=m "remove menu
-    set go-=T "remove toolbar
-    set go-=r "remove right scrollbar
-    set go-=L "remove left scrollbar
-    set go-=b "remove bottom scrollbar
+    set guioptions-=m "remove menu
+    set guioptions-=T "remove toolbar
+    set guioptions-=r "remove right scrollbar
+    set guioptions-=L "remove left scrollbar
+    set guioptions-=b "remove bottom scrollbar
 endif
 
-" good for setting NERDTree width after toggles
-set winfixwidth
+set winfixwidth "NERD width after toggles
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
@@ -188,25 +158,31 @@ if has('persistent_undo')
     set undodir=~/vimfiles/.cache/undo/
 endif
 
+"""""""""""""""
+"  Searching  "
+"""""""""""""""
+" TODO think about this. regex doesn't work
+if executable('ag')
+    set grepprg=ag\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow
+    set grepformat=%f:%l:%c:%m
+endif
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set expandtab " Use spaces instead of tabs
 set smarttab
+set nojoinspaces
 
 " default params
-set shiftwidth=4 tabstop=4 softtabstop=4
-set shiftround " < and > round to nearest multiple of tabstop
-
-set linebreak " Linebreak on 500 characters
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
+set shiftround   " < and > round to nearest multiple of tabstop
+set linebreak    " Linebreak on 500 characters
 set tw=500
-
 set autoindent
 set smartindent
-
-""""""""""""""""""""""""""""""
-" => Status line
-""""""""""""""""""""""""""""""
 set laststatus=2 " Always show the status line
 
 """"""""""""""""""""""""""""""
@@ -236,6 +212,8 @@ nnoremap <F3> :GundoToggle<cr>
 nnoremap <F4> :setlocal spell!<cr>
 " set rainbow parent
 nnoremap <F5> :RainbowParenthesesToggle<cr>
+" toggle paste
+map <F6> :set invpaste<CR>:set paste?<CR>
 " open in chrome
 nnoremap <silent> <F12>c :silent !start "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" %:p<cr>
 
@@ -250,6 +228,10 @@ inoremap jj <ESC>
 " better line navigation
 nnoremap j gj
 nnoremap k gk
+
+" change cursor position in insert mode
+inoremap <c-h> <left>
+inoremap <c-l> <right>
 
 " who ever uses ; for something?
 " also don't map back since it breaks plugins according to steve losh
@@ -345,4 +327,7 @@ augroup my_auto_commands
 
     " reload vimrc when saved
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
+
+    autocmd WinLeave * setlocal nocursorline
+    autocmd WinEnter * setlocal cursorline
 augroup END

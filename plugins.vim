@@ -26,6 +26,8 @@ let NERDTreeIgnore=['\~$', '\.swp$', '\.hg', '\.svn', '\.bzr', '\.git']
 """"""""""""""""
 nnoremap <Leader>a& :Tabularize /&<CR>
 vnoremap <Leader>a& :Tabularize /&<CR>
+nnoremap <Leader>a" :Tabularize /"<CR>
+vnoremap <Leader>a" :Tabularize /"<CR>
 nnoremap <Leader>a= :Tabularize /=<CR>
 vnoremap <Leader>a= :Tabularize /=<CR>
 nnoremap <Leader>a: :Tabularize /:<CR>
@@ -100,16 +102,19 @@ let g:syntastic_mode_map = { 'mode': 'passive',
 """""""""""""
 "  airline  "
 """""""""""""
-let g:airline_left_sep  = '›' " Slightly fancier than '>'
-let g:airline_right_sep = '‹' " Slightly fancier than '<'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep=' '
+let g:airline#extensions#tabline#left_alt_sep='¦'
 
 """"""""""""""""""""""
 " ctrl-p custom ignore paths
 """"""""""""""""""""""
 let g:ctrlp_custom_ignore = 'node_modules\|.idea\|.git\|workspace\|bower_components\'
 let g:ctrlp_root_markers = ['.git']
-let g:ctrlp_max_height = 10 " maxiumum height of match window
+let g:ctrlp_max_height = 40 " maxiumum height of match window
 let g:ctrlp_switch_buffer = 'et' " jump to a file if it's open already
+let g:ctrlp_follow_symlinks=1
+let g:ctrlp_max_files=20000
 let g:ctrlp_clear_cache_on_exit=0 " speed up by not removing clearing cache evertime
 let g:ctrlp_mruf_max = 250 " number of recently opened files
 let g:ctrlp_show_hidden = 1
