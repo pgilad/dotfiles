@@ -43,6 +43,7 @@ NeoBundle 'heavenshell/vim-jsdoc'
 NeoBundleLazy 'othree/javascript-libraries-syntax.vim', {'autoload':{'filetypes':['javascript','coffee','ls','typescript']}}
 NeoBundleLazy 'tpope/vim-markdown', {'autoload':{'filetypes':['markdown']}}
 NeoBundle 'jtratner/vim-flavored-markdown.git'
+NeoBundle 'waylan/vim-markdown-extra-preview'
 
 """"""""""""
 "  others  "

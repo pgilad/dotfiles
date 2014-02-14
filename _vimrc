@@ -245,6 +245,9 @@ vnoremap > >gv
 nnoremap <silent> <space> :nohlsearch<CR>
 nnoremap <silent> <leader>ls :set list!<CR>
 
+"markdown preview
+nnoremap <leader>mp :Me<cr>
+
 "<leader>w: Close current buffer
 nnoremap <leader>wc :bdelete<cr>
 
