@@ -53,7 +53,7 @@ set wildignore+=**/bower_components/**
 
 set viewoptions=folds,options,cursor,slash,unix
 set shortmess+=filmnrxoOtT
-set noshellslash
+set shellslash
 set suffixesadd+=.js                            " list of suffixes to add when using gf
 set ruler                                       " Always show current position
 set cmdheight=1                                 " Height of the command bar
@@ -284,14 +284,6 @@ vnoremap <c-r> "hy:%s/<c-r>h//gc<left><left><left>
 
 " copy editorconfig from .dotfiles to current path
 nnoremap <leader>de :exec '!copy ' . expand('~/.dotfiles/.editorconfig') . ' ' . expand('%:p:h/')<cr>
-
-"""""""""""""""""""""""""""
-"  Plugins Confi          "
-"""""""""""""""""""""""""""
-let b:plugins_config=expand("~/.dotfiles/plugins.vim") "buffer local var
-if filereadable(b:plugins_config)
-    silent exec "source " . b:plugins_config
-endif
 
 """"""""""""""""""""""
 "  custom functions  "
