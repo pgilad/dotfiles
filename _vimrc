@@ -20,16 +20,17 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set lines=999
 set columns=999
+if s:is_windows
+    simalt ~x
+endif
 
 if hostname() ==? "GILAD"
-    " simalt ~x "full screen
     set gfn=consolas:h11
     let b:home_dir = 'c:\repositories\gamestab'
 elseif hostname() ==? "GILAD-PC"
     set gfn=consolas:h9
     let b:home_dir = 'd:\development\repositories'
 else
-    " simalt ~x
     set gfn=consolas:h9
 endif
 
@@ -41,7 +42,7 @@ endif
 """"""""
 set scrolloff=3 " Set 7 lines to the cursor - when moving vertically using j/k
 
-set wildmenu " Turn on the WiLd menu
+set wildmenu                                    " Turn on the WiLd menu
 set wildignorecase
 set wildmode=longest,list,full
 set wildignore+=*.o,*~,*.pyc
@@ -49,11 +50,11 @@ set wildignore+=**/node_modules/**
 set wildignore+=build/
 set wildignore+=.idea/**
 set wildignore+=.git/**
-set wildignore+=**/bower_components/**
+set wildignore+=*/bower_components/**
 
 set viewoptions=folds,options,cursor,slash,unix
-set shortmess+=filmnrxoOtT
 set shellslash
+set shortmess+=filmnrxoOtT
 set suffixesadd+=.js                            " list of suffixes to add when using gf
 set ruler                                       " Always show current position
 set cmdheight=1                                 " Height of the command bar
@@ -62,30 +63,30 @@ set showmode                                    " show which mode i'm on
 set nrformats-=octal                            " no octal numbers
 set hidden                                      " A buffer becomes hidden when it is abandoned
 set showfulltag
-set backspace=eol,start,indent                " configure backspace the expected way
+set backspace=eol,start,indent                  " configure backspace the expected way
 set whichwrap+=<,>,h,l
-set ignorecase                                " ignore case when searching
-set smartcase                                 " be smart about searching
-set infercase                                 " ignore case in autocomplete
-set hlsearch                                  " highlight search
-set incsearch                                 " increment search
-set lazyredraw                                " Don't redraw while executing macros (good performance config)
-set magic                                     " For regular expressions turn magic on
-set showmatch                                 " Show matching brackets when text indicator is over them
-set mat=2                                     " How many tenths of a second to blink when matching brackets
-set noerrorbells                              " No annoying sound on errors
+set ignorecase                                  " ignore case when searching
+set smartcase                                   " be smart about searching
+set infercase                                   " ignore case in autocomplete
+set hlsearch                                    " highlight search
+set incsearch                                   " increment search
+set lazyredraw                                  " Don't redraw while executing macros (good performance config)
+set magic                                       " For regular expressions turn magic on
+set showmatch                                   " Show matching brackets when text indicator is over them
+set mat=2                                       " How many tenths of a second to blink when matching brackets
+set noerrorbells                                " No annoying sound on errors
 set novisualbell
 set t_vb=
 set tm=500
-set number                                    " show line number
-set relativenumber                            " line numbers are relative
-set cursorline                                " highlight where cursor is
-set nowrap                                    " turn word wrap off
-set ttyfast                                   " fast terminal redraw
-set cpoptions+=$                              " when changing - mark block end with $
+set number                                      " show line number
+set relativenumber                              " line numbers are relative
+set cursorline                                  " highlight where cursor is
+set nowrap                                      " turn word wrap off
+set ttyfast                                     " fast terminal redraw
+set cpoptions+=$                                " when changing - mark block end with $
 set virtualedit=onemore
-set listchars=tab:>-,trail:~,nbsp:.,extends:> " highlight problematic chars
-set list                                      " show problematic chars
+set listchars=tab:>-,trail:~,nbsp:.,extends:>   " highlight problematic chars
+set list                                        " show problematic chars
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -105,8 +106,7 @@ scriptencoding utf-8
 set title            " show filename in windows title
 set nostartofline    " Don't reset cursor to start of line when moving around.
 
-" Writes to the unnamed register also writes to the * and + registers. This
-" makes it easy to interact with the system clipboard
+" share clipboard with os
 if has('unnamedplus')
     set clipboard=unnamedplus "linux/mac"
 else
@@ -170,9 +170,9 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set expandtab " Use spaces instead of tabs
+set expandtab    " Use spaces instead of tabs
 set smarttab
-set nojoinspaces
+set nojoinspaces " don't add multiple spaces on line joins
 
 " default params
 set shiftwidth=4
@@ -206,6 +206,8 @@ let maplocalleader = ","
 let g:mapleader = ","
 let g:maplocalleader = ","
 
+
+
 " See undo tree
 nnoremap <F3> :GundoToggle<cr>
 " set spell check
@@ -216,8 +218,6 @@ nnoremap <F5> :RainbowParenthesesToggle<cr>
 map <F6> :set invpaste<CR>:set paste?<CR>
 " open in chrome
 nnoremap <silent> <F12>c :silent !start "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" %:p<cr>
-
-nnoremap <leader><tab> :NERDTreeToggle<cr>
 
 " switch between 0 and ^
 noremap 0 ^
@@ -255,17 +255,17 @@ nnoremap <leader>wc :bdelete<cr>
 nnoremap <silent> <leader>cp :let @+=expand("%:p")<cr>:echo "Copied current file
             \ path '".expand("%:p")."' to clipboard"<cr>
 
-" <leader>n: NERDTreeFind find current file in the tree
-nnoremap <silent> <leader>n :NERDTreeFind<cr> :wincmd p<cr>
-"Open current dir
-nnoremap <silent> <leader>nc :NERDTreeCWD<cr>
+" Open current dir
+nnoremap <leader>nc :NERDTreeCWD<cr>
+" open nerd tree window
+nnoremap <leader>n<tab> :NERDTreeToggle<cr>
+" find current file in nerdtree
+nnoremap <leader>nf :NERDTreeFind<cr>
 
 " quickly edit $MYVIMRC
 nnoremap <silent> <leader>ev :edit $MYVIMRC<cr>
 " quickly edit bundles
 nnoremap <silent> <leader>eb :edit ~/.dotfiles/bundles.vim<cr>
-" quickly edit plugins
-nnoremap <silent> <leader>ep :edit ~/.dotfiles/plugins.vim<cr>
 " quickly source myvimrc
 nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
 
