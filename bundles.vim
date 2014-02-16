@@ -16,7 +16,7 @@ NeoBundle 'FuzzyFinder'
 NeoBundle 'kien/ctrlp.vim'
 let g:ctrlp_custom_ignore = 'node_modules\|.idea\|.git\|workspace\|bower_components\'
 let g:ctrlp_root_markers = ['.git']
-let g:ctrlp_max_height = 40 " maxiumum height of match window
+let g:ctrlp_max_height = 20 " maxiumum height of match window
 let g:ctrlp_switch_buffer = 'et' " jump to a file if it's open already
 let g:ctrlp_follow_symlinks=1
 let g:ctrlp_max_files=20000
@@ -61,7 +61,7 @@ let g:indent_guides_enable_on_vim_startup = 1
 """"""""""""""""""""""""
 NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
 NeoBundleLazy 'pangloss/vim-javascript', {'autoload':{'filetypes':['javascript']}}
-NeoBundleLazy 'maksimr/vim-jsbeautify', {'autoload':{'filetypes':['javascript']}}
+NeoBundleLazy 'maksimr/vim-jsbeautify', {'autoload':{'filetypes':['javascript', 'json']}}
 NeoBundleLazy 'kchmck/vim-coffee-script', {'autoload':{'filetypes':['coffee']}}
 
 NeoBundleLazy 'groenewege/vim-less', {'autoload':{'filetypes':['less']}}
