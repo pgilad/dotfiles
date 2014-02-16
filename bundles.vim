@@ -33,7 +33,7 @@ let NERDTreeShowHidden=1
 let NERDTreeQuitOnOpen=0
 let NERDTreeShowLineNumbers=0
 let NERDTreeWinSize=30
-let NERDTreeIgnore=['\~$', '\.swp$', '\.hg', '\.svn', '\.bzr', '\.git']
+let NERDTreeIgnore=['\~$', '^\.\.$', '\.swp$', '\.hg$', '\.svn$', '\.bzr', '\.git$']
 
 NeoBundle 'scrooloose/nerdcommenter'
 " Always leave a space between the comment character and the comment
