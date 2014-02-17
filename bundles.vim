@@ -59,33 +59,31 @@ let g:indent_guides_enable_on_vim_startup = 1
 """"""""""""""""""""""""
 "  File Types Plugins  "
 """"""""""""""""""""""""
-NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
-NeoBundleLazy 'pangloss/vim-javascript', {'autoload':{'filetypes':['javascript']}}
-NeoBundleLazy 'maksimr/vim-jsbeautify', {'autoload':{'filetypes':['javascript', 'json']}}
 NeoBundleLazy 'kchmck/vim-coffee-script', {'autoload':{'filetypes':['coffee']}}
 
-NeoBundleLazy 'groenewege/vim-less', {'autoload':{'filetypes':['less']}}
-NeoBundleLazy 'hail2u/vim-css3-syntax', {'autoload':{'filetypes':['css','scss','sass']}}
+NeoBundleLazy 'groenewege/vim-less', {'autoload':{'filetypes':['less', 'css']}}
+NeoBundleLazy 'hail2u/vim-css3-syntax', {'autoload':{'filetypes':['css', 'less', 'scss','sass']}}
 NeoBundleLazy 'ap/vim-css-color', {'autoload':{'filetypes':['css','scss','sass','less','styl']}}
 NeoBundleLazy 'othree/html5.vim', {'autoload':{'filetypes':['html']}}
 NeoBundleLazy 'digitaltoad/vim-jade', {'autoload':{'filetypes':['jade']}}
 NeoBundleLazy 'gregsexton/MatchTag', {'autoload':{'filetypes':['html','xml']}}
-NeoBundleLazy 'leshill/vim-json', {'autoload':{'filetypes':['javascript','json']}}
-NeoBundle 'elzr/vim-json'
-" NeoBundleLazy 'mmalecki/vim-node.js', {'autoload':{'filetypes':['javascript']}}
-NeoBundle 'moll/vim-node'
-NeoBundle 'itspriddle/vim-jquery.git'
-NeoBundle 'heavenshell/vim-jsdoc'
 
-""""""""""""""""""""""""""
-"  Used javascript libs  "
-""""""""""""""""""""""""""
+NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
+NeoBundleLazy 'pangloss/vim-javascript', {'autoload':{'filetypes':['javascript']}}
+NeoBundleLazy 'maksimr/vim-jsbeautify', {'autoload':{'filetypes':['javascript', 'json', 'html']}}
+NeoBundleLazy 'leshill/vim-json', {'autoload':{'filetypes':['javascript','json']}}
+NeoBundleLazy 'elzr/vim-json', {'autoload':{'filetypes':['json']}}
+NeoBundleLazy 'mmalecki/vim-node.js', {'autoload':{'filetypes':['javascript']}}
+NeoBundleLazy 'moll/vim-node', {'autoload':{'filetypes':['javascript']}}
+NeoBundleLazy 'itspriddle/vim-jquery.git', {'autoload':{'filetypes':['javascript']}}
+NeoBundleLazy 'heavenshell/vim-jsdoc', {'autoload':{'filetypes':['javascript']}}
+
 NeoBundleLazy 'othree/javascript-libraries-syntax.vim', {'autoload':{'filetypes':['javascript','coffee','ls','typescript']}}
 let g:used_javascript_libs = 'underscore,angularjs,jquery,jasmine'
 
 NeoBundleLazy 'tpope/vim-markdown', {'autoload':{'filetypes':['markdown']}}
-NeoBundle 'jtratner/vim-flavored-markdown.git'
-NeoBundle 'waylan/vim-markdown-extra-preview'
+NeoBundleLazy 'jtratner/vim-flavored-markdown.git', {'autoload':{'filetypes':['markdown']}}
+NeoBundleLazy 'waylan/vim-markdown-extra-preview', {'autoload':{'filetypes':['markdown']}}
 
 """"""""""""
 "  others  "
@@ -167,12 +165,11 @@ let g:airline#extensions#tabline#left_alt_sep='¦'
 """"""""""""
 "  switch - switches between stuff
 """"""""""""
-NeoBundle 'AndrewRadev/switch.vim'
+NeoBundleLazy 'AndrewRadev/switch.vim'
 let g:switch_custom_definitions =
             \ [
             \   ['/', '\\']
             \ ]
-
 
 """""""""""""""
 "  UltiSnips  "
@@ -223,5 +220,5 @@ NeoBundle 'sjl/badwolf'
 NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'tomasr/molokai'
 NeoBundle 'tpope/vim-vividchalk'
-"
+
 NeoBundleCheck
