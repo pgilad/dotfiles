@@ -175,10 +175,12 @@ let g:switch_custom_definitions =
 "  UltiSnips  "
 """""""""""""""
 NeoBundle 'SirVer/ultisnips'
+set runtimepath+=~/.dotfiles/
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-let g:UltiSnipsSnippetsDir='~/.dotfiles/snippets'
+let g:UltiSnipsSnippetsDir=expand('~/.dotfiles/snippets/')
+let g:UltiSnipsSnippetDirectories=['UltiSnips', 'snippets']
 
 """"""""""""""""""
 "  Text Objects  "

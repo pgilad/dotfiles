@@ -268,6 +268,8 @@ nnoremap <silent> <leader>ev :edit $MYVIMRC<cr>
 nnoremap <silent> <leader>eb :edit ~/.dotfiles/bundles.vim<cr>
 " quickly source myvimrc
 nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
+" edit current filetype custom snippets
+nnoremap <silent> <leader>es :UltiSnipsEdit<cr>
 
 "<leader>cd: Switch to the directory of the open buffer
 nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
