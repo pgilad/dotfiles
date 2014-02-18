@@ -51,8 +51,9 @@ set wildignore+=build/
 set wildignore+=.idea/**
 set wildignore+=.git/**
 set wildignore+=*/bower_components/**
-
 set viewoptions=folds,options,cursor,slash,unix
+set fileformat=unix                             " Default fileformat
+set fileformats=unix,dos,mac                    " Automatic recognition of a new line cord.
 set shellslash
 set shortmess+=filmnrxoOtT
 set suffixesadd+=.js                            " list of suffixes to add when using gf
@@ -73,6 +74,7 @@ set incsearch                                   " increment search
 set lazyredraw                                  " Don't redraw while executing macros (good performance config)
 set magic                                       " For regular expressions turn magic on
 set showmatch                                   " Show matching brackets when text indicator is over them
+set matchpairs+=<:>
 set mat=2                                       " How many tenths of a second to blink when matching brackets
 set noerrorbells                                " No annoying sound on errors
 set novisualbell
@@ -82,6 +84,7 @@ set number                                      " show line number
 set relativenumber                              " line numbers are relative
 set cursorline                                  " highlight where cursor is
 set nowrap                                      " turn word wrap off
+set wrapscan
 set ttyfast                                     " fast terminal redraw
 set cpoptions+=$                                " when changing - mark block end with $
 set virtualedit=onemore

@@ -107,6 +107,12 @@ NeoBundle 'kien/rainbow_parentheses.vim'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'editorconfig/editorconfig-vim'
 
+" NeoBundle 'thinca/vim-fontzoom', {'gui' : 1}
+NeoBundleLazy 'tyru/open-browser.vim', {
+      \   'commands' : ['OpenBrowserSearch', 'OpenBrowser'],
+      \   'functions' : 'openbrowser#open',
+      \ }
+
 """"""""""""""""
 "  Yank Stack  "
 """"""""""""""""
