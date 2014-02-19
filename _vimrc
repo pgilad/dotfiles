@@ -139,6 +139,7 @@ if has("gui_running")
     set guioptions-=r "remove right scrollbar
     set guioptions-=L "remove left scrollbar
     set guioptions-=b "remove bottom scrollbar
+    set guioptions+=c "simple choices in console instead of popup
 endif
 
 set winfixwidth "NERD width after toggles
@@ -209,8 +210,9 @@ let maplocalleader = ","
 let g:mapleader = ","
 let g:maplocalleader = ","
 
-
-
+""""""""""""""""""""""
+"  F-# keys mapping  "
+""""""""""""""""""""""
 " See undo tree
 nnoremap <F3> :GundoToggle<cr>
 " set spell check
@@ -222,6 +224,9 @@ map <F6> :set invpaste<CR>:set paste?<CR>
 " open in chrome
 nnoremap <silent> <F12>c :silent !start "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" %:p<cr>
 
+""""""""""""""""""""""""""""
+"  Regular keys unbinding  "
+""""""""""""""""""""""""""""
 " switch between 0 and ^
 noremap 0 ^
 noremap ^ 0
@@ -246,6 +251,31 @@ vnoremap > >gv
 
 "Clears the search highlight
 nnoremap <silent> <space> :nohlsearch<CR>
+
+
+"<leader>cd: Switch to the directory of the open buffer
+nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
+
+" Ctrl-r: Easier search and replace
+vnoremap <c-r> "hy:%s/<c-r>h//gc<left><left><left>
+
+" copy editorconfig from .dotfiles to current path
+nnoremap <leader>de :exec '!copy ' . expand('~/.dotfiles/.editorconfig') . ' ' . expand('%:p:h/')<cr>
+""""""""""""""""""""""""""
+"  Command-line mapping  "
+""""""""""""""""""""""""""
+" Ctrl-[hl]: Move left/right by word
+cnoremap <c-h> <left>
+cnoremap <c-l> <right>
+cnoremap <c-a> <home>
+cnoremap <c-e> <end>
+cnoremap <c-p> <up>
+cnoremap <c-n> <down>
+
+"""""""""""""""""""""""""
+"  Leader keys mapping  "
+"""""""""""""""""""""""""
+" show list
 nnoremap <silent> <leader>ls :set list!<CR>
 
 "markdown preview
@@ -274,22 +304,20 @@ nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
 " edit current filetype custom snippets
 nnoremap <silent> <leader>es :UltiSnipsEdit<cr>
 
-"<leader>cd: Switch to the directory of the open buffer
-nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
-
 " Switch commands.
 nnoremap <silent> <leader>sw :Switch<CR>
 
-" Ctrl-[hl]: Move left/right by word
-cnoremap <c-h> <s-left>
-cnoremap <c-l> <s-right>
+" simply open search in browser
+nmap <leader>oo <Plug>(openbrowser-open)
+nmap <leader>os <Plug>(openbrowser-smart-search)
+vmap <leader>os <Plug>(openbrowser-smart-search)
 
-" Ctrl-r: Easier search and replace
-vnoremap <c-r> "hy:%s/<c-r>h//gc<left><left><left>
-
-" copy editorconfig from .dotfiles to current path
-nnoremap <leader>de :exec '!copy ' . expand('~/.dotfiles/.editorconfig') . ' ' . expand('%:p:h/')<cr>
-
+augroup appendComma
+    autocmd!
+    " close sentence with comma or semi-colon
+    autocmd FileType javascript,css,json nnoremap <buffer> <silent> <leader>; :call cosco#commaOrSemiColon()<cr>
+    autocmd FileType javascript,css,json inoremap <buffer> <silent> <leader>; <ESC>:call cosco#commaOrSemiColon()<cr>a
+augroup END
 """"""""""""""""""""""
 "  custom functions  "
 """"""""""""""""""""""
@@ -306,10 +334,6 @@ augroup my_auto_commands
     " saving on lost focus
     autocmd FocusLost * :silent! wall
     autocmd FileType javascript,html,json,jade,vim,markdown autocmd FileWritePre,FileAppendPre,FilterWritePre,BufWritePre <buffer> call TrimWhiteSpace()
-
-    " close sentence with comma or semi-colon
-    autocmd FileType javascript,css,json nnoremap <buffer> <silent> <leader>; :call cosco#commaOrSemiColon()<cr>
-    autocmd FileType javascript,css,json inoremap <buffer> <silent> <leader>; <ESC>:call cosco#commaOrSemiColon()<cr>a
 
     " autocomplete
     autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS

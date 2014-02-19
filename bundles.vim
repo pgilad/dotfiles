@@ -109,9 +109,10 @@ NeoBundle 'editorconfig/editorconfig-vim'
 
 " NeoBundle 'thinca/vim-fontzoom', {'gui' : 1}
 NeoBundleLazy 'tyru/open-browser.vim', {
-      \   'commands' : ['OpenBrowserSearch', 'OpenBrowser'],
-      \   'functions' : 'openbrowser#open',
-      \ }
+        \   'commands' : ['OpenBrowserSearch', 'OpenBrowser'],
+        \   'functions' : 'openbrowser#open',
+        \   'mappings': '<Plug>(openbrowser-'
+        \ }
 
 """"""""""""""""
 "  Yank Stack  "
@@ -207,10 +208,6 @@ let delimitMate_expand_cr=1
 "  lint & style  "
 """"""""""""""""""
 NeoBundle 'einars/js-beautify'
-
-"""""""""""""""
-"  syntastic  "
-"""""""""""""""
 NeoBundle 'scrooloose/syntastic'
 let g:syntastic_mode_map = { 'mode': 'passive',
             \ 'active_filetypes': ['javascript', 'json'],
