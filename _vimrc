@@ -33,7 +33,6 @@ elseif hostname() ==? "GILAD-PC"
 else
     set gfn=consolas:h9
 endif
-
 if isdirectory(b:home_dir)
     exec 'cd ' . b:home_dir
 endif
@@ -266,6 +265,8 @@ nnoremap <leader>de :exec '!copy ' . expand('~/.dotfiles/.editorconfig') . ' ' .
 """"""""""""""""""""""""""
 " Ctrl-[hl]: Move left/right by word
 cnoremap <c-h> <left>
+cnoremap <c-j> <s-left>
+cnoremap <c-k> <s-right>
 cnoremap <c-l> <right>
 cnoremap <c-a> <home>
 cnoremap <c-e> <end>
