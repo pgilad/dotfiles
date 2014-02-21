@@ -90,6 +90,7 @@ NeoBundleLazy 'waylan/vim-markdown-extra-preview', {'autoload':{'filetypes':['ma
 """"""""""""
 "Git support
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-abolish.git'
 NeoBundle 'tpope/vim-repeat'
