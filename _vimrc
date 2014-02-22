@@ -20,9 +20,6 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set lines=999
 set columns=999
-if s:is_windows
-    simalt ~x
-endif
 
 if hostname() ==? "GILAD"
     set gfn=consolas:h11
@@ -35,6 +32,11 @@ else
 endif
 if isdirectory(b:home_dir)
     exec 'cd ' . b:home_dir
+endif
+
+" maximize window if windows
+if s:is_windows
+    simalt ~x
 endif
 """"""""
 "  UI  "
