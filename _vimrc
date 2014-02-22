@@ -38,6 +38,26 @@ endif
 if s:is_windows
     simalt ~x
 endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Colors and Fonts and gui options
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"set color scheme and font
+syntax on
+set background=dark
+colorscheme jellybeans
+
+" Set extra options when running in GUI mode
+if has("gui_running")
+    set guioptions-=m "remove menu
+    set guioptions-=T "remove toolbar
+    set guioptions-=r "remove right scrollbar
+    set guioptions-=L "remove left scrollbar
+    set guioptions-=b "remove bottom scrollbar
+    set guioptions+=c "simple choices in console instead of popup
+endif
+
+set winfixwidth "NERD width after toggles
 """"""""
 "  UI  "
 """"""""
@@ -125,25 +145,6 @@ set foldnestmax=5       "deepest fold is 3 levels
 set foldlevelstart=99
 set nofoldenable        "dont fold by default
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Colors and Fonts and gui options
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"set color scheme and font
-syntax on
-set background=dark
-colorscheme jellybeans
-
-" Set extra options when running in GUI mode
-if has("gui_running")
-    set guioptions-=m "remove menu
-    set guioptions-=T "remove toolbar
-    set guioptions-=r "remove right scrollbar
-    set guioptions-=L "remove left scrollbar
-    set guioptions-=b "remove bottom scrollbar
-    set guioptions+=c "simple choices in console instead of popup
-endif
-
-set winfixwidth "NERD width after toggles
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
