@@ -3,3 +3,11 @@ var ${1:functionName} = function (${2:arguments}) {
 	${VISUAL}$0
 };
 endsnippet
+
+snippet es "variable = variable || something"
+${1:variable} = $1 || ${2:something};$0
+endsnippet
+
+snippet clt "Console.log a term with filename/line"
+console.log('Filename: `!v expand("%:p:t")`', 'Line: `!v line('.')`', '$1:',  ${1:term});
+endsnippet
