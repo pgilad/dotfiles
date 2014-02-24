@@ -307,6 +307,7 @@ nnoremap <silent> <leader>eb :edit ~/.dotfiles/bundles.vim<cr>
 nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
 " edit current filetype custom snippets
 nnoremap <silent> <leader>es :UltiSnipsEdit<cr>
+nnoremap <silent> <leader>eu :NeoBundleUpdate<cr>
 
 " Switch commands.
 nnoremap <silent> <leader>sw :Switch<CR>
@@ -337,7 +338,7 @@ augroup my_auto_commands
     autocmd!
     " saving on lost focus
     autocmd FocusLost * :silent! wall
-    autocmd FileType javascript,html,json,jade,vim,markdown autocmd FileWritePre,FileAppendPre,FilterWritePre,BufWritePre <buffer> call TrimWhiteSpace()
+    autocmd FileType javascript,html,json,jade,vim autocmd FileWritePre,FileAppendPre,FilterWritePre,BufWritePre <buffer> call TrimWhiteSpace()
 
     " autocomplete
     autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
