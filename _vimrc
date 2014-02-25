@@ -108,7 +108,7 @@ set nowrap                                      " turn word wrap off
 set wrapscan
 set ttyfast                                     " fast terminal redraw
 set cpoptions+=$                                " when changing - mark block end with $
-set virtualedit=onemore
+set virtualedit=block
 set listchars=tab:>-,trail:~,nbsp:.,extends:>   " highlight problematic chars
 set list                                        " show problematic chars
 
@@ -144,7 +144,6 @@ set foldmethod=indent   "fold based on indent
 set foldnestmax=5       "deepest fold is 3 levels
 set foldlevelstart=99
 set nofoldenable        "dont fold by default
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
@@ -316,6 +315,9 @@ nnoremap <silent> <leader>sw :Switch<CR>
 nmap <leader>oo <Plug>(openbrowser-open)
 nmap <leader>os <Plug>(openbrowser-smart-search)
 vmap <leader>os <Plug>(openbrowser-smart-search)
+
+" break chaining on .then
+nnoremap <leader><cr> /\%<c-r>=line('.')<cr>l\.theni	l
 
 augroup appendComma
     autocmd!
