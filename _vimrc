@@ -93,10 +93,14 @@ set infercase                                   " ignore case in autocomplete
 set hlsearch                                    " highlight search
 set incsearch                                   " increment search
 set lazyredraw                                  " Don't redraw while executing macros (good performance config)
+set matchtime=3
+set synmaxcol=800
+set notimeout
+set ttimeout
+set ttimeoutlen=10
 set magic                                       " For regular expressions turn magic on
 set showmatch                                   " Show matching brackets when text indicator is over them
 set matchpairs+=<:>
-set mat=2                                       " How many tenths of a second to blink when matching brackets
 set noerrorbells                                " No annoying sound on errors
 set novisualbell
 set t_vb=
@@ -115,16 +119,16 @@ set list                                        " show problematic chars
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+filetype plugin indent on
 set history=700      " Sets how many lines of history VIM has to remember
 set nomodeline       " security issue
 set splitright       " Always splits to the right
 set splitbelow       " and below
 set t_Co=256         " 256bit terminal
-filetype plugin on
-filetype indent on   " Enable filetype plugins
 set mouse=a          " enable mouse
 set mousehide        " hide mouse cursor while typing
 set autoread         " Set to auto read when a file is changed from the outside
+set autowrite
 set encoding=utf-8   " Set utf8 as standard encoding and en_US as the standard language
 scriptencoding utf-8
 set title            " show filename in windows title
