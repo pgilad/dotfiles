@@ -188,8 +188,8 @@ set runtimepath+=~/.dotfiles/
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-let g:UltiSnipsSnippetsDir=expand('~/.dotfiles/snippets/')
-let g:UltiSnipsSnippetDirectories=['UltiSnips', 'snippets']
+let g:UltiSnipsSnippetsDir=expand('~/.dotfiles/mysnippets/')
+let g:UltiSnipsSnippetDirectories=['UltiSnips', 'mysnippets']
 
 """"""""""""""""""
 "  Text Objects  "
