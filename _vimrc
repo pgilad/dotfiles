@@ -49,12 +49,12 @@ colorscheme jellybeans
 
 " Set extra options when running in GUI mode
 if has("gui_running")
-    set guioptions-=m "remove menu
-    set guioptions-=T "remove toolbar
-    set guioptions-=r "remove right scrollbar
-    set guioptions-=L "remove left scrollbar
-    set guioptions-=b "remove bottom scrollbar
-    set guioptions+=c "simple choices in console instead of popup
+    " set guioptions-=m "remove menu
+    " set guioptions-=T "remove toolbar
+    " set guioptions-=r "remove right scrollbar
+    " set guioptions-=L "remove left scrollbar
+    " set guioptions-=b "remove bottom scrollbar
+    set guioptions=c "simple choices in console instead of popup
 endif
 
 set winfixwidth "NERD width after toggles
