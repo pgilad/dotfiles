@@ -320,8 +320,13 @@ nmap <leader>oo <Plug>(openbrowser-open)
 nmap <leader>os <Plug>(openbrowser-smart-search)
 vmap <leader>os <Plug>(openbrowser-smart-search)
 
+""""""""""""
+"  macros  "
+""""""""""""
 " break chaining on .then
-nnoremap <leader><cr> /\%<c-r>=line('.')<cr>l\.theni	l
+nnoremap <leader>m<cr> /\%<c-r>=line('.')<cr>l\.then:nohlsearch<cr>i	l
+" add require('gulp-.. on current word
+nnoremap <leader>mg mjyiwgg0/requireovar * = require('gulp-*')A;`j:nohlsearch<cr>
 
 augroup appendComma
     autocmd!
