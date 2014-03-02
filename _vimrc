@@ -327,6 +327,8 @@ vmap <leader>os <Plug>(openbrowser-smart-search)
 nnoremap <leader>m<cr> /\%<c-r>=line('.')<cr>l\.then:nohlsearch<cr>i	l
 " add require('gulp-.. on current word
 nnoremap <leader>mg mjyiwgg0/requireovar * = require('gulp-*')A;`j:nohlsearch<cr>
+" add require('').. on current word
+nnoremap <leader>mr mjyiwgg0/requireovar * = require('*')A;`j:nohlsearch<cr>
 
 augroup appendComma
     autocmd!
