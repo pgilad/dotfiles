@@ -14,7 +14,7 @@ NeoBundle 'FuzzyFinder'
 """"""""""""""""""""""
 "Awesome plugin for file/path/buffer search with ctrl-p
 NeoBundle 'kien/ctrlp.vim'
-let g:ctrlp_custom_ignore = 'build\|node_modules\|.idea\|.git\|workspace\|bower_components\'
+let g:ctrlp_custom_ignore = 'build\|dist\|node_modules\|.idea\|.git\|workspace\|bower_components\'
 let g:ctrlp_root_markers = ['.git']
 let g:ctrlp_max_height = 20 " maxiumum height of match window
 let g:ctrlp_switch_buffer = 'et' " jump to a file if it's open already
