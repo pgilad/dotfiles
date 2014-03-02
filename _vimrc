@@ -285,9 +285,6 @@ cnoremap <c-n> <down>
 " show list
 nnoremap <silent> <leader>ls :set list!<CR>
 
-"markdown preview
-nnoremap <leader>mp :Me<cr>
-
 "<leader>w: Close current buffer
 nnoremap <leader>wc :bdelete<cr>
 
@@ -295,6 +292,9 @@ nnoremap <leader>wc :bdelete<cr>
 nnoremap <silent> <leader>cp :let @+=expand("%:p")<cr>:echo "Copied current file
             \ path '".expand("%:p")."' to clipboard"<cr>
 
+"""""""""""""""
+"  <leader>n  "
+"""""""""""""""
 " Open current dir
 nnoremap <leader>nc :NERDTreeCWD<cr>
 " open nerd tree window
@@ -302,6 +302,9 @@ nnoremap <leader>n<tab> :NERDTreeToggle<cr>
 " find current file in nerdtree
 nnoremap <leader>nf :NERDTreeFind<cr>
 
+"""""""""""""""
+"  <leader>e  "
+"""""""""""""""
 " quickly edit $MYVIMRC
 nnoremap <silent> <leader>ev :edit $MYVIMRC<cr>
 " quickly edit bundles
@@ -315,18 +318,26 @@ nnoremap <silent> <leader>eu :NeoBundleUpdate<cr>
 " Switch commands.
 nnoremap <silent> <leader>sw :Switch<CR>
 
+"""""""""""""""
+"  <leader>o  "
+"""""""""""""""
+
 " simply open search in browser
 nmap <leader>oo <Plug>(openbrowser-open)
 nmap <leader>os <Plug>(openbrowser-smart-search)
 vmap <leader>os <Plug>(openbrowser-smart-search)
 
-""""""""""""
-"  macros  "
-""""""""""""
+"""""""""""""""
+"  <leader>m  "
+"""""""""""""""
+"markdown preview
+nnoremap <leader>mp :Me<cr>
 " break chaining on .then
 nnoremap <leader>m<cr> /\%<c-r>=line('.')<cr>l\.then:nohlsearch<cr>i	l
 " add require('gulp-.. on current word
 nnoremap <leader>mg mjyiwgg0/requireovar * = require('gulp-*')A;`j:nohlsearch<cr>
+" add require(''); .. on current word
+nnoremap <leader>mr mjyiwgg0/requireovar * = require('*')A;`j:nohlsearch<cr>
 
 augroup appendComma
     autocmd!
@@ -334,6 +345,7 @@ augroup appendComma
     autocmd FileType javascript,css,json nnoremap <buffer> <silent> <leader>; :call cosco#commaOrSemiColon()<cr>
     autocmd FileType javascript,css,json inoremap <buffer> <silent> <leader>; <ESC>:call cosco#commaOrSemiColon()<cr>a
 augroup END
+
 """"""""""""""""""""""
 "  custom functions  "
 """"""""""""""""""""""
