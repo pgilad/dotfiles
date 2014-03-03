@@ -129,21 +129,21 @@ imap <leader>P <Plug>yankstack_substitute_newer_paste
 """"""""""""""""
 "  Tabularize  "
 """"""""""""""""
-NeoBundleLazy 'godlygeek/tabular', {'autoload':{'commands':'Tabularize'}}
-nnoremap <Leader>a& :Tabularize /&<CR>
-vnoremap <Leader>a& :Tabularize /&<CR>
-nnoremap <Leader>a" :Tabularize /"<CR>
-vnoremap <Leader>a" :Tabularize /"<CR>
-nnoremap <Leader>a= :Tabularize /=<CR>
-vnoremap <Leader>a= :Tabularize /=<CR>
-nnoremap <Leader>a: :Tabularize /:<CR>
-vnoremap <Leader>a: :Tabularize /:<CR>
-nnoremap <Leader>a:: :Tabularize /:\zs<CR>
-vnoremap <Leader>a:: :Tabularize /:\zs<CR>
-nnoremap <Leader>a, :Tabularize /,<CR>
-vnoremap <Leader>a, :Tabularize /,<CR>
-nnoremap <Leader>a<Bar> :Tabularize /<Bar><CR>
-vnoremap <Leader>a<Bar> :Tabularize /<Bar><CR>
+NeoBundle 'godlygeek/tabular' ", {'autoload':{'commands':'Tabularize'}}
+nnoremap <leader>a& :Tabularize /&<cr>
+vnoremap <leader>a& :Tabularize /&<cr>
+nnoremap <leader>a" :Tabularize /"<cr>
+vnoremap <leader>a" :Tabularize /"<cr>
+nnoremap <leader>a= :Tabularize /=<cr>
+vnoremap <leader>a= :Tabularize /=<cr>
+nnoremap <leader>a: :Tabularize /:<cr>
+vnoremap <leader>a: :Tabularize /:<cr>
+nnoremap <leader>a:: :Tabularize /:\zs<cr>
+vnoremap <leader>a:: :Tabularize /:\zs<cr>
+nnoremap <leader>a, :Tabularize /,<cr>
+vnoremap <leader>a, :Tabularize /,<cr>
+nnoremap <leader>a<Bar> :Tabularize /<Bar><cr>
+vnoremap <leader>a<Bar> :Tabularize /<Bar><cr>
 
 " NeoBundle 'Shougo/neocomplcache.vim'
 NeoBundle 'terryma/vim-multiple-cursors'
