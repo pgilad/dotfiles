@@ -96,6 +96,16 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-abolish.git'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'thinca/vim-visualstar'
+
+NeoBundle 'gcmt/wildfire.vim'
+" This selects the next closest text object.
+let g:wildfire_fuel_map = "<ENTER>"
+"
+" " This selects the previous closest text object.
+let g:wildfire_water_map = "<BS>"
+
+let g:wildfire_objects = ["i'", 'i"', 'i)', 'i]', 'i}', "ip", "it"]
+
 """""""""""""""""
 "  buffergator  "
 """""""""""""""""
