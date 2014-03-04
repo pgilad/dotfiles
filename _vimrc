@@ -7,6 +7,13 @@ let s:is_windows = has('win32') || has('win64')
 let s:is_cygwin = has('win32unix')
 let s:is_macvim = has('gui_macvim')
 
+function! CreateDirIfNotExists(dir)
+    let b:undo_dir=expand(a:dir)
+    if !isdirectory(b:undo_dir)
+        silent exec '!mkdir ' . b:undo_dir
+    endif
+endfunction
+
 """""""""""""""""""""""""""
 "  Bundle Initialization  "
 """""""""""""""""""""""""""
@@ -344,12 +351,6 @@ function! TrimWhiteSpace()
     %s/\s\+$//e
 endfunction
 
-function! CreateDirIfNotExists(dir)
-    let b:undo_dir=expand(a:dir)
-    if !isdirectory(b:undo_dir)
-        silent exec '!mkdir ' . b:undo_dir
-    endif
-endfunction
 
 """"""""""""""""""""""""
 "  Autogroup commands  "

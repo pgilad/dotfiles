@@ -100,11 +100,13 @@ NeoBundle 'thinca/vim-visualstar'
 NeoBundle 'gcmt/wildfire.vim'
 " This selects the next closest text object.
 let g:wildfire_fuel_map = "<ENTER>"
-"
 " " This selects the previous closest text object.
 let g:wildfire_water_map = "<BS>"
-
-let g:wildfire_objects = ["i'", 'i"', 'i)', 'i]', 'i}', "ip", "it"]
+" use '*' to mean 'all other filetypes'
+" in this example, html and xml share the same text objects
+let g:wildfire_objects = {
+    \ "*" : ["i'", 'i"', "i)", "i]", "i}", "ip", "it"]
+\ }
 
 """""""""""""""""
 "  buffergator  "
@@ -223,11 +225,13 @@ let delimitMate_expand_cr=1
 NeoBundle 'einars/js-beautify'
 NeoBundle 'scrooloose/syntastic'
 let g:syntastic_mode_map = { 'mode': 'passive',
-            \ 'active_filetypes': ['javascript', 'json'],
+            \ 'active_filetypes': ['javascript', 'json', 'less', 'css', 'jade', 'html'],
             \ 'passive_filetypes': [] }
+let g:syntastic_enable_balloons = 0
 
 "Comma and semi-colon
-NeoBundle 'lfilho/cosco.vim'
+NeoBundleLazy 'lfilho/cosco.vim', {'autoload':{'filetypes':['json', 'javascript']}}
+
 """"""""""""""""""
 "  colorschemes  "
 """"""""""""""""""
