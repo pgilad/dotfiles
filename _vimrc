@@ -45,15 +45,10 @@ endif
 "set color scheme and font
 syntax on
 set background=dark
-colorscheme jellybeans
+colorscheme tomorrow-night
 
 " Set extra options when running in GUI mode
 if has("gui_running")
-    " set guioptions-=m "remove menu
-    " set guioptions-=T "remove toolbar
-    " set guioptions-=r "remove right scrollbar
-    " set guioptions-=L "remove left scrollbar
-    " set guioptions-=b "remove bottom scrollbar
     set guioptions=c "simple choices in console instead of popup
 endif
 
@@ -159,11 +154,8 @@ set noswapfile
 
 " persistant undo file
 if has('persistent_undo')
+    call CreateDirIfNotExists("~/vimfiles/.cache/undo/")
     set undofile
-    let b:undo_dir=expand("~/vimfiles/.cache/undo/")
-    if !isdirectory(b:undo_dir)
-        silent exec '!mkdir ' . b:undo_dir
-    endif
     set undodir=~/vimfiles/.cache/undo/
 endif
 
@@ -197,15 +189,13 @@ set laststatus=2 " Always show the status line
 """"""""""""""""""""""""""""""
 " => Spelling
 """"""""""""""""""""""""""""""
-set spelllang=en_us
-let b:spell_dir=expand("~/vimfiles/spell/") " Spell file
-" if spell dir doesn't exist- create it
-if !isdirectory(b:spell_dir)
-    silent exec '!mkdir ' . b:spell_dir
-endif
 
-set spellfile=~/vimfiles/spell/en.utf-8.add
-set nospell
+if has('spell')
+    call CreateDirIfNotExists("~/vimfiles/spell/")
+    set spelllang=en_us
+    set spellfile=~/vimfiles/spell/en.utf-8.add
+    set nospell
+endif
 
 """"""""""""""
 "  Mappings  "
@@ -354,6 +344,13 @@ function! TrimWhiteSpace()
     %s/\s\+$//e
 endfunction
 
+function! CreateDirIfNotExists(dir)
+    let b:undo_dir=expand(a:dir)
+    if !isdirectory(b:undo_dir)
+        silent exec '!mkdir ' . b:undo_dir
+    endif
+endfunction
+
 """"""""""""""""""""""""
 "  Autogroup commands  "
 """"""""""""""""""""""""
@@ -383,3 +380,5 @@ augroup my_auto_commands
     autocmd WinLeave * setlocal nocursorline
     autocmd WinEnter * setlocal cursorline
 augroup END
+
+set secure
