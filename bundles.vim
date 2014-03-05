@@ -197,6 +197,8 @@ let g:switch_custom_definitions =
 "  UltiSnips  "
 """""""""""""""
 NeoBundle 'SirVer/ultisnips'
+NeoBundle 'honza/vim-snippets'
+
 set runtimepath+=~/.dotfiles/
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
