@@ -279,6 +279,11 @@ cnoremap <c-n> <down>
 """""""""""""""""""""""""
 "  Leader keys mapping  "
 """""""""""""""""""""""""
+"""""""""""""""
+"  <leader>r  "
+"""""""""""""""
+nnoremap <silent> <leader>rt i=strftime('%c')<cr>
+
 " show list
 nnoremap <silent> <leader>ls :set list!<CR>
 
@@ -319,7 +324,6 @@ nnoremap <silent> <leader>sw :Switch<CR>
 """""""""""""""
 "  <leader>o  "
 """""""""""""""
-
 " simply open search in browser
 nmap <leader>oo <Plug>(openbrowser-open)
 nmap <leader>os <Plug>(openbrowser-smart-search)
@@ -351,7 +355,6 @@ augroup END
 function! TrimWhiteSpace()
     %s/\s\+$//e
 endfunction
-
 
 """"""""""""""""""""""""
 "  Autogroup commands  "
