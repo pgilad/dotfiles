@@ -254,7 +254,6 @@ vnoremap > >gv
 "Clears the search highlight
 nnoremap <silent> <space> :nohlsearch<CR>
 
-
 "<leader>cd: Switch to the directory of the open buffer
 nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 
@@ -341,9 +340,9 @@ nnoremap <leader>mg mjyiwgg0/requireovar * = require('gulp-*')A;`j:nohlsear
 " add require(''); .. on current word
 nnoremap <leader>mr mjyiwgg0/requireovar * = require('*')A;`j:nohlsearch<cr>
 
+" close sentence with comma or semi-colon
 augroup appendComma
     autocmd!
-    " close sentence with comma or semi-colon
     autocmd FileType javascript,css,json nnoremap <buffer> <silent> <leader>; :call cosco#commaOrSemiColon()<cr>
     autocmd FileType javascript,css,json inoremap <buffer> <silent> <leader>; <ESC>:call cosco#commaOrSemiColon()<cr>a
 augroup END
