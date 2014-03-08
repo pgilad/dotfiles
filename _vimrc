@@ -3,9 +3,10 @@
 "So 2014...
 set nocompatible
 
-let s:is_windows = has('win32') || has('win64')
-let s:is_cygwin = has('win32unix')
-let s:is_macvim = has('gui_macvim')
+let b:is_windows = has('win32') || has('win64')
+let b:is_cygwin = has('win32unix')
+let b:is_macvim = has('gui_macvim')
+let b:is_unix = has('unix')
 
 function! CreateDirIfNotExists(dir)
     let b:undo_dir=expand(a:dir)
@@ -36,13 +37,14 @@ elseif hostname() ==? "GILAD-PC"
     let b:home_dir = 'd:\development\repositories'
 else
     set gfn=consolas:h9
+    let b:home_dir = "~"
 endif
 if isdirectory(b:home_dir)
     exec 'cd ' . b:home_dir
 endif
 
 " maximize window if windows
-if s:is_windows
+if b:is_windows
     simalt ~x
 endif
 
@@ -59,19 +61,26 @@ set background=dark
 """"""""""""
 "  colors  "
 """"""""""""
-" color jellybeans
-" color distinguished
-" color wombat256mod
-" color tomorrow-night
-color badwolf
-" color hybrid
-" color molokai
-" color vividchalk
-" color tomorrow-night
+" let b:color = "jellybeans"
+" let b:color = "distinguished"
+" let b:color = "wombat256mod"
+" let b:color = "tomorrow-night"
+let b:color = "badwolf"
+" let b:color = "hybrid"
+" let b:color = "molokai"
+" let b:color = "vividchalk"
+" let b:color = "tomorrow-night"
+
+try
+    exec "color " . b:color
+catch
+    color default
+endtry
 
 " Set extra options when running in GUI mode
 if has("gui_running")
-    set guioptions=c "simple choices in console instead of popup
+    set guioptions=c  " console choicse
+    " set guioptions+=a " visual select auto-copy to clipboard
 endif
 
 """"""""
@@ -79,15 +88,19 @@ endif
 """"""""
 set scrolloff=3                                 " Set 7 lines to the cursor - when moving vertically using j/k
 set winfixwidth                                 " NERD width after toggles
-set wildmenu                                    " Turn on the WiLd menu
-set wildignorecase
-set wildmode=longest,list,full
-set wildignore+=*.o,*~,*.pyc
-set wildignore+=**/node_modules/**
-set wildignore+=build/
-set wildignore+=.idea/**
-set wildignore+=.git/**
-set wildignore+=*/bower_components/**
+
+if has("wildmenu")
+    set wildmenu                                    " Turn on the WiLd menu
+    set wildignorecase
+    set wildmode=longest,list,full
+    set wildignore+=*.o,*~,*.pyc
+    set wildignore+=**/node_modules/**
+    set wildignore+=build/
+    set wildignore+=.idea/**
+    set wildignore+=.git/**
+    set wildignore+=*/bower_components/**
+endif
+
 set viewoptions=folds,options,cursor,slash,unix
 set fileformat=unix                             " Default fileformat
 set fileformats=unix,dos,mac                    " Automatic recognition of a new line cord.
@@ -106,7 +119,7 @@ set whichwrap+=<,>,h,l
 set ignorecase                                " ignore case when searching
 set smartcase                                 " be smart about searching
 set infercase                                 " ignore case in autocomplete
-set hlsearch                                  " highlight search
+set nohlsearch                                  " highlight search
 set incsearch                                 " increment search
 set lazyredraw                                " Don't redraw while executing macros (good performance config)
 set matchtime=3
@@ -327,6 +340,9 @@ nnoremap <silent> <leader>es :UltiSnipsEdit<cr>
 nnoremap <silent> <leader>eu :NeoBundleUpdate<cr>
 nnoremap <silent> <leader>el :NeoBundleUpdatesLog<cr>
 
+nnoremap <silent> <leader>ex :execute getline(".")<cr>
+vnoremap <silent> <leader>ex :<c-u>execute getreg("*")<cr>
+
 """""""""""""""
 "  <leader>s  "
 """""""""""""""
@@ -393,4 +409,5 @@ if has('autocmd')
         autocmd WinEnter * setlocal cursorline
     augroup END
 endif
+
 set secure

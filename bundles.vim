@@ -59,7 +59,13 @@ let g:indent_guides_enable_on_vim_startup = 1
 """"""""""""""""""""""""
 "  File Types Plugins  "
 """"""""""""""""""""""""
-NeoBundleLazy 'kchmck/vim-coffee-script', {'autoload':{'filetypes':['coffee']}}
+NeoBundle 'kchmck/vim-coffee-script', {
+            \  'lazy' : 1,
+            \  'autoload' : {
+            \    'filetypes' : ['coffee']
+            \  }
+            \}
+
 
 NeoBundleLazy 'ap/vim-css-color', {'autoload':{'filetypes':['css','scss','sass','less','styl']}}
 NeoBundleLazy 'hail2u/vim-css3-syntax', {'autoload':{'filetypes':['css', 'less', 'scss','sass']}}
@@ -91,6 +97,14 @@ NeoBundleLazy 'waylan/vim-markdown-extra-preview', {'autoload':{'filetypes':['ma
 """"""""""""
 "Git support
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'gregsexton/gitv', {
+            \ 'lazy': 1,
+            \ 'depends': ['tpope/vim-fugitive'],
+            \  'autoload' : {
+            \	'commands': ['Gitv']
+            \  }
+            \ }
+
 " NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-abolish.git'
@@ -115,6 +129,13 @@ NeoBundle 'jeetsukumaran/vim-buffergator'
 let g:buffergator_display_regime = "bufname" " display only buffer name by default
 let g:buffergator_viewport_split_policy = "B" "since nerdtree opens on left
 let g:buffergator_sort_regime = "mru" "who cares about buffer number. sort by most recently used
+
+NeoBundle 'sjl/gundo.vim', {
+            \ 'lazy': 1,
+            \  'autoload' : {
+            \   'commands': ['GundoShow']
+            \  }
+            \ }
 
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'kien/rainbow_parentheses.vim'
@@ -142,7 +163,12 @@ imap <leader>P <Plug>yankstack_substitute_newer_paste
 """"""""""""""""
 "  Tabularize  "
 """"""""""""""""
-NeoBundle 'godlygeek/tabular'
+NeoBundle 'godlygeek/tabular', {
+            \ 'lazy': 1,
+            \  'autoload' : {
+            \   'commands': ['Tabularize']
+            \  }
+            \ }
 nnoremap <leader>a& :Tabularize /&<cr>
 vnoremap <leader>a& :Tabularize /&<cr>
 nnoremap <leader>a" :Tabularize /"<cr>
@@ -170,7 +196,15 @@ if executable('ag')
     let g:ackprg = "ag --nogroup --column --smart-case --follow"
 endif
 
-NeoBundleLazy 'EasyGrep', {'autoload':{'commands':'GrepOptions'}}
+NeoBundle 'AndrewRadev/inline_edit.vim'
+NeoBundle 'AndrewRadev/splitjoin.vim'
+
+NeoBundle 'EasyGrep', {
+            \ 'lazy': 1,
+            \  'autoload' : {
+            \	'commands': ['GrepOptions']
+            \  }
+            \ }
 let g:EasyGrepRecursive=1
 let g:EasyGrepAllOptionsInExplorer=1
 let g:EasyGrepCommand=1
@@ -187,7 +221,12 @@ let g:airline#extensions#tabline#left_alt_sep='¦'
 """"""""""""
 "  switch - switches between stuff
 """"""""""""
-NeoBundleLazy 'AndrewRadev/switch.vim'
+NeoBundle 'AndrewRadev/switch.vim', {
+            \ 'lazy': 1,
+            \  'autoload' : {
+            \	'commands': ['Switch']
+            \  }
+            \ }
 let g:switch_custom_definitions =
             \ [
             \   ['/', '\\']
@@ -218,7 +257,13 @@ NeoBundle 'PeterRincker/vim-argumentative' " a, i,
 """""""""""""""""
 "  delimitMate  "
 """""""""""""""""
-NeoBundle 'Raimondi/delimitMate'
+NeoBundle 'Raimondi/delimitMate', {
+            \  'lazy' : 1,
+            \  'autoload' : {
+            \    'insert' : 1
+            \  }
+            \}
+
 let delimitMate_expand_cr=1
 
 """"""""""""""""""
@@ -232,7 +277,12 @@ let g:syntastic_mode_map = { 'mode': 'passive',
 let g:syntastic_enable_balloons = 0
 
 "Comma and semi-colon
-NeoBundleLazy 'lfilho/cosco.vim', {'autoload':{'filetypes':['json', 'javascript']}}
+NeoBundle 'lfilho/cosco.vim', {
+            \ 'lazy': 1,
+            \  'autoload' : {
+            \	'filetypes': ['json', 'javascript']
+            \  }
+            \ }
 " close sentence with comma or semi-colon
 augroup appendComma
     autocmd!
