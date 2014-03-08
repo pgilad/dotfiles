@@ -27,7 +27,12 @@ let g:ctrlp_show_hidden = 1
 """"""""""""""
 "  Nerdtree  "
 """"""""""""""
-NeoBundleLazy 'scrooloose/nerdtree', {'autoload':{'commands':['NERDTreeToggle','NERDTreeFind']}}
+NeoBundle 'scrooloose/nerdtree', {
+            \ 'lazy': 1,
+            \  'autoload' : {
+            \	'commands': ['NERDTreeToggle', 'NERDTreeFind']
+            \  }
+            \ }
 let NERDTreeShowBookmarks=1
 let NERDTreeShowHidden=1
 let NERDTreeQuitOnOpen=0
@@ -70,6 +75,12 @@ NeoBundle 'kchmck/vim-coffee-script', {
 NeoBundleLazy 'ap/vim-css-color', {'autoload':{'filetypes':['css','scss','sass','less','styl']}}
 NeoBundleLazy 'hail2u/vim-css3-syntax', {'autoload':{'filetypes':['css', 'less', 'scss','sass']}}
 NeoBundleLazy 'groenewege/vim-less', {'autoload':{'filetypes':['less', 'css']}}
+NeoBundle 'csscomb/vim-csscomb', {
+            \ 'lazy': 1,
+            \  'autoload' : {
+            \	'filetypes': ['css', 'less', 'sass']
+            \  }
+            \ }
 
 NeoBundleLazy 'othree/html5.vim', {'autoload':{'filetypes':['html']}}
 NeoBundleLazy 'digitaltoad/vim-jade', {'autoload':{'filetypes':['jade']}}
