@@ -50,21 +50,35 @@ endif
 " => Colors and Fonts and gui options
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "set color scheme and font
-syntax on
+if has('syntax')
+    syntax on
+    filetype plugin indent on
+endif
 set background=dark
-colorscheme tomorrow-night
+
+""""""""""""
+"  colors  "
+""""""""""""
+" color jellybeans
+" color distinguished
+" color wombat256mod
+" color tomorrow-night
+color badwolf
+" color hybrid
+" color molokai
+" color vividchalk
+" color tomorrow-night
 
 " Set extra options when running in GUI mode
 if has("gui_running")
     set guioptions=c "simple choices in console instead of popup
 endif
 
-set winfixwidth "NERD width after toggles
 """"""""
 "  UI  "
 """"""""
-set scrolloff=3 " Set 7 lines to the cursor - when moving vertically using j/k
-
+set scrolloff=3                                 " Set 7 lines to the cursor - when moving vertically using j/k
+set winfixwidth                                 " NERD width after toggles
 set wildmenu                                    " Turn on the WiLd menu
 set wildignorecase
 set wildmode=longest,list,full
@@ -87,54 +101,52 @@ set showmode                                    " show which mode i'm on
 set nrformats-=octal                            " no octal numbers
 set hidden                                      " A buffer becomes hidden when it is abandoned
 set showfulltag
-set backspace=eol,start,indent                  " configure backspace the expected way
+set backspace=eol,start,indent                " configure backspace the expected way
 set whichwrap+=<,>,h,l
-set ignorecase                                  " ignore case when searching
-set smartcase                                   " be smart about searching
-set infercase                                   " ignore case in autocomplete
-set hlsearch                                    " highlight search
-set incsearch                                   " increment search
-set lazyredraw                                  " Don't redraw while executing macros (good performance config)
+set ignorecase                                " ignore case when searching
+set smartcase                                 " be smart about searching
+set infercase                                 " ignore case in autocomplete
+set hlsearch                                  " highlight search
+set incsearch                                 " increment search
+set lazyredraw                                " Don't redraw while executing macros (good performance config)
 set matchtime=3
-set synmaxcol=800
+set synmaxcol=400
 set notimeout
 set ttimeout
 set ttimeoutlen=10
-set magic                                       " For regular expressions turn magic on
-set showmatch                                   " Show matching brackets when text indicator is over them
+set magic                                     " For regular expressions turn magic on
+set showmatch                                 " Show matching brackets when text indicator is over them
 set matchpairs+=<:>
-set noerrorbells                                " No annoying sound on errors
+set noerrorbells                              " No annoying sound on errors
 set novisualbell
 set t_vb=
 set tm=500
-set number                                      " show line number
-set relativenumber                              " line numbers are relative
-set cursorline                                  " highlight where cursor is
-set nowrap                                      " turn word wrap off
+set number                                    " show line number
+set relativenumber                            " line numbers are relative
+set cursorline                                " highlight where cursor is
+set nowrap                                    " turn word wrap off
 set wrapscan
-set ttyfast                                     " fast terminal redraw
-set cpoptions+=$                                " when changing - mark block end with $
+set ttyfast                                   " fast terminal redraw
+set cpoptions+=$                              " when changing - mark block end with $
 set virtualedit=block
-set listchars=tab:>-,trail:~,nbsp:.,extends:>   " highlight problematic chars
-set list                                        " show problematic chars
+set listchars=tab:>-,trail:~,nbsp:.,extends:> " highlight problematic chars
+set list                                      " show problematic chars
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => General
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-filetype plugin indent on
-set history=700      " Sets how many lines of history VIM has to remember
-set nomodeline       " security issue
-set splitright       " Always splits to the right
-set splitbelow       " and below
-set t_Co=256         " 256bit terminal
-set mouse=a          " enable mouse
-set mousehide        " hide mouse cursor while typing
-set autoread         " Set to auto read when a file is changed from the outside
+set history=700                               " Sets how many lines of history VIM has to remember
+set nomodeline                                " security issue
+set splitright                                " Always splits to the right
+set splitbelow                                " and below
+set t_Co=256                                  " 256bit terminal
+if has('mouse')
+    set mouse=a                                   " enable mouse
+    set mousehide                                 " hide mouse cursor while typing
+endif
+set autoread                                  " Set to auto read when a file is changed from the outside
 set autowrite
-set encoding=utf-8   " Set utf8 as standard encoding and en_US as the standard language
+set encoding=utf-8                            " Set utf8 as standard encoding and en_US as the standard language
 scriptencoding utf-8
-set title            " show filename in windows title
-set nostartofline    " Don't reset cursor to start of line when moving around.
+set title                                     " show filename in windows title
+set nostartofline                             " Don't reset cursor to start of line when moving around.
 
 " share clipboard with os
 if has('unnamedplus')
@@ -146,20 +158,21 @@ endif
 """""""""""
 "  folds  "
 """""""""""
-set foldmethod=indent   "fold based on indent
-set foldnestmax=5       "deepest fold is 3 levels
-set foldlevelstart=99
-set nofoldenable        "dont fold by default
+
+if has('folding')
+    set foldmethod=indent   "fold based on indent
+    set foldnestmax=5       "deepest fold is 3 levels
+    set foldlevelstart=99
+    set nofoldenable        "dont fold by default
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Turn backup off, since most stuff is in SVN, git et.c anyway...
-set nobackup
+set nobackup      " no backups of files
 set nowritebackup
-set noswapfile
+set noswapfile    " no swap files
 
-" persistant undo file
 if has('persistent_undo')
     call CreateDirIfNotExists("~/vimfiles/.cache/undo/")
     set undofile
@@ -178,25 +191,22 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set expandtab    " Use spaces instead of tabs
+set expandtab     " Use spaces instead of tabs
 set smarttab
-set nojoinspaces " don't add multiple spaces on line joins
-
-" default params
+set nojoinspaces  " don't add multiple spaces on line joins
 set shiftwidth=4
 set tabstop=4
 set softtabstop=4
-set shiftround   " < and > round to nearest multiple of tabstop
-set linebreak    " Linebreak on 500 characters
+set shiftround    " < and > round to nearest multiple of tabstop
+set linebreak     " Linebreak on 500 characters
 set tw=500
 set autoindent
 set smartindent
-set laststatus=2 " Always show the status line
+set laststatus=2  " Always show the status line
 
 """"""""""""""""""""""""""""""
 " => Spelling
 """"""""""""""""""""""""""""""
-
 if has('spell')
     call CreateDirIfNotExists("~/vimfiles/spell/")
     set spelllang=en_us
@@ -317,6 +327,9 @@ nnoremap <silent> <leader>es :UltiSnipsEdit<cr>
 nnoremap <silent> <leader>eu :NeoBundleUpdate<cr>
 nnoremap <silent> <leader>el :NeoBundleUpdatesLog<cr>
 
+"""""""""""""""
+"  <leader>s  "
+"""""""""""""""
 " Switch commands.
 nnoremap <silent> <leader>sw :Switch<CR>
 
@@ -340,13 +353,6 @@ nnoremap <leader>mg mjyiwgg0/requireovar * = require('gulp-*')A;`j:nohlsear
 " add require(''); .. on current word
 nnoremap <leader>mr mjyiwgg0/requireovar * = require('*')A;`j:nohlsearch<cr>
 
-" close sentence with comma or semi-colon
-augroup appendComma
-    autocmd!
-    autocmd FileType javascript,css,json nnoremap <buffer> <silent> <leader>; :call cosco#commaOrSemiColon()<cr>
-    autocmd FileType javascript,css,json inoremap <buffer> <silent> <leader>; <ESC>:call cosco#commaOrSemiColon()<cr>a
-augroup END
-
 """"""""""""""""""""""
 "  custom functions  "
 """"""""""""""""""""""
@@ -355,34 +361,36 @@ function! TrimWhiteSpace()
     %s/\s\+$//e
 endfunction
 
-""""""""""""""""""""""""
-"  Autogroup commands  "
-""""""""""""""""""""""""
-augroup my_auto_commands
-    autocmd!
-    " saving on lost focus
-    autocmd FocusLost * :silent! wall
-    autocmd FileType javascript,html,json,jade,vim autocmd FileWritePre,FileAppendPre,FilterWritePre,BufWritePre <buffer> call TrimWhiteSpace()
+if has('autocmd')
+    " close sentence with comma or semi-colon
+    augroup my_auto_commands
+        autocmd!
+        autocmd FileType javascript,css,json nnoremap <buffer> <silent> <leader>; :call cosco#commaOrSemiColon()<cr>
+        autocmd FileType javascript,css,json inoremap <buffer> <silent> <leader>; <ESC>:call cosco#commaOrSemiColon()<cr>a
+        autocmd!
+        " saving on lost focus
+        autocmd FocusLost * :silent! wall
+        autocmd FileType javascript,html,json,jade,vim autocmd FileWritePre,FileAppendPre,FilterWritePre,BufWritePre <buffer> call TrimWhiteSpace()
 
-    " autocomplete
-    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-    " beautify
-    autocmd FileType javascript,json nnoremap <buffer> <leader>js :call JsBeautify()<cr>
-    autocmd FileType javascript,json vnoremap <buffer> <leader>js :call RangeHtmlBeautify()<cr>
-    autocmd FileType html nnoremap <buffer> <leader>js :call HtmlBeautify()<cr>
-    autocmd FileType html vnoremap <buffer> <leader>js :call RangeHtmlBeautify()<cr>
-    autocmd FileType css nnoremap <buffer> <leader>js :call CSSBeautify()<cr>
-    autocmd FileType css vnoremap <buffer> <leader>js :call RangeCSSBeautify()<cr>
+        " autocomplete
+        autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+        " beautify
+        autocmd FileType javascript,json nnoremap <buffer> <leader>js :call JsBeautify()<cr>
+        autocmd FileType javascript,json vnoremap <buffer> <leader>js :call RangeHtmlBeautify()<cr>
+        autocmd FileType html nnoremap <buffer> <leader>js :call HtmlBeautify()<cr>
+        autocmd FileType html vnoremap <buffer> <leader>js :call RangeHtmlBeautify()<cr>
+        autocmd FileType css nnoremap <buffer> <leader>js :call CSSBeautify()<cr>
+        autocmd FileType css vnoremap <buffer> <leader>js :call RangeCSSBeautify()<cr>
 
-    " set filestypes
-    autocmd BufRead,BufNewFile *.ajs setlocal filetype=javascript
-    autocmd BufRead,BufNewFile *.jshintrc,*.bowerrc setlocal filetype=json
+        " set filestypes
+        autocmd BufRead,BufNewFile *.ajs setlocal filetype=javascript
+        autocmd BufRead,BufNewFile *.jshintrc,*.bowerrc setlocal filetype=json
 
-    " reload vimrc when saved
-    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+        " reload vimrc when saved
+        autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
-    autocmd WinLeave * setlocal nocursorline
-    autocmd WinEnter * setlocal cursorline
-augroup END
-
+        autocmd WinLeave * setlocal nocursorline
+        autocmd WinEnter * setlocal cursorline
+    augroup END
+endif
 set secure

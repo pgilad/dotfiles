@@ -142,7 +142,7 @@ imap <leader>P <Plug>yankstack_substitute_newer_paste
 """"""""""""""""
 "  Tabularize  "
 """"""""""""""""
-NeoBundle 'godlygeek/tabular' ", {'autoload':{'commands':'Tabularize'}}
+NeoBundle 'godlygeek/tabular'
 nnoremap <leader>a& :Tabularize /&<cr>
 vnoremap <leader>a& :Tabularize /&<cr>
 nnoremap <leader>a" :Tabularize /"<cr>
@@ -233,6 +233,12 @@ let g:syntastic_enable_balloons = 0
 
 "Comma and semi-colon
 NeoBundleLazy 'lfilho/cosco.vim', {'autoload':{'filetypes':['json', 'javascript']}}
+" close sentence with comma or semi-colon
+augroup appendComma
+    autocmd!
+    autocmd FileType javascript,css,json nnoremap <buffer> <silent> <leader>; :call cosco#commaOrSemiColon()<cr>
+    autocmd FileType javascript,css,json inoremap <buffer> <silent> <leader>; <ESC>:call cosco#commaOrSemiColon()<cr>a
+augroup END
 
 """"""""""""""""""
 "  colorschemes  "
@@ -246,4 +252,5 @@ NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'tomasr/molokai'
 NeoBundle 'tpope/vim-vividchalk'
 
+"check for uninstalled packages
 NeoBundleCheck
