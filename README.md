@@ -1,6 +1,5 @@
-dotfiles
+# dotfiles
 > My collection of configs, schemes, dotfiles, and anything to help a starting dev project
-========
 
 My _vimrc aimed at working in Windows (7/8).
 
