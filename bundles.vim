@@ -7,7 +7,8 @@ call neobundle#rc(expand('~/vimfiles/bundle/'))
 "My Bundles
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'L9'
-NeoBundle 'FuzzyFinder'
+" Takes too long in boot process. Not used currently
+" NeoBundle 'FuzzyFinder'
 
 """"""""""""""""""""""
 " ctrl-p custom ignore paths
@@ -253,13 +254,13 @@ let g:switch_custom_definitions =
 "  UltiSnips  "
 """""""""""""""
 NeoBundle 'SirVer/ultisnips', {
-            \ 'lazy': 1,
+            \ 'lazy': 0,
             \  'autoload' : {
             \	'insert': 1
             \  }
             \ }
 NeoBundle 'honza/vim-snippets', {
-            \ 'lazy': 1,
+            \ 'lazy': 0,
             \  'autoload' : {
             \	'insert': 1
             \  }
