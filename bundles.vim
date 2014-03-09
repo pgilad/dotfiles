@@ -14,7 +14,12 @@ NeoBundle 'L9'
 " ctrl-p custom ignore paths
 """"""""""""""""""""""
 "Awesome plugin for file/path/buffer search with ctrl-p
-NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'kien/ctrlp.vim', {
+            \ 'lazy': 1,
+            \  'autoload' : {
+            \	'commands': ['CtrlP']
+            \  }
+            \ }
 let g:ctrlp_custom_ignore = 'build\|dist\|node_modules\|.idea\|.git\|workspace\|bower_components\'
 let g:ctrlp_root_markers = ['.git']
 let g:ctrlp_max_height = 20 " maxiumum height of match window
@@ -24,6 +29,7 @@ let g:ctrlp_max_files=20000
 let g:ctrlp_clear_cache_on_exit=0 " speed up by not removing clearing cache evertime
 let g:ctrlp_mruf_max = 250 " number of recently opened files
 let g:ctrlp_show_hidden = 1
+nnoremap <c-p> :CtrlP<cr>
 
 """"""""""""""
 "  Nerdtree  "
@@ -31,7 +37,7 @@ let g:ctrlp_show_hidden = 1
 NeoBundle 'scrooloose/nerdtree', {
             \ 'lazy': 1,
             \  'autoload' : {
-            \	'commands': ['NERDTreeToggle', 'NERDTreeFind']
+            \	'commands': ['NERDTreeToggle', 'NERDTreeFind', 'NERDTreeCWD']
             \  }
             \ }
 let NERDTreeShowBookmarks=1
@@ -44,7 +50,9 @@ let NERDChristmasTree=1
 let NERDTreeAutoDeleteBuffer=1 "auto delete buffers on nerdtree delete
 let NERDTreeIgnore=['\~$', '^\.\.$', '\.swp$', '\.hg$', '\.svn$', '\.bzr', '\.git$']
 
-NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'scrooloose/nerdcommenter', {
+            \ 'lazy': 0,
+            \ }
 " Always leave a space between the comment character and the comment
 let NERDSpaceDelims=1
 
@@ -74,7 +82,6 @@ NeoBundle 'kchmck/vim-coffee-script', {
             \    'filetypes' : ['coffee']
             \  }
             \}
-
 NeoBundle 'ap/vim-css-color', {
             \ 'lazy': 1,
             \  'autoload' : {
@@ -170,7 +177,12 @@ NeoBundleLazy 'tyru/open-browser.vim', {
 """"""""""""""""
 "  Yank Stack  "
 """"""""""""""""
-NeoBundle 'maxbrunsfeld/vim-yankstack'
+NeoBundle 'maxbrunsfeld/vim-yankstack', {
+            \ 'lazy': 1,
+            \  'autoload' : {
+            \	'mappings': '<plug>yankstack_substitute_'
+            \  }
+            \ }
 let g:yankstack_map_keys = 0
 
 nmap <leader>p <Plug>yankstack_substitute_older_paste
@@ -255,15 +267,9 @@ let g:switch_custom_definitions =
 """""""""""""""
 NeoBundle 'SirVer/ultisnips', {
             \ 'lazy': 0,
-            \  'autoload' : {
-            \	'insert': 1
-            \  }
             \ }
 NeoBundle 'honza/vim-snippets', {
             \ 'lazy': 0,
-            \  'autoload' : {
-            \	'insert': 1
-            \  }
             \ }
 
 set runtimepath+=~/.dotfiles/
