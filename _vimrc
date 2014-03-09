@@ -357,6 +357,9 @@ nmap <leader>oo <Plug>(openbrowser-open)
 nmap <leader>os <Plug>(openbrowser-smart-search)
 vmap <leader>os <Plug>(openbrowser-smart-search)
 
+"open explorer in path of current buffer
+nnoremap <leader>oe :silent! !start explorer %:p:h:gs?\/?\\?<cr>
+
 """""""""""""""
 "  <leader>m  "
 """""""""""""""

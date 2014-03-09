@@ -35,9 +35,12 @@ NeoBundle 'scrooloose/nerdtree', {
             \ }
 let NERDTreeShowBookmarks=1
 let NERDTreeShowHidden=1
-let NERDTreeQuitOnOpen=0
+let NERDTreeQuitOnOpen=1
 let NERDTreeShowLineNumbers=0
 let NERDTreeWinSize=30
+let NERDTreeDirArrows=1
+let NERDChristmasTree=1
+let NERDTreeAutoDeleteBuffer=1 "auto delete buffers on nerdtree delete
 let NERDTreeIgnore=['\~$', '^\.\.$', '\.swp$', '\.hg$', '\.svn$', '\.bzr', '\.git$']
 
 NeoBundle 'scrooloose/nerdcommenter'
@@ -71,8 +74,12 @@ NeoBundle 'kchmck/vim-coffee-script', {
             \  }
             \}
 
-
-NeoBundleLazy 'ap/vim-css-color', {'autoload':{'filetypes':['css','scss','sass','less','styl']}}
+NeoBundle 'ap/vim-css-color', {
+            \ 'lazy': 1,
+            \  'autoload' : {
+            \	'filetypes':['css','scss','sass','less','styl']
+            \  }
+            \ }
 NeoBundleLazy 'hail2u/vim-css3-syntax', {'autoload':{'filetypes':['css', 'less', 'scss','sass']}}
 NeoBundleLazy 'groenewege/vim-less', {'autoload':{'filetypes':['less', 'css']}}
 NeoBundle 'csscomb/vim-csscomb', {
@@ -148,7 +155,6 @@ NeoBundle 'sjl/gundo.vim', {
             \  }
             \ }
 
-NeoBundle 'sjl/gundo.vim'
 NeoBundle 'kien/rainbow_parentheses.vim'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'editorconfig/editorconfig-vim'
@@ -246,8 +252,18 @@ let g:switch_custom_definitions =
 """""""""""""""
 "  UltiSnips  "
 """""""""""""""
-NeoBundle 'SirVer/ultisnips'
-NeoBundle 'honza/vim-snippets'
+NeoBundle 'SirVer/ultisnips', {
+            \ 'lazy': 1,
+            \  'autoload' : {
+            \	'insert': 1
+            \  }
+            \ }
+NeoBundle 'honza/vim-snippets', {
+            \ 'lazy': 1,
+            \  'autoload' : {
+            \	'insert': 1
+            \  }
+            \ }
 
 set runtimepath+=~/.dotfiles/
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -280,7 +296,12 @@ let delimitMate_expand_cr=1
 """"""""""""""""""
 "  lint & style  "
 """"""""""""""""""
-NeoBundle 'einars/js-beautify'
+NeoBundle 'einars/js-beautify', {
+            \ 'lazy': 1,
+            \  'autoload' : {
+            \	'filetypes' : ['html', 'js', 'css']
+            \  }
+            \ }
 NeoBundle 'scrooloose/syntastic'
 let g:syntastic_mode_map = { 'mode': 'passive',
             \ 'active_filetypes': ['javascript', 'json', 'less', 'css', 'jade', 'html'],
