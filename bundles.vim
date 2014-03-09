@@ -51,7 +51,7 @@ let NERDTreeAutoDeleteBuffer=1 "auto delete buffers on nerdtree delete
 let NERDTreeIgnore=['\~$', '^\.\.$', '\.swp$', '\.hg$', '\.svn$', '\.bzr', '\.git$']
 
 NeoBundle 'scrooloose/nerdcommenter', {
-            \ 'lazy': 0,
+            \ 'lazy': 0
             \ }
 " Always leave a space between the comment character and the comment
 let NERDSpaceDelims=1
@@ -121,6 +121,7 @@ NeoBundleLazy 'waylan/vim-markdown-extra-preview', {'autoload':{'filetypes':['ma
 """"""""""""
 "  others  "
 """"""""""""
+
 "Git support
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'gregsexton/gitv', {
@@ -177,13 +178,13 @@ NeoBundleLazy 'tyru/open-browser.vim', {
 """"""""""""""""
 "  Yank Stack  "
 """"""""""""""""
+let g:yankstack_map_keys = 0
 NeoBundle 'maxbrunsfeld/vim-yankstack', {
             \ 'lazy': 1,
             \  'autoload' : {
             \	'mappings': '<plug>yankstack_substitute_'
             \  }
             \ }
-let g:yankstack_map_keys = 0
 
 nmap <leader>p <Plug>yankstack_substitute_older_paste
 imap <leader>p <Plug>yankstack_substitute_older_paste
@@ -266,10 +267,10 @@ let g:switch_custom_definitions =
 "  UltiSnips  "
 """""""""""""""
 NeoBundle 'SirVer/ultisnips', {
-            \ 'lazy': 0,
+            \ 'lazy': 0
             \ }
 NeoBundle 'honza/vim-snippets', {
-            \ 'lazy': 0,
+            \ 'lazy': 0
             \ }
 
 set runtimepath+=~/.dotfiles/
