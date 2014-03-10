@@ -229,6 +229,15 @@ endif
 
 NeoBundle 'AndrewRadev/inline_edit.vim'
 NeoBundle 'AndrewRadev/splitjoin.vim'
+NeoBundle 'AndrewRadev/linediff.vim', {
+            \ 'lazy': 1,
+            \  'autoload' : {
+            \	'commands': ['Linediff', 'LinediffReset']
+            \  }
+            \ }
+vnoremap <leader>ld :Linediff<cr>
+nnoremap <leader>ld :Linediff<cr>
+nnoremap <leader>lr :LinediffReset<cr>
 
 NeoBundle 'EasyGrep', {
             \ 'lazy': 1,
