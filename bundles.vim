@@ -42,7 +42,7 @@ NeoBundle 'scrooloose/nerdtree', {
             \ }
 let NERDTreeShowBookmarks=1
 let NERDTreeShowHidden=1
-let NERDTreeQuitOnOpen=1
+let NERDTreeQuitOnOpen=0
 let NERDTreeShowLineNumbers=0
 let NERDTreeWinSize=30
 let NERDTreeDirArrows=1
@@ -121,7 +121,6 @@ NeoBundleLazy 'waylan/vim-markdown-extra-preview', {'autoload':{'filetypes':['ma
 """"""""""""
 "  others  "
 """"""""""""
-
 "Git support
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'gregsexton/gitv', {
@@ -146,16 +145,16 @@ let g:wildfire_water_map = "<BS>"
 " use '*' to mean 'all other filetypes'
 " in this example, html and xml share the same text objects
 let g:wildfire_objects = {
-    \ "*" : ["i'", 'i"', "i)", "i]", "i}", "ip", "it"]
-\ }
+            \ "*" : ["i'", 'i"', "i)", "i]", "i}", "ip", "it"]
+            \ }
 
 """""""""""""""""
 "  buffergator  "
 """""""""""""""""
 NeoBundle 'jeetsukumaran/vim-buffergator'
-let g:buffergator_display_regime = "bufname" " display only buffer name by default
-let g:buffergator_viewport_split_policy = "B" "since nerdtree opens on left
-let g:buffergator_sort_regime = "mru" "who cares about buffer number. sort by most recently used
+let g:buffergator_display_regime = 'bufname'  " display only buffer name by default
+let g:buffergator_viewport_split_policy = 'B' " since nerdtree opens on left
+let g:buffergator_sort_regime = 'mru'         " who cares about buffer number. sort by most recently used
 
 NeoBundle 'sjl/gundo.vim', {
             \ 'lazy': 1,
@@ -191,6 +190,7 @@ imap <leader>p <Plug>yankstack_substitute_older_paste
 nmap <leader>P <Plug>yankstack_substitute_newer_paste
 imap <leader>P <Plug>yankstack_substitute_newer_paste
 
+
 """"""""""""""""
 "  Tabularize  "
 """"""""""""""""
@@ -215,7 +215,12 @@ vnoremap <leader>a, :Tabularize /,<cr>
 nnoremap <leader>a<Bar> :Tabularize /<Bar><cr>
 vnoremap <leader>a<Bar> :Tabularize /<Bar><cr>
 
-" NeoBundle 'Shougo/neocomplcache.vim'
+" NeoBundle 'Shougo/neocomplcache.vim', {
+            " \ 'lazy': 1,
+            " \  'autoload' : {
+            " \	'insert': 1
+            " \  }
+            " \ }
 NeoBundle 'terryma/vim-multiple-cursors'
 
 """""""""""""""
@@ -227,7 +232,16 @@ if executable('ag')
     let g:ackprg = "ag --nogroup --column --smart-case --follow"
 endif
 
-NeoBundle 'AndrewRadev/inline_edit.vim'
+NeoBundle 'AndrewRadev/inline_edit.vim', {
+            \ 'lazy': 1,
+            \  'autoload' : {
+            \	'commands': ['InlineEdit']
+            \  }
+            \ }
+nnoremap <leader>ie :InlineEdit<cr>
+xnoremap <leader>ie :InlineEdit<cr>
+inoremap <leader>ie <esc>:InlineEdit<cr>a
+
 NeoBundle 'AndrewRadev/splitjoin.vim'
 NeoBundle 'AndrewRadev/linediff.vim', {
             \ 'lazy': 1,
