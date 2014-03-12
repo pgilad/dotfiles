@@ -344,6 +344,10 @@ nnoremap <silent> <leader>ex :execute getline(".")<cr>
 vnoremap <silent> <leader>ex :<c-u>execute getreg("*")<cr>
 
 """""""""""""""
+"  <leader>f  "
+"""""""""""""""
+
+"""""""""""""""
 "  <leader>s  "
 """""""""""""""
 " Switch commands.
@@ -372,9 +376,6 @@ nnoremap <leader>mg mjyiwgg0/requireovar * = require('gulp-*')A;`j:nohlsear
 " add require(''); .. on current word
 nnoremap <leader>mr mjyiwgg0/requireovar * = require('*')A;`j:nohlsearch<cr>
 
-""""""""""""""""""""""
-"  custom functions  "
-""""""""""""""""""""""
 " Removes trailing spaces
 function! TrimWhiteSpace()
     %s/\s\+$//e
@@ -400,6 +401,9 @@ if has('autocmd')
         autocmd FileType html vnoremap <buffer> <leader>js :call RangeHtmlBeautify()<cr>
         autocmd FileType css nnoremap <buffer> <leader>js :call CSSBeautify()<cr>
         autocmd FileType css vnoremap <buffer> <leader>js :call RangeCSSBeautify()<cr>
+
+        "pretty format json using python
+        autocmd FileType json nnoremap <buffer> <leader>fj :%!python -m json.tool<cr>
 
         " set filestypes
         autocmd BufRead,BufNewFile *.ajs setlocal filetype=javascript
