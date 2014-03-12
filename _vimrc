@@ -65,7 +65,7 @@ set background=dark
 " let b:color = "distinguished"
 let b:color = "wombat256mod"
 " let b:color = "tomorrow-night"
-let b:color = "badwolf"
+" let b:color = "badwolf"
 " let b:color = "hybrid"
 " let b:color = "molokai"
 " let b:color = "vividchalk"
@@ -265,6 +265,11 @@ nnoremap k gk
 " change cursor position in insert mode
 inoremap <c-h> <left>
 inoremap <c-l> <right>
+
+"expand window split by 25 columns
+nnoremap <c-w><c-l> 25<c-w>>
+"retract window split by 25 columns
+nnoremap <c-w><c-h> 25<c-w><
 
 " who ever uses ; for something?
 " also don't map back since it breaks plugins according to steve losh
