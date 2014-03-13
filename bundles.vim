@@ -190,7 +190,6 @@ imap <leader>p <Plug>yankstack_substitute_older_paste
 nmap <leader>P <Plug>yankstack_substitute_newer_paste
 imap <leader>P <Plug>yankstack_substitute_newer_paste
 
-
 """"""""""""""""
 "  Tabularize  "
 """"""""""""""""
@@ -307,10 +306,11 @@ let g:UltiSnipsSnippetDirectories=['UltiSnips', 'mysnippets']
 "  Text Objects  "
 """"""""""""""""""
 NeoBundle 'kana/vim-textobj-user'
-NeoBundle 'kana/vim-textobj-line'          " al, il
-NeoBundle 'kana/vim-textobj-indent'        " ai, ii, aI, iI
-NeoBundle 'kana/vim-textobj-entire'        " ae, ie
+NeoBundle 'kana/vim-textobj-line' " al, il
+NeoBundle 'kana/vim-textobj-indent' " ai, ii, aI, iI
+NeoBundle 'kana/vim-textobj-entire' " ae, ie
 NeoBundle 'PeterRincker/vim-argumentative' " a, i,
+"auto add closing tag
 """""""""""""""""
 "  delimitMate  "
 """""""""""""""""

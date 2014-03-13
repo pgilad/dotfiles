@@ -1,5 +1,8 @@
 "@author Gilad Peleg
 
+" Note: Skip initialization for vim-tiny or vim-small.
+if !1 | finish | endif
+
 "So 2014...
 set nocompatible
 
@@ -8,6 +11,14 @@ let b:is_cygwin = has('win32unix')
 let b:is_macvim = has('gui_macvim')
 let b:is_unix = has('unix')
 
+""""""""""""""
+"  Mappings  "
+""""""""""""""
+let mapleader = ","
+let maplocalleader = ","
+let g:mapleader = ","
+let g:maplocalleader = ","
+
 function! CreateDirIfNotExists(dir)
     let b:undo_dir=expand(a:dir)
     if !isdirectory(b:undo_dir)
@@ -15,13 +26,15 @@ function! CreateDirIfNotExists(dir)
     endif
 endfunction
 
+function! s:source_path(path)
+    execute 'source' fnameescape(expand(a:path))
+endfunction
+
+
 """""""""""""""""""""""""""
 "  Bundle Initialization  "
 """""""""""""""""""""""""""
-let b:bundles_file=expand("~/.dotfiles/bundles.vim") "buffer local var
-if filereadable(b:bundles_file)
-    silent exec "source " . b:bundles_file
-endif
+call s:source_path("~/.dotfiles/bundles.vim")
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Current working directories and fonts according to location
@@ -102,24 +115,24 @@ if has("wildmenu")
 endif
 
 set viewoptions=folds,options,cursor,slash,unix
-set fileformat=unix                             " Default fileformat
-set fileformats=unix,dos,mac                    " Automatic recognition of a new line cord.
+set fileformat=unix                           " Default fileformat
+set fileformats=unix,dos,mac                  " Automatic recognition of a new line cord.
 set shellslash
 set shortmess+=filmnrxoOtT
-set suffixesadd+=.js                            " list of suffixes to add when using gf
-set ruler                                       " Always show current position
-set cmdheight=1                                 " Height of the command bar
-set showcmd                                     " show partial commands
-set showmode                                    " show which mode i'm on
-set nrformats-=octal                            " no octal numbers
-set hidden                                      " A buffer becomes hidden when it is abandoned
+set suffixesadd+=.js                          " list of suffixes to add when using gf
+set ruler                                     " Always show current position
+set cmdheight=1                               " Height of the command bar
+set showcmd                                   " show partial commands
+set showmode                                  " show which mode i'm on
+set nrformats-=octal                          " no octal numbers
+set hidden                                    " A buffer becomes hidden when it is abandoned
 set showfulltag
 set backspace=eol,start,indent                " configure backspace the expected way
 set whichwrap+=<,>,h,l
 set ignorecase                                " ignore case when searching
 set smartcase                                 " be smart about searching
 set infercase                                 " ignore case in autocomplete
-set nohlsearch                                  " highlight search
+set nohlsearch                                " highlight search
 set incsearch                                 " increment search
 set lazyredraw                                " Don't redraw while executing macros (good performance config)
 set matchtime=3
@@ -151,8 +164,8 @@ set splitright                                " Always splits to the right
 set splitbelow                                " and below
 set t_Co=256                                  " 256bit terminal
 if has('mouse')
-    set mouse=a                                   " enable mouse
-    set mousehide                                 " hide mouse cursor while typing
+    set mouse=a                               " enable mouse
+    set mousehide                             " hide mouse cursor while typing
 endif
 set autoread                                  " Set to auto read when a file is changed from the outside
 set autowrite
@@ -171,7 +184,6 @@ endif
 """""""""""
 "  folds  "
 """""""""""
-
 if has('folding')
     set foldmethod=indent   "fold based on indent
     set foldnestmax=5       "deepest fold is 3 levels
@@ -226,14 +238,6 @@ if has('spell')
     set spellfile=~/vimfiles/spell/en.utf-8.add
     set nospell
 endif
-
-""""""""""""""
-"  Mappings  "
-""""""""""""""
-let mapleader = ","
-let maplocalleader = ","
-let g:mapleader = ","
-let g:maplocalleader = ","
 
 """"""""""""""""""""""
 "  F-# keys mapping  "
@@ -330,7 +334,6 @@ nnoremap <leader>nc :NERDTreeCWD<cr>
 nnoremap <leader>n<tab> :NERDTreeToggle<cr>
 " find current file in nerdtree
 nnoremap <leader>nf :NERDTreeFind<cr>
-
 """""""""""""""
 "  <leader>e  "
 """""""""""""""
@@ -347,10 +350,6 @@ nnoremap <silent> <leader>el :NeoBundleUpdatesLog<cr>
 
 nnoremap <silent> <leader>ex :execute getline(".")<cr>
 vnoremap <silent> <leader>ex :<c-u>execute getreg("*")<cr>
-
-"""""""""""""""
-"  <leader>f  "
-"""""""""""""""
 
 """""""""""""""
 "  <leader>s  "
