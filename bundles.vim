@@ -1,11 +1,14 @@
 "set file type detection off
 filetype on
 filetype off
-set runtimepath+=~/vimfiles/bundle/neobundle.vim/
-call neobundle#rc(expand('~/vimfiles/bundle/'))
+let b:bundle_path = "~/vimfiles/bundle/"
+"add neobundle to rtp
+let &runtimepath .= "," . escape(b:bundle_path . 'neobundle.vim/', '\,')
+call neobundle#rc(expand(b:bundle_path))
 
 "My Bundles
 NeoBundleFetch 'Shougo/neobundle.vim'
+NeoBundle 'pgilad/neobundle-packages'
 NeoBundle 'L9'
 " Takes too long in boot process. Not used currently
 " NeoBundle 'FuzzyFinder'
@@ -14,12 +17,13 @@ NeoBundle 'L9'
 " ctrl-p custom ignore paths
 """"""""""""""""""""""
 "Awesome plugin for file/path/buffer search with ctrl-p
-NeoBundle 'kien/ctrlp.vim', {
-            \ 'lazy': 1,
-            \  'autoload' : {
-            \	'commands': ['CtrlP']
-            \  }
-            \ }
+call ParseBundle(b:bundle_path, 'ctrlp')
+" NeoBundle 'kien/ctrlp.vim', {
+            " \ 'lazy': 1,
+            " \  'autoload' : {
+            " \	'commands': ['CtrlP']
+            " \  }
+            " \ }
 let g:ctrlp_custom_ignore = 'build\|dist\|node_modules\|.idea\|.git\|workspace\|bower_components\'
 let g:ctrlp_root_markers = ['.git']
 let g:ctrlp_max_height = 20 " maxiumum height of match window

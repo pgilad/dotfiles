@@ -23,10 +23,19 @@ function! ReadJson(json_file)
     let b:json_file = fnameescape(expand(a:json_file))
     if filereadable(b:json_file)
         let b:json_string = join(readfile(b:json_file, "b"), "")
+        python import json
         return pyeval('json.loads(vim.eval("b:json_string"))')
-    else
-        return {}
     endif
+endfunction
+
+function! ParseBundle(bundle_path, bundle)
+    let bundle = ReadJson(a:bundle_path . 'neobundle-packages/' .  a:bundle . '.json')
+    if !exists("bundle.repository")
+        echom "Failed to load bundle ". a:bundle
+        return
+    endif
+    let params = {'lazy' : bundle.lazy, 'autoload' : bundle.autoload}
+    execute 'NeoBundle ' . string(bundle.repository) . "," . string(params)
 endfunction
 
 function! CreateDirIfNotExists(dir)
@@ -85,12 +94,12 @@ set background=dark
 """"""""""""
 " let b:color = "jellybeans"
 " let b:color = "distinguished"
-" let b:color = "wombat256mod"
+let b:color = "wombat256mod"
 " let b:color = "tomorrow-night"
 " let b:color = "badwolf"
 " let b:color = "hybrid"
 " let b:color = "molokai"
-let b:color = "vividchalk"
+" let b:color = "vividchalk"
 " let b:color = "tomorrow-night"
 
 try
