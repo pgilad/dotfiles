@@ -1,10 +1,10 @@
 "set file type detection off
 filetype on
 filetype off
-let b:bundle_path = "~/vimfiles/bundle/"
+let g:bundle_path = "~/vimfiles/bundle/"
 "add neobundle to rtp
-let &runtimepath .= "," . escape(b:bundle_path . 'neobundle.vim/', '\,')
-call neobundle#rc(expand(b:bundle_path))
+let &runtimepath .= "," . escape(g:bundle_path . 'neobundle.vim/', '\,')
+call neobundle#rc(expand(g:bundle_path))
 
 "My Bundles
 NeoBundleFetch 'Shougo/neobundle.vim'
@@ -13,17 +13,7 @@ NeoBundle 'L9'
 " Takes too long in boot process. Not used currently
 " NeoBundle 'FuzzyFinder'
 
-""""""""""""""""""""""
-" ctrl-p custom ignore paths
-""""""""""""""""""""""
-"Awesome plugin for file/path/buffer search with ctrl-p
-call ParseBundle(b:bundle_path, 'ctrlp')
-" NeoBundle 'kien/ctrlp.vim', {
-            " \ 'lazy': 1,
-            " \  'autoload' : {
-            " \	'commands': ['CtrlP']
-            " \  }
-            " \ }
+"awesome plugin for file/path/buffer search with ctrl-p
 let g:ctrlp_custom_ignore = 'build\|dist\|node_modules\|.idea\|.git\|workspace\|bower_components\'
 let g:ctrlp_root_markers = ['.git']
 let g:ctrlp_max_height = 20 " maxiumum height of match window
@@ -34,6 +24,7 @@ let g:ctrlp_clear_cache_on_exit=0 " speed up by not removing clearing cache ever
 let g:ctrlp_mruf_max = 250 " number of recently opened files
 let g:ctrlp_show_hidden = 1
 nnoremap <c-p> :CtrlP<cr>
+NeoBundlePackage g:bundle_path, 'ctrlp'
 
 """"""""""""""
 "  Nerdtree  "
@@ -163,7 +154,7 @@ let g:buffergator_sort_regime = 'mru'         " who cares about buffer number. s
 NeoBundle 'sjl/gundo.vim', {
             \ 'lazy': 1,
             \  'autoload' : {
-            \   'commands': ['GundoShow']
+            \   'commands': ['GundoShow', 'GundoToggle', 'GundoHide', 'GundoRenderGraph']
             \  }
             \ }
 
