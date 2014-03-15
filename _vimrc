@@ -23,7 +23,7 @@ function! ReadJson(json_file)
     let b:json_file = fnameescape(expand(a:json_file))
     if filereadable(b:json_file)
         let b:json_string = join(readfile(b:json_file, "b"), "")
-        python import json
+        python import json,vim
         return pyeval('json.loads(vim.eval("b:json_string"))')
     endif
 endfunction
