@@ -32,7 +32,8 @@ call neobundle_packages#parse_bundle(g:bundle_path, 'ctrlp')
 NeoBundle 'scrooloose/nerdtree', {
             \ 'lazy': 1,
             \  'autoload' : {
-            \	'commands': ['NERDTreeToggle', 'NERDTreeFind', 'NERDTreeCWD']
+            \	'commands': ['NERDTree', 'NERDTreeToggle', 'NERDTreeFind',
+            \               'NERDTreeClose', 'NERDTreeCWD', 'NERDTreeFromBookmark', 'NERDTreeMirror']
             \  }
             \ }
 let NERDTreeShowBookmarks=1
