@@ -30,6 +30,12 @@ function! s:source_path(path)
     execute 'source' fnameescape(expand(a:path))
 endfunction
 
+" Set extra options when running in GUI mode
+if has("gui_running")
+    set guioptions=Mc  " console choicse
+    " set guioptions+=a " visual select auto-copy to clipboard
+endif
+
 """""""""""""""""""""""""""
 "  Bundle Initialization  "
 """""""""""""""""""""""""""
@@ -78,8 +84,8 @@ set background=dark
 " let b:color = "wombat256mod"
 " let b:color = "tomorrow-night"
 " let b:color = "badwolf"
-let b:color = "hybrid"
-" let b:color = "molokai"
+" let b:color = "hybrid"
+let b:color = "molokai"
 " let b:color = "vividchalk"
 " let b:color = "tomorrow-night"
 
@@ -88,12 +94,6 @@ try
 catch
     color default
 endtry
-
-" Set extra options when running in GUI mode
-if has("gui_running")
-    set guioptions=c  " console choicse
-    " set guioptions+=a " visual select auto-copy to clipboard
-endif
 
 """"""""
 "  UI  "
@@ -117,7 +117,8 @@ set viewoptions=folds,options,cursor,slash,unix
 set fileformat=unix                           " Default fileformat
 set fileformats=unix,dos,mac                  " Automatic recognition of a new line cord.
 set shellslash
-set shortmess+=filmnrxoOtT
+set shortmess=aTI
+set showbreak=>\
 set suffixesadd+=.js                          " list of suffixes to add when using gf
 set ruler                                     " Always show current position
 set cmdheight=1                               " Height of the command bar
@@ -127,7 +128,7 @@ set nrformats-=octal                          " no octal numbers
 set hidden                                    " A buffer becomes hidden when it is abandoned
 set showfulltag
 set backspace=eol,start,indent                " configure backspace the expected way
-set whichwrap+=<,>,h,l
+set whichwrap+=<,>,h,l,[,],b,s,~
 set ignorecase                                " ignore case when searching
 set smartcase                                 " be smart about searching
 set infercase                                 " ignore case in autocomplete
@@ -146,6 +147,7 @@ set noerrorbells                              " No annoying sound on errors
 set novisualbell
 set t_vb=
 set tm=500
+
 set number                                    " show line number
 set relativenumber                            " line numbers are relative
 set cursorline                                " highlight where cursor is
@@ -166,7 +168,6 @@ if has('mouse')
     set mouse=a                               " enable mouse
     set mousehide                             " hide mouse cursor while typing
 endif
-set autoread                                  " Set to auto read when a file is changed from the outside
 set autowrite
 set encoding=utf-8                            " Set utf8 as standard encoding and en_US as the standard language
 scriptencoding utf-8
@@ -179,6 +180,15 @@ if has('unnamedplus')
 else
     set clipboard=unnamed
 endif
+
+" Disable GetLatestVimPlugin.vim
+if !&verbose
+    let g:loaded_getscriptPlugin = 1
+endif
+
+" Disable netrw.vim
+let g:loaded_netrwPlugin = 1
+let g:loaded_matchparen = 0
 
 """""""""""
 "  folds  "
@@ -196,6 +206,7 @@ endif
 set nobackup      " no backups of files
 set nowritebackup
 set noswapfile    " no swap files
+set backupdir-=.
 
 if has('persistent_undo')
     call CreateDirIfNotExists("~/vimfiles/.cache/undo/")
@@ -417,6 +428,14 @@ if has('autocmd')
 
         autocmd WinLeave * setlocal nocursorline
         autocmd WinEnter * setlocal cursorline
+        autocmd WinEnter * checktime
+        " Disable paste.
+        autocmd InsertLeave *
+                    \ if &paste | set nopaste mouse=a | echo 'nopaste' | endif |
+                \ if &l:diff | diffupdate | endif
+        "
+        "             " Update diff.
+        autocmd InsertLeave * if &l:diff | diffupdate | endif
     augroup END
 endif
 

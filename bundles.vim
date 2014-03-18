@@ -4,7 +4,7 @@ filetype off
 let g:bundle_path = "~/vimfiles/bundle/"
 "add neobundle to rp
 execute 'set rtp +='. fnameescape(g:bundle_path . 'neobundle.vim/')
-call neobundle#rc(g:bundle_path)
+call neobundle#rc(expand(g:bundle_path))
 
 "My Bundles
 NeoBundleFetch 'Shougo/neobundle.vim'
@@ -67,6 +67,14 @@ let g:indent_guides_enable_on_vim_startup = 1
 "let g:showmarks_textupper = "\t"
 "let g:showmarks_textother = "\t"
 "let g:showmarks_ignoretype = "hqm" "help quickfix and non modifiable
+"
+
+NeoBundle 'Shougo/junkfile.vim', {
+            \ 'lazy': 1,
+            \  'autoload' : {
+            \	'commands': 'JunkfileOpen'
+            \  }
+            \ }
 
 "javascript support
 """"""""""""""""""""""""
@@ -165,10 +173,10 @@ NeoBundle 'editorconfig/editorconfig-vim'
 
 " NeoBundle 'thinca/vim-fontzoom', {'gui' : 1}
 NeoBundleLazy 'tyru/open-browser.vim', {
-        \   'commands' : ['OpenBrowserSearch', 'OpenBrowser'],
-        \   'functions' : 'openbrowser#open',
-        \   'mappings': '<Plug>(openbrowser-'
-        \ }
+            \   'commands' : ['OpenBrowserSearch', 'OpenBrowser'],
+            \   'functions' : 'openbrowser#open',
+            \   'mappings': '<Plug>(openbrowser-'
+            \ }
 
 """"""""""""""""
 "  Yank Stack  "
@@ -211,11 +219,11 @@ nnoremap <leader>a<Bar> :Tabularize /<Bar><cr>
 vnoremap <leader>a<Bar> :Tabularize /<Bar><cr>
 
 " NeoBundle 'Shougo/neocomplcache.vim', {
-            " \ 'lazy': 1,
-            " \  'autoload' : {
-            " \	'insert': 1
-            " \  }
-            " \ }
+" \ 'lazy': 1,
+" \  'autoload' : {
+" \	'insert': 1
+" \  }
+" \ }
 NeoBundle 'terryma/vim-multiple-cursors'
 
 """""""""""""""
