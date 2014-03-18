@@ -167,7 +167,15 @@ NeoBundle 'sjl/gundo.vim', {
             \  }
             \ }
 
-NeoBundle 'kien/rainbow_parentheses.vim'
+NeoBundle 'kien/rainbow_parentheses.vim', {
+            \ 'lazy': 1,
+            \  'autoload' : {
+            \	'commands': ['RainbowParenthesesToggle', 'RainbowParenthesesLoadRound',
+            \               'RainbowParenthesesLoadSquare', 'RainbowParenthesesLoadBraces',
+            \               'RainbowParenthesesLoadChevrons']
+            \  }
+            \ }
+"easy motion -current bound to <leader><leader> by default
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'editorconfig/editorconfig-vim'
 
@@ -183,10 +191,7 @@ NeoBundleLazy 'tyru/open-browser.vim', {
 """"""""""""""""
 let g:yankstack_map_keys = 0
 NeoBundle 'maxbrunsfeld/vim-yankstack', {
-            \ 'lazy': 1,
-            \  'autoload' : {
-            \	'mappings': '<plug>yankstack_substitute_'
-            \  }
+            \ 'lazy': 0
             \ }
 
 nmap <leader>p <Plug>yankstack_substitute_older_paste
@@ -245,6 +250,7 @@ nnoremap <leader>ie :InlineEdit<cr>
 xnoremap <leader>ie :InlineEdit<cr>
 inoremap <leader>ie <esc>:InlineEdit<cr>a
 
+"gS to split, gJ to join
 NeoBundle 'AndrewRadev/splitjoin.vim'
 NeoBundle 'AndrewRadev/linediff.vim', {
             \ 'lazy': 1,
