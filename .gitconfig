@@ -1,0 +1,22 @@
+[credential]
+	helper = !'C:\\Users\\user\\AppData\\Roaming\\GitCredStore\\git-credential-winstore.exe'
+[user]
+	name = Gilad Peleg
+	email = giladp007@gmail.com
+[core]
+	autocrlf = true
+	excludesfile = C:\\Users\\user\\Documents\\gitignore_global.txt
+[push]
+	default = simple
+[color]
+    status=auto
+    branch=auto
+    interactive=auto
+    diff=auto
+[alias]
+    st = status
+    ch = checkout
+    br = branch
+    co = commit
+    pu = push
+    fe = fetch
