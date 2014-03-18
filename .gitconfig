@@ -1,5 +1,5 @@
 [credential]
-	helper = !'C:\\Users\\user\\AppData\\Roaming\\GitCredStore\\git-credential-winstore.exe'
+	helper = !"~/AppData/Roaming/GitCredStore/git-credential-winstore.exe"
 [user]
 	name = Gilad Peleg
 	email = giladp007@gmail.com
