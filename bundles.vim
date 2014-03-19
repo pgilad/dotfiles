@@ -141,15 +141,19 @@ NeoBundle 'tpope/vim-abolish.git'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'thinca/vim-visualstar'
 
-NeoBundle 'gcmt/wildfire.vim'
-" This selects the next closest text object.
-let g:wildfire_fuel_map = "<ENTER>"
-" " This selects the previous closest text object.
-let g:wildfire_water_map = "<BS>"
+NeoBundle 'gcmt/wildfire.vim', {
+            \ 'lazy': 1,
+            \  'autoload' : {
+            \	'mappings' : '<Plug>(wildfire-'
+            \  }
+            \ }
+nmap <ENTER> <Plug>(wildfire-fuel)
+nmap <BS> <Plug>(wildfire-water)
+
 " use '*' to mean 'all other filetypes'
 " in this example, html and xml share the same text objects
 let g:wildfire_objects = {
-            \ "*" : ["i'", 'i"', "i)", "i]", "i}", "ip", "it"]
+            \ "*" : ["i'", 'i"', "a'", 'a"', "i)", "i]", "i}", "ip", "it"]
             \ }
 
 """""""""""""""""
