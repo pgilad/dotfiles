@@ -194,10 +194,10 @@ let g:loaded_matchparen = 0
 "  folds  "
 """""""""""
 if has('folding')
-    set foldmethod=indent   "fold based on indent
-    set foldnestmax=5       "deepest fold is 3 levels
-    set foldlevelstart=99
-    set nofoldenable        "dont fold by default
+    set foldmethod=indent " fold based on indent
+    set foldnestmax=7     " deepest fold is 3 levels
+    set foldlevelstart=98
+    set foldenable        " dont fold by default
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

@@ -141,21 +141,18 @@ NeoBundle 'tpope/vim-abolish.git'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'thinca/vim-visualstar'
 
+
 NeoBundle 'gcmt/wildfire.vim', {
             \ 'lazy': 1,
             \  'autoload' : {
             \	'mappings' : '<Plug>(wildfire-'
             \  }
             \ }
+let g:wildfire_objects = {
+            \ '*' : ["i'", 'i"', "a'", 'a"', "i)", "i]", "i}", "ip"]
+            \}
 nmap <ENTER> <Plug>(wildfire-fuel)
 nmap <BS> <Plug>(wildfire-water)
-
-" use '*' to mean 'all other filetypes'
-" in this example, html and xml share the same text objects
-let g:wildfire_objects = {
-            \ "*" : ["i'", 'i"', "a'", 'a"', "i)", "i]", "i}", "ip", "it"]
-            \ }
-
 """""""""""""""""
 "  buffergator  "
 """""""""""""""""
