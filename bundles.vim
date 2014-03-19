@@ -25,23 +25,26 @@ NeoBundle 'Shougo/unite-outline', {
 NeoBundle 'Shougo/unite-mru', {
             \ 'lazy': 0,
             \ }
-let g:unite_enable_start_insert = 1
-let g:unite_split_rule = "botright"
-let g:unite_force_overwrite_statusline = 0
-let g:unite_winheight = 10
-let g:unite_source_history_yank_enable = 1
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
+if exists(':Unite')
+    let g:unite_enable_start_insert = 1
+    let g:unite_split_rule = "botright"
+    let g:unite_force_overwrite_statusline = 0
+    let g:unite_winheight = 10
+    let g:unite_source_history_yank_enable = 1
 
-"map bindings... use [Space] but release it for plugins
-nmap <space> [Space]
-xmap <space> [Space]
-nnoremap [Space] <nop>
-xnoremap [Space] <nop>
+    call unite#filters#matcher_default#use(['matcher_fuzzy'])
 
-nnoremap <silent> [Space]ft :<C-u>Unite filetype start-insert<CR>
-nnoremap <silent> [Space]o :<C-u>Unite outline -start-insert<CR>
-nnoremap <silent> [Space]r :<C-u>Unite history/yank<CR>
-nnoremap <silent> [Space]b :<C-u>Unite buffer -start-insert<CR>
+    "map bindings... use [Space] but release it for plugins
+    nmap <space> [Space]
+    xmap <space> [Space]
+    nnoremap [Space] <nop>
+    xnoremap [Space] <nop>
+
+    nnoremap <silent> [Space]ft :<C-u>Unite filetype start-insert<CR>
+    nnoremap <silent> [Space]o :<C-u>Unite outline -start-insert<CR>
+    nnoremap <silent> [Space]r :<C-u>Unite history/yank<CR>
+    nnoremap <silent> [Space]b :<C-u>Unite buffer -start-insert<CR>
+endif
 
 "awesome plugin for file/path/buffer search with ctrl-p
 let g:ctrlp_custom_ignore = 'build\|dist\|node_modules\|.idea\|.git\|workspace\|bower_components\'
@@ -348,10 +351,10 @@ let g:UltiSnipsSnippetDirectories=['UltiSnips', 'mysnippets']
 """"""""""""""""""
 "  Text Objects  "
 """"""""""""""""""
-NeoBundle 'kana/vim-textobj-user'
-NeoBundle 'kana/vim-textobj-line' " al, il
-NeoBundle 'kana/vim-textobj-indent' " ai, ii, aI, iI
-NeoBundle 'kana/vim-textobj-entire' " ae, ie
+NeoBundle 'kana/vim-textobj-user'          " required plugin
+NeoBundle 'kana/vim-textobj-line'          " al, il
+NeoBundle 'kana/vim-textobj-indent'        " ai, ii, aI, iI
+NeoBundle 'kana/vim-textobj-entire'        " ae, ie
 NeoBundle 'PeterRincker/vim-argumentative' " a, i,
 "auto add closing tag
 """""""""""""""""
@@ -363,8 +366,8 @@ NeoBundle 'Raimondi/delimitMate', {
             \    'insert' : 1
             \  }
             \}
-
 let delimitMate_expand_cr=1
+let delimitMate_expand_space=1
 
 """"""""""""""""""
 "  lint & style  "
