@@ -36,14 +36,8 @@ if has("gui_running")
     " set guioptions+=a " visual select auto-copy to clipboard
 endif
 
-"""""""""""""""""""""""""""
-"  Bundle Initialization  "
-"""""""""""""""""""""""""""
 call s:source_path("~/.dotfiles/bundles.vim")
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Current working directories and fonts according to location
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set lines=999
 set columns=999
 
@@ -66,9 +60,6 @@ if b:is_windows
     simalt ~x
 endif
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Colors and Fonts and gui options
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "set color scheme and font
 if has('syntax')
     syntax on
@@ -76,14 +67,12 @@ if has('syntax')
 endif
 set background=dark
 
-""""""""""""
-"  colors  "
-""""""""""""
+" let b:color = "default"
 " let b:color = "jellybeans"
-" let b:color = "distinguished"
+let b:color = "distinguished"
 " let b:color = "wombat256mod"
 " let b:color = "tomorrow-night"
-let b:color = "badwolf"
+" let b:color = "badwolf"
 " let b:color = "hybrid"
 " let b:color = "molokai"
 " let b:color = "vividchalk"
@@ -95,9 +84,6 @@ catch
     color default
 endtry
 
-""""""""
-"  UI  "
-""""""""
 set scrolloff=3                                 " Set 7 lines to the cursor - when moving vertically using j/k
 set winfixwidth                                 " NERD width after toggles
 
@@ -196,8 +182,8 @@ let g:loaded_matchparen = 0
 if has('folding')
     set foldmethod=indent " fold based on indent
     set foldnestmax=7     " deepest fold is 3 levels
-    set foldlevelstart=98
-    set foldenable        " dont fold by default
+    set foldlevelstart=0
+    set nofoldenable        " dont fold by default
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -214,18 +200,12 @@ if has('persistent_undo')
     set undodir=~/vimfiles/.cache/undo/
 endif
 
-"""""""""""""""
-"  Searching  "
-"""""""""""""""
 " TODO think about this. regex doesn't work
 if executable('ag')
     set grepprg=ag\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow
     set grepformat=%f:%l:%c:%m
 endif
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Text, tab and indent related
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set expandtab     " Use spaces instead of tabs
 set smarttab
 set nojoinspaces  " don't add multiple spaces on line joins
@@ -239,9 +219,6 @@ set autoindent
 set smartindent
 set laststatus=2  " Always show the status line
 
-""""""""""""""""""""""""""""""
-" => Spelling
-""""""""""""""""""""""""""""""
 if has('spell')
     call CreateDirIfNotExists("~/vimfiles/spell/")
     set spelllang=en_us
@@ -292,9 +269,6 @@ nnoremap ; :
 " Reselect visual block after indent/outdent
 vnoremap < <gv
 vnoremap > >gv
-
-"Clears the search highlight
-nnoremap <silent> <space> :nohlsearch<CR>
 
 "<leader>cd: Switch to the directory of the open buffer
 nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
@@ -410,7 +384,7 @@ if has('autocmd')
         autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
         " beautify
         autocmd FileType javascript,json nnoremap <buffer> <leader>js :call JsBeautify()<cr>
-        autocmd FileType javascript,json vnoremap <buffer> <leader>js :call RangeHtmlBeautify()<cr>
+        autocmd FileType javascript,json vnoremap <buffer> <leader>js :call RangeJsBeautify()<cr>
         autocmd FileType html nnoremap <buffer> <leader>js :call HtmlBeautify()<cr>
         autocmd FileType html vnoremap <buffer> <leader>js :call RangeHtmlBeautify()<cr>
         autocmd FileType css nnoremap <buffer> <leader>js :call CSSBeautify()<cr>

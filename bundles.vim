@@ -10,8 +10,38 @@ call neobundle#rc(expand(g:bundle_path))
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'pgilad/neobundle-packages'
 NeoBundle 'L9'
-" Takes too long in boot process. Not used currently
-" NeoBundle 'FuzzyFinder'
+
+NeoBundleLazy 'Shougo/unite.vim', {
+      \ 'commands' : [{ 'name' : 'Unite',
+      \                 'complete' : 'customlist,unite#complete_source'},
+      \                 'UniteWithCursorWord', 'UniteWithInput']
+      \ }
+NeoBundle 'osyo-manga/unite-filetype', {
+            \ 'lazy': 0
+            \ }
+NeoBundle 'Shougo/unite-outline', {
+            \ 'lazy': 0,
+            \ }
+NeoBundle 'Shougo/unite-mru', {
+            \ 'lazy': 0,
+            \ }
+let g:unite_enable_start_insert = 1
+let g:unite_split_rule = "botright"
+let g:unite_force_overwrite_statusline = 0
+let g:unite_winheight = 10
+let g:unite_source_history_yank_enable = 1
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+
+"map bindings... use [Space] but release it for plugins
+nmap <space> [Space]
+xmap <space> [Space]
+nnoremap [Space] <nop>
+xnoremap [Space] <nop>
+
+nnoremap <silent> [Space]ft :<C-u>Unite filetype start-insert<CR>
+nnoremap <silent> [Space]o :<C-u>Unite outline -start-insert<CR>
+nnoremap <silent> [Space]r :<C-u>Unite history/yank<CR>
+nnoremap <silent> [Space]b :<C-u>Unite buffer -start-insert<CR>
 
 "awesome plugin for file/path/buffer search with ctrl-p
 let g:ctrlp_custom_ignore = 'build\|dist\|node_modules\|.idea\|.git\|workspace\|bower_components\'
@@ -148,8 +178,10 @@ NeoBundle 'gcmt/wildfire.vim', {
             \	'mappings' : '<Plug>(wildfire-'
             \  }
             \ }
+"* marks the file type
 let g:wildfire_objects = {
-            \ '*' : ["i'", 'i"', "a'", 'a"', "i)", "i]", "i}", "ip"]
+            \ '*' : ["i'", 'i"', "a'", 'a"', "i)", "i]", "i}", "ip"],
+            \ 'html': ["it", "at"]
             \}
 nmap <ENTER> <Plug>(wildfire-fuel)
 nmap <BS> <Plug>(wildfire-water)
