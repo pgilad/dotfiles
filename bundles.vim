@@ -41,6 +41,7 @@ if exists(':Unite')
     let g:unite_source_history_yank_save_clipboard = 1
     let g:unite_update_time = 200
     call unite#filters#matcher_default#use(['matcher_fuzzy'])
+    call unite#filters#sorter_default#use(['sorter_rank'])
 
     "map bindings... use [Space] but release it for plugins
     nmap <space> [unite]
@@ -279,8 +280,15 @@ NeoBundle 'terryma/vim-multiple-cursors'
 "  Searching  "
 """""""""""""""
 if executable('ag')
-    NeoBundle 'ervandew/ag'    "good for regex escaping
-    " NeoBundle 'rking/ag.vim' "great for quickfix mappings
+    NeoBundle 'ervandew/ag', {
+                \ 'lazy': 0
+                \ }
+    " NeoBundle 'epmatsw/ag.vim', {
+                " \ 'lazy': 0,
+                " \ }
+    " NeoBundle 'rking/ag.vim', {
+                " \ 'lazy': 0,
+                " \ }
     let g:ackprg = "ag --nogroup --column --smart-case --follow"
 endif
 
