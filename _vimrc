@@ -43,7 +43,7 @@ set columns=999
 
 if hostname() ==? "GILAD"
     set gfn=consolas:h11
-    let b:home_dir = 'c:\repositories\gamestab'
+    let b:home_dir = 'c:\repositories\Appstrio\managment_app'
 elseif hostname() ==? "GILAD-PC"
     set gfn=consolas:h9
     let b:home_dir = 'd:\development\repositories'
@@ -69,14 +69,14 @@ set background=dark
 
 " let b:color = "default"
 " let b:color = "jellybeans"
-let b:color = "distinguished"
+" let b:color = "distinguished"
 " let b:color = "wombat256mod"
 " let b:color = "tomorrow-night"
 " let b:color = "badwolf"
 " let b:color = "hybrid"
 " let b:color = "molokai"
 " let b:color = "vividchalk"
-" let b:color = "tomorrow-night"
+let b:color = "tomorrow-night"
 
 try
     exec "color " . b:color

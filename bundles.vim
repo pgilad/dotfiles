@@ -17,13 +17,20 @@ NeoBundleLazy 'Shougo/unite.vim', {
       \                 'UniteWithCursorWord', 'UniteWithInput']
       \ }
 NeoBundle 'osyo-manga/unite-filetype', {
-            \ 'lazy': 0
+            \ 'lazy': 0,
+            \'depends': ['Shougu/unite.vim']
             \ }
 NeoBundle 'Shougo/unite-outline', {
             \ 'lazy': 0,
+            \'depends': ['Shougu/unite.vim']
             \ }
 NeoBundle 'Shougo/unite-mru', {
             \ 'lazy': 0,
+            \'depends': ['Shougu/unite.vim']
+            \ }
+NeoBundle 'ujihisa/unite-colorscheme', {
+            \ 'lazy': 1,
+            \'depends': ['Shougu/unite.vim']
             \ }
 if exists(':Unite')
     let g:unite_enable_start_insert = 1
@@ -31,22 +38,23 @@ if exists(':Unite')
     let g:unite_force_overwrite_statusline = 0
     let g:unite_winheight = 10
     let g:unite_source_history_yank_enable = 1
-
     call unite#filters#matcher_default#use(['matcher_fuzzy'])
 
     "map bindings... use [Space] but release it for plugins
-    nmap <space> [Space]
-    xmap <space> [Space]
-    nnoremap [Space] <nop>
-    xnoremap [Space] <nop>
+    nmap <space> [unite]
+    xmap <space> [unite]
+    nnoremap [unite] <nop>
+    xnoremap [unite] <nop>
 
-    nnoremap <silent> [Space]ft :<C-u>Unite filetype start-insert<CR>
-    nnoremap <silent> [Space]o :<C-u>Unite outline -start-insert<CR>
-    nnoremap <silent> [Space]r :<C-u>Unite history/yank<CR>
-    nnoremap <silent> [Space]b :<C-u>Unite buffer -start-insert<CR>
+    nnoremap <silent> [unite]t :<C-u>Unite -buffer-name=filetypes -start-insert filetype<CR>
+    nnoremap <silent> [unite]f :<C-u>Unite -buffer-name=files -start-insert file<CR>
+    nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=mru -start-insert file_mru<CR>
+    nnoremap <silent> [unite]o :<C-u>Unite -buffer-name=outline -start-insert outline<CR>
+    nnoremap <silent> [unite]y :<C-u>Unite -buffer-name=yank history/yank<CR>
+    nnoremap <silent> [unite]b :<C-u>Unite -buffer-name=buffer buffer<CR>
 endif
 
-"awesome plugin for file/path/buffer search with ctrl-p
+call neobundle_packages#parse_bundle(g:bundle_path, 'ctrlp')
 let g:ctrlp_custom_ignore = 'build\|dist\|node_modules\|.idea\|.git\|workspace\|bower_components\'
 let g:ctrlp_root_markers = ['.git']
 let g:ctrlp_max_height = 20 " maxiumum height of match window
@@ -57,7 +65,6 @@ let g:ctrlp_clear_cache_on_exit=0 " speed up by not removing clearing cache ever
 let g:ctrlp_mruf_max = 250 " number of recently opened files
 let g:ctrlp_show_hidden = 1
 nnoremap <c-p> :CtrlP<cr>
-call neobundle_packages#parse_bundle(g:bundle_path, 'ctrlp')
 
 """"""""""""""
 "  Nerdtree  "
@@ -100,7 +107,6 @@ let g:indent_guides_enable_on_vim_startup = 1
 "let g:showmarks_textupper = "\t"
 "let g:showmarks_textother = "\t"
 "let g:showmarks_ignoretype = "hqm" "help quickfix and non modifiable
-"
 
 NeoBundle 'Shougo/junkfile.vim', {
             \ 'lazy': 1,
@@ -356,7 +362,6 @@ NeoBundle 'kana/vim-textobj-line'          " al, il
 NeoBundle 'kana/vim-textobj-indent'        " ai, ii, aI, iI
 NeoBundle 'kana/vim-textobj-entire'        " ae, ie
 NeoBundle 'PeterRincker/vim-argumentative' " a, i,
-"auto add closing tag
 """""""""""""""""
 "  delimitMate  "
 """""""""""""""""
@@ -368,7 +373,6 @@ NeoBundle 'Raimondi/delimitMate', {
             \}
 let delimitMate_expand_cr=1
 let delimitMate_expand_space=1
-
 """"""""""""""""""
 "  lint & style  "
 """"""""""""""""""
