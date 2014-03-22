@@ -55,7 +55,7 @@ NeoBundle 'ujihisa/unite-colorscheme', {
             \ 'lazy': 0,
             \'depends': ['Shougu/unite.vim']
             \ }
-if exists('unite#filter')
+if exists('g:loaded_unite')
     let g:unite_enable_start_insert = 1
     let g:unite_split_rule = "botright"
     let g:unite_force_overwrite_statusline = 0
@@ -80,7 +80,7 @@ if exists('unite#filter')
     nnoremap <silent> [unite]b :<C-u>Unite -buffer-name=buffers buffer<CR>
 endif
 
-if exists('neobundle_packages#parse_bundle')
+if exists('*neobundle_packages#parse_bundle')
     call neobundle_packages#parse_bundle(g:bundle_path, 'ctrlp')
     let g:ctrlp_custom_ignore = 'build\|dist\|node_modules\|.idea\|.git\|workspace\|bower_components\'
     let g:ctrlp_root_markers = ['.git']
@@ -125,16 +125,7 @@ let NERDSpaceDelims=1
 """""""""""""""""""
 NeoBundle 'nathanaelkane/vim-indent-guides'
 let g:indent_guides_enable_on_vim_startup = 1
-
-"""""""""""""""
-"  ShowMarks  "
-"""""""""""""""
-"NeoBundle 'vim-scripts/ShowMarks'
-"let g:showmarks_enable = 1
-"let g:showmarks_textlower = "\t"
-"let g:showmarks_textupper = "\t"
-"let g:showmarks_textother = "\t"
-"let g:showmarks_ignoretype = "hqm" "help quickfix and non modifiable
+let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 
 NeoBundle 'Shougo/junkfile.vim', {
             \ 'lazy': 1,
