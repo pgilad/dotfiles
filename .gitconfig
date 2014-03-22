@@ -1,13 +1,13 @@
 [credential]
-	helper = !"~/AppData/Roaming/GitCredStore/git-credential-winstore.exe"
+    helper = !"~/AppData/Roaming/GitCredStore/git-credential-winstore.exe"
 [user]
-	name = Gilad Peleg
-	email = giladp007@gmail.com
+    name = Gilad Peleg
+    email = giladp007@gmail.com
 [core]
-	autocrlf = true
-	excludesfile = C:\\Users\\user\\Documents\\gitignore_global.txt
+    autocrlf = true
+    excludesfile = ~/Documents/gitignore_global.txt
 [push]
-	default = simple
+    default = simple
 [color]
     status=auto
     branch=auto

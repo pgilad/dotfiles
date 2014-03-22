@@ -29,7 +29,7 @@ NeoBundle 'Shougo/unite-mru', {
             \'depends': ['Shougu/unite.vim']
             \ }
 NeoBundle 'ujihisa/unite-colorscheme', {
-            \ 'lazy': 1,
+            \ 'lazy': 0,
             \'depends': ['Shougu/unite.vim']
             \ }
 if exists(':Unite')
@@ -54,7 +54,7 @@ if exists(':Unite')
     nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=mru -start-insert file_mru<CR>
     nnoremap <silent> [unite]o :<C-u>Unite -buffer-name=outline -start-insert outline<CR>
     nnoremap <silent> [unite]y :<C-u>Unite -buffer-name=yank history/yank<CR>
-    nnoremap <silent> [unite]b :<C-u>Unite -buffer-name=buffer buffer<CR>
+    nnoremap <silent> [unite]b :<C-u>Unite -buffer-name=buffers buffer<CR>
 endif
 
 call neobundle_packages#parse_bundle(g:bundle_path, 'ctrlp')

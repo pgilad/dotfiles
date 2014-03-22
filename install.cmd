@@ -13,3 +13,4 @@ IF NOT EXIST "%APP_DIR%\vimfiles\bundle" (
 IF NOT EXIST "%HOME%\vimfiles\bundle\neobundle.vim" (
 	call git clone https://github.com/Shougo/neobundle.vim "%HOME%\vimfiles\bundle\neobundle.vim"
 )
+pause

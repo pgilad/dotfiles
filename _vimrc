@@ -332,8 +332,10 @@ nnoremap <silent> <leader>es :UltiSnipsEdit<cr>
 nnoremap <silent> <leader>eu :NeoBundleUpdate<cr>
 nnoremap <silent> <leader>el :NeoBundleUpdatesLog<cr>
 
-nnoremap <silent> <leader>ex :execute getline(".")<cr>
-vnoremap <silent> <leader>ex :<c-u>execute getreg("*")<cr>
+nnoremap <leader>ex :execute getline(".")<cr>
+vnoremap <leader>ex :<c-u>execute getreg("*")<cr>
+"clear all double+ empty lines
+nnoremap <leader>ec :g/^\n$/d<cr>
 
 """""""""""""""
 "  <leader>s  "
