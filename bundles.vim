@@ -2,7 +2,30 @@
 filetype on
 filetype off
 let g:bundle_path = "~/vimfiles/bundle/"
-"add neobundle to rp
+let s:neobundle_git_path='!git clone %s://github.com/Shougo/neobundle.vim.git'
+
+if has('vim_starting')
+    if b:is_windows
+        let &runtimepath = join([
+                    \ expand('~/vimfiles'),
+                    \ expand('$VIM/runtime'),
+                    \ expand('~/vimfiles/after')], ',')
+    endif
+
+    if isdirectory('neobundle.vim')
+        set runtimepath^=neobundle.vim
+    elseif finddir('neobundle.vim', '.;') != ''
+        execute 'set runtimepath^=' . finddir('neobundle.vim', '.;')
+    elseif &runtimepath !~ '/neobundle.vim'
+        if !isdirectory(expand(g:bundle_path . 'neobundle.vim'))
+            execute printf(s:neobundle_git_path,
+                        \ (exists('$http_proxy') ? 'https' : 'git'))
+                        \ g:bundle_path . 'neobundle.vim'
+        endif
+        execute 'set runtimepath^=' . g:bundle_path . '/neobundle.vim'
+    endif
+end
+
 execute 'set rtp +='. fnameescape(g:bundle_path . 'neobundle.vim/')
 call neobundle#rc(expand(g:bundle_path))
 
@@ -12,10 +35,10 @@ NeoBundle 'pgilad/neobundle-packages'
 NeoBundle 'L9'
 
 NeoBundleLazy 'Shougo/unite.vim', {
-      \ 'commands' : [{ 'name' : 'Unite',
-      \                 'complete' : 'customlist,unite#complete_source'},
-      \                 'UniteWithCursorWord', 'UniteWithInput']
-      \ }
+            \ 'commands' : [{ 'name' : 'Unite',
+            \                 'complete' : 'customlist,unite#complete_source'},
+            \                 'UniteWithCursorWord', 'UniteWithInput']
+            \ }
 NeoBundle 'osyo-manga/unite-filetype', {
             \ 'lazy': 0,
             \'depends': ['Shougu/unite.vim']
@@ -32,7 +55,7 @@ NeoBundle 'ujihisa/unite-colorscheme', {
             \ 'lazy': 0,
             \'depends': ['Shougu/unite.vim']
             \ }
-if exists(':Unite')
+if exists('unite#filter')
     let g:unite_enable_start_insert = 1
     let g:unite_split_rule = "botright"
     let g:unite_force_overwrite_statusline = 0
@@ -57,17 +80,19 @@ if exists(':Unite')
     nnoremap <silent> [unite]b :<C-u>Unite -buffer-name=buffers buffer<CR>
 endif
 
-call neobundle_packages#parse_bundle(g:bundle_path, 'ctrlp')
-let g:ctrlp_custom_ignore = 'build\|dist\|node_modules\|.idea\|.git\|workspace\|bower_components\'
-let g:ctrlp_root_markers = ['.git']
-let g:ctrlp_max_height = 20 " maxiumum height of match window
-let g:ctrlp_switch_buffer = 'et' " jump to a file if it's open already
-let g:ctrlp_follow_symlinks=1
-let g:ctrlp_max_files=2000
-let g:ctrlp_clear_cache_on_exit=0 " speed up by not removing clearing cache evertime
-let g:ctrlp_mruf_max = 250 " number of recently opened files
-let g:ctrlp_show_hidden = 1
-nnoremap <c-p> :CtrlP<cr>
+if exists('neobundle_packages#parse_bundle')
+    call neobundle_packages#parse_bundle(g:bundle_path, 'ctrlp')
+    let g:ctrlp_custom_ignore = 'build\|dist\|node_modules\|.idea\|.git\|workspace\|bower_components\'
+    let g:ctrlp_root_markers = ['.git']
+    let g:ctrlp_max_height = 20 " maxiumum height of match window
+    let g:ctrlp_switch_buffer = 'et' " jump to a file if it's open already
+    let g:ctrlp_follow_symlinks=1
+    let g:ctrlp_max_files=2000
+    let g:ctrlp_clear_cache_on_exit=0 " speed up by not removing clearing cache evertime
+    let g:ctrlp_mruf_max = 250 " number of recently opened files
+    let g:ctrlp_show_hidden = 1
+    nnoremap <c-p> :CtrlP<cr>
+endif
 
 """"""""""""""
 "  Nerdtree  "
@@ -284,11 +309,11 @@ if executable('ag')
                 \ 'lazy': 0
                 \ }
     " NeoBundle 'epmatsw/ag.vim', {
-                " \ 'lazy': 0,
-                " \ }
+    " \ 'lazy': 0,
+    " \ }
     " NeoBundle 'rking/ag.vim', {
-                " \ 'lazy': 0,
-                " \ }
+    " \ 'lazy': 0,
+    " \ }
     let g:ackprg = "ag --nogroup --column --smart-case --follow"
 endif
 

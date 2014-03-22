@@ -2,7 +2,6 @@
 
 " Note: Skip initialization for vim-tiny or vim-small.
 if !1 | finish | endif
-
 "So 2014...
 set nocompatible
 
@@ -19,15 +18,23 @@ let maplocalleader = ","
 let g:mapleader = ","
 let g:maplocalleader = ","
 
+set fileformat=unix                           " Default fileformat
+set fileformats=unix,dos,mac                  " Automatic recognition of a new line cord.
+
 function! CreateDirIfNotExists(dir)
-    let b:undo_dir=expand(a:dir)
-    if !isdirectory(b:undo_dir)
-        silent exec '!mkdir ' . b:undo_dir
+    let make_dir=expand(a:dir)
+    if !isdirectory(make_dir)
+        call mkdir(make_dir, 'p')
     endif
 endfunction
 
 function! s:source_path(path)
-    execute 'source' fnameescape(expand(a:path))
+    let f = fnameescape(expand(a:path))
+    if filereadable(f)
+        execute 'source' . f
+    else
+        echom "Cannot find file to source " . f
+    endif
 endfunction
 
 " Set extra options when running in GUI mode
@@ -35,6 +42,7 @@ if has("gui_running")
     set guioptions=Mc  " console choicse
     " set guioptions+=a " visual select auto-copy to clipboard
 endif
+
 
 call s:source_path("~/.dotfiles/bundles.vim")
 
@@ -74,9 +82,9 @@ set background=dark
 " let b:color = "tomorrow-night"
 " let b:color = "badwolf"
 " let b:color = "hybrid"
-" let b:color = "molokai"
+let b:color = "molokai"
 " let b:color = "vividchalk"
-let b:color = "tomorrow-night"
+" let b:color = "tomorrow-night"
 
 try
     exec "color " . b:color
@@ -100,8 +108,6 @@ if has("wildmenu")
 endif
 
 set viewoptions=folds,options,cursor,slash,unix
-set fileformat=unix                           " Default fileformat
-set fileformats=unix,dos,mac                  " Automatic recognition of a new line cord.
 set shellslash
 set shortmess=aTI
 set showbreak=>\
@@ -195,7 +201,7 @@ set noswapfile    " no swap files
 set backupdir-=.
 
 if has('persistent_undo')
-    call CreateDirIfNotExists("~/vimfiles/.cache/undo/")
+    call CreateDirIfNotExists("~/.cache/undo/")
     set undofile
     set undodir=~/vimfiles/.cache/undo/
 endif

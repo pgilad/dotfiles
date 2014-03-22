@@ -4,8 +4,8 @@
     name = Gilad Peleg
     email = giladp007@gmail.com
 [core]
-    autocrlf = true
-    excludesfile = ~/Documents/gitignore_global.txt
+    autocrlf = input
+    excludesfile = ~/.dotfiles/gitignore_global.txt
 [push]
     default = simple
 [color]
