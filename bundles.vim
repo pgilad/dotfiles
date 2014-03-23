@@ -108,10 +108,9 @@ NeoBundle 'scrooloose/nerdcommenter', {
 " Always leave a space between the comment character and the comment
 let NERDSpaceDelims=1
 
-"""""""""""""""""""
-"  Indent Guides  "
-"""""""""""""""""""
-NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'nathanaelkane/vim-indent-guides', {
+            \ 'lazy': 0
+            \ }
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 

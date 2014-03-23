@@ -71,21 +71,20 @@ if has('syntax')
 endif
 set background=dark
 
-" let b:color = "default"
 " let b:color = "jellybeans"
-" let b:color = "distinguished"
+let b:color = "distinguished"
 " let b:color = "wombat256mod"
-" let b:color = "tomorrow-night"
-let b:color = "badwolf"
+" let b:color = "badwolf"
 " let b:color = "hybrid"
 " let b:color = "molokai"
 " let b:color = "vividchalk"
-" let b:color = "tomorrow-night"
+" let b:color = "Tomorrow-Night"
 
 try
-    exec "color " . b:color
+    exec "color ".b:color
 catch
-    color default
+    echom 'could not load color scheme ' . b:color
+    color desert
 endtry
 
 set scrolloff=3                                 " Set 7 lines to the cursor - when moving vertically using j/k
