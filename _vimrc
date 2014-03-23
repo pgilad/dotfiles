@@ -69,23 +69,23 @@ if has('syntax')
     syntax on
     filetype plugin indent on
 endif
-set background=dark
 
+set background=dark
 " let b:color = "jellybeans"
-let b:color = "distinguished"
+" let b:color = "distinguished"
 " let b:color = "wombat256mod"
 " let b:color = "badwolf"
 " let b:color = "hybrid"
-" let b:color = "molokai"
+let b:color = "molokai"
 " let b:color = "vividchalk"
 " let b:color = "Tomorrow-Night"
 
 try
-    exec "color ".b:color
+    exec "color " . b:color
 catch
-    echom 'could not load color scheme ' . b:color
     color desert
 endtry
+
 
 set scrolloff=3                                 " Set 7 lines to the cursor - when moving vertically using j/k
 set winfixwidth                                 " NERD width after toggles
