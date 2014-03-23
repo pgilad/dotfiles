@@ -18,9 +18,6 @@ let maplocalleader = ","
 let g:mapleader = ","
 let g:maplocalleader = ","
 
-set fileformat=unix                           " Default fileformat
-set fileformats=unix,dos,mac                  " Automatic recognition of a new line cord.
-
 function! CreateDirIfNotExists(dir)
     let make_dir=expand(a:dir)
     if !isdirectory(make_dir)
@@ -31,7 +28,7 @@ endfunction
 function! s:source_path(path)
     let f = fnameescape(expand(a:path))
     if filereadable(f)
-        execute 'source' . f
+        execute 'source ' . f
     else
         echom "Cannot find file to source " . f
     endif
@@ -42,7 +39,6 @@ if has("gui_running")
     set guioptions=Mc  " console choicse
     " set guioptions+=a " visual select auto-copy to clipboard
 endif
-
 
 call s:source_path("~/.dotfiles/bundles.vim")
 
@@ -165,6 +161,9 @@ set encoding=utf-8                            " Set utf8 as standard encoding an
 scriptencoding utf-8
 set title                                     " show filename in windows title
 set nostartofline                             " Don't reset cursor to start of line when moving around.
+
+set fileformat=unix                           " Default fileformat
+set fileformats=unix,dos,mac                  " Automatic recognition of a new line cord.
 
 " share clipboard with os
 if has('unnamedplus')

@@ -5,28 +5,16 @@ let g:bundle_path = "~/vimfiles/bundle/"
 let s:neobundle_git_path='!git clone %s://github.com/Shougo/neobundle.vim.git'
 
 if has('vim_starting')
-    if b:is_windows
-        let &runtimepath = join([
-                    \ expand('~/vimfiles'),
-                    \ expand('$VIM/runtime'),
-                    \ expand('~/vimfiles/after')], ',')
+    "check if neobundle is installed
+    if !isdirectory(expand(g:bundle_path . 'neobundle.vim'))
+        execute printf(s:neobundle_git_path,
+                    \ (exists('$http_proxy') ? 'https' : 'git'))
+                    \ g:bundle_path . 'neobundle.vim'
     endif
+endif
 
-    if isdirectory('neobundle.vim')
-        set runtimepath^=neobundle.vim
-    elseif finddir('neobundle.vim', '.;') != ''
-        execute 'set runtimepath^=' . finddir('neobundle.vim', '.;')
-    elseif &runtimepath !~ '/neobundle.vim'
-        if !isdirectory(expand(g:bundle_path . 'neobundle.vim'))
-            execute printf(s:neobundle_git_path,
-                        \ (exists('$http_proxy') ? 'https' : 'git'))
-                        \ g:bundle_path . 'neobundle.vim'
-        endif
-        execute 'set runtimepath^=' . g:bundle_path . '/neobundle.vim'
-    endif
-end
-
-execute 'set rtp +='. fnameescape(g:bundle_path . 'neobundle.vim/')
+" add neobundle to rtp
+execute 'set rtp ^='. fnameescape(g:bundle_path . 'neobundle.vim/')
 call neobundle#rc(expand(g:bundle_path))
 
 "My Bundles
@@ -134,7 +122,6 @@ NeoBundle 'Shougo/junkfile.vim', {
             \  }
             \ }
 
-"javascript support
 """"""""""""""""""""""""
 "  File Types Plugins  "
 """"""""""""""""""""""""
@@ -180,9 +167,6 @@ NeoBundleLazy 'tpope/vim-markdown', {'autoload':{'filetypes':['markdown']}}
 NeoBundleLazy 'jtratner/vim-flavored-markdown.git', {'autoload':{'filetypes':['markdown']}}
 NeoBundleLazy 'waylan/vim-markdown-extra-preview', {'autoload':{'filetypes':['markdown']}}
 
-""""""""""""
-"  others  "
-""""""""""""
 "Git support
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'gregsexton/gitv', {
@@ -198,7 +182,6 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-abolish.git'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'thinca/vim-visualstar'
-
 
 NeoBundle 'gcmt/wildfire.vim', {
             \ 'lazy': 1,
