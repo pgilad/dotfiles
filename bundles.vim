@@ -267,12 +267,12 @@ vnoremap <leader>a, :Tabularize /,<cr>
 nnoremap <leader>a<Bar> :Tabularize /<Bar><cr>
 vnoremap <leader>a<Bar> :Tabularize /<Bar><cr>
 
-" NeoBundle 'Shougo/neocomplcache.vim', {
-" \ 'lazy': 1,
-" \  'autoload' : {
-" \	'insert': 1
-" \  }
-" \ }
+NeoBundle 'Shougo/neocomplcache.vim', {
+            \ 'lazy': 1,
+            \   'autoload': {
+            \       'insert': 1
+            \   }
+            \ }
 NeoBundle 'terryma/vim-multiple-cursors'
 
 """""""""""""""

@@ -18,7 +18,7 @@ let maplocalleader = ","
 let g:mapleader = ","
 let g:maplocalleader = ","
 
-function! CreateDirIfNotExists(dir)
+function! s:create_dir(dir)
     let make_dir=expand(a:dir)
     if !isdirectory(make_dir)
         call mkdir(make_dir, 'p')
@@ -76,9 +76,9 @@ set background=dark
 " let b:color = "distinguished"
 " let b:color = "wombat256mod"
 " let b:color = "tomorrow-night"
-" let b:color = "badwolf"
+let b:color = "badwolf"
 " let b:color = "hybrid"
-let b:color = "molokai"
+" let b:color = "molokai"
 " let b:color = "vividchalk"
 " let b:color = "tomorrow-night"
 
@@ -200,7 +200,7 @@ set noswapfile    " no swap files
 set backupdir-=.
 
 if has('persistent_undo')
-    call CreateDirIfNotExists("~/.cache/undo/")
+    call s:create_dir("~/.cache/undo/")
     set undofile
     set undodir=~/vimfiles/.cache/undo/
 endif
@@ -225,7 +225,7 @@ set smartindent
 set laststatus=2  " Always show the status line
 
 if has('spell')
-    call CreateDirIfNotExists("~/vimfiles/spell/")
+    call s:create_dir("~/vimfiles/spell/")
     set spelllang=en_us
     set spellfile=~/vimfiles/spell/en.utf-8.add
     set nospell
