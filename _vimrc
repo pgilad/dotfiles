@@ -107,7 +107,8 @@ endif
 set viewoptions=folds,options,cursor,slash,unix
 if b:is_windows
     set shellslash
-endi
+endif
+
 set shortmess=aTI
 set showbreak=>\
 set suffixesadd+=.js                          " list of suffixes to add when using gf
