@@ -83,9 +83,9 @@ let b:color = "molokai"
 try
     exec "color " . b:color
 catch
+    echom 'Could not load color scheme ' . b:color
     color desert
 endtry
-
 
 set scrolloff=3                                 " Set 7 lines to the cursor - when moving vertically using j/k
 set winfixwidth                                 " NERD width after toggles
@@ -95,15 +95,19 @@ if has("wildmenu")
     set wildignorecase
     set wildmode=longest,list,full
     set wildignore+=*.o,*~,*.pyc
-    set wildignore+=**/node_modules/**
-    set wildignore+=build/
-    set wildignore+=.idea/**
-    set wildignore+=.git/**
-    set wildignore+=*/bower_components/**
+    set wildignore+=.git/*
+    set wildignore+=.idea/*
+    set wildignore+=bower_components/*
+    set wildignore+=build/*
+    set wildignore+=builds/*
+    set wildignore+=node_modules/*
+    set wildignore+=tmp/*
 endif
 
 set viewoptions=folds,options,cursor,slash,unix
-set shellslash
+if b:is_windows
+    set shellslash
+endi
 set shortmess=aTI
 set showbreak=>\
 set suffixesadd+=.js                          " list of suffixes to add when using gf
@@ -410,11 +414,8 @@ if has('autocmd')
         autocmd WinEnter * setlocal cursorline
         autocmd WinEnter * checktime
         " Disable paste.
-        autocmd InsertLeave *
-                    \ if &paste | set nopaste mouse=a | echo 'nopaste' | endif |
+        autocmd InsertLeave * if &paste | set nopaste mouse=a | echo 'nopaste' | endif |
                 \ if &l:diff | diffupdate | endif
-        "
-        "             " Update diff.
         autocmd InsertLeave * if &l:diff | diffupdate | endif
     augroup END
 endif
