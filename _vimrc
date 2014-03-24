@@ -36,7 +36,7 @@ endfunction
 
 " Set extra options when running in GUI mode
 if has("gui_running")
-    set guioptions=Mc  " console choicse
+    set guioptions=iMc  " console choicse
     " set guioptions+=a " visual select auto-copy to clipboard
 endif
 
