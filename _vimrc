@@ -76,9 +76,9 @@ set background=dark
 " let b:color = "wombat256mod"
 " let b:color = "badwolf"
 " let b:color = "hybrid"
-let b:color = "molokai"
+" let b:color = "molokai"
 " let b:color = "vividchalk"
-" let b:color = "Tomorrow-Night"
+let b:color = "Tomorrow-Night"
 
 try
     exec "color " . b:color
