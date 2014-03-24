@@ -51,6 +51,9 @@ if hostname() ==? "GILAD"
 elseif hostname() ==? "GILAD-PC"
     set gfn=consolas:h9
     let b:home_dir = 'd:\development\repositories'
+elseif b:is_unix
+    let b:home_dir = "~"
+    set gfn=Ubuntu\ Mono\ 12
 else
     set gfn=consolas:h9
     let b:home_dir = "~"
@@ -185,9 +188,6 @@ endif
 let g:loaded_netrwPlugin = 1
 let g:loaded_matchparen = 0
 
-"""""""""""
-"  folds  "
-"""""""""""
 if has('folding')
     set foldmethod=indent " fold based on indent
     set foldnestmax=7     " deepest fold is 3 levels
