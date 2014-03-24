@@ -69,23 +69,18 @@ nnoremap <silent> [unite]b :<C-u>Unite -buffer-name=buffers buffer<CR>
 " search word in current buffer
 nnoremap <silent><expr> [unite]*  ":<C-u>UniteWithCursorWord -buffer-name=search%".bufnr('%')." line:all:wrap<CR>"
 
-if exists('*neobundle_packages#parse_bundle')
-    call neobundle_packages#parse_bundle(g:bundle_path, 'ctrlp')
-    let g:ctrlp_custom_ignore = 'build\|dist\|node_modules\|.idea\|.git\|workspace\|bower_components\'
-    let g:ctrlp_root_markers = ['.git']
-    let g:ctrlp_max_height = 20 " maxiumum height of match window
-    let g:ctrlp_switch_buffer = 'et' " jump to a file if it's open already
-    let g:ctrlp_follow_symlinks=1
-    let g:ctrlp_max_files=2000
-    let g:ctrlp_clear_cache_on_exit=0 " speed up by not removing clearing cache evertime
-    let g:ctrlp_mruf_max = 250 " number of recently opened files
-    let g:ctrlp_show_hidden = 1
-    nnoremap <c-p> :CtrlP<cr>
-endif
+call neobundle_packages#parse_bundle(g:bundle_path, 'ctrlp')
+let g:ctrlp_custom_ignore = 'build\|dist\|node_modules\|.idea\|.git\|workspace\|bower_components\'
+let g:ctrlp_root_markers = ['.git']
+let g:ctrlp_max_height = 20 " maxiumum height of match window
+let g:ctrlp_switch_buffer = 'et' " jump to a file if it's open already
+let g:ctrlp_follow_symlinks=1
+let g:ctrlp_max_files=2000
+let g:ctrlp_clear_cache_on_exit=0 " speed up by not removing clearing cache evertime
+let g:ctrlp_mruf_max = 250 " number of recently opened files
+let g:ctrlp_show_hidden = 1
+nnoremap <c-p> :CtrlP<cr>
 
-""""""""""""""
-"  Nerdtree  "
-""""""""""""""
 NeoBundle 'scrooloose/nerdtree', {
             \ 'lazy': 1,
             \  'autoload' : {
