@@ -43,48 +43,44 @@ NeoBundle 'ujihisa/unite-colorscheme', {
             \ 'lazy': 0,
             \'depends': ['Shougu/unite.vim']
             \ }
-if exists('g:loaded_unite')
-    let g:unite_enable_start_insert = 1
-    let g:unite_split_rule = "botright"
-    let g:unite_force_overwrite_statusline = 0
-    let g:unite_winheight = 10
-    let g:unite_source_history_yank_enable = 1
-    let g:unite_source_history_yank_save_clipboard = 1
-    let g:unite_update_time = 200
-    call unite#filters#matcher_default#use(['matcher_fuzzy'])
-    call unite#filters#sorter_default#use(['sorter_rank'])
+let g:unite_enable_start_insert = 1
+let g:unite_split_rule = "botright"
+let g:unite_force_overwrite_statusline = 0
+let g:unite_winheight = 10
+let g:unite_source_history_yank_enable = 1
+let g:unite_source_history_yank_save_clipboard = 1
+let g:unite_update_time = 200
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#sorter_default#use(['sorter_rank'])
 
-    "map bindings... use [Space] but release it for plugins
-    nmap <space> [unite]
-    xmap <space> [unite]
-    nnoremap [unite] <nop>
-    xnoremap [unite] <nop>
+"map bindings... use [Space] but release it for plugins
+nmap <space> [unite]
+xmap <space> [unite]
+nnoremap [unite] <nop>
+xnoremap [unite] <nop>
 
-    nnoremap <silent> [unite]t :<C-u>Unite -buffer-name=filetypes -start-insert filetype<CR>
-    nnoremap <silent> [unite]f :<C-u>Unite -buffer-name=files -start-insert file<CR>
-    nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=mru -start-insert file_mru<CR>
-    nnoremap <silent> [unite]o :<C-u>Unite -buffer-name=outline -start-insert outline<CR>
-    nnoremap <silent> [unite]y :<C-u>Unite -buffer-name=yank history/yank<CR>
-    nnoremap <silent> [unite]b :<C-u>Unite -buffer-name=buffers buffer<CR>
-endif
+nnoremap <silent> [unite]t :<C-u>Unite -buffer-name=filetypes -start-insert filetype<CR>
+nnoremap <silent> [unite]f :<C-u>Unite -buffer-name=files -start-insert file<CR>
+nnoremap <silent> [unite]p :<C-u>Unite -buffer-name=files -start-insert file_rec<CR>
+nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=mru -start-insert file_mru<CR>
+nnoremap <silent> [unite]o :<C-u>Unite -buffer-name=outline -start-insert outline<CR>
+nnoremap <silent> [unite]y :<C-u>Unite -buffer-name=yank history/yank<CR>
+nnoremap <silent> [unite]b :<C-u>Unite -buffer-name=buffers buffer<CR>
+" search word in current buffer
+nnoremap <silent><expr> [unite]*  ":<C-u>UniteWithCursorWord -buffer-name=search%".bufnr('%')." line:all:wrap<CR>"
 
-if exists('*neobundle_packages#parse_bundle')
-    call neobundle_packages#parse_bundle(g:bundle_path, 'ctrlp')
-    let g:ctrlp_custom_ignore = 'build\|dist\|node_modules\|.idea\|.git\|workspace\|bower_components\'
-    let g:ctrlp_root_markers = ['.git']
-    let g:ctrlp_max_height = 20 " maxiumum height of match window
-    let g:ctrlp_switch_buffer = 'et' " jump to a file if it's open already
-    let g:ctrlp_follow_symlinks=1
-    let g:ctrlp_max_files=2000
-    let g:ctrlp_clear_cache_on_exit=0 " speed up by not removing clearing cache evertime
-    let g:ctrlp_mruf_max = 250 " number of recently opened files
-    let g:ctrlp_show_hidden = 1
-    nnoremap <c-p> :CtrlP<cr>
-endif
+call neobundle_packages#parse_bundle(g:bundle_path, 'ctrlp')
+let g:ctrlp_custom_ignore = 'build\|dist\|node_modules\|.idea\|.git\|workspace\|bower_components\'
+let g:ctrlp_root_markers = ['.git']
+let g:ctrlp_max_height = 20 " maxiumum height of match window
+let g:ctrlp_switch_buffer = 'et' " jump to a file if it's open already
+let g:ctrlp_follow_symlinks=1
+let g:ctrlp_max_files=2000
+let g:ctrlp_clear_cache_on_exit=0 " speed up by not removing clearing cache evertime
+let g:ctrlp_mruf_max = 250 " number of recently opened files
+let g:ctrlp_show_hidden = 1
+nnoremap <c-p> :CtrlP<cr>
 
-""""""""""""""
-"  Nerdtree  "
-""""""""""""""
 NeoBundle 'scrooloose/nerdtree', {
             \ 'lazy': 1,
             \  'autoload' : {
@@ -121,9 +117,6 @@ NeoBundle 'Shougo/junkfile.vim', {
             \  }
             \ }
 
-""""""""""""""""""""""""
-"  File Types Plugins  "
-""""""""""""""""""""""""
 NeoBundle 'kchmck/vim-coffee-script', {
             \  'lazy' : 1,
             \  'autoload' : {
@@ -229,9 +222,6 @@ NeoBundleLazy 'tyru/open-browser.vim', {
             \   'mappings': '<Plug>(openbrowser-'
             \ }
 
-""""""""""""""""
-"  Yank Stack  "
-""""""""""""""""
 let g:yankstack_map_keys = 0
 NeoBundle 'maxbrunsfeld/vim-yankstack', {
             \ 'lazy': 0
@@ -331,9 +321,6 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep=' '
 let g:airline#extensions#tabline#left_alt_sep='¦'
 
-""""""""""""
-"  switch - switches between stuff
-""""""""""""
 NeoBundle 'AndrewRadev/switch.vim', {
             \ 'lazy': 1,
             \  'autoload' : {
@@ -410,9 +397,6 @@ augroup appendComma
     autocmd FileType javascript,css,json inoremap <buffer> <silent> <leader>; <ESC>:call cosco#commaOrSemiColon()<cr>a
 augroup END
 
-""""""""""""""""""
-"  colorschemes  "
-""""""""""""""""""
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'Lokaltog/vim-distinguished'
 NeoBundle 'vim-scripts/wombat256.vim'
@@ -422,5 +406,4 @@ NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'tomasr/molokai'
 NeoBundle 'tpope/vim-vividchalk'
 
-"check for uninstalled packages
 NeoBundleCheck

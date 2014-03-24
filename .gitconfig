@@ -1,5 +1,3 @@
-[credential]
-    helper = cache --timeout=7200
 [user]
     name = Gilad Peleg
     email = giladp007@gmail.com
