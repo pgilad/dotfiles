@@ -47,7 +47,7 @@ for fileToLoad in ['bundles', 'settings', 'mappings', 'autoCommands']
     " set file object in config
     let g:config.loadFiles[fileToLoad] = b:filePath
     " source script
-    call s:source_path(b:filePath)
+    silent execute 'source ' . fnameescape(expand(b:filePath))
 endfor
 
 set secure
