@@ -74,7 +74,7 @@ set fileformats=unix,dos,mac                  " Automatic recognition of a new l
 set viewoptions=folds,options,cursor,slash,unix
 
 set scrolloff=3                                 " Set 7 lines to the cursor - when moving vertically using j/k
-set winfixwidth                                 " NERD width after toggles
+set noequalalways
 set shortmess=aTI
 set showbreak=>\
 set suffixesadd+=.js                            " list of suffixes to add when using gf
