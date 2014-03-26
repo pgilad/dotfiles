@@ -18,7 +18,6 @@ let b:config =  {
             \ }
             \}
 
-
 let mapleader = ","
 let maplocalleader = ","
 let g:mapleader = ","

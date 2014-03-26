@@ -134,7 +134,6 @@ scriptencoding utf-8
 set title                                     " show filename in windows title
 set nostartofline                             " Don't reset cursor to start of line when moving around.
 
-
 " share clipboard with os
 if has('unnamedplus')
     set clipboard=unnamedplus " gui gvim unix/mac
