@@ -10,6 +10,7 @@ set nocompatible
 let g:config =  {
             \ 'baseDir': '~/.dotfiles/rc/',
             \ 'loadFiles': {},
+            \ 'bundlesPath': '~/vimfiles/bundle/',
             \ 'env' : {
             \   'windows': has('win32') || has('win64'),
             \   'cygwin': has('win32unix'),

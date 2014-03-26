@@ -1,12 +1,11 @@
 "set file type detection off
 filetype on
 filetype off
-let g:bundle_path = "~/vimfiles/bundle/"
 let s:neobundle_git_path='!git clone %s://github.com/Shougo/neobundle.vim.git'
 
 if has('vim_starting')
     "check if neobundle is installed
-    if !isdirectory(expand(g:bundle_path . 'neobundle.vim'))
+    if !isdirectory(expand(g:config.bundlesPath . 'neobundle.vim'))
         execute printf(s:neobundle_git_path,
                     \ (exists('$http_proxy') ? 'https' : 'git'))
                     \ g:bundle_path . 'neobundle.vim'
@@ -14,8 +13,8 @@ if has('vim_starting')
 endif
 
 " add neobundle to rtp
-execute 'set rtp ^='. fnameescape(g:bundle_path . 'neobundle.vim/')
-call neobundle#rc(expand(g:bundle_path))
+execute 'set rtp ^='. fnameescape(g:config.bundlesPath . 'neobundle.vim/')
+call neobundle#rc(expand(g:config.bundlesPath))
 
 "My Bundles
 NeoBundleFetch 'Shougo/neobundle.vim'
@@ -69,15 +68,15 @@ nnoremap <silent> [unite]b :<C-u>Unite -buffer-name=buffers buffer<CR>
 " search word in current buffer
 nnoremap <silent><expr> [unite]*  ":<C-u>UniteWithCursorWord -buffer-name=search%".bufnr('%')." line:all:wrap<CR>"
 
-call neobundle_packages#parse_bundle(g:bundle_path, 'ctrlp')
+call neobundle_packages#parse_bundle(g:config.bundlesPath, 'ctrlp')
 let g:ctrlp_custom_ignore = 'build\|dist\|node_modules\|.idea\|.git\|workspace\|bower_components\'
 let g:ctrlp_root_markers = ['.git']
-let g:ctrlp_max_height = 20 " maxiumum height of match window
-let g:ctrlp_switch_buffer = 'et' " jump to a file if it's open already
+let g:ctrlp_max_height = 20         " maxiumum height of match window
+let g:ctrlp_switch_buffer = 'et'    " jump to a file if it's open already
 let g:ctrlp_follow_symlinks=1
 let g:ctrlp_max_files=2000
-let g:ctrlp_clear_cache_on_exit=0 " speed up by not removing clearing cache evertime
-let g:ctrlp_mruf_max = 250 " number of recently opened files
+let g:ctrlp_clear_cache_on_exit=0   " speed up by not removing clearing cache evertime
+let g:ctrlp_mruf_max = 250          " number of recently opened files
 let g:ctrlp_show_hidden = 1
 nnoremap <c-p> :CtrlP<cr>
 
