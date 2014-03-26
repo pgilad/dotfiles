@@ -1,6 +1,6 @@
 "@author Gilad Peleg
 "@license MIT 2014
-"@website https://github.com/pgilad
+"@website https://github.com/pgilad/dotfiles.git
 
 " Note: Skip initialization for vim-tiny or vim-small.
 if !1 | finish | endif
@@ -29,15 +29,6 @@ if has("gui_running")
     set guioptions=Mc  " console choicse
     " set guioptions+=a " visual select auto-copy to clipboard
 endif
-
-function! s:source_path(path)
-    let f = fnameescape(expand(a:path))
-    if filereadable(f)
-        execute 'source ' . f
-    else
-        echom "Cannot find file to source " . f
-    endif
-endfunction
 
 " Add the following files to load list (omit the .vim extension)
 " Files are loaded in order

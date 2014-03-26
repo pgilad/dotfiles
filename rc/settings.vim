@@ -69,6 +69,7 @@ endif
 if g:config.env.windows
     set shellslash
 endif
+
 set fileformat=unix                           " Default fileformat
 set fileformats=unix,dos,mac                  " Automatic recognition of a new line cord.
 set viewoptions=folds,options,cursor,slash,unix
