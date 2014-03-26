@@ -7,8 +7,8 @@ if !1 | finish | endif
 " Note: Vim is old
 set nocompatible
 
-let b:config =  {
-            \ 'baseDir': '~/.dotfiles/',
+let g:config =  {
+            \ 'baseDir': '~/.dotfiles/rc/',
             \ 'loadFiles': {},
             \ 'env' : {
             \   'windows': has('win32') || has('win64'),
@@ -41,8 +41,12 @@ endfunction
 " Add the following files to load list (omit the .vim extension)
 " Files are loaded in order
 for fileToLoad in ['bundles', 'settings', 'mappings', 'autoCommands']
-    let b:s = b:config.baseDir . fileToLoad . '.vim'
-    call s:source_path(b:s)
+    " set filename
+    let b:filePath = g:config.baseDir . fileToLoad . '.vim'
+    " set file object in config
+    let g:config.loadFiles[fileToLoad] = b:filePath
+    " source script
+    call s:source_path(b:filePath)
 endfor
 
 set secure

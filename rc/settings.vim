@@ -9,7 +9,7 @@ endfunction
 if hostname() ==? "GILAD"
     set gfn=consolas:h11
     let b:home_dir = 'c:\repositories'
-elseif b:config.env.unix
+elseif g:config.env.unix
     let b:home_dir = "~/repos"
     set gfn=Ubuntu\ Mono\ 12
 else
@@ -25,7 +25,7 @@ set lines=999
 set columns=999
 
 " maximize window if windows
-if b:config.env.windows
+if g:config.env.windows
     simalt ~x
 endif
 
@@ -66,7 +66,7 @@ if has("wildmenu")
     set wildignore+=tmp/*
 endif
 
-if b:config.env.windows
+if g:config.env.windows
     set shellslash
 endif
 set fileformat=unix                           " Default fileformat

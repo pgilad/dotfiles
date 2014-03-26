@@ -96,18 +96,18 @@ nnoremap <leader>nf :NERDTreeFind<cr>
 " edit _vimrc
 nnoremap <silent> <leader>ev :edit $MYVIMRC<cr>
 " edit mappings
-nnoremap <silent> <leader>em :edit ~/.dotfiles/mappings.vim<cr>
+nnoremap <silent> <leader>em :exec 'edit ' . g:config.loadFiles.mappings<cr>
 " edit bundles
-nnoremap <silent> <leader>eb :edit ~/.dotfiles/bundles.vim<cr>
+nnoremap <silent> <leader>eb :exec 'edit ' . g:config.loadFiles.bundles<cr>
 " edit settings
-nnoremap <silent> <leader>es :edit ~/.dotfiles/settings.vim<cr>
+nnoremap <silent> <leader>es :exec 'edit ' . g:config.loadFiles.settings<cr>
 " edit auto commands
-nnoremap <silent> <leader>ea :edit ~/.dotfiles/autoCommands.vim<cr>
+nnoremap <silent> <leader>ea :exec 'edit ' . g:config.loadFiles.autoCommands<cr>
 " source myvimrc
 nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
 
 " edit current filetype custom snippets
-nnoremap <silent> <leader>es :UltiSnipsEdit<cr>
+nnoremap <silent> <leader>us :UltiSnipsEdit<cr>
 nnoremap <silent> <leader>eu :NeoBundleUpdate<cr>
 nnoremap <silent> <leader>el :NeoBundleUpdatesLog<cr>
 
