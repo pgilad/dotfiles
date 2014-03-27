@@ -59,13 +59,15 @@ xmap <space> [unite]
 nnoremap [unite] <nop>
 xnoremap [unite] <nop>
 
-nnoremap <silent> [unite]t :<C-u>Unite -buffer-name=filetypes -start-insert filetype<CR>
+nnoremap <silent> [unite]b :<C-u>Unite -buffer-name=buffers buffer<CR>
 nnoremap <silent> [unite]f :<C-u>Unite -buffer-name=files -start-insert file<CR>
+nnoremap <silent> [unite]m :<C-u>Unite -buffer-name=mappings -start-insert mapping<CR>
+nnoremap <silent> [unite]o :<C-u>Unite -buffer-name=outline -start-insert outline<CR>
 nnoremap <silent> [unite]p :<C-u>Unite -buffer-name=files -start-insert file_rec<CR>
 nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=mru -start-insert file_mru<CR>
-nnoremap <silent> [unite]o :<C-u>Unite -buffer-name=outline -start-insert outline<CR>
+nnoremap <silent> [unite]t :<C-u>Unite -buffer-name=filetypes -start-insert filetype<CR>
 nnoremap <silent> [unite]y :<C-u>Unite -buffer-name=yank history/yank<CR>
-nnoremap <silent> [unite]b :<C-u>Unite -buffer-name=buffers buffer<CR>
+
 " search word in current buffer
 nnoremap <silent><expr> [unite]*  ":<C-u>UniteWithCursorWord -buffer-name=search%".bufnr('%')." line:all:wrap<CR>"
 
@@ -116,7 +118,6 @@ NeoBundle 'Shougo/junkfile.vim', {
             \	'commands': 'JunkfileOpen'
             \  }
             \ }
-
 NeoBundle 'kchmck/vim-coffee-script', {
             \  'lazy' : 1,
             \  'autoload' : {
