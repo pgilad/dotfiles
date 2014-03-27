@@ -4,12 +4,13 @@ filetype off
 let s:neobundle_git_path='!git clone %s://github.com/Shougo/neobundle.vim.git'
 
 if has('vim_starting')
-    "check if neobundle is installed
+    "install neobundle if it isn't installed. requires git.
     if !isdirectory(expand(g:config.bundlesPath . 'neobundle.vim'))
         execute printf(s:neobundle_git_path,
                     \ (exists('$http_proxy') ? 'https' : 'git'))
                     \ g:bundle_path . 'neobundle.vim'
     endif
+
 endif
 
 " add neobundle to rtp
