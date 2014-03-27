@@ -1,6 +1,6 @@
 "@author Gilad Peleg
 "@license MIT 2014
-"@website https://github.com/pgilad/dotfiles.git
+"@website https://github.com/pgilad/dotfiles
 
 " Note: Skip initialization for vim-tiny or vim-small.
 if !1 | finish | endif
