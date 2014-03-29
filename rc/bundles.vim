@@ -71,7 +71,7 @@ nnoremap <silent> [unite]y :<C-u>Unite -buffer-name=yank history/yank<CR>
 " search word in current buffer
 nnoremap <silent><expr> [unite]*  ":<C-u>UniteWithCursorWord -buffer-name=search%".bufnr('%')." line:all:wrap<CR>"
 
-call neobundle_packages#parse_bundle(g:config.bundlesPath, 'ctrlp')
+call neobundle_packages#parse_bundle('ctrlp')
 let g:ctrlp_custom_ignore = 'build\|dist\|node_modules\|.idea\|.git\|workspace\|bower_components\'
 let g:ctrlp_root_markers = ['.git']
 let g:ctrlp_max_height = 20         " maxiumum height of match window

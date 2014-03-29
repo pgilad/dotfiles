@@ -19,8 +19,7 @@ let g:config =  {
             \ }
             \}
 
-let mapleader = ","
-let maplocalleader = ","
+"map leader keys
 let g:mapleader = ","
 let g:maplocalleader = ","
 
