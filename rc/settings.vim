@@ -174,7 +174,8 @@ endif
 
 " TODO think about this. regex doesn't work
 if executable('ag')
-    set grepprg=ag\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow
+    " set grepprg=ag\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow
+    set grepprg=ag\ --line-numbers\ --skip-vcs-ignores\ --column\ --smart-case\ --follow\ --nocolor\ --nogroup
     set grepformat=%f:%l:%c:%m
 endif
 

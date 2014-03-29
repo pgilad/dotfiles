@@ -48,6 +48,8 @@ nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 " Ctrl-r: Easier search and replace
 vnoremap <c-r> "hy:%s/<c-r>h//gc<left><left><left>
 
+nnoremap <silent>\w :execute 'grep! ' . expand('<cword>')<cr>:copen<cr>
+
 " copy editorconfig from .dotfiles to current path
 nnoremap <leader>de :exec '!copy ' . expand('~/.dotfiles/.editorconfig') . ' ' . expand('%:p:h/')<cr>
 """"""""""""""""""""""""""

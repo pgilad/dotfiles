@@ -67,7 +67,6 @@ nnoremap <silent> [unite]p :<C-u>Unite -buffer-name=files -start-insert file_rec
 nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=mru -start-insert file_mru<CR>
 nnoremap <silent> [unite]t :<C-u>Unite -buffer-name=filetypes -start-insert filetype<CR>
 nnoremap <silent> [unite]y :<C-u>Unite -buffer-name=yank history/yank<CR>
-
 " search word in current buffer
 nnoremap <silent><expr> [unite]*  ":<C-u>UniteWithCursorWord -buffer-name=search%".bufnr('%')." line:all:wrap<CR>"
 
@@ -262,22 +261,6 @@ NeoBundle 'Shougo/neocomplcache.vim', {
             \ }
 NeoBundle 'terryma/vim-multiple-cursors'
 
-"""""""""""""""
-"  Searching  "
-"""""""""""""""
-if executable('ag')
-    NeoBundle 'ervandew/ag', {
-                \ 'lazy': 0
-                \ }
-    " NeoBundle 'epmatsw/ag.vim', {
-    " \ 'lazy': 0,
-    " \ }
-    " NeoBundle 'rking/ag.vim', {
-    " \ 'lazy': 0,
-    " \ }
-    let g:ackprg = "ag --nogroup --column --smart-case --follow"
-endif
-
 NeoBundle 'AndrewRadev/inline_edit.vim', {
             \ 'lazy': 1,
             \  'autoload' : {
@@ -299,17 +282,6 @@ NeoBundle 'AndrewRadev/linediff.vim', {
 vnoremap <leader>ld :Linediff<cr>
 nnoremap <leader>ld :Linediff<cr>
 nnoremap <leader>lr :LinediffReset<cr>
-
-NeoBundle 'EasyGrep', {
-            \ 'lazy': 1,
-            \  'autoload' : {
-            \	'commands': ['GrepOptions']
-            \  }
-            \ }
-let g:EasyGrepRecursive=1
-let g:EasyGrepAllOptionsInExplorer=1
-let g:EasyGrepCommand=1
-nnoremap <leader>vo :GrepOptions<cr>
 
 """""""""""""
 "  airline  "
