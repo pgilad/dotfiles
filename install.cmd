@@ -5,6 +5,7 @@
 
 call mklink "%HOME%\_vimrc" "%APP_DIR%\_vimrc"
 call mklink "%HOME%\.gitconfig" "%APP_DIR%\.gitconfig"
+call mklink "%HOME%\.zshrc" "%APP_DIR%\.zshrc"
 
 IF NOT EXIST "%APP_DIR%\vimfiles\bundle" (
 	call mkdir "%APP_DIR%\.vim\bundle"

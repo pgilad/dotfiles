@@ -23,16 +23,16 @@ let g:config =  {
 let g:mapleader = ","
 let g:maplocalleader = ","
 
-" Set extra options when running in GUI mode
-if has("gui_running")
-    set guioptions=Mic  " Don't src menu, use icon, console choices
-    " set guioptions+=a " visual select auto-copy to clipboard
-endif
-
-" Add the following files to load list (omit the .vim extension)
-" Files are loaded in order
-" Shortcut for loading - <leader>e{v=vimrc,s=settings,m=mappings,a=autocommands}
-for fileToLoad in ['bundles', 'settings', 'mappings', 'autoCommands']
+" Following files are loaded from g:config.baseDir with vim extension
+" How to quickly load the files:
+" Mapping     |  File
+" ---------------------------
+" <leader>eg  |  Gui
+" <leader>eb  |  Bundles
+" <leader>es  |  Settings
+" <leader>em  |  Mappings
+" <leader>ea  |  autoCommands
+for fileToLoad in ['gui', 'bundles', 'settings', 'mappings', 'autoCommands']
     " set filename
     let b:filePath = g:config.baseDir . fileToLoad . '.vim'
     " set file object in config

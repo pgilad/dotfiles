@@ -99,6 +99,8 @@ nnoremap <leader>nf :NERDTreeFind<cr>
 nnoremap <silent> <leader>ev :edit $MYVIMRC<cr>
 " edit mappings
 nnoremap <silent> <leader>em :exec 'edit ' . g:config.loadFiles.mappings<cr>
+" edit mappings
+nnoremap <silent> <leader>eg :exec 'edit ' . g:config.loadFiles.gui<cr>
 " edit bundles
 nnoremap <silent> <leader>eb :exec 'edit ' . g:config.loadFiles.bundles<cr>
 " edit settings
