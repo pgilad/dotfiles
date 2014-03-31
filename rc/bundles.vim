@@ -10,7 +10,6 @@ if has('vim_starting')
                     \ (exists('$http_proxy') ? 'https' : 'git'))
                     \ g:bundle_path . 'neobundle.vim'
     endif
-
 endif
 
 " add neobundle to rtp
@@ -21,6 +20,20 @@ call neobundle#rc(expand(g:config.bundlesPath))
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'pgilad/neobundle-packages'
 NeoBundle 'L9'
+
+NeoBundle 'editorconfig/editorconfig-vim'
+
+call neobundle_packages#parse_bundle('ctrlp')
+let g:ctrlp_custom_ignore = 'build\|dist\|node_modules\|.idea\|.git\|workspace\|bower_components\'
+let g:ctrlp_root_markers = ['.git']
+let g:ctrlp_max_height = 20         " maxiumum height of match window
+let g:ctrlp_switch_buffer = 'et'    " jump to a file if it's open already
+let g:ctrlp_follow_symlinks=1
+let g:ctrlp_max_files=2000
+let g:ctrlp_clear_cache_on_exit=0   " speed up by not removing clearing cache evertime
+let g:ctrlp_mruf_max = 250          " number of recently opened files
+let g:ctrlp_show_hidden = 1
+nnoremap <c-p> :CtrlP<cr>
 
 NeoBundleLazy 'Shougo/unite.vim', {
             \ 'commands' : [{ 'name' : 'Unite',
@@ -70,18 +83,6 @@ nnoremap <silent> [unite]y :<C-u>Unite -buffer-name=yank history/yank<CR>
 " search word in current buffer
 nnoremap <silent><expr> [unite]*  ":<C-u>UniteWithCursorWord -buffer-name=search%".bufnr('%')." line:all:wrap<CR>"
 
-call neobundle_packages#parse_bundle('ctrlp')
-let g:ctrlp_custom_ignore = 'build\|dist\|node_modules\|.idea\|.git\|workspace\|bower_components\'
-let g:ctrlp_root_markers = ['.git']
-let g:ctrlp_max_height = 20         " maxiumum height of match window
-let g:ctrlp_switch_buffer = 'et'    " jump to a file if it's open already
-let g:ctrlp_follow_symlinks=1
-let g:ctrlp_max_files=2000
-let g:ctrlp_clear_cache_on_exit=0   " speed up by not removing clearing cache evertime
-let g:ctrlp_mruf_max = 250          " number of recently opened files
-let g:ctrlp_show_hidden = 1
-nnoremap <c-p> :CtrlP<cr>
-
 NeoBundle 'scrooloose/nerdtree', {
             \ 'lazy': 1,
             \  'autoload' : {
@@ -102,6 +103,7 @@ let NERDTreeIgnore=['\~$', '^\.\.$', '\.swp$', '\.hg$', '\.svn$', '\.bzr', '\.gi
 NeoBundle 'scrooloose/nerdcommenter', {
             \ 'lazy': 0
             \ }
+
 " Always leave a space between the comment character and the comment
 let NERDSpaceDelims=1
 
@@ -213,7 +215,6 @@ NeoBundle 'kien/rainbow_parentheses.vim', {
             \ }
 "easy motion -current bound to <leader><leader> by default
 NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundle 'editorconfig/editorconfig-vim'
 
 " NeoBundle 'thinca/vim-fontzoom', {'gui' : 1}
 NeoBundleLazy 'tyru/open-browser.vim', {
@@ -301,7 +302,6 @@ let g:switch_custom_definitions =
             \ [
             \   ['/', '\\']
             \ ]
-
 """""""""""""""
 "  UltiSnips  "
 """""""""""""""
@@ -312,7 +312,7 @@ NeoBundle 'honza/vim-snippets', {
             \ 'lazy': 0
             \ }
 
-set runtimepath+=~/.dotfiles/
+set runtimepath+=~/.dotfiles
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
