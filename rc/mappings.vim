@@ -8,10 +8,9 @@ nnoremap <F4> :setlocal spell!<cr>
 " set rainbow parent
 nnoremap <F5> :RainbowParenthesesToggle<cr>
 " toggle paste
-map <F6> :set invpaste<CR>:set paste?<CR>
+nnoremap <F6> :set invpaste<CR>:set paste?<CR>
 " open in chrome
 nnoremap <silent> <F12>c :silent !start "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" %:p<cr>
-
 """"""""""""""""""""""""""""
 "  Regular keys unbinding  "
 """"""""""""""""""""""""""""
@@ -125,7 +124,6 @@ nnoremap <leader>ec :g/^\n$/d<cr>
 """""""""""""""
 " Switch commands.
 nnoremap <silent> <leader>sw :Switch<CR>
-
 """""""""""""""
 "  <leader>o  "
 """""""""""""""
@@ -136,7 +134,6 @@ vmap <leader>os <Plug>(openbrowser-smart-search)
 
 "open explorer in path of current buffer
 nnoremap <leader>oe :silent! !start explorer %:p:h:gs?\/?\\?<cr>
-
 """""""""""""""
 "  <leader>m  "
 """""""""""""""

@@ -17,7 +17,7 @@ else
     let b:home_dir = "~"
 endif
 
-if isdirectory(b:home_dir)
+if isdirectory(expand(b:home_dir))
     exec 'cd ' . b:home_dir
 else
     exec 'cd ' . expand('~')
