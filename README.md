@@ -13,7 +13,7 @@ My _vimrc aimed at working in Windows (7/8) and Ubuntu.
 - Highly commented
 
 I aim my vimrc to be as OO as possible. Have you ever seen a *_vimrc* like this:
-```
+```vim
 "@author Gilad Peleg
 "@license MIT 2014
 "@website https://github.com/pgilad/dotfiles
