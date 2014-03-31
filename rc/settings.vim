@@ -8,7 +8,7 @@ endfunction
 " match settings per computers I use
 if hostname() ==? "GILAD"
     set gfn=consolas:h11
-    let b:home_dir = 'c:\repositories'
+    let b:home_dir = '~/repos'
 elseif g:config.env.unix
     let b:home_dir = "~/repos"
     set gfn=Ubuntu\ Mono\ 12
