@@ -5,7 +5,7 @@ let s:neobundle_git_path='!git clone %s://github.com/Shougo/neobundle.vim.git'
 
 if has('vim_starting')
     "install neobundle if it isn't installed. requires git.
-    if !isdirectory(expand(g:config.bundlesPath . 'neobundle.vim'))
+    if !isdirectory(expand(g:config.bundlesPath . 'neobundle.vim')) && executable('git')
         execute printf(s:neobundle_git_path,
                     \ (exists('$http_proxy') ? 'https' : 'git'))
                     \ g:bundle_path . 'neobundle.vim'
@@ -302,6 +302,7 @@ let g:switch_custom_definitions =
             \ [
             \   ['/', '\\']
             \ ]
+
 """""""""""""""
 "  UltiSnips  "
 """""""""""""""
