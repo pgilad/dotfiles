@@ -4,6 +4,13 @@
 ## Overview
 My config files, mainly Vim & Zsh aimed at working in Windows (7/8) and Ubuntu.
 
+## Key Features
+- Uses [NeoBundle](https://github.com/Shougo/neobundle.vim) as package manager.
+- Uses [Unite](https://github.com/Shougo/unite.vim) as an all-around explorer.
+- Geared towards portability.
+- Equipped to handle web development (HTML/CSS/JS/Frameworks/etc...)
+- NERDTree/CtrlP for browsing (but soon enough will use Unite for that too)
+
 ## Goals
 
 - As Object-Oriented as possible
