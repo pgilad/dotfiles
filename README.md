@@ -1,8 +1,8 @@
-# dotfiles
-> My collection of configs, schemes, dotfiles, and anything to help a starting dev project
+# <img src="dotfiles.png" width="321" height="62" alt="dotfiles">
+> Full glory!
 
 ## Overview
-My _vimrc aimed at working in Windows (7/8) and Ubuntu.
+My config files, mainly Vim & Zsh aimed at working in Windows (7/8) and Ubuntu.
 
 ## Goals
 
