@@ -1,4 +1,4 @@
-# <img src="dotfiles.png" width="321" height="62" alt="dotfiles">
+# <img src="img/dotfiles.png" width="321" height="62" alt="dotfiles">
 > Full glory!
 
 ## Overview
@@ -67,10 +67,23 @@ endfor
 set secure
 ```
 
-## Install
+## Installation
 
-- git clone this repo into your `%home%` or `~` dir. (should be `~/.dotfiles`)
-- on windows: run `install.cmd`.
+- Git clone this repository into your ~/.dotfiles
+```shell
+git clone https://github.com/pgilad/dotfiles.git ~/.dotfiles
+```
+
+For windows users - this would be your %home% path (usually c:\users\username\)
+
+#### Windows
+
+- run `install.cmd`. If it fails - you will need Administrator permission for it.
+
+
+#### Ubuntu
+
+- Coming soon...
 
 ## Vim
 
