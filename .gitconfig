@@ -18,3 +18,5 @@
     co = commit
     pu = push
     fe = fetch
+    stats = !git shortlog -sn master | head
+    freq = !history | cut -c 8- | grep git | sort | uniq -c  | sort -n -r | head -n 5
