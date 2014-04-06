@@ -163,6 +163,10 @@ NeoBundleLazy 'waylan/vim-markdown-extra-preview', {'autoload':{'filetypes':['ma
 
 "Git support
 NeoBundle 'tpope/vim-fugitive'
+nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gw :Gwrite<cr>
+nnoremap <leader>gp :Git push<cr>
+
 NeoBundle 'gregsexton/gitv', {
             \ 'lazy': 1,
             \ 'depends': ['tpope/vim-fugitive'],
