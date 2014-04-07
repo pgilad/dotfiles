@@ -12,7 +12,7 @@ let g:config =  {
             \ 'loadFiles': {},
             \ 'bundlesPath': '~/vimfiles/bundle/',
             \ 'env' : {
-            \   'windows': has('win32') || has('win64'),
+            \   'windows': has('wind16') || has('win32') || has('win64'),
             \   'cygwin': has('win32unix'),
             \   'mac': has('gui_macvim'),
             \   'unix': has('unix')
