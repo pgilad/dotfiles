@@ -76,6 +76,8 @@ set fileformat=unix                           " Default fileformat
 set fileformats=unix,dos,mac                  " Automatic recognition of a new line cord.
 set viewoptions=folds,options,cursor,slash,unix
 
+set autoread
+
 set scrolloff=3                                 " Set 7 lines to the cursor - when moving vertically using j/k
 set noequalalways
 set shortmess=aTI

@@ -36,7 +36,6 @@ if has('autocmd')
 
         autocmd WinLeave * setlocal nocursorline
         autocmd WinEnter * setlocal cursorline
-        autocmd WinEnter * checktime
         " Disable paste.
         autocmd InsertLeave * if &paste | set nopaste mouse=a | echo 'nopaste' | endif |
                     \ if &l:diff | diffupdate | endif
