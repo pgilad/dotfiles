@@ -131,7 +131,9 @@ NeoBundle 'ap/vim-css-color', {
             \	'filetypes':['css','scss','sass','less','styl']
             \  }
             \ }
-NeoBundleLazy 'hail2u/vim-css3-syntax', {'autoload':{'filetypes':['css', 'less', 'scss','sass']}}
+NeoBundleLazy 'hail2u/vim-css3-syntax', {'autoload':{'filetypes':['css', 'less']}}
+NeoBundleLazy 'cakebaker/scss-syntax.vim', {'autoload':{'filetypes':['sass', 'scss']}}
+
 NeoBundleLazy 'groenewege/vim-less', {'autoload':{'filetypes':['less', 'css']}}
 NeoBundle 'csscomb/vim-csscomb', {
             \ 'lazy': 1,
