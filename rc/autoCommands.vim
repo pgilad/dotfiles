@@ -27,6 +27,11 @@ if has('autocmd')
         "pretty format json using python
         autocmd FileType json nnoremap <buffer> <leader>fj :%!python -m json.tool<cr>
 
+        " Turn on spell check for certain filetypes automatically
+        autocmd BufRead,BufNewFile *.md setlocal spell spelllang=en_us
+        autocmd BufRead,BufNewFile *.txt setlocal spell spelllang=en_us
+        autocmd FileType gitcommit setlocal spell spelllang=en_us
+
         " set filestypes
         autocmd BufRead,BufNewFile *.ajs setlocal filetype=javascript
         autocmd BufRead,BufNewFile *.jshintrc,*.bowerrc setlocal filetype=json
