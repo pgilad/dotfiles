@@ -5,30 +5,17 @@ function! s:create_dir(dir)
     endif
 endfunction
 
-" match settings per computers I use
-if hostname() ==? "GILAD"
-    set gfn=consolas:h11
-    let b:home_dir = '~/repos'
-elseif g:config.env.unix
-    let b:home_dir = "~/repos"
-    set gfn=Ubuntu\ Mono\ 12
-else
-    set gfn=consolas:h9
-    let b:home_dir = "~"
-endif
-
-if isdirectory(expand(b:home_dir))
-    exec 'cd ' . b:home_dir
-else
-    exec 'cd ' . expand('~')
-endif
-
 set lines=999
 set columns=999
 
-" maximize window if windows
+" match settings per computers I use
 if g:config.env.windows
-    simalt ~x
+    set gfn=consolas:h11
+    simalt ~x "maximize window
+elseif g:config.env.unix
+    set gfn=Ubuntu\ Mono\ 12
+else
+    set gfn=consolas:h9
 endif
 
 "set color scheme and font
@@ -41,9 +28,9 @@ set background=dark
 " let b:color = "jellybeans"
 " let b:color = "distinguished"
 " let b:color = "wombat256mod"
-" let b:color = "badwolf"
+let b:color = "badwolf"
 " let b:color = "hybrid"
-let b:color = "molokai"
+" let b:color = "molokai"
 " let b:color = "vividchalk"
 " let b:color = "Tomorrow-Night"
 
@@ -55,10 +42,10 @@ catch
 endtry
 
 if has("wildmenu")
-    set wildmenu                                    " Turn on the WiLd menu
-    set wildignorecase
-    set wildmode=longest,list,full
-    set wildignore+=*.o,*~,*.pyc
+    set wildmenu                   " Turn on the WiLd menu
+    set wildignorecase             " ignore case in wildmenu
+    set wildmode=longest,list,full " like zsh
+    set wildignore+=*.o,*.~,*.pyc
     set wildignore+=.git/*
     set wildignore+=.idea/*
     set wildignore+=bower_components/*
