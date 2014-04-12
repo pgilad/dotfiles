@@ -18,3 +18,15 @@ endsnippet
 snippet clt "Console.log a term with filename/line"
 console.log('Filename: `!v expand("%:p:t")`', 'Line: `!v line('.')`', '$1:',  ${1:term});
 endsnippet
+
+snippet module "module.exports function(){}"
+module.exports = function() {
+    $0
+};
+endsnippet
+
+snippet module "module.exports object {}"
+module.exports = {
+    $0
+};
+endsnippet
