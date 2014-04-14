@@ -8,14 +8,14 @@ My config files, mainly Vim & Zsh aimed at working in Windows (7/8) and Ubuntu.
 - Uses [NeoBundle](https://github.com/Shougo/neobundle.vim) as package manager.
 - Uses [Unite](https://github.com/Shougo/unite.vim) as an all-around explorer.
 - Geared towards portability.
-- Equipped to handle web development (HTML/CSS/JS/Frameworks/etc...)
+- Equipped to handle web development (HTML/CSS/Js/Frameworks/etc...)
 - NERDTree/CtrlP for browsing (but soon enough will use Unite for that too)
 
 ## Goals
 
 - As Object-Oriented as possible
-- As lazy-loaded as possible (due to 75+ vim packages)
-- Shell install scripts for windows and linux
+- As lazy-loaded as possible (due to 75+ Vim packages)
+- Shell install scripts for windows and Linux
 - OS agnostic
 - Highly commented
 
@@ -78,12 +78,11 @@ For windows users - this would be your %home% path (usually c:\users\username\)
 
 #### Windows
 
-- run `install.cmd`. If it fails - you will need Administrator permission for it.
-
+- run `install/install_windows.cmd`. If it fails - you will need Administrator permission for it.
 
 #### Ubuntu
 
-- Coming soon...
+- run `install/install_ubuntu.sh`
 
 ## Vim
 
