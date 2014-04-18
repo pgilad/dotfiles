@@ -133,6 +133,12 @@ NeoBundle 'ap/vim-css-color', {
             \ }
 NeoBundleLazy 'hail2u/vim-css3-syntax', {'autoload':{'filetypes':['css', 'less']}}
 NeoBundleLazy 'cakebaker/scss-syntax.vim', {'autoload':{'filetypes':['sass', 'scss']}}
+NeoBundle 'wavded/vim-stylus', {
+            \ 'lazy': 1,
+            \  'autoload' : {
+            \	'filetypes': ['stylus']
+            \  }
+            \ }
 
 NeoBundleLazy 'groenewege/vim-less', {'autoload':{'filetypes':['less', 'css']}}
 NeoBundle 'csscomb/vim-csscomb', {
@@ -307,7 +313,11 @@ NeoBundle 'AndrewRadev/switch.vim', {
             \ }
 let g:switch_custom_definitions =
             \ [
-            \   ['/', '\\']
+            \   ['/', '\\'],
+            \   {
+            \       '\v(\w+)\.(\w+)' : '\1[''\2'']',
+            \       '\v(\w+)\[[''"](\w+)[''"]\]' : '\1.\2'
+            \   }
             \ ]
 
 """""""""""""""
