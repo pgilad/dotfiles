@@ -1,15 +1,15 @@
-" Removes trailing spaces
-function! TrimWhiteSpace()
-    %s/\s\+$//e
-endfunction
-
 if has('autocmd')
+    " Removes trailing spaces
+    function! TrimWhiteSpace()
+        %s/\s\+$//e
+    endfunction
+
     " close sentence with comma or semi-colon
     augroup my_auto_commands
         autocmd!
         autocmd FileType javascript,css,json nnoremap <buffer> <silent> <leader>; :call cosco#commaOrSemiColon()<cr>
         autocmd FileType javascript,css,json inoremap <buffer> <silent> <leader>; <ESC>:call cosco#commaOrSemiColon()<cr>a
-        autocmd!
+
         " saving on lost focus
         autocmd FocusLost * :silent! wall
         autocmd FileType javascript,html,json,jade,vim autocmd FileWritePre,FileAppendPre,FilterWritePre,BufWritePre <buffer> call TrimWhiteSpace()

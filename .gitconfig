@@ -11,6 +11,7 @@
     branch=auto
     interactive=auto
     diff=auto
+	ui = 1
 [alias]
     st = status
     ch = checkout

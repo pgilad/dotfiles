@@ -1,6 +1,3 @@
-"set file type detection off
-filetype on
-filetype off
 let s:neobundle_git_path='!git clone %s://github.com/Shougo/neobundle.vim.git'
 
 if has('vim_starting')
@@ -131,31 +128,79 @@ NeoBundle 'ap/vim-css-color', {
             \	'filetypes':['css','scss','sass','less','styl']
             \  }
             \ }
-NeoBundleLazy 'hail2u/vim-css3-syntax', {'autoload':{'filetypes':['css', 'less']}}
-NeoBundleLazy 'cakebaker/scss-syntax.vim', {'autoload':{'filetypes':['sass', 'scss']}}
+NeoBundle 'hail2u/vim-css3-syntax', {
+            \ 'lazy': 1,
+            \  'autoload' : {
+            \	'filetypes':['css', 'less']
+            \  }
+            \ }
+NeoBundle 'cakebaker/scss-syntax.vim', {
+            \ 'lazy': 1,
+            \  'autoload' : {
+            \	'filetypes':['sass', 'scss']
+            \  }
+            \ }
 NeoBundle 'wavded/vim-stylus', {
             \ 'lazy': 1,
             \  'autoload' : {
             \	'filetypes': ['stylus']
             \  }
             \ }
-
-NeoBundleLazy 'groenewege/vim-less', {'autoload':{'filetypes':['less', 'css']}}
+NeoBundle 'groenewege/vim-less', {
+            \ 'lazy': 1,
+            \  'autoload' : {
+            \	'filetypes':['less', 'css']
+            \  }
+            \ }
 NeoBundle 'csscomb/vim-csscomb', {
             \ 'lazy': 1,
             \  'autoload' : {
             \	'filetypes': ['css', 'less', 'sass']
             \  }
             \ }
+NeoBundle 'othree/html5.vim', {
+            \ 'lazy': 1,
+            \  'autoload' : {
+            \	'filetypes':['html']
+            \  }
+            \ }
+NeoBundle 'digitaltoad/vim-jade', {
+            \ 'lazy': 1,
+            \  'autoload' : {
+            \	'filetypes':['jade']
+            \  }
+            \ }
+NeoBundle 'gregsexton/MatchTag', {
+            \ 'lazy': 1,
+            \  'autoload' : {
+            \	'filetypes':['html','xml']
+            \  }
+            \ }
+NeoBundle 'othree/xml.vim', {
+            \ 'lazy': 1,
+            \  'autoload' : {
+            \	'filetypes':['xml']
+            \  }
+            \ }
 
-NeoBundleLazy 'othree/html5.vim', {'autoload':{'filetypes':['html']}}
-NeoBundleLazy 'digitaltoad/vim-jade', {'autoload':{'filetypes':['jade']}}
-NeoBundleLazy 'gregsexton/MatchTag', {'autoload':{'filetypes':['html','xml']}}
-NeoBundleLazy 'othree/xml.vim', {'autoload':{'filetypes':['xml']}}
-
-NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
-NeoBundleLazy 'pangloss/vim-javascript', {'autoload':{'filetypes':['javascript']}}
-NeoBundleLazy 'maksimr/vim-jsbeautify', {'autoload':{'filetypes':['javascript', 'json', 'html']}}
+NeoBundle 'jelera/vim-javascript-syntax', {
+            \ 'lazy': 1,
+            \  'autoload' : {
+            \	'filetypes':['javascript']
+            \  }
+            \ }
+NeoBundle 'pangloss/vim-javascript', {
+            \ 'lazy': 1,
+            \  'autoload' : {
+            \	'filetypes':['javascript']
+            \  }
+            \ }
+NeoBundle 'maksimr/vim-jsbeautify', {
+            \ 'lazy': 1,
+            \  'autoload' : {
+            \	'filetypes':['javascript', 'json', 'html']
+            \  }
+            \ }
 NeoBundleLazy 'leshill/vim-json', {'autoload':{'filetypes':['javascript','json']}}
 NeoBundleLazy 'elzr/vim-json', {'autoload':{'filetypes':['json']}}
 NeoBundleLazy 'mmalecki/vim-node.js', {'autoload':{'filetypes':['javascript']}}
@@ -163,7 +208,7 @@ NeoBundleLazy 'moll/vim-node', {'autoload':{'filetypes':['javascript']}}
 NeoBundleLazy 'itspriddle/vim-jquery.git', {'autoload':{'filetypes':['javascript']}}
 NeoBundleLazy 'heavenshell/vim-jsdoc', {'autoload':{'filetypes':['javascript']}}
 
-NeoBundleLazy 'othree/javascript-libraries-syntax.vim', {'autoload':{'filetypes':['javascript','coffee','ls','typescript']}}
+NeoBundleLazy 'othree/javascript-libraries-syntax.vim', {'autoload':{'filetypes':['javascript','coffee']}}
 let g:used_javascript_libs = 'underscore,angularjs,jquery,jasmine'
 
 NeoBundleLazy 'tpope/vim-markdown', {'autoload':{'filetypes':['markdown']}}
@@ -171,7 +216,9 @@ NeoBundleLazy 'jtratner/vim-flavored-markdown.git', {'autoload':{'filetypes':['m
 NeoBundleLazy 'waylan/vim-markdown-extra-preview', {'autoload':{'filetypes':['markdown']}}
 
 "Git support
-NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-fugitive', {
+            \ 'lazy': 0
+            \ }
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>gp :Git push<cr>
@@ -186,7 +233,7 @@ NeoBundle 'gregsexton/gitv', {
 
 " NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'tpope/vim-surround'
-NeoBundle 'tpope/vim-abolish.git'
+" NeoBundle 'tpope/vim-abolish.git'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'thinca/vim-visualstar'
 
@@ -203,13 +250,10 @@ let g:wildfire_objects = {
             \}
 nmap <ENTER> <Plug>(wildfire-fuel)
 nmap <BS> <Plug>(wildfire-water)
-"""""""""""""""""
-"  buffergator  "
-"""""""""""""""""
-NeoBundle 'jeetsukumaran/vim-buffergator'
-let g:buffergator_display_regime = 'bufname'  " display only buffer name by default
-let g:buffergator_viewport_split_policy = 'B' " since nerdtree opens on left
-let g:buffergator_sort_regime = 'mru'         " who cares about buffer number. sort by most recently used
+" NeoBundle 'jeetsukumaran/vim-buffergator'
+" let g:buffergator_display_regime = 'bufname'  " display only buffer name by default
+" let g:buffergator_viewport_split_policy = 'B' " since nerdtree opens on left
+" let g:buffergator_sort_regime = 'mru'         " who cares about buffer number. sort by most recently used
 
 NeoBundle 'sjl/gundo.vim', {
             \ 'lazy': 1,
@@ -227,7 +271,7 @@ NeoBundle 'kien/rainbow_parentheses.vim', {
             \  }
             \ }
 "easy motion -current bound to <leader><leader> by default
-NeoBundle 'Lokaltog/vim-easymotion'
+" NeoBundle 'Lokaltog/vim-easymotion'
 
 " NeoBundle 'thinca/vim-fontzoom', {'gui' : 1}
 NeoBundleLazy 'tyru/open-browser.vim', {
@@ -236,15 +280,15 @@ NeoBundleLazy 'tyru/open-browser.vim', {
             \   'mappings': '<Plug>(openbrowser-'
             \ }
 
-let g:yankstack_map_keys = 0
-NeoBundle 'maxbrunsfeld/vim-yankstack', {
-            \ 'lazy': 0
-            \ }
+" let g:yankstack_map_keys = 0
+" NeoBundle 'maxbrunsfeld/vim-yankstack', {
+            " \ 'lazy': 0
+            " \ }
 
-nmap <leader>p <Plug>yankstack_substitute_older_paste
-imap <leader>p <Plug>yankstack_substitute_older_paste
-nmap <leader>P <Plug>yankstack_substitute_newer_paste
-imap <leader>P <Plug>yankstack_substitute_newer_paste
+" nmap <leader>p <Plug>yankstack_substitute_older_paste
+" imap <leader>p <Plug>yankstack_substitute_older_paste
+" nmap <leader>P <Plug>yankstack_substitute_newer_paste
+" imap <leader>P <Plug>yankstack_substitute_newer_paste
 
 NeoBundle 'godlygeek/tabular', {
             \ 'lazy': 1,
@@ -329,7 +373,6 @@ NeoBundle 'SirVer/ultisnips', {
 NeoBundle 'honza/vim-snippets', {
             \ 'lazy': 0
             \ }
-
 set runtimepath+=~/.dotfiles
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
@@ -361,7 +404,12 @@ NeoBundle 'einars/js-beautify', {
             \	'filetypes' : ['html', 'js', 'css']
             \  }
             \ }
-NeoBundle 'scrooloose/syntastic'
+NeoBundle 'scrooloose/syntastic', {
+            \ 'lazy': 1,
+            \  'autoload' : {
+            \	'filetypes': ['javascript', 'json', 'less', 'css', 'jade', 'html']
+            \  }
+            \ }
 let g:syntastic_mode_map = { 'mode': 'passive',
             \ 'active_filetypes': ['javascript', 'json', 'less', 'css', 'jade', 'html'],
             \ 'passive_filetypes': [] }
@@ -374,20 +422,11 @@ NeoBundle 'lfilho/cosco.vim', {
             \	'filetypes': ['json', 'javascript']
             \  }
             \ }
-" close sentence with comma or semi-colon
-augroup appendComma
-    autocmd!
-    autocmd FileType javascript,css,json nnoremap <buffer> <silent> <leader>; :call cosco#commaOrSemiColon()<cr>
-    autocmd FileType javascript,css,json inoremap <buffer> <silent> <leader>; <ESC>:call cosco#commaOrSemiColon()<cr>a
-augroup END
-
-NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'Lokaltog/vim-distinguished'
-NeoBundle 'vim-scripts/wombat256.vim'
-NeoBundle 'chriskempson/vim-tomorrow-theme'
+" NeoBundle 'nanotech/jellybeans.vim'
+" NeoBundle 'Lokaltog/vim-distinguished'
+" NeoBundle 'vim-scripts/wombat256.vim'
+" NeoBundle 'chriskempson/vim-tomorrow-theme'
 NeoBundle 'sjl/badwolf'
-NeoBundle 'w0ng/vim-hybrid'
-NeoBundle 'tomasr/molokai'
-NeoBundle 'tpope/vim-vividchalk'
-
-NeoBundleCheck
+" NeoBundle 'w0ng/vim-hybrid'
+" NeoBundle 'tomasr/molokai'
+" NeoBundle 'tpope/vim-vividchalk'

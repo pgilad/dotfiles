@@ -1,12 +1,10 @@
 function! s:create_dir(dir)
     let make_dir=expand(a:dir)
-    if !isdirectory(make_dir)
-        call mkdir(make_dir, 'p')
+    if isdirectory(make_dir)
+        return
     endif
+    call mkdir(make_dir, 'p')
 endfunction
-
-set lines=999
-set columns=999
 
 " match settings per computers I use
 if g:config.env.windows
@@ -33,13 +31,15 @@ let b:color = "badwolf"
 " let b:color = "molokai"
 " let b:color = "vividchalk"
 " let b:color = "Tomorrow-Night"
+" let b:color = 'desert'
+color badwolf
 
-try
-    exec "color " . b:color
-catch
-    echom 'Could not load color scheme ' . b:color
-    color desert
-endtry
+" try
+    " exec "color " . b:color
+" catch
+    " echom 'Could not load color scheme ' . b:color
+    " color desert
+" endtry
 
 if has("wildmenu")
     set wildmenu                   " Turn on the WiLd menu
@@ -62,9 +62,7 @@ endif
 set fileformat=unix                           " Default fileformat
 set fileformats=unix,dos,mac                  " Automatic recognition of a new line cord.
 set viewoptions=folds,options,cursor,slash,unix
-
 set autoread
-
 set scrolloff=3                                 " Set 7 lines to the cursor - when moving vertically using j/k
 set noequalalways
 set shortmess=aTI
@@ -97,7 +95,6 @@ set noerrorbells                              " No annoying sound on errors
 set novisualbell                              " no annoying flashes"
 set t_vb=                                     " disable visual bell
 set tm=500
-
 set number                                    " show line number
 set relativenumber                            " line numbers are relative
 set cursorline                                " highlight where cursor is
@@ -126,6 +123,19 @@ scriptencoding utf-8
 set title                                     " show filename in windows title
 set nostartofline                             " Don't reset cursor to start of line when moving around.
 
+set expandtab     " Use spaces instead of tabs
+set smarttab
+set nojoinspaces  " don't add multiple spaces on line joins
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
+set shiftround    " < and > round to nearest multiple of tabstop
+set linebreak     " Linebreak on 500 characters
+set textwidth=500 " max width of text inserted
+set noautoindent
+set smartindent
+set laststatus=2  " Always show the status line
+
 " share clipboard with os
 if has('unnamedplus')
     set clipboard=unnamedplus " gui gvim unix/mac
@@ -142,13 +152,6 @@ endif
 let g:loaded_netrwPlugin = 1
 let g:loaded_matchparen = 0
 
-if has('folding')
-    set foldmethod=indent " fold based on indent
-    set foldnestmax=7     " deepest fold is 3 levels
-    set foldlevelstart=0
-    set nofoldenable        " dont fold by default
-endif
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -156,6 +159,13 @@ set nobackup      " no backups of files
 set nowritebackup
 set noswapfile    " no swap files
 set backupdir-=.
+
+if has('folding')
+    set foldmethod=indent " fold based on indent
+    set foldnestmax=7     " deepest fold is 3 levels
+    set foldlevelstart=0
+    set nofoldenable        " dont fold by default
+endif
 
 if has('persistent_undo')
     call s:create_dir("~/.cache/undo/")
@@ -170,22 +180,12 @@ if executable('ag')
     set grepformat=%f:%l:%c:%m
 endif
 
-set expandtab     " Use spaces instead of tabs
-set smarttab
-set nojoinspaces  " don't add multiple spaces on line joins
-set shiftwidth=4
-set tabstop=4
-set softtabstop=4
-set shiftround    " < and > round to nearest multiple of tabstop
-set linebreak     " Linebreak on 500 characters
-set textwidth=500 " max width of text inserted
-set noautoindent
-set smartindent
-set laststatus=2  " Always show the status line
-
 if has('spell')
     call s:create_dir("~/vimfiles/spell/")
     set spelllang=en_us
     set spellfile=~/vimfiles/spell/en.utf-8.add
     set nospell
 endif
+
+set lines=999
+set columns=999
