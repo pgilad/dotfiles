@@ -10,35 +10,14 @@ endfunction
 if g:config.env.windows
     set gfn=consolas:h11
     simalt ~x "maximize window
+    language message en
+    set shellslash
 elseif g:config.env.unix
     set gfn=Ubuntu\ Mono\ 12
+    language message C
 else
     set gfn=consolas:h9
 endif
-
-" set color scheme and font
-if has('syntax')
-     syntax on
-     filetype plugin indent on
-endif
-
-set background=dark
-" let b:color = "jellybeans"
-" let b:color = "distinguished"
-" let b:color = "wombat256mod"
-let b:color = "badwolf"
-" let b:color = "hybrid"
-" let b:color = "molokai"
-" let b:color = "vividchalk"
-" let b:color = "Tomorrow-Night"
-" let b:color = 'desert'
-
-try
-    exec "color " . b:color
-catch
-    echom 'Could not load color scheme ' . b:color
-    color desert
-endtry
 
 if has("wildmenu")
     set wildmenu                   " Turn on the WiLd menu
@@ -54,19 +33,20 @@ if has("wildmenu")
     set wildignore+=tmp/*
 endif
 
-if g:config.env.windows
-    set shellslash
-endif
+set fileignorecase
 
 set fileformat=unix                           " Default fileformat
 set fileformats=unix,dos,mac                  " Automatic recognition of a new line cord.
 set viewoptions=folds,options,cursor,slash,unix
 set autoread
+set autowrite                                 " auto write when losing focus
+set cryptmethod=blowfish
 set scrolloff=3                                 " Set 7 lines to the cursor - when moving vertically using j/k
 set noequalalways
 set shortmess=aTI
 set showbreak=>\
 set suffixesadd+=.js                            " list of suffixes to add when using gf
+set suffixesadd+=.json                            " list of suffixes to add when using gf
 set ruler                                       " Always show current position
 set cmdheight=1                                 " Height of the command bar
 set showcmd                                     " show partial commands
@@ -82,16 +62,17 @@ set infercase                                   " ignore case in autocomplete
 set nohlsearch                                  " highlight search
 set incsearch                                   " increment search
 set lazyredraw                                  " Don't redraw while executing macros (good performance config)
-set matchtime=3
 set synmaxcol=400
 set notimeout
 set ttimeout
 set ttimeoutlen=10
 set magic                                     " For regular expressions turn magic on
 set showmatch                                 " Show matching brackets when text indicator is over them
+set cpoptions-=m
+set matchtime=3
 set matchpairs+=<:>
 set noerrorbells                              " No annoying sound on errors
-set novisualbell                              " no annoying flashes"
+set novisualbell                              " no annoying flashes                                              "
 set t_vb=                                     " disable visual bell
 set tm=500
 set number                                    " show line number
@@ -104,6 +85,7 @@ set cpoptions+=$                              " when changing - mark block end w
 set virtualedit=block
 set listchars=tab:>-,trail:~,nbsp:.,extends:> " highlight problematic chars
 set list                                      " show problematic chars
+set report=10                                 " min number of lines changed to report change
 
 set history=700                               " Sets how many lines of history VIM has to remember
 set nomodeline                                " security issue
@@ -111,29 +93,35 @@ set splitright                                " Always splits to the right
 set splitbelow                                " and below
 set t_Co=256                                  " 256bit terminal
 
+set helplang=en
+set keywordprg=:help
+set isfname-==                                " filenames do not contain =
+
 if has('mouse')
     set mouse=a                               " enable mouse
+    set mousemodel=extend
     set mousehide                             " hide mouse cursor while typing
+    set nomousefocus                          " don't focus window when mouse pointer is moved
 endif
-set autowrite                                 " auto write when losing focus
 
 set encoding=utf-8                            " Set utf8 as standard encoding and en_US as the standard language
 scriptencoding utf-8
 set title                                     " show filename in windows title
+set titlelen=95
 set nostartofline                             " Don't reset cursor to start of line when moving around.
 
-set expandtab     " Use spaces instead of tabs
+set expandtab                                 " Use spaces instead of tabs
 set smarttab
-set nojoinspaces  " don't add multiple spaces on line joins
+set nojoinspaces                              " don't add multiple spaces on line joins
 set shiftwidth=4
 set tabstop=4
 set softtabstop=4
-set shiftround    " < and > round to nearest multiple of tabstop
-set linebreak     " Linebreak on 500 characters
-set textwidth=500 " max width of text inserted
+set shiftround                                " < and > round to nearest multiple of tabstop
+set linebreak                                 " Linebreak on 500 characters
+set textwidth=500                             " max width of text inserted
 set noautoindent
 set smartindent
-set laststatus=2  " Always show the status line
+set laststatus=2                              " Always show the status line
 
 " share clipboard with os
 if has('unnamedplus')
@@ -180,11 +168,35 @@ if executable('ag')
 endif
 
 if has('spell')
-    call s:create_dir("~/vimfiles/spell/")
-    set spelllang=en_us
-    set spellfile=~/vimfiles/spell/en.utf-8.add
+    call s:create_dir("~/.dotfiles/vim/spell/")
     set nospell
+    set spellfile=~/.dotfiles/vim/spell/en.utf-8.add
+    set spelllang=en_us
 endif
 
 set lines=999
 set columns=999
+
+" set color scheme and font
+if has('syntax')
+     filetype plugin indent on
+     syntax enable
+endif
+
+set background=dark
+" let b:color = "jellybeans"
+" let b:color = "distinguished"
+" let b:color = "wombat256mod"
+let b:color = "badwolf"
+" let b:color = "hybrid"
+" let b:color = "molokai"
+" let b:color = "vividchalk"
+" let b:color = "Tomorrow-Night"
+" let b:color = 'desert'
+
+try
+    exec "color " . b:color
+catch
+    echom 'Could not load color scheme ' . b:color
+    color desert
+endtry

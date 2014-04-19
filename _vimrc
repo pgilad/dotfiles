@@ -23,7 +23,14 @@ let g:config =  {
 let g:mapleader = ","
 let g:maplocalleader = ","
 
-" Following files are loaded from g:config.baseDir with vim extension
+set guioptions=Mc
+" set guioptions+=a " visual select auto-copy to clipboard
+
+if has('syntax')
+    syntax off
+    filetype plugin indent off
+endif
+
 " How to quickly load the files:
 " Mapping     |  File
 " ---------------------------
@@ -32,7 +39,7 @@ let g:maplocalleader = ","
 " <leader>es  |  Settings
 " <leader>em  |  Mappings
 " <leader>ea  |  autoCommands
-for fileToLoad in ['gui', 'bundles', 'settings', 'mappings', 'autoCommands']
+for fileToLoad in ['bundles', 'settings', 'mappings', 'autoCommands']
     " set filename
     let b:filePath = g:config.baseDir . fileToLoad . '.vim'
     " set file object in config
