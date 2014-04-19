@@ -38,20 +38,29 @@ NeoBundleLazy 'Shougo/unite.vim', {
             \                 'UniteWithCursorWord', 'UniteWithInput']
             \ }
 NeoBundle 'osyo-manga/unite-filetype', {
-            \ 'lazy': 0,
-            \'depends': ['Shougu/unite.vim']
+            \ 'lazy': 1,
+            \'depends': ['Shougu/unite.vim'],
+            \ 'autoload': {
+            \ 'unite_sources': ['filetype']
+            \   }
             \ }
 NeoBundle 'Shougo/unite-outline', {
-            \ 'lazy': 0,
-            \'depends': ['Shougu/unite.vim']
+            \ 'lazy': 1,
+            \ 'depends': ['Shougu/unite.vim'],
+            \ 'autoload': {
+            \ 'unite_sources': ['outline']
+            \   }
             \ }
 NeoBundle 'Shougo/unite-mru', {
             \ 'lazy': 0,
             \'depends': ['Shougu/unite.vim']
             \ }
 NeoBundle 'ujihisa/unite-colorscheme', {
-            \ 'lazy': 0,
-            \'depends': ['Shougu/unite.vim']
+            \ 'lazy': 1,
+            \'depends': ['Shougu/unite.vim'],
+            \ 'autoload': {
+            \ 'unite_sources': ['colorscheme']
+            \   }
             \ }
 let g:unite_enable_start_insert = 1
 let g:unite_split_rule = "botright"
@@ -113,7 +122,8 @@ let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'qf']
 NeoBundle 'Shougo/junkfile.vim', {
             \ 'lazy': 1,
             \  'autoload' : {
-            \	'commands': 'JunkfileOpen'
+            \	'commands': 'JunkfileOpen',
+            \   'unite_sources': ['junkfile', 'junkfile/new']
             \  }
             \ }
 NeoBundle 'kchmck/vim-coffee-script', {
@@ -282,8 +292,8 @@ NeoBundleLazy 'tyru/open-browser.vim', {
 
 " let g:yankstack_map_keys = 0
 " NeoBundle 'maxbrunsfeld/vim-yankstack', {
-            " \ 'lazy': 0
-            " \ }
+" \ 'lazy': 0
+" \ }
 
 " nmap <leader>p <Plug>yankstack_substitute_older_paste
 " imap <leader>p <Plug>yankstack_substitute_older_paste
@@ -330,7 +340,15 @@ xnoremap <leader>ie :InlineEdit<cr>
 inoremap <leader>ie <esc>:InlineEdit<cr>a
 
 "gS to split, gJ to join
-NeoBundle 'AndrewRadev/splitjoin.vim'
+NeoBundle 'AndrewRadev/splitjoin.vim', {
+            \ 'lazy': 1,
+            \  'autoload' : {
+            \   'commands': ['SplitjoinSplit', 'SplitjoinJoin']
+            \  }
+            \ }
+nnoremap <leader>sj :SplitjoinJoin<cr>
+nnoremap <leader>ss :SplitjoinSplit<cr>
+
 NeoBundle 'AndrewRadev/linediff.vim', {
             \ 'lazy': 1,
             \  'autoload' : {
@@ -367,17 +385,24 @@ let g:switch_custom_definitions =
 """""""""""""""
 "  UltiSnips  "
 """""""""""""""
-NeoBundle 'SirVer/ultisnips', {
-            \ 'lazy': 0
-            \ }
 NeoBundle 'honza/vim-snippets', {
-            \ 'lazy': 0
+            \ 'lazy': 0,
+            \ 'autoload' : {
+            \    'on_source': ['ultisnips']
+            \  }
+            \ }
+NeoBundle 'SirVer/ultisnips', {
+            \ 'depends': ['vim-snippets'],
+            \ 'lazy': 0,
+            \ 'autoload' : {
+            \    'insert': 1
+            \  }
             \ }
 set runtimepath+=~/.dotfiles
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-let g:UltiSnipsSnippetsDir=expand('~/.dotfiles/mysnippets/')
+let g:UltiSnipsSnippetsDir='~/.dotfiles/mysnippets'
 let g:UltiSnipsSnippetDirectories=['UltiSnips', 'mysnippets']
 
 NeoBundle 'kana/vim-textobj-user'          " required plugin

@@ -1,4 +1,3 @@
-
 """"""""""""""""""""""
 "  F-# keys mapping  "
 """"""""""""""""""""""
@@ -24,6 +23,9 @@ inoremap jj <ESC>
 " better line navigation
 nnoremap j gj
 nnoremap k gk
+
+" quit everything
+nnoremap Q :<c-u>qa<cr>
 
 " change cursor position in insert mode
 inoremap <c-h> <left>
@@ -139,8 +141,8 @@ nnoremap <leader>oe :silent! !start explorer %:p:h:gs?\/?\\?<cr>
 "markdown preview
 nnoremap <leader>mp :Me<cr>
 " break chaining on .then
-nnoremap <leader>m<cr> /\%<c-r>=line('.')<cr>l\.then:nohlsearch<cr>i	l
+nnoremap <leader>m<cr> /\%<c-r>=line('.')<cr>l\.then:nohlsearch<cr>i l
 " add require('gulp-.. on current word
-nnoremap <leader>mg mjyiwgg0/requireovar * = require('gulp-*')A;`j:nohlsearch<cr>
+nnoremap <leader>mg mjyiwgg0/require ovar * = require('gulp-*')A;`j:nohlsearch<cr>
 " add require(''); .. on current word
-nnoremap <leader>mr mjyiwgg0/requireovar * = require('*')A;`j:nohlsearch<cr>
+nnoremap <leader>mr mjyiwgg0/require ovar * = require('*')A;`j:nohlsearch<cr>
