@@ -16,10 +16,10 @@ else
     set gfn=consolas:h9
 endif
 
-"set color scheme and font
+" set color scheme and font
 if has('syntax')
-    syntax on
-    filetype plugin indent on
+     syntax on
+     filetype plugin indent on
 endif
 
 set background=dark
@@ -32,14 +32,13 @@ let b:color = "badwolf"
 " let b:color = "vividchalk"
 " let b:color = "Tomorrow-Night"
 " let b:color = 'desert'
-color badwolf
 
-" try
-    " exec "color " . b:color
-" catch
-    " echom 'Could not load color scheme ' . b:color
-    " color desert
-" endtry
+try
+    exec "color " . b:color
+catch
+    echom 'Could not load color scheme ' . b:color
+    color desert
+endtry
 
 if has("wildmenu")
     set wildmenu                   " Turn on the WiLd menu
