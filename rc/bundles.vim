@@ -382,22 +382,6 @@ let g:switch_custom_definitions =
             \   }
             \ ]
 
-"""""""""""""""
-"  UltiSnips  "
-"""""""""""""""
-NeoBundle 'honza/vim-snippets', {
-            \ 'lazy': 0,
-            \ 'autoload' : {
-            \    'on_source': ['ultisnips']
-            \  }
-            \ }
-NeoBundle 'SirVer/ultisnips', {
-            \ 'depends': ['vim-snippets'],
-            \ 'lazy': 0,
-            \ 'autoload' : {
-            \    'insert': 1
-            \  }
-            \ }
 set runtimepath+=~/.dotfiles
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
@@ -405,6 +389,18 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsSnippetsDir='~/.dotfiles/mysnippets'
 let g:UltiSnipsSnippetDirectories=['UltiSnips', 'mysnippets']
 
+NeoBundle 'honza/vim-snippets', {
+            \ 'lazy': 1,
+            \ 'autoload': {
+            \ 'on_source': ['ultisnips']
+            \ }
+            \ }
+NeoBundle 'SirVer/ultisnips', {
+            \ 'lazy': 1,
+            \ 'autoload' : {
+            \    'insert': 1
+            \  }
+            \ }
 NeoBundle 'kana/vim-textobj-user'          " required plugin
 NeoBundle 'kana/vim-textobj-line'          " al, il
 NeoBundle 'kana/vim-textobj-indent'        " ai, ii, aI, iI
