@@ -1,6 +1,8 @@
 let s:neobundle_git_path='!git clone %s://github.com/Shougo/neobundle.vim.git'
 
 if has('vim_starting')
+    " add neobundle to rtp
+    execute 'set rtp ^='. fnameescape(g:config.bundlesPath . 'neobundle.vim/')
     "install neobundle if it isn't installed. requires git.
     if !isdirectory(expand(g:config.bundlesPath . 'neobundle.vim')) && executable('git')
         execute printf(s:neobundle_git_path,
@@ -9,10 +11,7 @@ if has('vim_starting')
     endif
 endif
 
-" add neobundle to rtp
-execute 'set rtp ^='. fnameescape(g:config.bundlesPath . 'neobundle.vim/')
 call neobundle#rc(expand(g:config.bundlesPath))
-
 "My Bundles
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'pgilad/neobundle-packages'
@@ -390,17 +389,21 @@ let g:UltiSnipsSnippetsDir='~/.dotfiles/mysnippets'
 let g:UltiSnipsSnippetDirectories=['UltiSnips', 'mysnippets']
 
 NeoBundle 'honza/vim-snippets', {
-            \ 'lazy': 1,
-            \ 'autoload': {
-            \ 'on_source': ['ultisnips']
-            \ }
-            \ }
+            \ 'lazy': 0
+            \}
 NeoBundle 'SirVer/ultisnips', {
-            \ 'lazy': 1,
+            \ 'lazy': 0,
             \ 'autoload' : {
             \    'insert': 1
             \  }
             \ }
+" if neobundle#tap('ultisnips')
+    " function! neobundle#hooks.on_source(bundle)
+        " silent! call UltiSnips#FileTypeChanged()
+    " endfunction
+    " call neobundle#untap()
+" endif
+
 NeoBundle 'kana/vim-textobj-user'          " required plugin
 NeoBundle 'kana/vim-textobj-line'          " al, il
 NeoBundle 'kana/vim-textobj-indent'        " ai, ii, aI, iI
