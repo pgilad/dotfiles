@@ -218,7 +218,7 @@ NeoBundleLazy 'itspriddle/vim-jquery.git', {'autoload':{'filetypes':['javascript
 NeoBundleLazy 'heavenshell/vim-jsdoc', {'autoload':{'filetypes':['javascript']}}
 
 NeoBundleLazy 'othree/javascript-libraries-syntax.vim', {'autoload':{'filetypes':['javascript','coffee']}}
-let g:used_javascript_libs = 'underscore,angularjs,jquery,jasmine'
+let g:used_javascript_libs = 'underscore,angularjs,jquery,jasmine,angularui'
 
 NeoBundleLazy 'tpope/vim-markdown', {'autoload':{'filetypes':['markdown']}}
 NeoBundleLazy 'jtratner/vim-flavored-markdown.git', {'autoload':{'filetypes':['markdown']}}
@@ -389,20 +389,23 @@ let g:UltiSnipsSnippetsDir='~/.dotfiles/mysnippets'
 let g:UltiSnipsSnippetDirectories=['UltiSnips', 'mysnippets']
 
 NeoBundle 'honza/vim-snippets', {
-            \ 'lazy': 0
+            \ 'lazy': 1,
+            \ 'autoload': {
+            \ 'on_source': ['ultisnips']
+            \}
             \}
 NeoBundle 'SirVer/ultisnips', {
-            \ 'lazy': 0,
+            \ 'lazy': 1,
             \ 'autoload' : {
             \    'insert': 1
             \  }
             \ }
-" if neobundle#tap('ultisnips')
-    " function! neobundle#hooks.on_source(bundle)
-        " silent! call UltiSnips#FileTypeChanged()
-    " endfunction
-    " call neobundle#untap()
-" endif
+if neobundle#tap('ultisnips')
+    function! neobundle#hooks.on_source(bundle)
+        silent! call UltiSnips#FileTypeChanged()
+    endfunction
+    call neobundle#untap()
+endif
 
 NeoBundle 'kana/vim-textobj-user'          " required plugin
 NeoBundle 'kana/vim-textobj-line'          " al, il
@@ -450,7 +453,7 @@ NeoBundle 'lfilho/cosco.vim', {
 " NeoBundle 'Lokaltog/vim-distinguished'
 " NeoBundle 'vim-scripts/wombat256.vim'
 " NeoBundle 'chriskempson/vim-tomorrow-theme'
-NeoBundle 'sjl/badwolf'
+" NeoBundle 'sjl/badwolf'
 " NeoBundle 'w0ng/vim-hybrid'
-" NeoBundle 'tomasr/molokai'
+NeoBundle 'tomasr/molokai'
 " NeoBundle 'tpope/vim-vividchalk'
