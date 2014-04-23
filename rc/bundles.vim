@@ -232,16 +232,16 @@ NeoBundle 'tpope/vim-fugitive', {
             \               'Ggrep', 'Glog']
             \}
             \ }
-nnoremap <leader>gs :Gstatus<cr>
-nnoremap <leader>gw :Gwrite<cr>
-nnoremap <leader>gp :silent! Git push<cr>
-
 if neobundle#tap('vim-fugitive')
     function! neobundle#hooks.on_post_source(bundle)
         call fugitive#detect(expand('#:p'))
     endfunction
     call neobundle#untap()
 endif
+
+nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gw :Gwrite<cr>
+nnoremap <leader>gp :silent! Git push<cr>
 
 NeoBundle 'gregsexton/gitv', {
             \ 'lazy': 1,
@@ -294,10 +294,13 @@ NeoBundle 'kien/rainbow_parentheses.vim', {
 " NeoBundle 'Lokaltog/vim-easymotion'
 
 " NeoBundle 'thinca/vim-fontzoom', {'gui' : 1}
-NeoBundleLazy 'tyru/open-browser.vim', {
+NeoBundle 'tyru/open-browser.vim', {
+            \ 'lazy': 1,
+            \'autoload': {
             \   'commands' : ['OpenBrowserSearch', 'OpenBrowser'],
             \   'functions' : 'openbrowser#open',
             \   'mappings': '<Plug>(openbrowser-'
+            \}
             \ }
 
 " let g:yankstack_map_keys = 0
@@ -392,6 +395,7 @@ let g:switch_custom_definitions =
             \   }
             \ ]
 
+"set to where my /mysnippets directory exists
 set runtimepath+=~/.dotfiles
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
