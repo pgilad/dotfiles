@@ -228,7 +228,8 @@ NeoBundleLazy 'waylan/vim-markdown-extra-preview', {'autoload':{'filetypes':['ma
 NeoBundle 'tpope/vim-fugitive', {
             \ 'lazy': 1,
             \ 'autoload': {
-            \ 'commands': ['Gstatus', 'Gwrite', 'Git']
+            \ 'commands': ['Gstatus', 'Gcommit', 'Gwrite', 'Git', 'Git!', 'Gcd', 'Glcd',
+            \               'Ggrep', 'Glog']
             \}
             \ }
 nnoremap <leader>gs :Gstatus<cr>
