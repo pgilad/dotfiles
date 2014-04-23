@@ -91,6 +91,7 @@ nnoremap <silent><expr> [unite]*  ":<C-u>UniteWithCursorWord -buffer-name=search
 NeoBundle 'scrooloose/nerdtree', {
             \ 'lazy': 1,
             \  'autoload' : {
+            \ 'explorer' : 1,
             \	'commands': ['NERDTree', 'NERDTreeToggle', 'NERDTreeFind',
             \               'NERDTreeClose', 'NERDTreeCWD', 'NERDTreeFromBookmark', 'NERDTreeMirror']
             \  }
@@ -105,12 +106,22 @@ let NERDChristmasTree=1
 let NERDTreeAutoDeleteBuffer=1 "auto delete buffers on nerdtree delete
 let NERDTreeIgnore=['\~$', '^\.\.$', '\.swp$', '\.hg$', '\.svn$', '\.bzr', '\.git$']
 
-NeoBundle 'scrooloose/nerdcommenter', {
-            \ 'lazy': 0
-            \ }
-
-" Always leave a space between the comment character and the comment
 let NERDSpaceDelims=1
+let NERDCreateDefaultMappings = 1
+let NERDMenuMode=0
+NeoBundle 'scrooloose/nerdcommenter', {
+            \ 'lazy': 0,
+            \ 'autoload': {
+            \   'mappings' : ['<Plug>NERDCommenter']
+            \}
+            \ }
+"if neobundle#tap('nerdcommenter')
+"    function! neobundle#tapped.hooks.on_post_source(bundle)
+"        call fugitive#detect(expand('#:p'))
+"    endfunction
+"    call neobundle#untap()
+"endif
+"nmap <leader>cc <plug>NERDCommenterComment
 
 NeoBundle 'nathanaelkane/vim-indent-guides', {
             \ 'lazy': 0
@@ -121,7 +132,7 @@ let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'qf']
 NeoBundle 'Shougo/junkfile.vim', {
             \ 'lazy': 1,
             \  'autoload' : {
-            \	'commands': 'JunkfileOpen',
+            \   'commands': 'JunkfileOpen',
             \   'unite_sources': ['junkfile', 'junkfile/new']
             \  }
             \ }
@@ -134,25 +145,25 @@ NeoBundle 'kchmck/vim-coffee-script', {
 NeoBundle 'ap/vim-css-color', {
             \ 'lazy': 1,
             \  'autoload' : {
-            \	'filetypes':['css','scss','sass','less','styl']
+            \   'filetypes':['css','scss','sass','less','styl']
             \  }
             \ }
 NeoBundle 'hail2u/vim-css3-syntax', {
             \ 'lazy': 1,
             \  'autoload' : {
-            \	'filetypes':['css', 'less']
+            \   'filetypes':['css', 'less']
             \  }
             \ }
 NeoBundle 'cakebaker/scss-syntax.vim', {
             \ 'lazy': 1,
             \  'autoload' : {
-            \	'filetypes':['sass', 'scss']
+            \   'filetypes':['sass', 'scss']
             \  }
             \ }
 NeoBundle 'wavded/vim-stylus', {
             \ 'lazy': 1,
             \  'autoload' : {
-            \	'filetypes': ['stylus']
+            \   'filetypes': ['stylus']
             \  }
             \ }
 NeoBundle 'groenewege/vim-less', {
@@ -191,7 +202,6 @@ NeoBundle 'othree/xml.vim', {
             \	'filetypes':['xml']
             \  }
             \ }
-
 NeoBundle 'jelera/vim-javascript-syntax', {
             \ 'lazy': 1,
             \  'autoload' : {
@@ -228,12 +238,13 @@ NeoBundleLazy 'waylan/vim-markdown-extra-preview', {'autoload':{'filetypes':['ma
 NeoBundle 'tpope/vim-fugitive', {
             \ 'lazy': 1,
             \ 'autoload': {
+            \ 'augroup' : 'fugitive',
             \ 'commands': ['Gstatus', 'Gcommit', 'Gwrite', 'Git', 'Git!', 'Gcd', 'Glcd',
             \               'Ggrep', 'Glog']
             \}
             \ }
 if neobundle#tap('vim-fugitive')
-    function! neobundle#hooks.on_post_source(bundle)
+    function! neobundle#tapped.hooks.on_post_source(bundle)
         call fugitive#detect(expand('#:p'))
     endfunction
     call neobundle#untap()
@@ -250,7 +261,6 @@ NeoBundle 'gregsexton/gitv', {
             \   'commands': ['Gitv']
             \  }
             \ }
-
 " NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'tpope/vim-surround'
 " NeoBundle 'tpope/vim-abolish.git'
@@ -263,18 +273,12 @@ NeoBundle 'gcmt/wildfire.vim', {
             \	'mappings' : '<Plug>(wildfire-'
             \  }
             \ }
-"* marks the file type
 let g:wildfire_objects = {
             \ '*' : ["i'", 'i"', "a'", 'a"', "i)", "i]", "i}", "ip"],
             \ 'html': ["it", "at"]
             \}
 nmap <ENTER> <Plug>(wildfire-fuel)
 nmap <BS> <Plug>(wildfire-water)
-" NeoBundle 'jeetsukumaran/vim-buffergator'
-" let g:buffergator_display_regime = 'bufname'  " display only buffer name by default
-" let g:buffergator_viewport_split_policy = 'B' " since nerdtree opens on left
-" let g:buffergator_sort_regime = 'mru'         " who cares about buffer number. sort by most recently used
-
 NeoBundle 'sjl/gundo.vim', {
             \ 'lazy': 1,
             \  'autoload' : {
@@ -302,17 +306,6 @@ NeoBundle 'tyru/open-browser.vim', {
             \   'mappings': '<Plug>(openbrowser-'
             \}
             \ }
-
-" let g:yankstack_map_keys = 0
-" NeoBundle 'maxbrunsfeld/vim-yankstack', {
-" \ 'lazy': 0
-" \ }
-
-" nmap <leader>p <Plug>yankstack_substitute_older_paste
-" imap <leader>p <Plug>yankstack_substitute_older_paste
-" nmap <leader>P <Plug>yankstack_substitute_newer_paste
-" imap <leader>P <Plug>yankstack_substitute_newer_paste
-
 NeoBundle 'godlygeek/tabular', {
             \ 'lazy': 1,
             \  'autoload' : {
@@ -375,10 +368,10 @@ nnoremap <leader>lr :LinediffReset<cr>
 """""""""""""
 "  airline  "
 """""""""""""
-NeoBundle 'bling/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep=' '
 let g:airline#extensions#tabline#left_alt_sep='¦'
+NeoBundle 'bling/vim-airline'
 
 NeoBundle 'AndrewRadev/switch.vim', {
             \ 'lazy': 1,
@@ -404,19 +397,20 @@ let g:UltiSnipsSnippetsDir='~/.dotfiles/mysnippets'
 let g:UltiSnipsSnippetDirectories=['UltiSnips', 'mysnippets']
 
 NeoBundle 'honza/vim-snippets', {
-            \ 'lazy': 1,
+            \ 'lazy': 0,
             \ 'autoload': {
             \ 'on_source': ['ultisnips']
             \}
             \}
 NeoBundle 'SirVer/ultisnips', {
-            \ 'lazy': 1,
+            \ 'lazy': 0,
+            \ 'augroup' : 'fugitive',
             \ 'autoload' : {
             \    'insert': 1
             \  }
             \ }
 if neobundle#tap('ultisnips')
-    function! neobundle#hooks.on_source(bundle)
+    function! neobundle#tapped.hooks.on_source(bundle)
         silent! call UltiSnips#FileTypeChanged()
     endfunction
     call neobundle#untap()
