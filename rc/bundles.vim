@@ -236,20 +236,13 @@ NeoBundleLazy 'waylan/vim-markdown-extra-preview', {'autoload':{'filetypes':['ma
 
 "Git support
 NeoBundle 'tpope/vim-fugitive', {
-            \ 'lazy': 1,
+            \ 'lazy': 0,
             \ 'autoload': {
             \ 'augroup' : 'fugitive',
             \ 'commands': ['Gstatus', 'Gcommit', 'Gwrite', 'Git', 'Git!', 'Gcd', 'Glcd',
             \               'Ggrep', 'Glog']
             \}
             \ }
-if neobundle#tap('vim-fugitive')
-    function! neobundle#tapped.hooks.on_post_source(bundle)
-        call fugitive#detect(expand('#:p'))
-    endfunction
-    call neobundle#untap()
-endif
-
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>gp :silent! Git push<cr>
