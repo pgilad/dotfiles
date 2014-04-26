@@ -409,11 +409,21 @@ if neobundle#tap('ultisnips')
     call neobundle#untap()
 endif
 
+let g:online_thesaurus_map_keys = 0
+NeoBundle 'beloglazov/vim-online-thesaurus', {
+            \ 'lazy': 1,
+            \  'autoload' : {
+            \ 'commands': ['OnlineThesaurusCurrentWord', 'Thesaurus']
+            \  }
+            \ }
+nnoremap <leader>K :OnlineThesaurusCurrentWord<cr>
+
 NeoBundle 'kana/vim-textobj-user'          " required plugin
 NeoBundle 'kana/vim-textobj-line'          " al, il
 NeoBundle 'kana/vim-textobj-indent'        " ai, ii, aI, iI
 NeoBundle 'kana/vim-textobj-entire'        " ae, ie
 NeoBundle 'PeterRincker/vim-argumentative' " a, i,
+NeoBundle 'beloglazov/vim-textobj-quotes'  " q
 
 NeoBundle 'Raimondi/delimitMate', {
             \  'lazy' : 1,

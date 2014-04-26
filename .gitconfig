@@ -4,10 +4,15 @@
 [core]
     autocrlf = input
     excludesfile = ~/.dotfiles/gitignore_global.txt
+    attributesfile = ~/.dotfiles/.gitattributes
+    whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+[apply]
+    # Detect whitespace errors when applying a patch
+    whitespace = fix
 [push]
     default = matching
 [color]
-    interactive=auto
+    interactive = auto
     ui = auto
 [color "branch"]
     current = yellow reverse
