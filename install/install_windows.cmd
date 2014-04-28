@@ -3,7 +3,7 @@
 
 REM  default app dir
 @set APP_DIR=%HOME%\.dotfiles
-@set BUNDLE_DIR=%HOME%\.vim\bundle
+@set BUNDLE_DIR=%HOME%\vimfiles\bundle
 
 REM  create symlinks
 call mklink "%HOME%\_vimrc" "%APP_DIR%\_vimrc"
