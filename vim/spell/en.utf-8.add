@@ -28,3 +28,6 @@ JSON
 semver
 gulpjs
 json
+plugin
+devDependencies
+gruntfile
