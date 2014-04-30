@@ -47,10 +47,11 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git)
 
-source $ZSH/oh-my-zsh.sh
+if [[ -e $ZSH/oh-my-zsh.sh ]]; then
+    source $ZSH/oh-my-zsh.sh
+fi
 
 # User configuration
-
 export PATH="/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -64,7 +65,7 @@ export SSH_KEY_PATH="~/.ssh"
 export AWS_CONFIG_FILE=$HOME/.aws-config
 
 ### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+export PATH="$PATH:/usr/local/heroku/bin"
 
 # Add npm completion
 eval "$(npm completion || echo echo "Npm not installed. Can't use autocomplete.")"
@@ -77,3 +78,7 @@ eval "$(gulp --completion=zsh || echo echo "Install gulp: npm i -g gulp")"
 
 # Fasd
 eval "$(fasd --init auto)"
+
+if [[ -e ~/.aliases ]]; then
+    source ~/.aliases
+fi
