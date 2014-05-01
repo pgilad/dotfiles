@@ -7,29 +7,34 @@ if has('vim_starting')
     if !isdirectory(expand(g:config.bundlesPath . 'neobundle.vim')) && executable('git')
         execute printf(s:neobundle_git_path,
                     \ (exists('$http_proxy') ? 'https' : 'git'))
-                    \ g:bundle_path . 'neobundle.vim'
+                    \ g:config.bundlesPath . 'neobundle.vim'
+        "Install all bundles
+        NeoBundleInstall
     endif
 endif
 
+"Set bundles directory
 call neobundle#rc(expand(g:config.bundlesPath))
-"My Bundles
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'pgilad/neobundle-packages'
 NeoBundle 'L9'
 
 NeoBundle 'editorconfig/editorconfig-vim'
 
-call neobundle_packages#parse_bundle('ctrlp')
-let g:ctrlp_custom_ignore = 'build\|dist\|node_modules\|.idea\|.git\|workspace\|bower_components\'
-let g:ctrlp_root_markers = ['.git']
-let g:ctrlp_max_height = 20         " maxiumum height of match window
-let g:ctrlp_switch_buffer = 'et'    " jump to a file if it's open already
-let g:ctrlp_follow_symlinks=1
-let g:ctrlp_max_files=2000
-let g:ctrlp_clear_cache_on_exit=0   " speed up by not removing clearing cache evertime
-let g:ctrlp_mruf_max = 250          " number of recently opened files
-let g:ctrlp_show_hidden = 1
-nnoremap <c-p> :CtrlP<cr>
+if neobundle#tap('neobundle_packages')
+    call neobundle_packages#parse_bundle('ctrlp')
+    let g:ctrlp_custom_ignore = 'build\|dist\|node_modules\|.idea\|.git\|workspace\|bower_components\'
+    let g:ctrlp_root_markers = ['.git']
+    let g:ctrlp_max_height = 20         " maxiumum height of match window
+    let g:ctrlp_switch_buffer = 'et'    " jump to a file if it's open already
+    let g:ctrlp_follow_symlinks=1
+    let g:ctrlp_max_files=2000
+    let g:ctrlp_clear_cache_on_exit=0   " speed up by not removing clearing cache evertime
+    let g:ctrlp_mruf_max = 250          " number of recently opened files
+    let g:ctrlp_show_hidden = 1
+    nnoremap <c-p> :CtrlP<cr>
+    call neobundle#untap()
+endif
 
 NeoBundleLazy 'Shougo/unite.vim', {
             \ 'commands' : [{ 'name' : 'Unite',
@@ -61,32 +66,36 @@ NeoBundle 'ujihisa/unite-colorscheme', {
             \ 'unite_sources': ['colorscheme']
             \   }
             \ }
-let g:unite_enable_start_insert = 1
-let g:unite_split_rule = "botright"
-let g:unite_force_overwrite_statusline = 0
-let g:unite_winheight = 10
-let g:unite_source_history_yank_enable = 1
-let g:unite_source_history_yank_save_clipboard = 1
-let g:unite_update_time = 200
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#filters#sorter_default#use(['sorter_rank'])
 
-"map bindings... use [Space] but release it for plugins
-nmap <space> [unite]
-xmap <space> [unite]
-nnoremap [unite] <nop>
-xnoremap [unite] <nop>
+if neobundle#tap('unite.vim')
+    let g:unite_enable_start_insert = 1
+    let g:unite_split_rule = "botright"
+    let g:unite_force_overwrite_statusline = 0
+    let g:unite_winheight = 10
+    let g:unite_source_history_yank_enable = 1
+    let g:unite_source_history_yank_save_clipboard = 1
+    let g:unite_update_time = 200
+    call unite#filters#matcher_default#use(['matcher_fuzzy'])
+    call unite#filters#sorter_default#use(['sorter_rank'])
 
-nnoremap <silent> [unite]b :<C-u>Unite -buffer-name=buffers buffer<CR>
-nnoremap <silent> [unite]f :<C-u>Unite -buffer-name=files -start-insert file<CR>
-nnoremap <silent> [unite]m :<C-u>Unite -buffer-name=mappings -start-insert mapping<CR>
-nnoremap <silent> [unite]o :<C-u>Unite -buffer-name=outline -start-insert outline<CR>
-nnoremap <silent> [unite]p :<C-u>Unite -buffer-name=files -start-insert file_rec<CR>
-nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=mru -start-insert file_mru<CR>
-nnoremap <silent> [unite]t :<C-u>Unite -buffer-name=filetypes -start-insert filetype<CR>
-nnoremap <silent> [unite]y :<C-u>Unite -buffer-name=yank history/yank<CR>
-" search word in current buffer
-nnoremap <silent><expr> [unite]*  ":<C-u>UniteWithCursorWord -buffer-name=search%".bufnr('%')." line:all:wrap<CR>"
+    "map bindings... use [Space] but release it for plugins
+    nmap <space> [unite]
+    xmap <space> [unite]
+    nnoremap [unite] <nop>
+    xnoremap [unite] <nop>
+
+    nnoremap <silent> [unite]b :<C-u>Unite -buffer-name=buffers buffer<CR>
+    nnoremap <silent> [unite]f :<C-u>Unite -buffer-name=files -start-insert file<CR>
+    nnoremap <silent> [unite]m :<C-u>Unite -buffer-name=mappings -start-insert mapping<CR>
+    nnoremap <silent> [unite]o :<C-u>Unite -buffer-name=outline -start-insert outline<CR>
+    nnoremap <silent> [unite]p :<C-u>Unite -buffer-name=files -start-insert file_rec<CR>
+    nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=mru -start-insert file_mru<CR>
+    nnoremap <silent> [unite]t :<C-u>Unite -buffer-name=filetypes -start-insert filetype<CR>
+    nnoremap <silent> [unite]y :<C-u>Unite -buffer-name=yank history/yank<CR>
+    " search word in current buffer
+    nnoremap <silent><expr> [unite]*  ":<C-u>UniteWithCursorWord -buffer-name=search%".bufnr('%')." line:all:wrap<CR>"
+    call neobundle#untap()
+endif
 
 NeoBundle 'scrooloose/nerdtree', {
             \ 'lazy': 1,
@@ -278,15 +287,6 @@ NeoBundle 'sjl/gundo.vim', {
             \   'commands': ['GundoShow', 'GundoToggle', 'GundoHide', 'GundoRenderGraph']
             \  }
             \ }
-
-NeoBundle 'kien/rainbow_parentheses.vim', {
-            \ 'lazy': 1,
-            \  'autoload' : {
-            \	'commands': ['RainbowParenthesesToggle', 'RainbowParenthesesLoadRound',
-            \               'RainbowParenthesesLoadSquare', 'RainbowParenthesesLoadBraces',
-            \               'RainbowParenthesesLoadChevrons']
-            \  }
-            \ }
 "easy motion -current bound to <leader><leader> by default
 " NeoBundle 'Lokaltog/vim-easymotion'
 
@@ -402,12 +402,12 @@ NeoBundle 'SirVer/ultisnips', {
             \    'insert': 1
             \  }
             \ }
-if neobundle#tap('ultisnips')
-    function! neobundle#tapped.hooks.on_source(bundle)
-        silent! call UltiSnips#FileTypeChanged()
-    endfunction
-    call neobundle#untap()
-endif
+" if neobundle#tap('ultisnips')
+    " function! neobundle#tapped.hooks.on_source(bundle)
+        " silent! call UltiSnips#FileTypeChanged()
+    " endfunction
+    " call neobundle#untap()
+" endif
 
 let g:online_thesaurus_map_keys = 0
 NeoBundle 'beloglazov/vim-online-thesaurus', {

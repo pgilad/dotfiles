@@ -5,8 +5,6 @@
 nnoremap <F3> :GundoToggle<cr>
 " set spell check
 nnoremap <F4> :setlocal spell!<cr>
-" set rainbow parent
-nnoremap <F5> :RainbowParenthesesToggle<cr>
 " toggle paste
 nnoremap <F6> :set invpaste<CR>:set paste?<CR>
 " open in chrome
