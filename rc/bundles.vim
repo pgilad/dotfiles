@@ -3,7 +3,7 @@ let s:neobundle_git_path='!git clone %s://github.com/Shougo/neobundle.vim.git'
 if has('vim_starting')
     " add neobundle to rtp
     execute 'set rtp ^='. fnameescape(g:config.bundlesPath . 'neobundle.vim/')
-    "install neobundle if it isn't installed. requires git.
+    " install neobundle if doesn't exist and we have git. TODO - create curl alternative
     if !isdirectory(expand(g:config.bundlesPath . 'neobundle.vim')) && executable('git')
         execute printf(s:neobundle_git_path,
                     \ (exists('$http_proxy') ? 'https' : 'git'))
@@ -13,8 +13,8 @@ if has('vim_starting')
     endif
 endif
 
-"Set bundles directory
-call neobundle#rc(expand(g:config.bundlesPath))
+call neobundle#begin(expand(g:config.bundlesPath))
+
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'pgilad/neobundle-packages'
 NeoBundle 'L9'
@@ -75,8 +75,9 @@ if neobundle#tap('unite.vim')
     let g:unite_source_history_yank_enable = 1
     let g:unite_source_history_yank_save_clipboard = 1
     let g:unite_update_time = 200
-    call unite#filters#matcher_default#use(['matcher_fuzzy'])
-    call unite#filters#sorter_default#use(['sorter_rank'])
+
+    " call unite#filters#sorter_default#use(['sorter_rank'])
+    " call unite#filters#matcher_default#use(['matcher_fuzzy'])
 
     "map bindings... use [Space] but release it for plugins
     nmap <space> [unite]
@@ -94,6 +95,9 @@ if neobundle#tap('unite.vim')
     nnoremap <silent> [unite]y :<C-u>Unite -buffer-name=yank history/yank<CR>
     " search word in current buffer
     nnoremap <silent><expr> [unite]*  ":<C-u>UniteWithCursorWord -buffer-name=search%".bufnr('%')." line:all:wrap<CR>"
+
+    " update bundles
+    nnoremap <silent> [unite]eu :<C-u>Unite neobundle/update<cr>
     call neobundle#untap()
 endif
 
@@ -114,7 +118,6 @@ let NERDTreeDirArrows=1
 let NERDChristmasTree=1
 let NERDTreeAutoDeleteBuffer=1 "auto delete buffers on nerdtree delete
 let NERDTreeIgnore=['\~$', '^\.\.$', '\.swp$', '\.hg$', '\.svn$', '\.bzr', '\.git$']
-
 let NERDSpaceDelims=1
 let NERDCreateDefaultMappings = 1
 let NERDMenuMode=0
@@ -132,9 +135,7 @@ NeoBundle 'scrooloose/nerdcommenter', {
 "endif
 "nmap <leader>cc <plug>NERDCommenterComment
 
-NeoBundle 'nathanaelkane/vim-indent-guides', {
-            \ 'lazy': 0
-            \ }
+NeoBundle 'nathanaelkane/vim-indent-guides'
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'qf']
 
@@ -245,16 +246,24 @@ NeoBundleLazy 'waylan/vim-markdown-extra-preview', {'autoload':{'filetypes':['ma
 
 "Git support
 NeoBundle 'tpope/vim-fugitive', {
-            \ 'lazy': 0,
-            \ 'autoload': {
+            \ 'lazy': 1,
             \ 'augroup' : 'fugitive',
-            \ 'commands': ['Gstatus', 'Gcommit', 'Gwrite', 'Git', 'Git!', 'Gcd', 'Glcd',
-            \               'Ggrep', 'Glog']
+            \ 'autoload': {
+            \ 'commands': ['Gstatus', 'Gcommit', 'Gwrite', 'Git', 'Git!',
+            \               'Gcd', 'Glcd', 'Ggrep', 'Glog']
             \}
             \ }
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>gp :silent! Git push<cr>
+
+if neobundle#tap('vim-fugitive')
+    function! neobundle#tapped.hooks.on_post_source(bundle)
+        " detect git root for each open buffer
+        bufdo call fugitive#detect(expand('%:p'))
+    endfunction
+    call neobundle#untap()
+endif
 
 NeoBundle 'gregsexton/gitv', {
             \ 'lazy': 1,
@@ -397,16 +406,15 @@ NeoBundle 'honza/vim-snippets', {
             \}
 NeoBundle 'SirVer/ultisnips', {
             \ 'lazy': 0,
-            \ 'augroup' : 'fugitive',
             \ 'autoload' : {
             \    'insert': 1
             \  }
             \ }
 " if neobundle#tap('ultisnips')
-    " function! neobundle#tapped.hooks.on_source(bundle)
-        " silent! call UltiSnips#FileTypeChanged()
-    " endfunction
-    " call neobundle#untap()
+" function! neobundle#tapped.hooks.on_source(bundle)
+" silent! call UltiSnips#FileTypeChanged()
+" endfunction
+" call neobundle#untap()
 " endif
 
 let g:online_thesaurus_map_keys = 0
@@ -469,3 +477,4 @@ NeoBundle 'lfilho/cosco.vim', {
 " NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'tomasr/molokai'
 " NeoBundle 'tpope/vim-vividchalk'
+call neobundle#end()
