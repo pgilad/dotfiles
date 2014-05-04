@@ -77,18 +77,18 @@ if neobundle#tap('unite.vim')
     " TODO fix this - causes error on load
 
     " Custom filters."{{{
-    call unite#custom#source(
-                \ 'buffer,file_rec,file_rec/async', 'matchers',
-                \ ['converter_relative_word', 'matcher_fuzzy'])
-    call unite#custom#source(
-                \ 'file_mru', 'matchers',
-                \ ['matcher_project_files', 'matcher_fuzzy'])
+    " call unite#custom#source(
+                " \ 'buffer,file_rec,file_rec/async', 'matchers',
+                " \ ['converter_relative_word', 'matcher_fuzzy'])
+    " call unite#custom#source(
+                " \ 'file_mru', 'matchers',
+                " \ ['matcher_project_files', 'matcher_fuzzy'])
     " call unite#custom#source(
     "       \ 'file', 'matchers',
     "       \ ['matcher_fuzzy', 'matcher_hide_hidden_files'])
-    call unite#custom#source(
-                \ 'file_rec/async,file_mru', 'converters',
-                \ ['converter_file_directory'])
+    " call unite#custom#source(
+                " \ 'file_rec/async,file_mru', 'converters',
+                " \ ['converter_file_directory'])
     " call unite#filters#sorter_default#use(['sorter_rank'])
 
     "map bindings... use [Space] but release it for plugins
@@ -401,15 +401,15 @@ let g:switch_custom_definitions =
             \ ]
 
 "set to where my /mysnippets directory exists
-set runtimepath+=~/.dotfiles
+set runtimepath+=~/.dotfiles/vim/
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-let g:UltiSnipsSnippetsDir='~/.dotfiles/mysnippets'
+let g:UltiSnipsSnippetsDir="~/.dotfiles/vim/mysnippets"
 let g:UltiSnipsSnippetDirectories=['UltiSnips', 'mysnippets']
 
-NeoBundle 'honza/vim-snippets'
 NeoBundle 'SirVer/ultisnips'
+NeoBundle 'honza/vim-snippets'
 " if neobundle#tap('ultisnips')
 " function! neobundle#tapped.hooks.on_source(bundle)
 " silent! call UltiSnips#FileTypeChanged()
