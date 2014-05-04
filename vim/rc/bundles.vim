@@ -8,8 +8,6 @@ if has('vim_starting')
         execute printf(s:neobundle_git_path,
                     \ (exists('$http_proxy') ? 'https' : 'git'))
                     \ g:config.bundlesPath . 'neobundle.vim'
-        "Install all bundles
-        NeoBundleInstall
     endif
 endif
 
@@ -76,8 +74,22 @@ if neobundle#tap('unite.vim')
     let g:unite_source_history_yank_save_clipboard = 1
     let g:unite_update_time = 200
 
+    " TODO fix this - causes error on load
+
+    " Custom filters."{{{
+    call unite#custom#source(
+                \ 'buffer,file_rec,file_rec/async', 'matchers',
+                \ ['converter_relative_word', 'matcher_fuzzy'])
+    call unite#custom#source(
+                \ 'file_mru', 'matchers',
+                \ ['matcher_project_files', 'matcher_fuzzy'])
+    " call unite#custom#source(
+    "       \ 'file', 'matchers',
+    "       \ ['matcher_fuzzy', 'matcher_hide_hidden_files'])
+    call unite#custom#source(
+                \ 'file_rec/async,file_mru', 'converters',
+                \ ['converter_file_directory'])
     " call unite#filters#sorter_default#use(['sorter_rank'])
-    " call unite#filters#matcher_default#use(['matcher_fuzzy'])
 
     "map bindings... use [Space] but release it for plugins
     nmap <space> [unite]
@@ -96,8 +108,6 @@ if neobundle#tap('unite.vim')
     " search word in current buffer
     nnoremap <silent><expr> [unite]*  ":<C-u>UniteWithCursorWord -buffer-name=search%".bufnr('%')." line:all:wrap<CR>"
 
-    " update bundles
-    nnoremap <silent> [unite]eu :<C-u>Unite neobundle/update<cr>
     call neobundle#untap()
 endif
 
@@ -398,18 +408,8 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsSnippetsDir='~/.dotfiles/mysnippets'
 let g:UltiSnipsSnippetDirectories=['UltiSnips', 'mysnippets']
 
-NeoBundle 'honza/vim-snippets', {
-            \ 'lazy': 0,
-            \ 'autoload': {
-            \ 'on_source': ['ultisnips']
-            \}
-            \}
-NeoBundle 'SirVer/ultisnips', {
-            \ 'lazy': 0,
-            \ 'autoload' : {
-            \    'insert': 1
-            \  }
-            \ }
+NeoBundle 'honza/vim-snippets'
+NeoBundle 'SirVer/ultisnips'
 " if neobundle#tap('ultisnips')
 " function! neobundle#tapped.hooks.on_source(bundle)
 " silent! call UltiSnips#FileTypeChanged()
@@ -477,4 +477,5 @@ NeoBundle 'lfilho/cosco.vim', {
 " NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'tomasr/molokai'
 " NeoBundle 'tpope/vim-vividchalk'
+
 call neobundle#end()

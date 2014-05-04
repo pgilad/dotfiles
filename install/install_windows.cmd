@@ -2,7 +2,7 @@
 @if not exist "%HOME%" @set HOME=%USERPROFILE%
 
 REM  default app dir
-@set APP_DIR=%HOME%\.dotfiles
+@set APP_DIR=%HOME%\.dotfiles\link
 @set BUNDLE_DIR=%HOME%\vimfiles\bundle
 
 REM  create symlinks

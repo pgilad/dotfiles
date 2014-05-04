@@ -8,7 +8,7 @@ if !1 | finish | endif
 set nocompatible
 
 let g:config =  {
-            \ 'baseDir': '~/.dotfiles/rc/',
+            \ 'baseDir': '~/.dotfiles/vim/rc/',
             \ 'loadFiles': {},
             \ 'bundlesPath': '~/vimfiles/bundle/',
             \ 'env' : {

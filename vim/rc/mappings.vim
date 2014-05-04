@@ -110,6 +110,8 @@ nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
 
 " edit current filetype custom snippets
 nnoremap <silent> <leader>us :UltiSnipsEdit<cr>
+" update bundles
+nnoremap <silent> <leader>eu :NeoBundleUpdate<cr>
 nnoremap <silent> <leader>el :NeoBundleUpdatesLog<cr>
 
 nnoremap <leader>ex :execute getline(".")<cr>

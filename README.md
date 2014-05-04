@@ -94,3 +94,9 @@ For windows users - this would be your %home% path (usually c:\users\username\)
 ## Zsh
 
 - Uses Oh-My-Zsh alongside customization and completion
+
+## Thanks (in no particular order)
+
+- [Shougo's dotfiles](https://github.com/Shougo/shougo-s-github)
+- [Cowboy's dotfiles](https://github.com/cowboy/dotfiles)
+- [Mathias's dotfiles](https://github.com/mathiasbynens/dotfiles)
