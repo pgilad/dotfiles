@@ -2,13 +2,9 @@
     name = Gilad Peleg
     email = giladp007@gmail.com
 [core]
-    autocrlf = input
-    excludesfile = ~/.dotfiles/gitignore_global.txt
+    autocrlf = false
+    excludesfile = ~/.dotfiles/.gitignore
     attributesfile = ~/.dotfiles/.gitattributes
-    whitespace = space-before-tab,-indent-with-non-tab,trailing-space
-[apply]
-    # Detect whitespace errors when applying a patch
-    whitespace = fix
 [push]
     default = matching
 [color]

@@ -14,25 +14,28 @@ endif
 call neobundle#begin(expand(g:config.bundlesPath))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
-NeoBundle 'pgilad/neobundle-packages'
+NeoBundle 'Shougo/vimproc', {
+            \ 'build' : {
+            \     'windows' : 'make -f make_mingw32.mak',
+            \     'cygwin' : 'make -f make_cygwin.mak',
+            \     'mac' : 'make -f make_mac.mak',
+            \     'unix' : 'make -f make_unix.mak',
+            \    },
+            \ }
 NeoBundle 'L9'
-
 NeoBundle 'editorconfig/editorconfig-vim'
 
-if neobundle#tap('neobundle_packages')
-    call neobundle_packages#parse_bundle('ctrlp')
-    let g:ctrlp_custom_ignore = 'build\|dist\|node_modules\|.idea\|.git\|workspace\|bower_components\'
-    let g:ctrlp_root_markers = ['.git']
-    let g:ctrlp_max_height = 20         " maxiumum height of match window
-    let g:ctrlp_switch_buffer = 'et'    " jump to a file if it's open already
-    let g:ctrlp_follow_symlinks=1
-    let g:ctrlp_max_files=2000
-    let g:ctrlp_clear_cache_on_exit=0   " speed up by not removing clearing cache evertime
-    let g:ctrlp_mruf_max = 250          " number of recently opened files
-    let g:ctrlp_show_hidden = 1
-    nnoremap <c-p> :CtrlP<cr>
-    call neobundle#untap()
-endif
+NeoBundle 'kien/ctrlp.vim'
+let g:ctrlp_custom_ignore = 'build\|dist\|node_modules\|.idea\|.git\|workspace\|bower_components\'
+let g:ctrlp_root_markers = ['.git']
+let g:ctrlp_max_height = 20         " maxiumum height of match window
+let g:ctrlp_switch_buffer = 'et'    " jump to a file if it's open already
+let g:ctrlp_follow_symlinks=1
+let g:ctrlp_max_files=2000
+let g:ctrlp_clear_cache_on_exit=0   " speed up by not removing clearing cache evertime
+let g:ctrlp_mruf_max = 250          " number of recently opened files
+let g:ctrlp_show_hidden = 1
+nnoremap <c-p> :CtrlP<cr>
 
 NeoBundleLazy 'Shougo/unite.vim', {
             \ 'commands' : [{ 'name' : 'Unite',
@@ -78,17 +81,17 @@ if neobundle#tap('unite.vim')
 
     " Custom filters."{{{
     " call unite#custom#source(
-                " \ 'buffer,file_rec,file_rec/async', 'matchers',
-                " \ ['converter_relative_word', 'matcher_fuzzy'])
+    " \ 'buffer,file_rec,file_rec/async', 'matchers',
+    " \ ['converter_relative_word', 'matcher_fuzzy'])
     " call unite#custom#source(
-                " \ 'file_mru', 'matchers',
-                " \ ['matcher_project_files', 'matcher_fuzzy'])
+    " \ 'file_mru', 'matchers',
+    " \ ['matcher_project_files', 'matcher_fuzzy'])
     " call unite#custom#source(
     "       \ 'file', 'matchers',
     "       \ ['matcher_fuzzy', 'matcher_hide_hidden_files'])
     " call unite#custom#source(
-                " \ 'file_rec/async,file_mru', 'converters',
-                " \ ['converter_file_directory'])
+    " \ 'file_rec/async,file_mru', 'converters',
+    " \ ['converter_file_directory'])
     " call unite#filters#sorter_default#use(['sorter_rank'])
 
     "map bindings... use [Space] but release it for plugins
@@ -268,7 +271,7 @@ nnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>gp :silent! Git push<cr>
 
 if neobundle#tap('vim-fugitive')
-    function! neobundle#tapped.hooks.on_post_source(bundle)
+    function! neobundle#hooks.on_post_source(bundle)
         " detect git root for each open buffer
         bufdo call fugitive#detect(expand('%:p'))
     endfunction
