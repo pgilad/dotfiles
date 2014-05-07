@@ -37,7 +37,7 @@ COMPLETION_WAITING_DOTS="true"
 # much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Uncomment following line if you want to the command execution time stamp shown 
+# Uncomment following line if you want to the command execution time stamp shown
 # in the history command output.
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # HIST_STAMPS="mm/dd/yyyy"
@@ -79,6 +79,7 @@ eval "$(gulp --completion=zsh || echo echo "Install gulp: npm i -g gulp")"
 # Fasd
 eval "$(fasd --init auto)"
 
+# Source aliases
 if [[ -e ~/.aliases ]]; then
     source ~/.aliases
 fi

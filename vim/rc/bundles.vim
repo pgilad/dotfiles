@@ -24,7 +24,33 @@ NeoBundle 'Shougo/vimproc', {
             \ }
 NeoBundle 'L9'
 NeoBundle 'editorconfig/editorconfig-vim'
-
+" NeoBundle 'Shougo/neocomplete', {
+            " \ 'disabled': 1,
+            " \ 'lazy': 1,
+            " \ 'autoload': {
+            " \ 'insert': 1
+            " \ }
+            " \ }
+" NeoBundle 'Shougo/vimfiler.vim', {
+            " \ 'lazy': 1,
+            " \ 'depends' : 'Shougo/unite.vim',
+            " \'autoload': {
+            " \ 'commands' : [
+            " \         { 'name' : 'VimFiler',
+            " \           'complete' : 'customlist,vimfiler#complete' },
+            " \         { 'name' : 'VimFilerTab',
+            " \           'complete' : 'customlist,vimfiler#complete' },
+            " \         { 'name' : 'VimFilerExplorer',
+            " \           'complete' : 'customlist,vimfiler#complete' },
+            " \         { 'name' : 'Edit',
+            " \           'complete' : 'customlist,vimfiler#complete' },
+            " \         { 'name' : 'Write',
+            " \           'complete' : 'customlist,vimfiler#complete' },
+            " \         'Read', 'Source'],
+            " \ 'mappings' : '<Plug>(vimfiler_',
+            " \ 'explorer' : 1,
+            " \ }
+            " \ }
 NeoBundle 'kien/ctrlp.vim'
 let g:ctrlp_custom_ignore = 'build\|dist\|node_modules\|.idea\|.git\|workspace\|bower_components\'
 let g:ctrlp_root_markers = ['.git']
@@ -67,7 +93,6 @@ NeoBundle 'ujihisa/unite-colorscheme', {
             \ 'unite_sources': ['colorscheme']
             \   }
             \ }
-
 if neobundle#tap('unite.vim')
     let g:unite_enable_start_insert = 1
     let g:unite_split_rule = "botright"

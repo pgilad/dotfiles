@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Ubuntu-only stuff. Abort if not Ubuntu.
-if [[ ! "$(cat /etc/issue 2> /dev/null)" =~ Ubuntu ]]; then
+# Linux test
+if [[ "$(uname)" != Linux ]]; then
     return 1
 fi
 
