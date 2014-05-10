@@ -1,15 +1,7 @@
 # Path to your oh-my-zsh configuration.
-ZSH=~/.oh-my-zsh
+ZSH=$HOME/.oh-my-zsh
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
 ZSH_THEME="eastwood"
-
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Set this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -24,10 +16,10 @@ DISABLE_AUTO_UPDATE="true"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment following line if you want to disable command autocorrection
-DISABLE_CORRECTION="false"
+# DISABLE_CORRECTION="true"
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
@@ -45,7 +37,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+plugins=(git zsh-syntax-highlighting)
 
 if [[ -e $ZSH/oh-my-zsh.sh ]]; then
     source $ZSH/oh-my-zsh.sh
@@ -56,7 +48,8 @@ export PATH="/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # set default editor
-export EDITOR="gvim"
+export EDITOR=$(which gvim)
+export VISUAL=$(which gvim)
 
 # ssh
 export SSH_KEY_PATH="~/.ssh"
@@ -83,3 +76,6 @@ eval "$(fasd --init auto)"
 if [[ -e ~/.aliases ]]; then
     source ~/.aliases
 fi
+
+# Disable sound
+setopt no_beep

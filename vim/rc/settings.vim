@@ -174,8 +174,8 @@ if has('spell')
     set spelllang=en_us
 endif
 
-set lines=999
-set columns=999
+" set lines=999
+" set columns=999
 
 " set color scheme and font
 if has('syntax')

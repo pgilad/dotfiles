@@ -8,7 +8,14 @@ snippet gulpt "create a new gulp task"
 gulp.task('${1:taskName}', function(){
 	$0
 });
+endsnippet
 
+snippet fi "for prop in obj using hasOwnProperty"
+for (${1:prop} in ${2:obj}){
+	if ($2.hasOwnProperty($1)) {
+		${0:// body...}
+	}
+}
 endsnippet
 
 snippet es "variable = variable || something"
@@ -21,12 +28,12 @@ endsnippet
 
 snippet module "module.exports function(){}"
 module.exports = function() {
-    $0
+	$0
 };
 endsnippet
 
 snippet module "module.exports object {}"
 module.exports = {
-    $0
+	$0
 };
 endsnippet

@@ -5,3 +5,16 @@ alias reboot='sudo /sbin/reboot'
 alias poweroff='sudo /sbin/poweroff'
 alias halt='sudo /sbin/halt'
 alias shutdown='sudo /sbin/shutdown'
+
+install_gulp() {
+    echo "Running npm install gulp-$1 --save-dev"
+    npm install gulp-$1 --save-dev
+}
+
+install_grunt() {
+    echo "Running npm install grunt-$1 --save-dev"
+    npm install grunt-$1 --save-dev
+}
+
+alias gli=install_gulp
+alias gri=install_grunt

@@ -62,7 +62,18 @@ let g:ctrlp_clear_cache_on_exit=0   " speed up by not removing clearing cache ev
 let g:ctrlp_mruf_max = 250          " number of recently opened files
 let g:ctrlp_show_hidden = 1
 nnoremap <c-p> :CtrlP<cr>
-
+NeoBundle 'xolox/vim-reload', {
+            \ 'lazy': 1,
+            \  'autoload' : {
+            \   'filetypes': ['vim']
+            \  }
+            \ }
+let g:skeletons_dir = $HOME . "/.dotfiles/vim/skeletons"
+NeoBundle 'tobyS/skeletons.vim', {
+            \ 'lazy': 0,
+            \  'autoload' : {
+            \  }
+            \ }
 NeoBundleLazy 'Shougo/unite.vim', {
             \ 'commands' : [{ 'name' : 'Unite',
             \                 'complete' : 'customlist,unite#complete_source'},
@@ -230,6 +241,12 @@ NeoBundle 'othree/html5.vim', {
             \ 'lazy': 1,
             \  'autoload' : {
             \	'filetypes':['html']
+            \  }
+            \ }
+NeoBundle 'hokaccha/vim-html5validator', {
+            \ 'lazy': 1,
+            \  'autoload' : {
+            \ 'filetypes' : ['html']
             \  }
             \ }
 NeoBundle 'digitaltoad/vim-jade', {
