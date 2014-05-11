@@ -79,3 +79,5 @@ fi
 
 # Disable sound
 setopt no_beep
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

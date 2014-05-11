@@ -3,7 +3,7 @@
     email = giladp007@gmail.com
 [core]
     autocrlf = false
-    excludesfile = ~/.dotfiles/.gitignore
+	excludesfile = /Users/gilad/.dotfiles/.gitignore
     attributesfile = ~/.dotfiles/.gitattributes
 [push]
     default = matching
@@ -35,3 +35,21 @@
     fe = fetch
     stats = !git shortlog -sn master | head
     freq = !history | cut -c 8- | grep git | sort | uniq -c  | sort -n -r | head -n 5
+[url "git@github.com:"]
+	insteadOf = "gh:"
+	pushInsteadOf = "github:"
+	pushInsteadOf = "git://github.com/"
+[url "git://github.com/"]
+	insteadOf = "github:"
+[url "git@gist.github.com:"]
+	insteadOf = "gst:"
+	pushInsteadOf = "gist:"
+	pushInsteadOf = "git://gist.github.com/"
+[url "git://gist.github.com/"]
+	insteadOf = "gist:"
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
