@@ -15,7 +15,7 @@ let g:config =  {
             \   'windows': has('wind16') || has('win32') || has('win64'),
             \   'cygwin': has('win32unix'),
             \   'mac': has('gui_macvim'),
-            \   'unix': has('unix')
+            \   'unix': has('unix') && !has('gui_macvim')
             \ }
             \}
 

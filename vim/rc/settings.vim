@@ -15,8 +15,11 @@ if g:config.env.windows
 elseif g:config.env.unix
     set gfn=Ubuntu\ Mono\ 12
     language message C
-else
-    set gfn=consolas:h9
+elseif g:config.env.mac
+    language message C
+    set guifont=Meslo\ LG\ S\ DZ:h13
+    " set gfn=Monaco:h13
+    set antialias
 endif
 
 if has("wildmenu")
@@ -174,8 +177,8 @@ if has('spell')
     set spelllang=en_us
 endif
 
-" set lines=999
-" set columns=999
+set lines=400
+set columns=170
 
 " set color scheme and font
 if has('syntax')
