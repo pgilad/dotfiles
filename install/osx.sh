@@ -1,4 +1,5 @@
-#!/usr/bin/env bash
+# OSX-only stuff. Abort if not OSX.
+[[ "$OSTYPE" =~ ^darwin ]] || return 1
 
 # Disable menu bar transparency
 defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false

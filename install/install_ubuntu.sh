@@ -1,9 +1,5 @@
-#!/bin/bash
-
-# Linux test
-if [[ "$(uname)" != Linux ]]; then
-    return 1
-fi
+# Ubuntu-only stuff. Abort if not Ubuntu.
+[[ "$(cat /etc/issue 2> /dev/null)" =~ Ubuntu ]] || return 1
 
 # dotfiles dir
 dotfiles=~/.dotfiles
