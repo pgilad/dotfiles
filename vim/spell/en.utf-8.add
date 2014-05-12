@@ -39,3 +39,7 @@ sublicense
 config
 Zsh
 Ubuntu
+JMX
+repo
+deps
+params

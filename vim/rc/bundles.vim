@@ -298,7 +298,6 @@ let g:used_javascript_libs = 'underscore,angularjs,jquery,jasmine,angularui'
 NeoBundleLazy 'tpope/vim-markdown', {'autoload':{'filetypes':['markdown']}}
 NeoBundleLazy 'jtratner/vim-flavored-markdown.git', {'autoload':{'filetypes':['markdown']}}
 NeoBundleLazy 'waylan/vim-markdown-extra-preview', {'autoload':{'filetypes':['markdown']}}
-
 "Git support
 NeoBundle 'tpope/vim-fugitive', {
             \ 'lazy': 1,
