@@ -515,11 +515,11 @@ NeoBundle 'lfilho/cosco.vim', {
             \ }
 " NeoBundle 'nanotech/jellybeans.vim'
 " NeoBundle 'Lokaltog/vim-distinguished'
-" NeoBundle 'vim-scripts/wombat256.vim'
+NeoBundle 'vim-scripts/wombat256.vim'
 " NeoBundle 'chriskempson/vim-tomorrow-theme'
 " NeoBundle 'sjl/badwolf'
 " NeoBundle 'w0ng/vim-hybrid'
-NeoBundle 'tomasr/molokai'
+" NeoBundle 'tomasr/molokai'
 " NeoBundle 'tpope/vim-vividchalk'
 
 call neobundle#end()
