@@ -24,44 +24,58 @@ NeoBundle 'Shougo/vimproc', {
             \ }
 NeoBundle 'L9'
 NeoBundle 'editorconfig/editorconfig-vim'
+NeoBundle 'Valloric/YouCompleteMe', {
+            \ 'disable' : g:config.env.windows,
+            \ 'vim_version':'7.3.584',
+            \ 'build' : {
+            \   'unix' : './install.sh --clang-completer'
+            \ },
+            \ 'autoload': {
+            \   'insert': 1,
+            \ }
+            \ }
+
 " NeoBundle 'Shougo/neocomplete', {
-            " \ 'disabled': 1,
-            " \ 'lazy': 1,
-            " \ 'autoload': {
-            " \ 'insert': 1
-            " \ }
-            " \ }
+" \ 'disabled': 1,
+" \ 'lazy': 1,
+" \ 'autoload': {
+" \ 'insert': 1
+" \ }
+" \ }
 " NeoBundle 'Shougo/vimfiler.vim', {
-            " \ 'lazy': 1,
-            " \ 'depends' : 'Shougo/unite.vim',
-            " \'autoload': {
-            " \ 'commands' : [
-            " \         { 'name' : 'VimFiler',
-            " \           'complete' : 'customlist,vimfiler#complete' },
-            " \         { 'name' : 'VimFilerTab',
-            " \           'complete' : 'customlist,vimfiler#complete' },
-            " \         { 'name' : 'VimFilerExplorer',
-            " \           'complete' : 'customlist,vimfiler#complete' },
-            " \         { 'name' : 'Edit',
-            " \           'complete' : 'customlist,vimfiler#complete' },
-            " \         { 'name' : 'Write',
-            " \           'complete' : 'customlist,vimfiler#complete' },
-            " \         'Read', 'Source'],
-            " \ 'mappings' : '<Plug>(vimfiler_',
-            " \ 'explorer' : 1,
-            " \ }
-            " \ }
+" \ 'lazy': 1,
+" \ 'depends' : 'Shougo/unite.vim',
+" \'autoload': {
+" \ 'commands' : [
+" \         { 'name' : 'VimFiler',
+" \           'complete' : 'customlist,vimfiler#complete' },
+" \         { 'name' : 'VimFilerTab',
+" \           'complete' : 'customlist,vimfiler#complete' },
+" \         { 'name' : 'VimFilerExplorer',
+" \           'complete' : 'customlist,vimfiler#complete' },
+" \         { 'name' : 'Edit',
+" \           'complete' : 'customlist,vimfiler#complete' },
+" \         { 'name' : 'Write',
+" \           'complete' : 'customlist,vimfiler#complete' },
+" \         'Read', 'Source'],
+" \ 'mappings' : '<Plug>(vimfiler_',
+" \ 'explorer' : 1,
+" \ }
+" \ }
 NeoBundle 'kien/ctrlp.vim'
-let g:ctrlp_custom_ignore = 'build\|dist\|node_modules\|.idea\|.git\|workspace\|bower_components\'
-let g:ctrlp_root_markers = ['.git']
-let g:ctrlp_max_height = 20         " maxiumum height of match window
-let g:ctrlp_switch_buffer = 'et'    " jump to a file if it's open already
-let g:ctrlp_follow_symlinks=1
-let g:ctrlp_max_files=2000
-let g:ctrlp_clear_cache_on_exit=0   " speed up by not removing clearing cache evertime
-let g:ctrlp_mruf_max = 250          " number of recently opened files
-let g:ctrlp_show_hidden = 1
-nnoremap <c-p> :CtrlP<cr>
+if neobundle#tap('ctrlp.vim')
+    let g:ctrlp_custom_ignore = 'build\|dist\|node_modules\|.idea\|.git\|workspace\|bower_components\'
+    let g:ctrlp_root_markers = ['.git']
+    let g:ctrlp_max_height = 20         " maxiumum height of match window
+    let g:ctrlp_switch_buffer = 'et'    " jump to a file if it's open already
+    let g:ctrlp_follow_symlinks=1
+    let g:ctrlp_max_files=2000
+    let g:ctrlp_clear_cache_on_exit=0   " speed up by not removing clearing cache evertime
+    let g:ctrlp_mruf_max = 250          " number of recently opened files
+    let g:ctrlp_show_hidden = 1
+    nnoremap <c-p> :CtrlP<cr>
+    call neobundle#untap()
+endif
 NeoBundle 'xolox/vim-reload', {
             \ 'lazy': 1,
             \  'autoload' : {
@@ -158,18 +172,21 @@ NeoBundle 'scrooloose/nerdtree', {
             \               'NERDTreeClose', 'NERDTreeCWD', 'NERDTreeFromBookmark', 'NERDTreeMirror']
             \  }
             \ }
-let NERDTreeShowBookmarks=1
-let NERDTreeShowHidden=1
-let NERDTreeQuitOnOpen=0
-let NERDTreeShowLineNumbers=0
-let NERDTreeWinSize=30
-let NERDTreeDirArrows=1
-let NERDChristmasTree=1
-let NERDTreeAutoDeleteBuffer=1 "auto delete buffers on nerdtree delete
-let NERDTreeIgnore=['\~$', '^\.\.$', '\.swp$', '\.hg$', '\.svn$', '\.bzr', '\.git$']
-let NERDSpaceDelims=1
-let NERDCreateDefaultMappings = 1
-let NERDMenuMode=0
+if neobundle#tap('nerdtree')
+    let NERDTreeShowBookmarks=1
+    let NERDTreeShowHidden=1
+    let NERDTreeQuitOnOpen=0
+    let NERDTreeShowLineNumbers=0
+    let NERDTreeWinSize=30
+    let NERDTreeDirArrows=1
+    let NERDChristmasTree=1
+    let NERDTreeAutoDeleteBuffer=1 "auto delete buffers on nerdtree delete
+    let NERDTreeIgnore=['\~$', '^\.\.$', '\.swp$', '\.hg$', '\.svn$', '\.bzr', '\.git$']
+    let NERDSpaceDelims=1
+    let NERDCreateDefaultMappings = 1
+    let NERDMenuMode=0
+    call neobundle#untap()
+endif
 NeoBundle 'scrooloose/nerdcommenter', {
             \ 'lazy': 0,
             \ 'autoload': {
@@ -326,7 +343,7 @@ NeoBundle 'gregsexton/gitv', {
             \   'commands': ['Gitv']
             \  }
             \ }
-" NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'tpope/vim-surround'
 " NeoBundle 'tpope/vim-abolish.git'
 NeoBundle 'tpope/vim-repeat'
@@ -444,22 +461,19 @@ let g:switch_custom_definitions =
             \   }
             \ ]
 
-"set to where my /mysnippets directory exists
-set runtimepath+=~/.dotfiles/vim/
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-let g:UltiSnipsSnippetsDir="~/.dotfiles/vim/mysnippets"
-let g:UltiSnipsSnippetDirectories=['UltiSnips', 'mysnippets']
-
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
-" if neobundle#tap('ultisnips')
-" function! neobundle#tapped.hooks.on_source(bundle)
-" silent! call UltiSnips#FileTypeChanged()
-" endfunction
-" call neobundle#untap()
-" endif
+if neobundle#tap('ultisnips')
+    "set to where my /mysnippets directory exists
+    set runtimepath+=~/.dotfiles/vim/
+    let g:UltiSnipsExpandTrigger="<c-o>"
+    let g:UltiSnipsListSnippets="<c-tab>"
+    let g:UltiSnipsJumpForwardTrigger="<c-j>"
+    let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+    let g:UltiSnipsSnippetsDir="~/.dotfiles/vim/mysnippets"
+    let g:UltiSnipsSnippetDirectories=['UltiSnips', 'mysnippets']
+    call neobundle#untap()
+endif
 
 let g:online_thesaurus_map_keys = 0
 NeoBundle 'beloglazov/vim-online-thesaurus', {
@@ -515,9 +529,9 @@ NeoBundle 'lfilho/cosco.vim', {
             \ }
 " NeoBundle 'nanotech/jellybeans.vim'
 " NeoBundle 'Lokaltog/vim-distinguished'
-NeoBundle 'vim-scripts/wombat256.vim'
+" NeoBundle 'vim-scripts/wombat256.vim'
 " NeoBundle 'chriskempson/vim-tomorrow-theme'
-" NeoBundle 'sjl/badwolf'
+NeoBundle 'sjl/badwolf'
 " NeoBundle 'w0ng/vim-hybrid'
 " NeoBundle 'tomasr/molokai'
 " NeoBundle 'tpope/vim-vividchalk'
