@@ -203,8 +203,11 @@ NeoBundle 'scrooloose/nerdcommenter', {
 "nmap <leader>cc <plug>NERDCommenterComment
 
 NeoBundle 'nathanaelkane/vim-indent-guides'
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'qf']
+if neobundle#tap('vim-indent-guides')
+    let g:indent_guides_enable_on_vim_startup = 1
+    let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'qf']
+    call neobundle#untap()
+endif
 
 NeoBundle 'Shougo/junkfile.vim', {
             \ 'lazy': 1,
@@ -325,11 +328,10 @@ NeoBundle 'tpope/vim-fugitive', {
             \               'Gcd', 'Glcd', 'Ggrep', 'Glog']
             \}
             \ }
-nnoremap <leader>gs :Gstatus<cr>
-nnoremap <leader>gw :Gwrite<cr>
-nnoremap <leader>gp :silent! Git push<cr>
-
 if neobundle#tap('vim-fugitive')
+    nnoremap <leader>gs :Gstatus<cr>
+    nnoremap <leader>gw :Gwrite<cr>
+    nnoremap <leader>gp :silent! Git push<cr>
     function! neobundle#hooks.on_post_source(bundle)
         " detect git root for each open buffer
         bufdo call fugitive#detect(expand('%:p'))
@@ -356,12 +358,15 @@ NeoBundle 'gcmt/wildfire.vim', {
             \	'mappings' : '<Plug>(wildfire-'
             \  }
             \ }
-let g:wildfire_objects = {
-            \ '*' : ["i'", 'i"', "a'", 'a"', "i)", "i]", "i}", "ip"],
-            \ 'html': ["it", "at"]
-            \}
-nmap <ENTER> <Plug>(wildfire-fuel)
-nmap <BS> <Plug>(wildfire-water)
+if neobundle#tap('wildfire.vim')
+    let g:wildfire_objects = {
+                \ '*' : ["i'", 'i"', "a'", 'a"', "i)", "i]", "i}", "ip"],
+                \ 'html': ["it", "at"]
+                \}
+    nmap <ENTER> <Plug>(wildfire-fuel)
+    nmap <BS> <Plug>(wildfire-water)
+    call neobundle#untap()
+endif
 NeoBundle 'sjl/gundo.vim', {
             \ 'lazy': 1,
             \  'autoload' : {
@@ -405,6 +410,7 @@ if neobundle#tap('tabular')
 endif
 
 NeoBundle 'Shougo/neocomplcache.vim', {
+            \ 'disable': 1,
             \ 'lazy': 1,
             \   'autoload': {
             \       'insert': 1
@@ -418,9 +424,12 @@ NeoBundle 'AndrewRadev/inline_edit.vim', {
             \	'commands': ['InlineEdit']
             \  }
             \ }
-nnoremap <leader>ie :InlineEdit<cr>
-xnoremap <leader>ie :InlineEdit<cr>
-inoremap <leader>ie <esc>:InlineEdit<cr>a
+if neobundle#tap('inline_edit.vim')
+    nnoremap <leader>ie :InlineEdit<cr>
+    xnoremap <leader>ie :InlineEdit<cr>
+    inoremap <leader>ie <esc>:InlineEdit<cr>a
+    call neobundle#untap()
+endif
 
 "gS to split, gJ to join
 NeoBundle 'AndrewRadev/splitjoin.vim', {

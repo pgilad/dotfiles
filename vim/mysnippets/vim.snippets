@@ -6,3 +6,10 @@ NeoBundle '${1:package}', {
 			\  }
 			\ }
 endsnippet
+
+snippet ift "neobundle tap"
+if neobundle#tap('${1:package name}')
+	${VISUAL}$0
+    call neobundle#untap()
+endif
+endsnippet
