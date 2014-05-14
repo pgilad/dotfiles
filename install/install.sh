@@ -1,8 +1,5 @@
 # dotfiles dir
 dotfiles=~/.dotfiles
-
-# TODO Clone into my dotfiles
-
 # vim bundles directory
 vim_bundles=~/vimfiles/bundle/
 # dir to link files to
@@ -40,29 +37,34 @@ if [[ "$OS" =~ ^Darwin ]]
         brew update
 
         packages=(
-        maven
-        python
-        ruby
-        nodejs
-        mongo
         git
         git-extras
+        htop-osx
         hub
-        tree
-        sl
         id3tool
         lesspipe
-        nmap
-        htop-osx
+        macvim
         man2html
+        maven
+        mongo
+        nmap
+        nodejs
+        python
+        ruby
+        sl
+        tmux
+        tree
         )
+        for package in $packages; do
+            brew install $package
+        done
     fi
 fi
 
 #TODO handle already created files
 
 # create symlinks
-for filename in $link_dir/{.,_}[^.]*; do
+for filename in $link_dir/{.,_}*; do
     echo "Creating symlink for $filename"
     ln -sf $filename ~/
 done
