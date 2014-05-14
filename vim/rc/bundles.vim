@@ -185,6 +185,7 @@ if neobundle#tap('nerdtree')
     let NERDSpaceDelims=1
     let NERDCreateDefaultMappings = 1
     let NERDMenuMode=0
+    let NERDTreeBookmarksFile=expand('~/vimfiles/vim-bookmarks.txt')
     call neobundle#untap()
 endif
 NeoBundle 'scrooloose/nerdcommenter', {
@@ -385,20 +386,23 @@ NeoBundle 'godlygeek/tabular', {
             \   'commands': ['Tabularize']
             \  }
             \ }
-nnoremap <leader>a& :Tabularize /&<cr>
-vnoremap <leader>a& :Tabularize /&<cr>
-nnoremap <leader>a" :Tabularize /"<cr>
-vnoremap <leader>a" :Tabularize /"<cr>
-nnoremap <leader>a= :Tabularize /=<cr>
-vnoremap <leader>a= :Tabularize /=<cr>
-nnoremap <leader>a: :Tabularize /:<cr>
-vnoremap <leader>a: :Tabularize /:<cr>
-nnoremap <leader>a:: :Tabularize /:\zs<cr>
-vnoremap <leader>a:: :Tabularize /:\zs<cr>
-nnoremap <leader>a, :Tabularize /,<cr>
-vnoremap <leader>a, :Tabularize /,<cr>
-nnoremap <leader>a<Bar> :Tabularize /<Bar><cr>
-vnoremap <leader>a<Bar> :Tabularize /<Bar><cr>
+if neobundle#tap('tabular')
+    nnoremap <leader>a& :Tabularize /&<cr>
+    vnoremap <leader>a& :Tabularize /&<cr>
+    nnoremap <leader>a" :Tabularize /"<cr>
+    vnoremap <leader>a" :Tabularize /"<cr>
+    nnoremap <leader>a= :Tabularize /=<cr>
+    vnoremap <leader>a= :Tabularize /=<cr>
+    nnoremap <leader>a: :Tabularize /:<cr>
+    vnoremap <leader>a: :Tabularize /:<cr>
+    nnoremap <leader>a:: :Tabularize /:\zs<cr>
+    vnoremap <leader>a:: :Tabularize /:\zs<cr>
+    nnoremap <leader>a, :Tabularize /,<cr>
+    vnoremap <leader>a, :Tabularize /,<cr>
+    nnoremap <leader>a<Bar> :Tabularize /<Bar><cr>
+    vnoremap <leader>a<Bar> :Tabularize /<Bar><cr>
+    call neobundle#untap()
+endif
 
 NeoBundle 'Shougo/neocomplcache.vim', {
             \ 'lazy': 1,
