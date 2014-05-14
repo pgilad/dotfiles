@@ -1,20 +1,12 @@
 alias sysup="sudo apt-get autoclean -y && sudo apt-get autoremove -y && sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y"
 
 # reboot / halt / poweroff
-alias reboot='sudo /sbin/reboot'
-alias poweroff='sudo /sbin/poweroff'
-alias halt='sudo /sbin/halt'
-alias shutdown='sudo /sbin/shutdown'
+alias reboot='sudo /sbin/reboot -r now'
+alias poweroff='sudo /sbin/poweroff -r now'
+alias halt='sudo /sbin/halt -r now'
+alias shutdown='sudo /sbin/shutdown -r now'
 
-install_gulp() {
-    echo "Running npm install gulp-$1 --save-dev"
-    npm install gulp-$1 --save-dev
+function gli() {
+    echo "Running npm install $1-$2 --save-dev"
+    npm install $1-$2 --save-dev
 }
-
-install_grunt() {
-    echo "Running npm install grunt-$1 --save-dev"
-    npm install grunt-$1 --save-dev
-}
-
-alias gli=install_gulp
-alias gri=install_grunt

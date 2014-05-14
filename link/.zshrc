@@ -24,6 +24,12 @@ if [[ -e $ZSH/oh-my-zsh.sh ]]; then
     source $ZSH/oh-my-zsh.sh
 fi
 
+# Source my autoload functions
+# TODO make this source every file in ~/.dotfiles/auto-source
+if [[ -e ~/.aliases ]]; then
+    source ~/.aliases
+fi
+
 # User configuration
 export PATH="/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -52,11 +58,6 @@ eval "$(gulp --completion=zsh || echo echo "Install gulp: npm i -g gulp")"
 
 # Fasd
 eval "$(fasd --init auto || echo echo "Missing Fasd")"
-
-# Source aliases
-if [[ -e ~/.aliases ]]; then
-    source ~/.aliases
-fi
 
 # Disable sound
 setopt no_beep

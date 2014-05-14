@@ -178,7 +178,7 @@ if has('spell')
 endif
 
 set lines=400
-set columns=170
+set columns=200
 
 " set color scheme and font
 if has('syntax')
