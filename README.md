@@ -2,7 +2,7 @@
 > Full glory!
 
 ## Overview
-My config files, mainly Vim & Zsh aimed at working in Windows (7/8) and Ubuntu.
+My config files, mainly Vim & Zsh aimed at working in Windows (7/8) and Ubuntu & OSX.
 
 ## Key Features
 - Uses [NeoBundle](https://github.com/Shougo/neobundle.vim) as package manager.
@@ -76,13 +76,19 @@ git clone https://github.com/pgilad/dotfiles.git ~/.dotfiles
 
 For windows users - this would be your %home% path (usually c:\users\username\)
 
-#### Windows
+### Windows
 
-- run `install/install_windows.cmd`. If it fails - you will need Administrator permission for it.
+- run `install/install.cmd`. If it fails - you will need Administrator permission for it.
 
-#### Ubuntu
+### Ubuntu
 
-- run `install/install_ubuntu.sh`
+- run `install/install.sh`
+
+### OSX
+
+- run `install/install.sh`
+- optionally setup `brew bundle ~./dotfiles/install/Brewfile`
+- optionally setup `brew bundle ~/.dotfiles/install/Caskfile`
 
 ## Vim
 

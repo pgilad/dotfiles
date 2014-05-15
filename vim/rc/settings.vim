@@ -17,8 +17,8 @@ elseif g:config.env.unix
     language message C
 elseif g:config.env.mac
     language message C
-    set guifont=Meslo\ LG\ S\ DZ:h13
-    " set gfn=Monaco:h13
+    " set guifont=Menlo:h13
+    set gfn=Monaco:h13
     set antialias
 endif
 
