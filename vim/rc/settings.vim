@@ -38,18 +38,18 @@ endif
 
 set fileignorecase
 
-set fileformat=unix                           " Default fileformat
-set fileformats=unix,dos,mac                  " Automatic recognition of a new line cord.
+set fileformat=unix                             " Default fileformat
+set fileformats=unix,dos,mac                    " Automatic recognition of a new line cord.
 set viewoptions=folds,options,cursor,slash,unix
 set autoread
-set autowrite                                 " auto write when losing focus
+set autowriteall                                " auto write when losing focus
 set cryptmethod=blowfish
 set scrolloff=3                                 " Set 7 lines to the cursor - when moving vertically using j/k
 set noequalalways
 set shortmess=aTI
 set showbreak=>\
 set suffixesadd+=.js                            " list of suffixes to add when using gf
-set suffixesadd+=.json                            " list of suffixes to add when using gf
+set suffixesadd+=.json                          " list of suffixes to add when using gf
 set ruler                                       " Always show current position
 set cmdheight=1                                 " Height of the command bar
 set showcmd                                     " show partial commands
@@ -89,7 +89,6 @@ set virtualedit=block
 set listchars=tab:>-,trail:~,nbsp:.,extends:> " highlight problematic chars
 set list                                      " show problematic chars
 set report=10                                 " min number of lines changed to report change
-
 set history=700                               " Sets how many lines of history VIM has to remember
 set nomodeline                                " security issue
 set splitright                                " Always splits to the right
