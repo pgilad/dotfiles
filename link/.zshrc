@@ -14,8 +14,8 @@ COMPLETION_WAITING_DOTS="true"
 
 plugins=(git zsh-syntax-highlighting)
 
-# Use brew as well
-if [[ "$(uname)" =~ ^darwin ]]; then
+# Use brew on mac as well
+if [[ "$(uname)" =~ ^Darwin ]]; then
     plugins+=brew
 fi
 
