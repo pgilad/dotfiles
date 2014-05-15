@@ -9,7 +9,6 @@ cask install google-chrome-canary
 cask install imagealpha
 cask install imageoptim
 cask install iterm2
-cask install macvim
 cask install evernote
 cask install mou
 cask install sourcetree

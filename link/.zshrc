@@ -48,16 +48,16 @@ export AWS_CONFIG_FILE=$HOME/.aws-config
 export PATH="$PATH:/usr/local/heroku/bin"
 
 # Add npm completion
-eval "$(npm completion || echo echo "Npm not installed. Can't use autocomplete.")"
+eval "$(npm completion 2> /dev/null || echo echo "Please install NPM.")"
 
 # grunt completion
-eval "$(grunt --completion=zsh || echo echo "Install Grunt CLI: npm i -g grunt-cli")"
+eval "$(grunt --completion=zsh 2> /dev/null || echo echo "Please install Grunt Cli: npm i -g grunt-cli")"
 
 # gulp completion
-eval "$(gulp --completion=zsh || echo echo "Install gulp: npm i -g gulp")"
+eval "$(gulp --completion=zsh 2> /dev/null || echo echo "Please install gulp: npm i -g gulp")"
 
 # Fasd
-eval "$(fasd --init auto || echo echo "Missing Fasd")"
+eval "$(fasd --init auto 2> /dev/null || echo echo "Please install fasd")"
 
 # Disable sound
 setopt no_beep

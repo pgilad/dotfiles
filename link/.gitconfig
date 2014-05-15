@@ -1,6 +1,6 @@
 [user]
-	name = 
-	email = 
+	name = Gilad Peleg 
+	email = giladp007@gmail.com
 [core]
     autocrlf = false
 	excludesfile = /Users/gilad/.dotfiles/.gitignore

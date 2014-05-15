@@ -13,7 +13,9 @@ endif
 
 call neobundle#begin(expand(g:config.bundlesPath))
 
+" Let neobundle handle bundles
 NeoBundleFetch 'Shougo/neobundle.vim'
+
 NeoBundle 'Shougo/vimproc', {
             \ 'build' : {
             \     'windows' : 'make -f make_mingw32.mak',
@@ -22,26 +24,34 @@ NeoBundle 'Shougo/vimproc', {
             \     'unix' : 'make -f make_unix.mak',
             \    },
             \ }
-NeoBundle 'L9'
+NeoBundle 'L9', {
+            \ 'lazy': 0
+            \ }
 NeoBundle 'editorconfig/editorconfig-vim'
-NeoBundle 'Valloric/YouCompleteMe', {
-            \ 'disable' : g:config.env.windows,
-            \ 'vim_version':'7.3.584',
-            \ 'build' : {
-            \   'unix' : './install.sh --clang-completer'
-            \ },
-            \ 'autoload': {
-            \   'insert': 1,
-            \ }
-            \ }
-
+" NeoBundle 'Valloric/YouCompleteMe', {
+" \ 'disable' : g:config.env.windows,
+" \ 'vim_version':'7.3.584',
+" \ 'build' : {
+" \   'unix' : './install.sh --clang-completer',
+" \   'mac' : './install.sh --clang-completer'
+" \  },
+" \ }
 " NeoBundle 'Shougo/neocomplete', {
-" \ 'disabled': 1,
-" \ 'lazy': 1,
-" \ 'autoload': {
-" \ 'insert': 1
-" \ }
-" \ }
+            " \ 'lazy': 0,
+            " \ 'autoload': {
+            " \ 'insert': 1
+            " \ }
+            " \ }
+
+if neobundle#tap('neocomplete')
+    " Disable AutoComplPop.
+    let g:acp_enableAtStartup = 0
+    " Use neocomplete.
+    let g:neocomplete#enable_at_startup = 1
+    " Use smartcase.
+    let g:neocomplete#enable_smart_case = 1
+    call neobundle#untap()
+endif
 " NeoBundle 'Shougo/vimfiler.vim', {
 " \ 'lazy': 1,
 " \ 'depends' : 'Shougo/unite.vim',

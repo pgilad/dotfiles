@@ -31,11 +31,12 @@ install bash-completion
 install wget --enable-iri
 
 # Install more recent versions of some OS X tools
-install vim --override-system-vi
+install vim
 install homebrew/dupes/grep
 install homebrew/php/php55 --with-gmp
 
 # Install other useful binaries
+install lua
 install ack
 install ag
 install coreutils
@@ -50,7 +51,7 @@ install id3tool
 install imagemagick --with-webp
 install lesspipe
 install lua
-install macvim
+install macvim --with-cscope --with-lua --override-system-vim
 install man2html
 install maven
 install mongo
@@ -65,7 +66,6 @@ install tmux
 install tree
 install webkit2png
 
-install lua
 
 tap caskroom/cask
 install brew-cask
