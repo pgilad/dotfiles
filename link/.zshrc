@@ -57,7 +57,7 @@ eval "$(grunt --completion=zsh 2> /dev/null || echo echo "Please install Grunt C
 eval "$(gulp --completion=zsh 2> /dev/null || echo echo "Please install gulp: npm i -g gulp")"
 
 # Fasd
-eval "$(fasd --init auto 2> /dev/null || echo echo "Please install fasd")"
+eval "$(fasd --init posix-alias zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install 2> /dev/null || echo echo "Please install fasd")"
 
 # Disable sound
 setopt no_beep
