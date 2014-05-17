@@ -10,3 +10,5 @@ function gli() {
     echo "Running npm install $1-$2 --save-dev"
     npm install $1-$2 --save-dev
 }
+# start simple server
+alias serve="python -m SimpleHTTPServer"
