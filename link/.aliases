@@ -10,3 +10,4 @@ function gli() {
     echo "Running npm install $1-$2 --save-dev"
     npm install $1-$2 --save-dev
 }
+alias dotsync='cd ~/.dotfiles && git add -A && git commit -am "update dotfiles" && git push && git pull'
