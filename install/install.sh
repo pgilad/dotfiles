@@ -1,3 +1,5 @@
+#!/usr/bin/zsh
+
 # dotfiles dir
 dotfiles=~/.dotfiles
 # vim bundles directory
@@ -7,15 +9,15 @@ link_dir=$dotfiles/link
 # detect os
 OS="$(uname -s)"
 
-function iHeader(){ echo "\n\033[1m$@\033[0m\n"; }
-function iStep()  { echo "\033[1;33m➜\033[0m $@"; }
-function iGood()  { echo "\033[1;33m➜\033[0m $@"; }
-function iBad()   { echo "\033[1;31m✖\033[0m $@"; }
+function iHeader() { echo "\033[1m$@\033[0m\n";  }
+function iStep()   { echo "\033[1;33m➜\033[0m $@"; }
+function iGood()   { echo "\033[1;33m➜\033[0m $@"; }
+function iBad()    { echo "\033[1;31m✖\033[0m $@"; }
 
 iHeader "Starting bootstrap install @Gilad"
 
 # Ubuntu-only stuff
-if [[ "$OS" =~ Linux ]]; then
+if [[ "$OS" =~ ^Linux ]]; then
     iHeader "Running Linux Setup"
     # specify the sudoers filename
     sudoers_file=sudoers-dotfiles
@@ -36,9 +38,8 @@ fi
 # OSX-only stuff.
 if [[ "$OS" =~ ^Darwin ]]; then
     iHeader "Running OSX setup"
-
     # Install Homebrew.
-    if [[ ! "$(type -p brew)" ]]; then
+    if [[ ! -x "$(command -v brew)" ]]; then
         iStep "Installing Homebrew"
         # install homebrew
         ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
@@ -64,3 +65,4 @@ if [[ ! -d "$vim_bundles" ]]; then
 fi
 
 unset iHeader iStep iGood iBad
+iGood "Installation complete!"
