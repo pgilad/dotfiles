@@ -1,3 +1,1 @@
-module.exports = function() {
-    $0
-};
+/* global */
