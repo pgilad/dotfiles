@@ -5,6 +5,7 @@
     autocrlf = false
 	excludesfile = /Users/gilad/.dotfiles/.gitignore
     attributesfile = ~/.dotfiles/.gitattributes
+	editor = vim -w
 [push]
     default = matching
 [color]
