@@ -6,20 +6,30 @@ function! s:create_dir(dir)
     call mkdir(make_dir, 'p')
 endfunction
 
+function! s:SetGuiFont(font)
+    echom a:font
+    if has('gui_running')
+        let &gfn=a:font
+    endif
+endfunction
+
 " match settings per computers I use
 if g:config.env.windows
-    set gfn=consolas:h11
+    call s:SetGuiFont('consolas:h11')
     simalt ~x "maximize window
     language message en
     set shellslash
 elseif g:config.env.unix
-    set gfn=Ubuntu\ Mono\ 12
+    call s:SetGuiFont('Ubuntu\ Mono\ 12')
     language message C
 elseif g:config.env.mac
     language message C
-    " set guifont=Menlo:h13
-    set gfn=Monaco:h13
+    call s:SetGuiFont('Monaco:h13')
     set antialias
+endif
+
+if &term ==? "xterm"
+    set term=xterm-256color
 endif
 
 if has("wildmenu")
