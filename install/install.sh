@@ -10,9 +10,9 @@ link_dir=$dotfiles/link
 OS="$(uname -s)"
 
 function iHeader() { echo "\033[1m$@\033[0m\n";  }
-function iStep()   { echo "\t\033[1;32m➜\033[0m $@"; }
-function iGood()   { echo "\t\t\033[1;33m✔\033[0m $@"; }
-function iBad()    { echo "\t\t\033[1;31m✖\033[0m $@"; }
+function iStep()   { echo "  \033[1;32m➜\033[0m $@"; }
+function iGood()   { echo "    \033[1;33m✔\033[0m $@"; }
+function iBad()    { echo "    \033[1;31m✖\033[0m $@"; }
 
 iHeader "Starting bootstrap install @Gilad"
 
