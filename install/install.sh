@@ -10,9 +10,9 @@ link_dir=$dotfiles/link
 OS="$(uname -s)"
 
 function iHeader() { echo "\033[1m$@\033[0m\n";  }
-function iStep()   { echo "\033[1;33m➜\033[0m $@"; }
-function iGood()   { echo "\033[1;33m➜\033[0m $@"; }
-function iBad()    { echo "\033[1;31m✖\033[0m $@"; }
+function iStep()   { echo "  \033[1;32m➜\033[0m $@"; }
+function iGood()   { echo "    \033[1;33m✔\033[0m $@"; }
+function iBad()    { echo "    \033[1;31m✖\033[0m $@"; }
 
 iHeader "Starting bootstrap install @Gilad"
 
@@ -48,12 +48,14 @@ fi
 
 # create symlinks
 iHeader "Creating symlinks"
-for filename in $link_dir/{.,_}[!.]*; do
-    if [[ ! -e "$filename" ]]; then
-        iGood "Symlink created: $filename"
-        ln -sf $filename ~/
+for filename in $link_dir/{.,_}[!.]*(:t); do
+    iStep "Handling file: $filename"
+    if [[ ! -e ~/"$filename" ]]; then
+        ln -sf "$link_dir/$filename" ~/ &&
+            iGood "Symlink created: ~/$filename" ||
+            iBad "Problem with symlinking ~/$filename"
     else
-        iBad "Symlink skipped, file exists: $filename"
+        iBad "Symlink skipped, file exists: ~/$filename"
     fi
 done
 

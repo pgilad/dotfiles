@@ -489,7 +489,7 @@ NeoBundle 'honza/vim-snippets'
 if neobundle#tap('ultisnips')
     "set to where my /mysnippets directory exists
     set runtimepath+=~/.dotfiles/vim/
-    let g:UltiSnipsExpandTrigger="<c-o>"
+    let g:UltiSnipsExpandTrigger="<tab>"
     let g:UltiSnipsListSnippets="<c-tab>"
     let g:UltiSnipsJumpForwardTrigger="<c-j>"
     let g:UltiSnipsJumpBackwardTrigger="<c-k>"

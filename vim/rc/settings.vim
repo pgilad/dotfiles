@@ -6,20 +6,29 @@ function! s:create_dir(dir)
     call mkdir(make_dir, 'p')
 endfunction
 
+function! b:SetGuiFont(font)
+    if has('gui_running')
+        let &gfn=a:font
+    endif
+endfunction
+
 " match settings per computers I use
 if g:config.env.windows
-    set gfn=consolas:h11
+    call b:SetGuiFont('consolas:h11')
     simalt ~x "maximize window
     language message en
     set shellslash
 elseif g:config.env.unix
-    set gfn=Ubuntu\ Mono\ 12
+    call b:SetGuiFont('Ubuntu\ Mono\ 12')
     language message C
 elseif g:config.env.mac
+    call b:SetGuiFont('Monaco:h13')
     language message C
-    " set guifont=Menlo:h13
-    set gfn=Monaco:h13
     set antialias
+endif
+
+if &term ==? "xterm"
+    " set term=xterm-256color
 endif
 
 if has("wildmenu")
@@ -36,7 +45,10 @@ if has("wildmenu")
     set wildignore+=tmp/*
 endif
 
-set fileignorecase
+" only works in version 704
+if (v:version > 703)
+    set fileignorecase
+endif
 
 set fileformat=unix                             " Default fileformat
 set fileformats=unix,dos,mac                    " Automatic recognition of a new line cord.
@@ -181,8 +193,8 @@ set columns=200
 
 " set color scheme and font
 if has('syntax')
-     filetype plugin indent on
-     syntax enable
+    filetype plugin indent on
+    syntax enable
 endif
 
 set background=dark
