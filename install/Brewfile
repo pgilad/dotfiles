@@ -65,7 +65,9 @@ install sl
 install tmux
 install tree
 install webkit2png
-
+install jmeter
+install md5sha1sum
+install redis
 
 tap caskroom/cask
 install brew-cask

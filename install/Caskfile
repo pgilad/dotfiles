@@ -2,6 +2,7 @@
 # Credit: https://github.com/mathiasbynens/dotfiles
 # Usage: `brew bundle Caskfile`
 
+cask install java
 cask install dropbox
 cask install alfred
 cask install google-chrome
@@ -12,6 +13,8 @@ cask install iterm2
 cask install evernote
 cask install mou
 cask install sourcetree
+cask install hipchat
+cask install vagrant
 cask install skype
 
 cask install sublime-text
@@ -21,6 +24,8 @@ cask install transmission
 
 cask install virtualbox
 cask install vlc
+
+cleanup
 
 # cask install miro-video-converter
 # cask install opera
