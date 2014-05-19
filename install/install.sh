@@ -48,8 +48,8 @@ fi
 
 # create symlinks
 iHeader "Creating symlinks"
-for filename in $link_dir/{.,_}[!.]*; do
-    if [[ ! -e "$filename" ]]; then
+for filename in $link_dir/{.,_}[!.]*(:t); do
+    if [[ ! -e "~/$filename" ]]; then
         iGood "Symlink created: $filename"
         ln -sf $filename ~/
     else
