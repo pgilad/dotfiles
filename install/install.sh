@@ -50,7 +50,7 @@ fi
 iHeader "Creating symlinks"
 for filename in $link_dir/{.,_}[!.]*(:t); do
     iStep "Handling file: $filename"
-    if [[ ! -e "~/$filename" ]]; then
+    if [[ ! -e ~/"$filename" ]]; then
         ln -sf "$link_dir/$filename" ~/ &&
             iGood "Symlink created: ~/$filename" ||
             iBad "Problem with symlinking ~/$filename"
