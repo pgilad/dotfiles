@@ -28,7 +28,7 @@ elseif g:config.env.mac
 endif
 
 if &term ==? "xterm"
-    set term=xterm-256color
+    " set term=xterm-256color
 endif
 
 if has("wildmenu")
