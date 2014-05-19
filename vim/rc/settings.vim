@@ -36,7 +36,10 @@ if has("wildmenu")
     set wildignore+=tmp/*
 endif
 
-set fileignorecase
+" only works in version 704
+if (v:version > 703)
+    set fileignorecase
+endif
 
 set fileformat=unix                             " Default fileformat
 set fileformats=unix,dos,mac                    " Automatic recognition of a new line cord.
@@ -181,8 +184,8 @@ set columns=200
 
 " set color scheme and font
 if has('syntax')
-     filetype plugin indent on
-     syntax enable
+    filetype plugin indent on
+    syntax enable
 endif
 
 set background=dark
