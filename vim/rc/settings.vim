@@ -8,7 +8,7 @@ endfunction
 
 function! b:SetGuiFont(font)
     if has('gui_running')
-        let &gfn=a:font
+        exec "set gfn=" . a:font
     endif
 endfunction
 
