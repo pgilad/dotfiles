@@ -50,10 +50,11 @@ fi
 iHeader "Creating symlinks"
 for filename in $link_dir/{.,_}[!.]*(:t); do
     if [[ ! -e "~/$filename" ]]; then
-        iGood "Symlink created: $filename"
-        ln -sf $filename ~/
+        ln -sf "$link_dir/$filename" ~/ &&
+            iGood "Symlink created: ~/$filename"
+        || iBad "Problem with symlinking ~/$filename"
     else
-        iBad "Symlink skipped, file exists: $filename"
+        iBad "Symlink skipped, file exists: ~/$filename"
     fi
 done
 
