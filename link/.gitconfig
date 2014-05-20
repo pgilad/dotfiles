@@ -7,7 +7,7 @@
     attributesfile = ~/.dotfiles/.gitattributes
 	editor = vim -w
 [push]
-    default = matching
+	default = simple
 [color]
     interactive = auto
     ui = auto
