@@ -3,11 +3,11 @@
 	email = giladp007@gmail.com
 [core]
     autocrlf = false
-	excludesfile = /Users/gilad/.dotfiles/.gitignore
+	excludesfile = /Users/pgilad/.gitignore_global
     attributesfile = ~/.dotfiles/.gitattributes
 	editor = vim -w
 [push]
-	default = simple
+	default = current
 [color]
     interactive = auto
     ui = auto
@@ -52,5 +52,5 @@
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	cmd = /opt/homebrew-cask/Caskroom/sourcetree/1.9.2/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
