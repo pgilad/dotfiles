@@ -340,7 +340,7 @@ NeoBundle 'tpope/vim-fugitive', {
 if neobundle#tap('vim-fugitive')
     nnoremap <leader>gs :Gstatus<cr>
     nnoremap <leader>gw :Gwrite<cr>
-    nnoremap <leader>gp :silent! Git push<cr>
+    nnoremap <leader>gp :Git push<cr>
     function! neobundle#hooks.on_post_source(bundle)
         " detect git root for each open buffer
         bufdo call fugitive#detect(expand('%:p'))
