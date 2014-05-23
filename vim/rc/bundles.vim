@@ -534,11 +534,12 @@ NeoBundle 'einars/js-beautify', {
 NeoBundle 'scrooloose/syntastic', {
             \ 'lazy': 1,
             \  'autoload' : {
-            \	'filetypes': ['javascript', 'json', 'less', 'css', 'jade', 'html']
+            \	'filetypes': ['javascript', 'json', 'less', 'css', 'jade', 'html', 'sh']
             \  }
             \ }
-let g:syntastic_mode_map = { 'mode': 'passive',
-            \ 'active_filetypes': ['javascript', 'json', 'less', 'css', 'jade', 'html'],
+let g:syntastic_mode_map = {
+            \ 'mode': 'passive',
+            \ 'active_filetypes': ['javascript', 'json', 'less', 'css', 'jade', 'html', 'zsh'],
             \ 'passive_filetypes': [] }
 let g:syntastic_enable_balloons = 0
 
