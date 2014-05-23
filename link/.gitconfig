@@ -1,13 +1,13 @@
 [user]
-	name = Gilad Peleg 
-	email = giladp007@gmail.com
+    name = Gilad Peleg 
+    email = giladp007@gmail.com
 [core]
     autocrlf = false
-	excludesfile = /Users/pgilad/.gitignore_global
+    excludesfile = ~/.gitignore_global
     attributesfile = ~/.dotfiles/.gitattributes
-	editor = vim -w
+    editor = vim -w
 [push]
-	default = current
+    default = current
 [color]
     interactive = auto
     ui = auto
@@ -37,20 +37,20 @@
     stats = !git shortlog -sn master | head
     freq = !history | cut -c 8- | grep git | sort | uniq -c  | sort -n -r | head -n 5
 [url "git@github.com:"]
-	insteadOf = "gh:"
-	pushInsteadOf = "github:"
-	pushInsteadOf = "git://github.com/"
+    insteadOf = "gh:"
+    pushInsteadOf = "github:"
+    pushInsteadOf = "git://github.com/"
 [url "git://github.com/"]
-	insteadOf = "github:"
+    insteadOf = "github:"
 [url "git@gist.github.com:"]
-	insteadOf = "gst:"
-	pushInsteadOf = "gist:"
-	pushInsteadOf = "git://gist.github.com/"
+    insteadOf = "gst:"
+    pushInsteadOf = "gist:"
+    pushInsteadOf = "git://gist.github.com/"
 [url "git://gist.github.com/"]
-	insteadOf = "gist:"
+    insteadOf = "gist:"
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+    path = 
 [mergetool "sourcetree"]
-	cmd = /opt/homebrew-cask/Caskroom/sourcetree/1.9.2/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+    cmd = /opt/homebrew-cask/Caskroom/sourcetree/1.9.2/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+    trustExitCode = true
