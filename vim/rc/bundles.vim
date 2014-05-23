@@ -318,7 +318,6 @@ NeoBundle 'maksimr/vim-jsbeautify', {
             \ }
 NeoBundleLazy 'leshill/vim-json', {'autoload':{'filetypes':['javascript','json']}}
 NeoBundleLazy 'elzr/vim-json', {'autoload':{'filetypes':['json']}}
-NeoBundleLazy 'mmalecki/vim-node.js', {'autoload':{'filetypes':['javascript']}}
 NeoBundleLazy 'moll/vim-node', {'autoload':{'filetypes':['javascript']}}
 NeoBundleLazy 'itspriddle/vim-jquery.git', {'autoload':{'filetypes':['javascript']}}
 NeoBundleLazy 'heavenshell/vim-jsdoc', {'autoload':{'filetypes':['javascript']}}
@@ -335,7 +334,7 @@ NeoBundle 'tpope/vim-fugitive', {
             \ 'augroup' : 'fugitive',
             \ 'autoload': {
             \ 'commands': ['Gstatus', 'Gcommit', 'Gwrite', 'Git', 'Git!',
-            \               'Gcd', 'Glcd', 'Ggrep', 'Glog']
+            \               'Gcd', 'Glcd', 'Ggrep', 'Glog', 'Gdiff']
             \}
             \ }
 if neobundle#tap('vim-fugitive')
