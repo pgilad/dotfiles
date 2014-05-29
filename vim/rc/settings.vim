@@ -85,7 +85,6 @@ set magic                                     " For regular expressions turn mag
 set showmatch                                 " Show matching brackets when text indicator is over them
 set cpoptions-=m
 set matchtime=3
-set matchpairs+=<:>
 set noerrorbells                              " No annoying sound on errors
 set novisualbell                              " no annoying flashes                                              "
 set t_vb=                                     " disable visual bell

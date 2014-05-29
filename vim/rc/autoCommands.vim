@@ -10,6 +10,10 @@ if has('autocmd')
         autocmd FileType javascript,css,json nnoremap <buffer> <silent> <leader>; :call cosco#commaOrSemiColon()<cr>
         autocmd FileType javascript,css,json inoremap <buffer> <silent> <leader>; <ESC>:call cosco#commaOrSemiColon()<cr>a
 
+        " prevent indentation in jade
+        autocmd FileType jade setlocal noautoindent
+        autocmd FileType html setlocal matchpairs+=<:>
+
         " saving on lost focus
         autocmd FocusLost * :silent! wall
         autocmd FileType javascript,html,json,jade,vim autocmd FileWritePre,FileAppendPre,FilterWritePre,BufWritePre <buffer> call TrimWhiteSpace()

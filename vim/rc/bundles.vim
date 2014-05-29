@@ -519,8 +519,11 @@ NeoBundle 'Raimondi/delimitMate', {
             \    'insert' : 1
             \  }
             \}
-let delimitMate_expand_cr=1
-let delimitMate_expand_space=1
+if neobundle#tap('delimitMate')
+    let delimitMate_expand_cr=1
+    let delimitMate_expand_space=1
+    call neobundle#untap()
+endif
 
 """"""""""""""""""
 "  lint & style  "
