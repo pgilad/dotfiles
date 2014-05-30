@@ -92,12 +92,11 @@ NeoBundle 'xolox/vim-reload', {
             \   'filetypes': ['vim']
             \  }
             \ }
-let g:skeletons_dir = $HOME . "/.dotfiles/vim/skeletons"
-NeoBundle 'tobyS/skeletons.vim', {
-            \ 'lazy': 0,
-            \  'autoload' : {
-            \  }
-            \ }
+NeoBundle 'tobyS/skeletons.vim'
+if neobundle#tap('skeletons.vim')
+    let g:skeletons.skeletonsDir = "~/.dotfiles/vim/skeletons"
+    call neobundle#untap()
+endif
 NeoBundleLazy 'Shougo/unite.vim', {
             \ 'commands' : [{ 'name' : 'Unite',
             \                 'complete' : 'customlist,unite#complete_source'},
