@@ -91,3 +91,6 @@ Lodash
 lodash
 vim
 UltiSnips
+SkeletonsOn
+SkeletonsOff
+SkeletonsReload
