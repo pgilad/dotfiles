@@ -36,12 +36,12 @@ NeoBundle 'editorconfig/editorconfig-vim'
 " \   'mac' : './install.sh --clang-completer'
 " \  },
 " \ }
-" NeoBundle 'Shougo/neocomplete', {
-            " \ 'lazy': 0,
-            " \ 'autoload': {
-            " \ 'insert': 1
-            " \ }
-            " \ }
+NeoBundle 'Shougo/neocomplete', {
+            \ 'lazy': 1,
+            \ 'autoload': {
+            \ 'insert': 1
+            \ }
+            \ }
 
 if neobundle#tap('neocomplete')
     " Disable AutoComplPop.
@@ -178,7 +178,7 @@ NeoBundle 'scrooloose/nerdtree', {
             \ 'lazy': 1,
             \  'autoload' : {
             \ 'explorer' : 1,
-            \	'commands': ['NERDTree', 'NERDTreeToggle', 'NERDTreeFind',
+            \   'commands': ['NERDTree', 'NERDTreeToggle', 'NERDTreeFind',
             \               'NERDTreeClose', 'NERDTreeCWD', 'NERDTreeFromBookmark', 'NERDTreeMirror']
             \  }
             \ }
@@ -259,19 +259,19 @@ NeoBundle 'wavded/vim-stylus', {
 NeoBundle 'groenewege/vim-less', {
             \ 'lazy': 1,
             \  'autoload' : {
-            \	'filetypes':['less', 'css']
+            \   'filetypes':['less', 'css']
             \  }
             \ }
 NeoBundle 'csscomb/vim-csscomb', {
             \ 'lazy': 1,
             \  'autoload' : {
-            \	'filetypes': ['css', 'less', 'sass']
+            \   'filetypes': ['css', 'less', 'sass']
             \  }
             \ }
 NeoBundle 'othree/html5.vim', {
             \ 'lazy': 1,
             \  'autoload' : {
-            \	'filetypes':['html']
+            \   'filetypes':['html']
             \  }
             \ }
 NeoBundle 'hokaccha/vim-html5validator', {
@@ -283,37 +283,37 @@ NeoBundle 'hokaccha/vim-html5validator', {
 NeoBundle 'digitaltoad/vim-jade', {
             \ 'lazy': 1,
             \  'autoload' : {
-            \	'filetypes':['jade']
+            \   'filetypes':['jade']
             \  }
             \ }
 NeoBundle 'gregsexton/MatchTag', {
             \ 'lazy': 1,
             \  'autoload' : {
-            \	'filetypes':['html','xml']
+            \   'filetypes':['html','xml']
             \  }
             \ }
 NeoBundle 'othree/xml.vim', {
             \ 'lazy': 1,
             \  'autoload' : {
-            \	'filetypes':['xml']
+            \   'filetypes':['xml']
             \  }
             \ }
 NeoBundle 'jelera/vim-javascript-syntax', {
             \ 'lazy': 1,
             \  'autoload' : {
-            \	'filetypes':['javascript']
+            \   'filetypes':['javascript']
             \  }
             \ }
 NeoBundle 'pangloss/vim-javascript', {
             \ 'lazy': 1,
             \  'autoload' : {
-            \	'filetypes':['javascript']
+            \   'filetypes':['javascript']
             \  }
             \ }
 NeoBundle 'maksimr/vim-jsbeautify', {
             \ 'lazy': 1,
             \  'autoload' : {
-            \	'filetypes':['javascript', 'json', 'html']
+            \   'filetypes':['javascript', 'json', 'html']
             \  }
             \ }
 NeoBundleLazy 'leshill/vim-json', {'autoload':{'filetypes':['javascript','json']}}
@@ -322,8 +322,15 @@ NeoBundleLazy 'moll/vim-node', {'autoload':{'filetypes':['javascript']}}
 NeoBundleLazy 'itspriddle/vim-jquery.git', {'autoload':{'filetypes':['javascript']}}
 NeoBundleLazy 'heavenshell/vim-jsdoc', {'autoload':{'filetypes':['javascript']}}
 
-NeoBundleLazy 'othree/javascript-libraries-syntax.vim', {'autoload':{'filetypes':['javascript','coffee']}}
-let g:used_javascript_libs = 'underscore,angularjs,jquery,jasmine,angularui'
+NeoBundleLazy 'othree/javascript-libraries-syntax.vim', {
+            \ 'autoload':{
+            \   'filetypes':['javascript','coffee']
+            \ }
+            \ }
+if neobundle#tap('javascript-libraries-syntax.vim')
+    let g:used_javascript_libs = 'underscore,angularjs,jquery,jasmine,angularui,requirejs,backbone'
+    call neobundle#untap()
+endif
 
 NeoBundleLazy 'tpope/vim-markdown', {'autoload':{'filetypes':['markdown']}}
 NeoBundleLazy 'jtratner/vim-flavored-markdown.git', {'autoload':{'filetypes':['markdown']}}
@@ -364,7 +371,7 @@ NeoBundle 'thinca/vim-visualstar'
 NeoBundle 'gcmt/wildfire.vim', {
             \ 'lazy': 1,
             \  'autoload' : {
-            \	'mappings' : '<Plug>(wildfire-'
+            \   'mappings' : '<Plug>(wildfire-'
             \  }
             \ }
 if neobundle#tap('wildfire.vim')
@@ -418,19 +425,11 @@ if neobundle#tap('tabular')
     call neobundle#untap()
 endif
 
-NeoBundle 'Shougo/neocomplcache.vim', {
-            \ 'disable': 1,
-            \ 'lazy': 1,
-            \   'autoload': {
-            \       'insert': 1
-            \   }
-            \ }
 NeoBundle 'terryma/vim-multiple-cursors'
-
 NeoBundle 'AndrewRadev/inline_edit.vim', {
             \ 'lazy': 1,
             \  'autoload' : {
-            \	'commands': ['InlineEdit']
+            \   'commands': ['InlineEdit']
             \  }
             \ }
 if neobundle#tap('inline_edit.vim')
@@ -447,41 +446,53 @@ NeoBundle 'AndrewRadev/splitjoin.vim', {
             \   'commands': ['SplitjoinSplit', 'SplitjoinJoin']
             \  }
             \ }
-nnoremap <leader>sj :SplitjoinJoin<cr>
-nnoremap <leader>ss :SplitjoinSplit<cr>
+if neobundle#tap('splitjoin.vim')
+    nnoremap <leader>sj :SplitjoinJoin<cr>
+    nnoremap <leader>ss :SplitjoinSplit<cr>
+    call neobundle#untap()
+endif
 
 NeoBundle 'AndrewRadev/linediff.vim', {
             \ 'lazy': 1,
             \  'autoload' : {
-            \	'commands': ['Linediff', 'LinediffReset']
+            \   'commands': ['Linediff', 'LinediffReset']
             \  }
             \ }
-vnoremap <leader>ld :Linediff<cr>
-nnoremap <leader>ld :Linediff<cr>
-nnoremap <leader>lr :LinediffReset<cr>
+if neobundle#tap('linediff.vim')
+    vnoremap <leader>ld :Linediff<cr>
+    nnoremap <leader>ld :Linediff<cr>
+    nnoremap <leader>lr :LinediffReset<cr>
+    call neobundle#untap()
+endif
 
 """""""""""""
 "  airline  "
 """""""""""""
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep=' '
-let g:airline#extensions#tabline#left_alt_sep='¦'
 NeoBundle 'bling/vim-airline'
+if neobundle#tap('vim-airline')
+    let g:airline#extensions#tabline#enabled = 1
+    let g:airline#extensions#tabline#left_sep=' '
+    let g:airline#extensions#tabline#left_alt_sep='¦'
+    call neobundle#untap()
+endif
 
 NeoBundle 'AndrewRadev/switch.vim', {
             \ 'lazy': 1,
             \  'autoload' : {
-            \	'commands': ['Switch']
+            \   'commands': ['Switch']
             \  }
             \ }
-let g:switch_custom_definitions =
-            \ [
-            \   ['/', '\\'],
-            \   {
-            \       '\v(\w+)\.(\w+)' : '\1[''\2'']',
-            \       '\v(\w+)\[[''"](\w+)[''"]\]' : '\1.\2'
-            \   }
-            \ ]
+if neobundle#tap('switch.vim')
+    let g:switch_custom_definitions =
+                \ [
+                \   ['/', '\\'],
+                \   {
+                \       '\v(\w+)\.(\w+)' : '\1[''\2'']',
+                \       '\v(\w+)\[[''"](\w+)[''"]\]' : '\1.\2'
+                \   }
+                \ ]
+    call neobundle#untap()
+endif
 
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
@@ -497,14 +508,17 @@ if neobundle#tap('ultisnips')
     call neobundle#untap()
 endif
 
-let g:online_thesaurus_map_keys = 0
 NeoBundle 'beloglazov/vim-online-thesaurus', {
             \ 'lazy': 1,
             \  'autoload' : {
             \ 'commands': ['OnlineThesaurusCurrentWord', 'Thesaurus']
             \  }
             \ }
-nnoremap <leader>K :OnlineThesaurusCurrentWord<cr>
+if neobundle#tap('vim-online-thesaurus')
+    let g:online_thesaurus_map_keys = 0
+    nnoremap <leader>K :OnlineThesaurusCurrentWord<cr>
+    call neobundle#untap()
+endif
 
 NeoBundle 'kana/vim-textobj-user'          " required plugin
 NeoBundle 'kana/vim-textobj-line'          " al, il
@@ -531,13 +545,13 @@ endif
 NeoBundle 'einars/js-beautify', {
             \ 'lazy': 1,
             \  'autoload' : {
-            \	'filetypes' : ['html', 'js', 'css']
+            \   'filetypes' : ['html', 'js', 'css']
             \  }
             \ }
 NeoBundle 'scrooloose/syntastic', {
             \ 'lazy': 1,
             \  'autoload' : {
-            \	'filetypes': ['javascript', 'json', 'less', 'css', 'jade', 'html', 'sh']
+            \   'filetypes': ['javascript', 'json', 'less', 'css', 'jade', 'html', 'sh']
             \  }
             \ }
 let g:syntastic_mode_map = {
@@ -550,7 +564,7 @@ let g:syntastic_enable_balloons = 0
 NeoBundle 'lfilho/cosco.vim', {
             \ 'lazy': 1,
             \  'autoload' : {
-            \	'filetypes': ['json', 'javascript']
+            \   'filetypes': ['json', 'javascript']
             \  }
             \ }
 " NeoBundle 'nanotech/jellybeans.vim'
