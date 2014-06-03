@@ -31,6 +31,12 @@ if &term ==? "xterm"
     " set term=xterm-256color
 endif
 
+if has('viminfo')
+    " set viminfo file location
+    " need to make sure directory exists as well
+    set viminfo+=n~/.cache/.viminfo
+endif
+
 if has("wildmenu")
     set wildmenu                   " Turn on the WiLd menu
     set wildignorecase             " ignore case in wildmenu
@@ -200,11 +206,11 @@ set background=dark
 " let b:color = "jellybeans"
 " let b:color = "distinguished"
 " let b:color = "wombat256mod"
-let b:color = "badwolf"
+" let b:color = "badwolf"
 " let b:color = "hybrid"
 " let b:color = "molokai"
 " let b:color = "vividchalk"
-" let b:color = "Tomorrow-Night"
+let b:color = "Tomorrow-Night"
 " let b:color = 'desert'
 
 try

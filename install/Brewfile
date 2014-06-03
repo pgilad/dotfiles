@@ -20,6 +20,7 @@ install coreutils
 install moreutils
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed
 install findutils
+install luajit
 # Install GNU `sed`, overwriting the built-in `sed`
 install gnu-sed --default-names
 # Install Bash 4
@@ -31,7 +32,8 @@ install bash-completion
 install wget --enable-iri
 
 # Install more recent versions of some OS X tools
-install vim
+install vim --with-lua
+install macvim --with-cscope --with-lua --custom-icons --with-luajit --override-system-vim
 install homebrew/dupes/grep
 install homebrew/php/php55 --with-gmp
 

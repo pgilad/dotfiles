@@ -19,7 +19,12 @@ if has('autocmd')
         autocmd FileType javascript,html,json,jade,vim autocmd FileWritePre,FileAppendPre,FilterWritePre,BufWritePre <buffer> call TrimWhiteSpace()
 
         " autocomplete
-        autocmd FileType javascript setlocal omnifunc=syntaxcomplete#Complete
+        autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+        autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+        autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+        autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+        autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+        " autocmd FileType javascript setlocal omnifunc=syntaxcomplete#Complete
         " beautify
         autocmd FileType javascript,json nnoremap <buffer> <leader>js :call JsBeautify()<cr>
         autocmd FileType javascript,json vnoremap <buffer> <leader>js :call RangeJsBeautify()<cr>

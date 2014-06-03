@@ -39,10 +39,9 @@ NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'Shougo/neocomplete', {
             \ 'lazy': 1,
             \ 'autoload': {
-            \ 'insert': 1
+            \   'insert': 1
+            \   }
             \ }
-            \ }
-
 if neobundle#tap('neocomplete')
     " Disable AutoComplPop.
     let g:acp_enableAtStartup = 0
@@ -50,6 +49,8 @@ if neobundle#tap('neocomplete')
     let g:neocomplete#enable_at_startup = 1
     " Use smartcase.
     let g:neocomplete#enable_smart_case = 1
+    " Set minimum syntax keyword length.
+    let g:neocomplete#sources#syntax#min_keyword_length = 3
     call neobundle#untap()
 endif
 " NeoBundle 'Shougo/vimfiler.vim', {
@@ -177,8 +178,8 @@ endif
 NeoBundle 'scrooloose/nerdtree', {
             \ 'lazy': 1,
             \  'autoload' : {
-            \ 'explorer' : 1,
-            \   'commands': ['NERDTree', 'NERDTreeToggle', 'NERDTreeFind',
+            \   'explorer' : 1,
+            \       'commands': ['NERDTree', 'NERDTreeToggle', 'NERDTreeFind',
             \               'NERDTreeClose', 'NERDTreeCWD', 'NERDTreeFromBookmark', 'NERDTreeMirror']
             \  }
             \ }
@@ -204,14 +205,6 @@ NeoBundle 'scrooloose/nerdcommenter', {
             \   'mappings' : ['<Plug>NERDCommenter']
             \}
             \ }
-"if neobundle#tap('nerdcommenter')
-"    function! neobundle#tapped.hooks.on_post_source(bundle)
-"        call fugitive#detect(expand('#:p'))
-"    endfunction
-"    call neobundle#untap()
-"endif
-"nmap <leader>cc <plug>NERDCommenterComment
-
 NeoBundle 'nathanaelkane/vim-indent-guides'
 if neobundle#tap('vim-indent-guides')
     let g:indent_guides_enable_on_vim_startup = 1
@@ -325,7 +318,7 @@ NeoBundleLazy 'heavenshell/vim-jsdoc', {'autoload':{'filetypes':['javascript']}}
 NeoBundleLazy 'othree/javascript-libraries-syntax.vim', {
             \ 'autoload':{
             \   'filetypes':['javascript','coffee']
-            \ }
+            \   }
             \ }
 if neobundle#tap('javascript-libraries-syntax.vim')
     let g:used_javascript_libs = 'underscore,angularjs,jquery,jasmine,angularui,requirejs,backbone'
@@ -425,7 +418,10 @@ if neobundle#tap('tabular')
     call neobundle#untap()
 endif
 
-NeoBundle 'terryma/vim-multiple-cursors'
+" more maintained verison
+NeoBundle 'kris89/vim-multiple-cursors'
+" NeoBundle 'osyo-manga/vim-over'
+" NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'AndrewRadev/inline_edit.vim', {
             \ 'lazy': 1,
             \  'autoload' : {
@@ -539,9 +535,6 @@ if neobundle#tap('delimitMate')
     call neobundle#untap()
 endif
 
-""""""""""""""""""
-"  lint & style  "
-""""""""""""""""""
 NeoBundle 'einars/js-beautify', {
             \ 'lazy': 1,
             \  'autoload' : {
@@ -554,11 +547,14 @@ NeoBundle 'scrooloose/syntastic', {
             \   'filetypes': ['javascript', 'json', 'less', 'css', 'jade', 'html', 'sh']
             \  }
             \ }
-let g:syntastic_mode_map = {
-            \ 'mode': 'passive',
-            \ 'active_filetypes': ['javascript', 'json', 'less', 'css', 'jade', 'html', 'zsh'],
-            \ 'passive_filetypes': [] }
-let g:syntastic_enable_balloons = 0
+if neobundle#tap('syntastic')
+    let g:syntastic_mode_map = {
+                \ 'mode': 'passive',
+                \ 'active_filetypes': ['javascript', 'json', 'less', 'css', 'jade', 'html', 'zsh'],
+                \ 'passive_filetypes': [] }
+    let g:syntastic_enable_balloons = 0
+    call neobundle#untap()
+endif
 
 "Comma and semi-colon
 NeoBundle 'lfilho/cosco.vim', {
@@ -570,8 +566,8 @@ NeoBundle 'lfilho/cosco.vim', {
 " NeoBundle 'nanotech/jellybeans.vim'
 " NeoBundle 'Lokaltog/vim-distinguished'
 " NeoBundle 'vim-scripts/wombat256.vim'
-" NeoBundle 'chriskempson/vim-tomorrow-theme'
-NeoBundle 'sjl/badwolf'
+NeoBundle 'chriskempson/vim-tomorrow-theme'
+" NeoBundle 'sjl/badwolf'
 " NeoBundle 'w0ng/vim-hybrid'
 " NeoBundle 'tomasr/molokai'
 " NeoBundle 'tpope/vim-vividchalk'
