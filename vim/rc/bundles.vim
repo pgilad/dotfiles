@@ -107,7 +107,7 @@ if neobundle#tap('vim-skeletons')
     let skeletons#skeletonsDir = ["~/.dotfiles/vim/skeletons"]
     call neobundle#untap()
 endif
-NeoBundleLazy 'Shougo/unite.vim', {
+NeoBundle 'Shougo/unite.vim', {
             \ 'commands' : [{ 'name' : 'Unite',
             \                 'complete' : 'customlist,unite#complete_source'},
             \                 'UniteWithCursorWord', 'UniteWithInput']
@@ -138,28 +138,25 @@ NeoBundle 'ujihisa/unite-colorscheme', {
             \   }
             \ }
 if neobundle#tap('unite.vim')
-    let g:unite_enable_start_insert = 1
-    let g:unite_split_rule = "botright"
-    let g:unite_force_overwrite_statusline = 0
-    let g:unite_winheight = 10
-    let g:unite_source_history_yank_enable = 1
-    let g:unite_source_history_yank_save_clipboard = 1
-    let g:unite_update_time = 200
 
-    " Custom filters."{{{
-    " call unite#custom#source(
-    " \ 'buffer,file_rec,file_rec/async', 'matchers',
-    " \ ['converter_relative_word', 'matcher_fuzzy'])
-    " call unite#custom#source(
-    " \ 'file_mru', 'matchers',
-    " \ ['matcher_project_files', 'matcher_fuzzy'])
-    " call unite#custom#source(
-          " \ 'file', 'matchers',
-          " \ ['matcher_fuzzy', 'matcher_hide_hidden_files'])
-    " call unite#custom#source(
-    " \ 'file_rec/async,file_mru', 'converters',
-    " \ ['converter_file_directory'])
-    " call unite#filters#sorter_default#use(['sorter_rank'])
+    function! neobundle#hooks.on_source(bundle)
+        let g:unite_enable_start_insert = 1
+        let g:unite_split_rule = "botright"
+        let g:unite_force_overwrite_statusline = 0
+        let g:unite_winheight = 10
+        let g:unite_source_history_yank_enable = 1
+        let g:unite_source_history_yank_save_clipboard = 1
+        let g:unite_update_time = 200
+        call unite#custom#source(
+                    \ 'buffer, file_rec, file_rec/async, file_rec/git',
+                    \ 'matchers',
+                    \ ['converter_relative_word', 'matcher_fuzzy'])
+        call unite#custom#source(
+                    \ 'file_mru',
+                    \ 'matchers',
+                    \ ['matcher_project_files', 'matcher_fuzzy'])
+        call unite#filters#sorter_default#use(['sorter_rank'])
+    endfunction
 
     "map bindings... use [Space] but release it for plugins
     nmap <space> [unite]
