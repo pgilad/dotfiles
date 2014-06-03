@@ -51,6 +51,14 @@ if neobundle#tap('neocomplete')
     let g:neocomplete#enable_smart_case = 1
     " Set minimum syntax keyword length.
     let g:neocomplete#sources#syntax#min_keyword_length = 3
+    " Set auto completion length.
+    let g:neocomplete#auto_completion_start_length = 2
+    " Set manual completion length.
+    let g:neocomplete#manual_completion_start_length = 0
+    " Set minimum keyword length.
+    let g:neocomplete#min_keyword_length = 3
+    let g:neocomplete#enable_auto_delimiter = 1
+    let g:neocomplete#max_list = 100
     call neobundle#untap()
 endif
 " NeoBundle 'Shougo/vimfiler.vim', {
@@ -138,8 +146,6 @@ if neobundle#tap('unite.vim')
     let g:unite_source_history_yank_save_clipboard = 1
     let g:unite_update_time = 200
 
-    " TODO fix this - causes error on load
-
     " Custom filters."{{{
     " call unite#custom#source(
     " \ 'buffer,file_rec,file_rec/async', 'matchers',
@@ -148,8 +154,8 @@ if neobundle#tap('unite.vim')
     " \ 'file_mru', 'matchers',
     " \ ['matcher_project_files', 'matcher_fuzzy'])
     " call unite#custom#source(
-    "       \ 'file', 'matchers',
-    "       \ ['matcher_fuzzy', 'matcher_hide_hidden_files'])
+          " \ 'file', 'matchers',
+          " \ ['matcher_fuzzy', 'matcher_hide_hidden_files'])
     " call unite#custom#source(
     " \ 'file_rec/async,file_mru', 'converters',
     " \ ['converter_file_directory'])
@@ -163,6 +169,8 @@ if neobundle#tap('unite.vim')
 
     nnoremap <silent> [unite]b :<C-u>Unite -buffer-name=buffers buffer<CR>
     nnoremap <silent> [unite]f :<C-u>Unite -buffer-name=files -start-insert file<CR>
+    " start unite with recursive file search for filename under cursor
+    nnoremap <silent> [unite]F :<C-u>execute 'Unite -buffer-name=find_files -start-insert file_rec/async -input=' . expand('<cfile>:t')<CR>
     nnoremap <silent> [unite]m :<C-u>Unite -buffer-name=mappings -start-insert mapping<CR>
     nnoremap <silent> [unite]o :<C-u>Unite -buffer-name=outline -start-insert outline<CR>
     nnoremap <silent> [unite]p :<C-u>Unite -buffer-name=files -start-insert file_rec<CR>
