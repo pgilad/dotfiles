@@ -108,9 +108,12 @@ if neobundle#tap('vim-skeletons')
     call neobundle#untap()
 endif
 NeoBundle 'Shougo/unite.vim', {
-            \ 'commands' : [{ 'name' : 'Unite',
+            \ 'lazy': 1,
+            \ 'autoload': {
+            \   'commands' : [{ 'name' : 'Unite',
             \                 'complete' : 'customlist,unite#complete_source'},
             \                 'UniteWithCursorWord', 'UniteWithInput']
+            \   }
             \ }
 NeoBundle 'osyo-manga/unite-filetype', {
             \ 'lazy': 1,
@@ -138,7 +141,6 @@ NeoBundle 'ujihisa/unite-colorscheme', {
             \   }
             \ }
 if neobundle#tap('unite.vim')
-
     function! neobundle#hooks.on_source(bundle)
         let g:unite_enable_start_insert = 1
         let g:unite_split_rule = "botright"
@@ -330,9 +332,19 @@ if neobundle#tap('javascript-libraries-syntax.vim')
     call neobundle#untap()
 endif
 
-NeoBundleLazy 'tpope/vim-markdown', {'autoload':{'filetypes':['markdown']}}
 NeoBundleLazy 'jtratner/vim-flavored-markdown.git', {'autoload':{'filetypes':['markdown']}}
+NeoBundleLazy 'tpope/vim-markdown', {'autoload':{'filetypes':['markdown']}}
 NeoBundleLazy 'waylan/vim-markdown-extra-preview', {'autoload':{'filetypes':['markdown']}}
+NeoBundle 'kannokanno/previm', {
+            \ 'lazy': 1,
+            \ 'depends' : ['open-browser.vim'],
+            \  'autoload' : {
+            \ 'filetypes' : ['markdown']
+            \  }
+            \ }
+NeoBundle 'tpope/vim-unimpaired', {
+            \ 'lazy': 0
+            \ }
 "Git support
 NeoBundle 'tpope/vim-fugitive', {
             \ 'lazy': 1,
