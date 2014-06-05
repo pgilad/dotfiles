@@ -378,21 +378,21 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'thinca/vim-visualstar'
 
-NeoBundle 'gcmt/wildfire.vim', {
-            \ 'lazy': 1,
-            \  'autoload' : {
-            \   'mappings' : '<Plug>(wildfire-'
-            \  }
-            \ }
-if neobundle#tap('wildfire.vim')
-    let g:wildfire_objects = {
-                \ '*' : ["i'", 'i"', "a'", 'a"', "i)", "i]", "i}", "ip"],
-                \ 'html': ["it", "at"]
-                \}
-    nmap <ENTER> <Plug>(wildfire-fuel)
-    nmap <BS> <Plug>(wildfire-water)
-    call neobundle#untap()
-endif
+" NeoBundle 'gcmt/wildfire.vim', {
+            " \ 'lazy': 1,
+            " \  'autoload' : {
+            " \   'mappings' : '<Plug>(wildfire-'
+            " \  }
+            " \ }
+" if neobundle#tap('wildfire.vim')
+    " let g:wildfire_objects = {
+                " \ '*' : ["i'", 'i"', "a'", 'a"', "i)", "i]", "i}", "ip"],
+                " \ 'html': ["it", "at"]
+                " \}
+    " nmap <ENTER> <Plug>(wildfire-fuel)
+    " nmap <BS> <Plug>(wildfire-water)
+    " call neobundle#untap()
+" endif
 NeoBundle 'sjl/gundo.vim', {
             \ 'lazy': 1,
             \  'autoload' : {
