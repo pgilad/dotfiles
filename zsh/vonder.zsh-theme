@@ -20,41 +20,40 @@
 # 165392 => 1d 21h 56m 32s
 prompt_pure_human_time() {
     local tmp=$1
-        local days=$(( tmp / 60 / 60 / 24 ))
-        local hours=$(( tmp / 60 / 60 % 24 ))
-        local minutes=$(( tmp / 60 % 60 ))
-        local seconds=$(( tmp % 60 ))
-        (( $days > 0 )) && echo -n "${days}d "
-        (( $hours > 0 )) && echo -n "${hours}h "
-        (( $minutes > 0 )) && echo -n "${minutes}m "
-        echo "${seconds}s"
+    local days=$(( tmp / 60 / 60 / 24 ))
+    local hours=$(( tmp / 60 / 60 % 24 ))
+    local minutes=$(( tmp / 60 % 60 ))
+    local seconds=$(( tmp % 60 ))
+    (( $days > 0 )) && echo -n "${days}d "
+    (( $hours > 0 )) && echo -n "${hours}h "
+    (( $minutes > 0 )) && echo -n "${minutes}m "
+    echo "${seconds}s"
 }
 
 # fastest possible way to check if repo is dirty
 prompt_pure_git_dirty() {
-# check if we're in a git repo
+    # check if we're in a git repo
     command git rev-parse --is-inside-work-tree &>/dev/null || return
-# check if it's dirty
-        command git diff --quiet --ignore-submodules HEAD &>/dev/null
-
-        (($? == 1)) && echo '*'
+    # check if it's dirty
+    command git diff --quiet --ignore-submodules HEAD &>/dev/null
+    (($? == 1)) && echo '*'
 }
 
 # displays the exec time of the last command if set threshold was exceeded
 prompt_pure_cmd_exec_time() {
     local stop=$EPOCHSECONDS
-        local start=${cmd_timestamp:-$stop}
+    local start=${cmd_timestamp:-$stop}
     integer elapsed=$stop-$start
-        (($elapsed > ${PURE_CMD_MAX_EXEC_TIME:=5})) && prompt_pure_human_time $elapsed
+    (($elapsed > ${PURE_CMD_MAX_EXEC_TIME:=5})) && prompt_pure_human_time $elapsed
 }
 
 prompt_pure_preexec() {
     cmd_timestamp=$EPOCHSECONDS
 
-# shows the current dir and executed command in the title when a process is active
-        print -Pn "\e]0;"
-        echo -nE "$PWD:t: $2"
-        print -Pn "\a"
+    # shows the current dir and executed command in the title when a process is active
+    print -Pn "\e]0;"
+    echo -nE "$PWD:t: $2"
+    print -Pn "\a"
 }
 
 # string length ignoring ansi escapes
@@ -63,37 +62,40 @@ prompt_pure_string_length() {
 }
 
 prompt_pure_precmd() {
-# shows the full path in the title
+    # shows the full path in the title
     print -Pn '\e]0;%~\a'
-# git info
-        vcs_info
-        local prompt_pure_preprompt='\n%F{blue}%~%F{242}$vcs_info_msg_0_`prompt_pure_git_dirty` $prompt_pure_username%f %F{yellow}`prompt_pure_cmd_exec_time`%f'
-        print -P $prompt_pure_preprompt
 
-# check async if there is anything to pull
-        (( ${PURE_GIT_PULL:-1} )) && {
-# check if we're in a git repo
-            command git rev-parse --is-inside-work-tree &>/dev/null &&
-# check check if there is anything to pull
-                command git fetch &>/dev/null &&
-# check if there is an upstream configured for this branch
-                command git rev-parse --abbrev-ref @'{u}' &>/dev/null && {
-                    local arrows=''
-                        (( $(command git rev-list --right-only --count HEAD...@'{u}' 2>/dev/null) > 0 )) && arrows='⇣'
-                        (( $(command git rev-list --left-only --count HEAD...@'{u}' 2>/dev/null) > 0 )) && arrows+='⇡'
-                        print -Pn "\e7\e[A\e[1G\e[`prompt_pure_string_length $prompt_pure_preprompt`C%F{cyan}${arrows}%f\e8"
-                }
-        } &!
+    # git info
+    vcs_info
+    local prompt_pure_preprompt='\n%F{blue}%~'
+    prompt_pure_preprompt+='%{$fg[white]%} $vcs_info_msg_0_'
+    prompt_pure_preprompt+='%{$fg[red]%}$(prompt_pure_git_dirty)%f'
+    prompt_pure_preprompt+='$prompt_pure_username%f '
+    prompt_pure_preprompt+='%F{yellow}$(prompt_pure_cmd_exec_time)%f'
+    print -P $prompt_pure_preprompt
+
+    # check async if there is anything to pull
+    (( ${PURE_GIT_PULL:-1} )) && {
+    # check if we're in a git repo
+    command git rev-parse --is-inside-work-tree &>/dev/null &&
+        # check check if there is anything to pull
+    command git fetch &>/dev/null &&
+        # check if there is an upstream configured for this branch
+    command git rev-parse --abbrev-ref @'{u}' &>/dev/null && {
+    local arrows=''
+    (( $(command git rev-list --right-only --count HEAD...@'{u}' 2>/dev/null) > 0 )) && arrows='⇣'
+    (( $(command git rev-list --left-only --count HEAD...@'{u}' 2>/dev/null) > 0 )) && arrows+='⇡'
+    print -Pn "\e7\e[A\e[1G\e[`prompt_pure_string_length $prompt_pure_preprompt`C%F{cyan}${arrows}%f\e8"
+} } &!
 
 # reset value since `preexec` isn't always triggered
-    unset cmd_timestamp
-}
+unset cmd_timestamp
+    }
 
-prompt_pure_setup() {
-# prevent percentage showing up
-# if output doesn't end with a newline
-    export PROMPT_EOL_MARK=''
+    prompt_pure_setup() {
+        export PROMPT_EOL_MARK=''
         prompt_opts=(cr subst percent)
+
         zmodload zsh/datetime
         autoload -Uz add-zsh-hook
         autoload -Uz vcs_info
@@ -102,14 +104,14 @@ prompt_pure_setup() {
         add-zsh-hook preexec prompt_pure_preexec
 
         zstyle ':vcs_info:*' enable git
-        zstyle ':vcs_info:git*' formats ' (branch:%b)'
-        zstyle ':vcs_info:git*' actionformats ' (branch:%b|%a)'
+        zstyle ':vcs_info:git*' formats '(branch:%F{yellow}%b%f)'
+        zstyle ':vcs_info:git*' actionformats '(branch:%F{yellow}%b|%a)'
 
-# show username@host if logged in through SSH
+        # show username@host if logged in through SSH
         [[ "$SSH_CONNECTION" != '' ]] && prompt_pure_username='%n@%m '
 
-# prompt turns red if the previous command didn't exit with 0
+        # prompt turns red if the previous command didn't exit with 0
         PROMPT='%(?.%F{magenta}.%F{red})❯%f '
-}
+    }
 
-prompt_pure_setup "$@"
+    prompt_pure_setup "$@"
