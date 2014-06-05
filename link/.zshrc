@@ -2,7 +2,8 @@
 ZSH=$HOME/.oh-my-zsh
 
 # for now
-ZSH_THEME="af-magic"
+# ZSH_THEME="af-magic"
+ZSH_THEME="vonder"
 
 # Uncomment this to disable bi-weekly auto-update checks
 DISABLE_AUTO_UPDATE="true"
