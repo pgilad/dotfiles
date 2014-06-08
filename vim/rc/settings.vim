@@ -203,14 +203,14 @@ if has('syntax')
 endif
 
 set background=dark
-" let b:color = "jellybeans"
+let b:color = "jellybeans"
 " let b:color = "distinguished"
 " let b:color = "wombat256mod"
 " let b:color = "badwolf"
 " let b:color = "hybrid"
 " let b:color = "molokai"
 " let b:color = "vividchalk"
-let b:color = "Tomorrow-Night"
+" let b:color = "Tomorrow-Night"
 " let b:color = 'desert'
 
 try

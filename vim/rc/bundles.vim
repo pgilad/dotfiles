@@ -580,10 +580,10 @@ NeoBundle 'lfilho/cosco.vim', {
             \   'filetypes': ['json', 'javascript']
             \  }
             \ }
-" NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'nanotech/jellybeans.vim'
 " NeoBundle 'Lokaltog/vim-distinguished'
 " NeoBundle 'vim-scripts/wombat256.vim'
-NeoBundle 'chriskempson/vim-tomorrow-theme'
+" NeoBundle 'chriskempson/vim-tomorrow-theme'
 " NeoBundle 'sjl/badwolf'
 " NeoBundle 'w0ng/vim-hybrid'
 " NeoBundle 'tomasr/molokai'
