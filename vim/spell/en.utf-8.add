@@ -106,3 +106,15 @@ htmlify
 HTML5
 html5
 targetPrefix
+keypress
+keydown
+parentView
+btn
+jmxPropsRowView
+jMeterProperties
+addEmptyRow
+onKeyPress
+ul
+urls
+sharedFolders
+newrelic
