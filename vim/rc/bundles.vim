@@ -141,24 +141,13 @@ NeoBundle 'ujihisa/unite-colorscheme', {
             \   }
             \ }
 if neobundle#tap('unite.vim')
-    function! neobundle#hooks.on_source(bundle)
-        let g:unite_enable_start_insert = 1
-        let g:unite_split_rule = "botright"
-        let g:unite_force_overwrite_statusline = 0
-        let g:unite_winheight = 10
-        let g:unite_source_history_yank_enable = 1
-        let g:unite_source_history_yank_save_clipboard = 1
-        let g:unite_update_time = 200
-        call unite#custom#source(
-                    \ 'buffer, file_rec, file_rec/async, file_rec/git',
-                    \ 'matchers',
-                    \ ['converter_relative_word', 'matcher_fuzzy'])
-        call unite#custom#source(
-                    \ 'file_mru',
-                    \ 'matchers',
-                    \ ['matcher_project_files', 'matcher_fuzzy'])
-        call unite#filters#sorter_default#use(['sorter_rank'])
-    endfunction
+    let g:unite_enable_start_insert = 1
+    let g:unite_split_rule = "botright"
+    let g:unite_force_overwrite_statusline = 0
+    let g:unite_winheight = 10
+    let g:unite_source_history_yank_enable = 1
+    let g:unite_source_history_yank_save_clipboard = 1
+    let g:unite_update_time = 200
 
     "map bindings... use [Space] but release it for plugins
     nmap <space> [unite]
@@ -179,6 +168,17 @@ if neobundle#tap('unite.vim')
     " search word in current buffer
     nnoremap <silent><expr> [unite]*  ":<C-u>UniteWithCursorWord -buffer-name=search%".bufnr('%')." line:all:wrap<CR>"
 
+    function! neobundle#hooks.on_source(bundle)
+        call unite#custom#source(
+                    \ 'buffer, file_rec, file_rec/async, file_rec/git',
+                    \ 'matchers',
+                    \ ['converter_relative_word', 'matcher_fuzzy'])
+        call unite#custom#source(
+                    \ 'file_mru',
+                    \ 'matchers',
+                    \ ['matcher_project_files', 'matcher_fuzzy'])
+        call unite#filters#sorter_default#use(['sorter_rank'])
+    endfunction
     call neobundle#untap()
 endif
 
@@ -379,19 +379,19 @@ NeoBundle 'tpope/vim-repeat'
 NeoBundle 'thinca/vim-visualstar'
 
 " NeoBundle 'gcmt/wildfire.vim', {
-            " \ 'lazy': 1,
-            " \  'autoload' : {
-            " \   'mappings' : '<Plug>(wildfire-'
-            " \  }
-            " \ }
+" \ 'lazy': 1,
+" \  'autoload' : {
+" \   'mappings' : '<Plug>(wildfire-'
+" \  }
+" \ }
 " if neobundle#tap('wildfire.vim')
-    " let g:wildfire_objects = {
-                " \ '*' : ["i'", 'i"', "a'", 'a"', "i)", "i]", "i}", "ip"],
-                " \ 'html': ["it", "at"]
-                " \}
-    " nmap <ENTER> <Plug>(wildfire-fuel)
-    " nmap <BS> <Plug>(wildfire-water)
-    " call neobundle#untap()
+" let g:wildfire_objects = {
+" \ '*' : ["i'", 'i"', "a'", 'a"', "i)", "i]", "i}", "ip"],
+" \ 'html': ["it", "at"]
+" \}
+" nmap <ENTER> <Plug>(wildfire-fuel)
+" nmap <BS> <Plug>(wildfire-water)
+" call neobundle#untap()
 " endif
 NeoBundle 'sjl/gundo.vim', {
             \ 'lazy': 1,
