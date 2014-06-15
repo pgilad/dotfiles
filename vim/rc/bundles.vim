@@ -571,6 +571,7 @@ if neobundle#tap('syntastic')
                 \ 'active_filetypes': ['javascript', 'json', 'less', 'css', 'jade', 'html', 'zsh'],
                 \ 'passive_filetypes': [] }
     let g:syntastic_enable_balloons = 0
+    let g:syntastic_always_populate_loc_list = 1
     call neobundle#untap()
 endif
 
