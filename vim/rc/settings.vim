@@ -27,14 +27,15 @@ elseif g:config.env.mac
     set antialias
 endif
 
-if &term ==? "xterm"
-    " set term=xterm-256color
-endif
-
 if has('viminfo')
     " set viminfo file location
     " need to make sure directory exists as well
     set viminfo+=n~/.cache/.viminfo
+endif
+
+if has('gui_running')
+    set lines=400
+    set columns=200
 endif
 
 if has("wildmenu")
@@ -82,11 +83,13 @@ set smartcase                                   " be smart about searching
 set infercase                                   " ignore case in autocomplete
 set nohlsearch                                  " highlight search
 set incsearch                                   " increment search
-set lazyredraw                                  " Don't redraw while executing macros (good performance config)
 set synmaxcol=400
+set lazyredraw                                  " Don't redraw while executing macros (good performance config)
 set notimeout
+set t_Co=256                                  " 256bit terminal
 set ttimeout
 set ttimeoutlen=10
+set ttyfast                                   " fast terminal redraw
 set magic                                     " For regular expressions turn magic on
 set showmatch                                 " Show matching brackets when text indicator is over them
 set cpoptions-=m
@@ -100,7 +103,6 @@ set relativenumber                            " line numbers are relative
 set cursorline                                " highlight where cursor is
 set nowrap                                    " turn word wrap off
 set wrapscan
-set ttyfast                                   " fast terminal redraw
 set cpoptions+=$                              " when changing - mark block end with $
 set virtualedit=block
 set listchars=tab:>-,trail:~,nbsp:.,extends:> " highlight problematic chars
@@ -110,7 +112,7 @@ set history=700                               " Sets how many lines of history V
 set nomodeline                                " security issue
 set splitright                                " Always splits to the right
 set splitbelow                                " and below
-set t_Co=256                                  " 256bit terminal
+set nostartofline                             " Don't reset cursor to start of line when moving around.
 
 set helplang=en
 set keywordprg=:help
@@ -123,11 +125,15 @@ if has('mouse')
     set nomousefocus                          " don't focus window when mouse pointer is moved
 endif
 
-set encoding=utf-8                            " Set utf8 as standard encoding and en_US as the standard language
-scriptencoding utf-8
-set title                                     " show filename in windows title
-set titlelen=95
-set nostartofline                             " Don't reset cursor to start of line when moving around.
+if has('multi_byte')
+    set encoding=utf-8                            " Set utf8 as standard encoding and en_US as the standard language
+    scriptencoding utf-8
+endif
+
+if has('title')
+    set title                                     " show filename in windows title
+    set titlelen=95
+endif
 
 set expandtab                                 " Use spaces instead of tabs
 set smarttab
@@ -193,16 +199,13 @@ if has('spell')
     set spelllang=en_us
 endif
 
-set lines=400
-set columns=200
-
+set background=dark
 " set color scheme and font
 if has('syntax')
     filetype plugin indent on
     syntax enable
 endif
 
-set background=dark
 let b:color = "jellybeans"
 " let b:color = "distinguished"
 " let b:color = "wombat256mod"
@@ -211,7 +214,7 @@ let b:color = "jellybeans"
 " let b:color = "molokai"
 " let b:color = "vividchalk"
 " let b:color = "Tomorrow-Night"
-" let b:color = 'desert'
+" let b:color = "desert"
 
 try
     exec "color " . b:color
