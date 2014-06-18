@@ -1,5 +1,4 @@
-#!/usr/bin/zsh
-
+#!/usr/bin/env zsh
 # dotfiles dir
 dotfiles=~/.dotfiles
 # vim bundles directory
