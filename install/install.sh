@@ -1,19 +1,32 @@
 #!/usr/bin/env zsh
 # dotfiles dir
-dotfiles=~/.dotfiles
+dotfiles="$HOME/.dotfiles"
 # vim bundles directory
-vim_bundles=~/vimfiles/bundle/
+vim_bundles="$HOME/vimfiles/bundle"
 # dir to link files to
 link_dir=$dotfiles/link
-# detect os
+# detect OS
 OS="$(uname -s)"
 
-function iHeader() { echo "\033[1m$@\033[0m\n";  }
+function iHeader() { echo "\033[1m$@\033[0m";  }
 function iStep()   { echo "  \033[1;32m➜\033[0m $@"; }
 function iGood()   { echo "    \033[1;33m✔\033[0m $@"; }
 function iBad()    { echo "    \033[1;31m✖\033[0m $@"; }
 
 iHeader "Starting bootstrap install @Gilad"
+
+iStep "Checking that $HOME/.oh-my-zsh/ exists"
+if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
+    echo "Should .oh-my-zsh be installed to $HOME/.oh-my-zsh ?"
+    select result in Yes No; do
+        if [[ "$result" == "Yes" ]]; then
+            git clone git@github.com:robbyrussell/oh-my-zsh.git "$HOME/.oh-my-zsh"
+        fi
+        break
+    done
+else
+    iGood ".oh-my-zsh direcotry exists."
+fi
 
 # Ubuntu-only stuff
 if [[ "$OS" =~ ^Linux ]]; then
@@ -43,6 +56,7 @@ if [[ "$OS" =~ ^Darwin ]]; then
         # install homebrew
         ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
     fi
+    iGood "OSX installation complete"
 fi
 
 # create symlinks
@@ -57,6 +71,7 @@ for filename in $link_dir/{.,_}[!.]*(:t); do
         iBad "Symlink skipped, file exists: ~/$filename"
     fi
 done
+iGood "Symlinking complete"
 
 # make vim bundles dir
 iHeader "Handling vim install"
@@ -64,6 +79,7 @@ if [[ ! -d "$vim_bundles" ]]; then
     iStep "Creating vim bundles directory at $vim_bundles"
     mkdir -p "$vim_bundles"
 fi
-
-unset iHeader iStep iGood iBad
+iGood "Vim installation complete"
+echo "\n\n"
 iGood "Installation complete!"
+unset iHeader iStep iGood iBad
