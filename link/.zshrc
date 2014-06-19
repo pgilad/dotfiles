@@ -1,9 +1,8 @@
 # Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
-ZSH_CUSTOM=$HOME/.dotfiles/zsh/custom/
+DOTFILES="$HOME/.dotfiles"
+ZSH="$HOME/.oh-my-zsh"
+ZSH_CUSTOM="$DOTFILES/zsh/custom"
 
-# for now
-# ZSH_THEME="af-magic"
 ZSH_THEME="vonder"
 
 # Uncomment this to disable bi-weekly auto-update checks
@@ -19,7 +18,10 @@ plugins=(git zsh-syntax-highlighting)
 
 # Use brew on mac as well
 if [[ "$(uname)" =~ ^Darwin ]]; then
+    export EDITOR=$(which mvim)
     plugins+=brew
+else
+    export EDITOR=$(which gvim)
 fi
 
 # Source oh my zsh
@@ -38,14 +40,13 @@ export PATH="/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # set default editor
-export EDITOR=$(which gvim)
 export VISUAL="$EDITOR"
 
 # ssh
 export SSH_KEY_PATH="~/.ssh"
 
 # aws config
-export AWS_CONFIG_FILE=$HOME/.aws-config
+export AWS_CONFIG_FILE="$HOME/.aws-config"
 
 ### Added by the Heroku Toolbelt
 export PATH="$PATH:/usr/local/heroku/bin"
