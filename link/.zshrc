@@ -1,5 +1,6 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
+ZSH_CUSTOM=$HOME/.dotfiles/zsh/custom/
 
 # for now
 # ZSH_THEME="af-magic"
