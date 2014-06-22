@@ -14,7 +14,7 @@ DISABLE_AUTO_TITLE="true"
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
 
-plugins=(git zsh-syntax-highlighting)
+plugins=(git zsh-syntax-highlighting git-extras)
 
 # Use brew on mac as well
 if [[ "$(uname)" =~ ^Darwin ]]; then
