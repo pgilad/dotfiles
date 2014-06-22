@@ -20,6 +20,7 @@ install coreutils
 install moreutils
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed
 install findutils
+install lua
 install luajit
 # Install GNU `sed`, overwriting the built-in `sed`
 install gnu-sed --default-names
@@ -35,13 +36,10 @@ install wget --enable-iri
 install vim --with-lua
 install macvim --with-cscope --with-lua --custom-icons --with-luajit --override-system-vim
 install homebrew/dupes/grep
-install homebrew/php/php55 --with-gmp
 
 # Install other useful binaries
-install lua
 install ack
 install ag
-install coreutils
 install fasd
 install findutils
 install git
@@ -53,7 +51,6 @@ install id3tool
 install imagemagick --with-webp
 install lesspipe
 install lua
-install macvim --with-cscope --with-lua --override-system-vim
 install man2html
 install maven
 install mongo
