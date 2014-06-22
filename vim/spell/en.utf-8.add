@@ -144,3 +144,8 @@ getCommentsFromAst
 splitted
 mapCommentObject
 prepend
+fileComments
+parseCommentsJs
+PRs
+fs
+jsParser

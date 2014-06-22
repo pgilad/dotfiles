@@ -5,7 +5,7 @@ function! s:create_dir(dir)
     endif
     call mkdir(make_dir, 'p')
 endfunction
-
+fun
 function! s:SetGuiFont(font)
     if has('gui_running')
         exec "set gfn=" . a:font
