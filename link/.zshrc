@@ -62,6 +62,7 @@ done
 for file in $HOME/local/*.local(-.N); do
     source $file
 done
+unset file
 
 # Add npm completion
 eval "$(npm completion 2> /dev/null)" || echo "Please install NPM."
