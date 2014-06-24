@@ -8,6 +8,9 @@ link_dir=$dotfiles/link
 # detect OS
 OS="$(uname -s)"
 
+# create ~/.cache dir if it doesn't exist
+[[ ! -d "$HOME/.cache" ]] && mkdir $HOME/.cache
+
 function iHeader() { echo "\033[1m$@\033[0m";  }
 function iStep()   { echo "  \033[1;32m➜\033[0m $@"; }
 function iGood()   { echo "    \033[1;33m✔\033[0m $@"; }
@@ -43,7 +46,8 @@ if [[ "$OS" =~ ^Linux ]]; then
         visudo -cf "$sudoers_src" >/dev/null &&
             sudo cp "$sudoers_src" "$sudoers_dest" &&
             sudo chmod 0440 "$sudoers_dest" &&
-            echo "File $sudoers_dest updated." || echo "Error updating $sudoers_dest file."
+            echo "File $sudoers_dest updated." ||
+            echo "Error updating $sudoers_dest file."
     fi
 fi
 

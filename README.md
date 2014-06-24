@@ -19,7 +19,43 @@ My config files, mainly Vim & Zsh aimed at working in Windows (7/8) and Ubuntu &
 - OS agnostic
 - Highly commented
 
+## Installation
+
+- Git clone this repository into your ~/.dotfiles
+```sh
+git clone https://github.com/pgilad/dotfiles.git ~/.dotfiles
+```
+
+- Change your shell to `zsh` (`chsh -s /bin/zsh`)
+
+### Windows
+
+- run `install/install.cmd`. If it fails - you will need Administrator permission for it.
+
+### Ubuntu
+
+- run `install/install.sh`
+
+### OSX
+
+- run `install/install.sh`
+- optionally setup `brew bundle ~./dotfiles/install/Brewfile`
+- optionally setup `brew bundle ~/.dotfiles/install/Caskfile`
+
+## Adding Local Files
+
+Any file you add with pattern `filename.local` (hidden files included) to `~/local/` will be auto-sourced with shell login.
+
+For example, if you have your own custom `.aliases` file you want auto-sourced, put it in `~/local/.aliases.local`
+
+## Vim
+
+- Main file is `_vimrc`.
+- Bundles files (bundled using `NeoBundle`) is `bundles.vim`.
+- Update bundles using `NeoBundleUpdate`.
+- Custom snippets are in the directory `mysnippets` and are auto-loaded according to filetype.
 I aim my vimrc to be as OO as possible. Have you ever seen a *_vimrc* like this:
+
 ```vim
 "@author Gilad Peleg
 "@license MIT 2014
@@ -66,36 +102,6 @@ endfor
 
 set secure
 ```
-
-## Installation
-
-- Git clone this repository into your ~/.dotfiles
-```shell
-git clone https://github.com/pgilad/dotfiles.git ~/.dotfiles
-```
-
-For windows users - this would be your %home% path (usually c:\users\username\)
-
-### Windows
-
-- run `install/install.cmd`. If it fails - you will need Administrator permission for it.
-
-### Ubuntu
-
-- run `install/install.sh`
-
-### OSX
-
-- run `install/install.sh`
-- optionally setup `brew bundle ~./dotfiles/install/Brewfile`
-- optionally setup `brew bundle ~/.dotfiles/install/Caskfile`
-
-## Vim
-
-- Main file is `_vimrc`.
-- Bundles files (bundled using `NeoBundle`) is `bundles.vim`.
-- Update bundles using `NeoBundleUpdate`.
-- Custom snippets are in the directory `mysnippets` and are auto-loaded according to filetype.
 
 ## Zsh
 

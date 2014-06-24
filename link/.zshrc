@@ -58,6 +58,11 @@ for file in $DOTFILES/source/*(-.N); do
     source $file
 done
 
+# list all files in ~/local/*.local
+for file in $HOME/local/*.local(-.N); do
+    source $file
+done
+
 # Add npm completion
 eval "$(npm completion 2> /dev/null)" || echo "Please install NPM."
 
