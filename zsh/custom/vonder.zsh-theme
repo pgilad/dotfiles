@@ -18,8 +18,6 @@
 
 # fastest possible way to check if repo is dirty
 prompt_pure_git_dirty() {
-    # check if we're in a git repo
-    command git rev-parse --is-inside-work-tree &>/dev/null || return
     # check if it's dirty
     command git diff --quiet --ignore-submodules HEAD &>/dev/null
     # if exit code is 1 - git is dirty
@@ -35,8 +33,8 @@ prompt_pure_preexec() {
 
 prompt_git_status() {
     # check if we're in a git repo
-    command git rev-parse --is-inside-work-tree &>/dev/null || { echo "" && return}
-    echo "($vcs_info_msg_0_$(prompt_pure_git_dirty))"
+    command git rev-parse --is-inside-work-tree &>/dev/null || return
+    echo " ($vcs_info_msg_0_$(prompt_pure_git_dirty))"
 }
 
 # string length ignoring ansi escapes
@@ -54,7 +52,7 @@ prompt_pure_precmd() {
 
     # git info
     vcs_info
-    local prompt_pure_preprompt='\n$(prompt_current_dir) $(prompt_git_status) $prompt_pure_username'
+    local prompt_pure_preprompt='\n$(prompt_current_dir)$(prompt_git_status)$prompt_pure_username'
     print -P $prompt_pure_preprompt
 
     # check async if there is anything to pull
@@ -89,7 +87,7 @@ prompt_pure_precmd() {
         zstyle ':vcs_info:git*' actionformats 'branch:%F{yellow}%b|%a'
 
         # if using ssh connection show username@host
-        [[ -n "$SSH_CONNECTION" ]] && prompt_pure_username='[%F{blue}%n@%m%f]'
+        [[ -n "$SSH_CONNECTION" ]] && prompt_pure_username=' [%F{cyan}%n@%m%f]'
 
         # prompt turns red if the previous command didn't exit with 0
         PROMPT='%(?.%F{magenta}.%F{red})❯%f '
