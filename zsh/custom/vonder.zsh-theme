@@ -68,29 +68,30 @@ prompt_pure_precmd() {
             (( $(command git rev-list --right-only --count HEAD...@'{u}' 2>/dev/null) > 0 )) && arrows='⇣'
             (( $(command git rev-list --left-only --count HEAD...@'{u}' 2>/dev/null) > 0 )) && arrows+='⇡'
             print -Pn "\e7\e[A\e[1G\e[`prompt_pure_string_length $prompt_pure_preprompt`C%F{cyan}${arrows}%f\e8"
-        } } &!
+        }
+    } &!
+}
 
-    }
-    prompt_pure_setup() {
-        export PROMPT_EOL_MARK=''
-        prompt_opts=(cr subst percent)
+prompt_pure_setup() {
+    export PROMPT_EOL_MARK=''
+    prompt_opts=(cr subst percent)
 
-        zmodload zsh/datetime
-        autoload -Uz add-zsh-hook
-        autoload -Uz vcs_info
+    zmodload zsh/datetime
+    autoload -Uz add-zsh-hook
+    autoload -Uz vcs_info
 
-        add-zsh-hook precmd prompt_pure_precmd
-        add-zsh-hook preexec prompt_pure_preexec
+    add-zsh-hook precmd prompt_pure_precmd
+    add-zsh-hook preexec prompt_pure_preexec
 
-        zstyle ':vcs_info:*' enable git
-        zstyle ':vcs_info:git*' formats 'branch:%F{yellow}%b%f'
-        zstyle ':vcs_info:git*' actionformats 'branch:%F{yellow}%b|%a'
+    zstyle ':vcs_info:*' enable git
+    zstyle ':vcs_info:git*' formats 'branch:%F{yellow}%b%f'
+    zstyle ':vcs_info:git*' actionformats 'branch:%F{yellow}%b|%a'
 
-        # if using ssh connection show username@host
-        [[ -n "$SSH_CONNECTION" ]] && prompt_pure_username=' [%F{cyan}%n@%m%f]'
+    # if using ssh connection show username@host
+    [[ -n "$SSH_CONNECTION" ]] && prompt_pure_username=' [%F{cyan}%n@%m%f]'
 
-        # prompt turns red if the previous command didn't exit with 0
-        PROMPT='%(?.%F{magenta}.%F{red})❯%f '
-    }
+    # prompt turns red if the previous command didn't exit with 0
+    PROMPT='%(?.%F{magenta}.%F{red})❯%f '
+}
 
-    prompt_pure_setup "$@"
+prompt_pure_setup "$@"
