@@ -33,6 +33,12 @@ prompt_pure_preexec() {
     print -Pn "\a"
 }
 
+prompt_git_status() {
+    # check if we're in a git repo
+    command git rev-parse --is-inside-work-tree &>/dev/null || echo ""
+    echo "($vcs_info_msg_0_$(prompt_pure_git_dirty))"
+}
+
 # string length ignoring ansi escapes
 prompt_pure_string_length() {
     echo ${#${(S%%)1//(\%([KF1]|)\{*\}|\%[Bbkf])}}
@@ -48,7 +54,7 @@ prompt_pure_precmd() {
 
     # git info
     vcs_info
-    local prompt_pure_preprompt='\n$(prompt_current_dir) ($vcs_info_msg_0_$(prompt_pure_git_dirty)) $prompt_pure_username'
+    local prompt_pure_preprompt='\n$(prompt_current_dir) $(prompt_git_status) $prompt_pure_username'
     print -P $prompt_pure_preprompt
 
     # check async if there is anything to pull
