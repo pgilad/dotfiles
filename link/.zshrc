@@ -53,7 +53,6 @@ export PATH="$PATH:/usr/local/heroku/bin"
 # Source oh my zsh
 [[ -f "$ZSH/oh-my-zsh.sh" ]] && source "$ZSH/oh-my-zsh.sh"
 
-local file
 # list all files in directory not alerting about no match
 for file in $DOTFILES/source/*(-.N); do
     source $file
@@ -63,6 +62,7 @@ done
 for file in $HOME/local/*.local(-.N); do
     source $file
 done
+unset file
 
 # Add npm completion
 eval "$(npm completion 2> /dev/null)" || echo "Please install NPM."
