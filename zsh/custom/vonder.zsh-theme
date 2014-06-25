@@ -35,7 +35,7 @@ prompt_pure_preexec() {
 
 prompt_git_status() {
     # check if we're in a git repo
-    command git rev-parse --is-inside-work-tree &>/dev/null || echo ""
+    command git rev-parse --is-inside-work-tree &>/dev/null || echo "" && return
     echo "($vcs_info_msg_0_$(prompt_pure_git_dirty))"
 }
 
