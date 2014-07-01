@@ -8,6 +8,8 @@ nnoremap <F3> :GundoToggle<cr>
 nnoremap <F4> :setlocal spell!<cr>
 " toggle paste
 nnoremap <F6> :set invpaste<CR>:set paste?<CR>
+" format from 2 spaces to 4 spaces
+nnoremap <F7> :<C-U>set ts=2 sts=2 noexpandtab<cr>:retab!<cr>:set ts=4 sts=4 expandtab<cr>:retab<cr>
 " open in chrome
 nnoremap <silent> <F12>c :silent !start "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" %:p<cr>
 """"""""""""""""""""""""""""
