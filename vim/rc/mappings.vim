@@ -148,3 +148,5 @@ nnoremap <leader>m<cr> /\%<c-r>=line('.')<cr>l\.then:nohlsearch<cr>i l
 nnoremap <leader>mg mjyiwgg0/require ovar * = require('gulp-*')A;`j:nohlsearch<cr>
 " add require(''); .. on current word
 nnoremap <leader>mr mjyiwgg0/require ovar * = require('*')A;`j:nohlsearch<cr>
+
+nnoremap <leader>hg ggO/* global App */<esc>

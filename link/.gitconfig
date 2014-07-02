@@ -27,6 +27,7 @@
 [merge]
     # Include summaries of merged commits in newly created merge commit messages
     log = true
+	stat = true
 [alias]
     st = status
     ch = checkout
