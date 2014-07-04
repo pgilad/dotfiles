@@ -15,6 +15,9 @@ ZSH_CUSTOM="$DOTFILES/zsh/custom"
 # set oh my zsh theme
 ZSH_THEME="vonder"
 
+# set zsh history file to be in .cache
+HISTFILE="$HOME/.cache/.zsh_history"
+
 # Uncomment this to disable bi-weekly auto-update checks
 DISABLE_AUTO_UPDATE="true"
 
