@@ -48,6 +48,18 @@ Any file you add with pattern `filename.local` (hidden files included) to `~/loc
 
 For example, if you have your own custom `.aliases` file you want auto-sourced, put it in `~/local/.aliases.local`
 
+## Local gitconfig
+
+To adjust `.gitconfig` to your user.name and E-mail, add a `~/.gitconfig.local` file.
+Anything you add here will override the general `.gitconfig`. This is mostly useful for setting
+your E-mail and name for git.
+
+```
+[user]
+    name = Dan Croak
+    email = dan@thoughtbot.com
+```
+
 ## Vim
 
 - Main file is `_vimrc`.

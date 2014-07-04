@@ -25,9 +25,11 @@
     changed = green
     untracked = cyan
 [merge]
-    # Include summaries of merged commits in newly created merge commit messages
     log = true
-	stat = true
+    stat = true
+    ff = only
+[fetch]
+    prune = true
 [alias]
     st = status
     ch = checkout
@@ -36,8 +38,6 @@
     pu = push
     fe = fetch
     ch- = checkout -
-    stats = !git shortlog -sn master | head
-    freq = !history | cut -c 8- | grep git | sort | uniq -c  | sort -n -r | head -n 5
 [url "git@github.com:"]
     insteadOf = "gh:"
     pushInsteadOf = "github:"
@@ -50,9 +50,5 @@
     pushInsteadOf = "git://gist.github.com/"
 [url "git://gist.github.com/"]
     insteadOf = "gist:"
-[difftool "sourcetree"]
-    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-    path =
-[mergetool "sourcetree"]
-    cmd = /opt/homebrew-cask/Caskroom/sourcetree/1.9.2/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-    trustExitCode = true
+[include]
+    path = ~/.gitconfig.local
