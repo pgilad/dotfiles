@@ -53,6 +53,9 @@ export AWS_CONFIG_FILE="~/.aws-config"
 ### Added by the Heroku Toolbelt
 export PATH="$PATH:/usr/local/heroku/bin"
 
+# create cache dir if it doesn't exist
+[[ ! -d "$HOME/.cache" ]] && mkdir "$HOME/.cache"
+
 # Source oh my zsh
 [[ -f "$ZSH/oh-my-zsh.sh" ]] && source "$ZSH/oh-my-zsh.sh"
 
@@ -76,5 +79,7 @@ eval "$(grunt --completion=zsh 2> /dev/null)" || echo "Please install Grunt Cli:
 # gulp completion
 eval "$(gulp --completion=zsh 2> /dev/null)" || echo "Please install gulp: npm i -g gulp"
 
+# set fasd data file location
+export _FASD_DATA="$HOME/.cache/.fasd"
 # Fasd
 eval "$(fasd --init posix-alias zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install 2> /dev/null)" || echo "Please install fasd"
