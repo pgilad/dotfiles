@@ -1,6 +1,8 @@
 # Install native apps
 # Credit: https://github.com/mathiasbynens/dotfiles
 # Usage: `brew bundle Caskfile`
+tap caskroom/cask
+install brew-cask
 
 cask install java
 cask install dropbox

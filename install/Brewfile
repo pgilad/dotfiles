@@ -68,10 +68,6 @@ install jmeter
 install md5sha1sum
 install redis
 
-tap caskroom/cask
-install brew-cask
-
 linkapps
-
 # Remove outdated versions from the cellar
 cleanup

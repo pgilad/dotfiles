@@ -1,2 +1,23 @@
+# Compiled python files
 *~
+*.pyc
+
+# Folder view configs
 .DS_Store
+
+# General useless stuff
+.idea
+tmp/
+npm-debug.log
+
+# Library installed dependencies
+bower_components/
+node_modules/
+
+# Thumbnail cache files
+._*
+Thumbs.db
+
+# Files that might appear on external disks
+.Spotlight-V100
+.Trashes
