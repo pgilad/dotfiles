@@ -1,6 +1,13 @@
-# Compiled python files
+# Always ignore extensions
 *~
 *.pyc
+*.err
+*.diff
+*.orig
+*.rej
+*.sass-cache
+*.sw?
+*.vi
 
 # Folder view configs
 .DS_Store
