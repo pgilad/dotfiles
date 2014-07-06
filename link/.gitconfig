@@ -3,7 +3,7 @@
     email = giladp007@gmail.com
 [core]
     autocrlf = false
-    excludesfile = ~/.gitignore_global
+    excludesfile = ~/.dotfiles/git/.gitignore_global
     attributesfile = ~/.dotfiles/.gitattributes
     editor = vim -w
 [push]
