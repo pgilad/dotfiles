@@ -34,7 +34,6 @@
 [merge]
     log = true
     stat = true
-    ff = only
 [apply]
     # Detect whitespace errors when applying a patch
     whitespace = fix
