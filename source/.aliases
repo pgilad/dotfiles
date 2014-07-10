@@ -16,7 +16,7 @@ alias dotdown='cd ~/.dotfiles && git pull'
 
 # start simple server
 alias serve="python -m SimpleHTTPServer"
-alias -g gdev="gilad@gilad.a.blazemeter.com -p 59345"
+alias -g gdev="-p 59345 gilad@gilad.a.blazemeter.com"
 
 #npm aliases
 alias npmo="npm outdated --depth=0"

@@ -38,10 +38,12 @@ if has('gui_running')
     set columns=200
 endif
 
-if has("wildmenu")
-    set wildmenu                   " Turn on the WiLd menu
-    set wildignorecase             " ignore case in wildmenu
-    set wildmode=longest,list,full " like zsh
+if has('wildmenu')
+    set wildmenu                       " Turn on the WiLd menu
+    if exists('&wildignorecase')
+        set wildignorecase             " ignore case in wildmenu
+    endif
+    set wildmode=longest,list,full     " like zsh
     set wildignore+=*.o,*.~,*.pyc
     set wildignore+=.git/*
     set wildignore+=.idea/*
