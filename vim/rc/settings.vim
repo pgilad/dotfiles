@@ -5,7 +5,7 @@ function! s:create_dir(dir)
     endif
     call mkdir(make_dir, 'p')
 endfunction
-fun
+
 function! s:SetGuiFont(font)
     if has('gui_running')
         exec "set gfn=" . a:font
@@ -54,8 +54,7 @@ if has('wildmenu')
     set wildignore+=tmp/*
 endif
 
-" only works in version 704
-if (v:version > 703)
+if exists('&fileignorecase')
     set fileignorecase
 endif
 
@@ -96,8 +95,8 @@ set magic                                     " For regular expressions turn mag
 set showmatch                                 " Show matching brackets when text indicator is over them
 set cpoptions-=m
 set matchtime=3
-set noerrorbells                              " No annoying sound on errors
-set novisualbell                              " no annoying flashes                                              "
+set noerrorbells                              " No annoying sound on error
+set novisualbell                              " no annoying flashes
 set t_vb=                                     " disable visual bell
 set tm=500
 set number                                    " show line number
@@ -178,13 +177,13 @@ if has('folding')
     set foldmethod=indent " fold based on indent
     set foldnestmax=7     " deepest fold is 3 levels
     set foldlevelstart=0
-    set nofoldenable        " dont fold by default
+    set nofoldenable      " dont fold by default
 endif
 
 if has('persistent_undo')
-    call s:create_dir("~/.cache/undo/")
+    call s:create_dir(g:config.undoDir)
     set undofile
-    set undodir=~/.cache/undo/
+    let &undodir=g:config.undoDir
 endif
 
 " TODO think about this. regex doesn't work
@@ -195,9 +194,9 @@ if executable('ag')
 endif
 
 if has('spell')
-    call s:create_dir("~/.dotfiles/vim/spell/")
+    call s:create_dir(g:config.spellDir)
     set nospell
-    set spellfile=~/.dotfiles/vim/spell/en.utf-8.add
+    let &spellfile=g:config.spellFile
     set spelllang=en_us
 endif
 
@@ -208,19 +207,16 @@ if has('syntax')
     syntax enable
 endif
 
-let b:color = "jellybeans"
-" let b:color = "distinguished"
-" let b:color = "wombat256mod"
-" let b:color = "badwolf"
-" let b:color = "hybrid"
-" let b:color = "molokai"
-" let b:color = "vividchalk"
-" let b:color = "Tomorrow-Night"
-" let b:color = "desert"
-
-try
-    exec "color " . b:color
-catch
-    echom 'Could not load color scheme ' . b:color
+function! s:setDefaultColor()
     color desert
-endtry
+endfunction
+
+if exists('g:config.colorscheme')
+    try
+        exec 'colorscheme ' . g:config.colorscheme
+    catch
+        call s:setDefaultColor()
+    endtry
+else
+    call s:setDefaultColor()
+endif

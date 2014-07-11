@@ -11,6 +11,9 @@ let g:config =  {
             \ 'baseDir': '~/.dotfiles/vim/rc/',
             \ 'loadFiles': {},
             \ 'bundlesPath': '~/vimfiles/bundle/',
+            \ 'spellDir' : '~/.dotfiles/vim/spell/',
+            \ 'spellFile' : '~/.dotfiles/vim/spell/en.utf-8.add',
+            \ 'undoDir' : '~/.cache/undo/',
             \ 'env' : {
             \   'windows': has('wind16') || has('win32') || has('win64'),
             \   'cygwin': has('win32unix'),

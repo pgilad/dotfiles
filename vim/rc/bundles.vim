@@ -24,9 +24,7 @@ NeoBundle 'Shougo/vimproc', {
             \     'unix' : 'make -f make_unix.mak',
             \    },
             \ }
-NeoBundle 'L9', {
-            \ 'lazy': 0
-            \ }
+NeoBundle 'L9'
 NeoBundle 'editorconfig/editorconfig-vim'
 " NeoBundle 'Valloric/YouCompleteMe', {
 " \ 'disable' : g:config.env.windows,
@@ -590,5 +588,5 @@ NeoBundle 'nanotech/jellybeans.vim'
 " NeoBundle 'w0ng/vim-hybrid'
 " NeoBundle 'tomasr/molokai'
 " NeoBundle 'tpope/vim-vividchalk'
-
+let g:config.colorscheme = "jellybeans"
 call neobundle#end()
