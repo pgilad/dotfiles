@@ -7,6 +7,8 @@ My config files, mainly Vim & Zsh aimed at working in Windows (7/8) and Ubuntu &
 ## Key Features
 - Uses [NeoBundle](https://github.com/Shougo/neobundle.vim) as package manager.
 - Uses [Unite](https://github.com/Shougo/unite.vim) as an all-around explorer.
+- Zsh with **Oh-My-Zsh**.
+- Awesome **shell prompt** based on [pure](https://github.com/sindresorhus/pure)
 - Geared towards portability.
 - Equipped to handle web development (HTML/CSS/Js/Frameworks/etc...)
 - NERDTree/CtrlP for browsing (but soon enough will use Unite for that too)
@@ -23,7 +25,7 @@ My config files, mainly Vim & Zsh aimed at working in Windows (7/8) and Ubuntu &
 
 - Git clone this repository into your ~/.dotfiles
 ```sh
-git clone https://github.com/pgilad/dotfiles.git ~/.dotfiles
+$ git clone https://github.com/pgilad/dotfiles.git ~/.dotfiles
 ```
 
 - Change your shell to `zsh` (`chsh -s /bin/zsh`)
@@ -66,7 +68,6 @@ your E-mail and name for git.
 - Bundles files (bundled using `NeoBundle`) is `bundles.vim`.
 - Update bundles using `NeoBundleUpdate`.
 - Custom snippets are in the directory `mysnippets` and are auto-loaded according to filetype.
-I aim my vimrc to be as OO as possible. Have you ever seen a *_vimrc* like this:
 
 ```vim
 "@author Gilad Peleg
