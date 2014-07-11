@@ -7,7 +7,7 @@ My config files, mainly Vim & Zsh aimed at working in Windows (7/8) and Ubuntu &
 ## Key Features
 - Uses [NeoBundle](https://github.com/Shougo/neobundle.vim) as package manager.
 - Uses [Unite](https://github.com/Shougo/unite.vim) as an all-around explorer.
-- Zsh with **Oh-My-Zsh**.
+- Zsh with [Oh-My-Zsh](https://github.com/robbyrussell/oh-my-zsh).
 - Awesome **shell prompt** based on [pure](https://github.com/sindresorhus/pure)
 - Geared towards portability.
 - Equipped to handle web development (HTML/CSS/Js/Frameworks/etc...)
@@ -80,14 +80,17 @@ if !1 | finish | endif
 set nocompatible
 
 let g:config =  {
-            \ 'baseDir': '~/.dotfiles/rc/',
+            \ 'baseDir': '~/.dotfiles/vim/rc/',
             \ 'loadFiles': {},
             \ 'bundlesPath': '~/vimfiles/bundle/',
+            \ 'spellDir' : '~/.dotfiles/vim/spell/',
+            \ 'spellFile' : '~/.dotfiles/vim/spell/en.utf-8.add',
+            \ 'undoDir' : '~/.cache/undo/',
             \ 'env' : {
-            \   'windows': has('win32') || has('win64'),
+            \   'windows': has('wind16') || has('win32') || has('win64'),
             \   'cygwin': has('win32unix'),
-            \   'mac': has('gui_macvim'),
-            \   'unix': has('unix')
+            \   'mac': has('mac'),
+            \   'unix': has('unix') && !has('gui_macvim')
             \ }
             \}
 
@@ -95,7 +98,14 @@ let g:config =  {
 let g:mapleader = ","
 let g:maplocalleader = ","
 
-" Following files are loaded from g:config.baseDir with vim extension
+set guioptions=Mc
+" set guioptions+=a " visual select auto-copy to clipboard
+
+if has('syntax')
+    syntax off
+    filetype plugin indent off
+endif
+
 " How to quickly load the files:
 " Mapping     |  File
 " ---------------------------
@@ -104,7 +114,7 @@ let g:maplocalleader = ","
 " <leader>es  |  Settings
 " <leader>em  |  Mappings
 " <leader>ea  |  autoCommands
-for fileToLoad in ['gui', 'bundles', 'settings', 'mappings', 'autoCommands']
+for fileToLoad in ['bundles', 'settings', 'mappings', 'autoCommands']
     " set filename
     let b:filePath = g:config.baseDir . fileToLoad . '.vim'
     " set file object in config

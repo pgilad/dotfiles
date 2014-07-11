@@ -1,18 +1,13 @@
 # Install command-line tools using Homebrew
 # Credit: https://github.com/mathiasbynens/dotfiles
 # Usage: `brew bundle Brewfile`
-
 # fix any issues
 doctor
-
 tap --repair
-
 # Make sure we’re using the latest Homebrew
 update
-
 # Upgrade any already-installed formulae
 upgrade
-
 # Install GNU core utilities (those that come with OS X are outdated)
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
 install coreutils
@@ -24,20 +19,13 @@ install lua
 install luajit
 # Install GNU `sed`, overwriting the built-in `sed`
 install gnu-sed --default-names
-# Install Bash 4
 # Note: don’t forget to add `/usr/local/bin/bash` to `/etc/shells` before running `chsh`.
 install bash
 install bash-completion
-
-# Install wget with IRI support
 install wget --enable-iri
-
-# Install more recent versions of some OS X tools
 install vim --with-lua
 install macvim --with-cscope --with-lua --custom-icons --with-luajit --override-system-vim
 install homebrew/dupes/grep
-
-# Install other useful binaries
 install ack
 install ag
 install fasd
@@ -67,7 +55,6 @@ install webkit2png
 install jmeter
 install md5sha1sum
 install redis
-
 linkapps
 # Remove outdated versions from the cellar
 cleanup
