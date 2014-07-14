@@ -44,6 +44,12 @@ $ git clone https://github.com/pgilad/dotfiles.git ~/.dotfiles
 - optionally setup `brew bundle ~./dotfiles/install/Brewfile`
 - optionally setup `brew bundle ~/.dotfiles/install/Caskfile`
 
+#### Customizing iTerm2 Themes:
+
+- clone [iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes)
+- import your favorite theme in iTerm2 -> Profiles -> Colors -> Import Theme
+- profit$$
+
 ## Adding Local Files
 
 Any file you add with pattern `filename.local` (hidden files included) to `~/local/` will be auto-sourced with shell login.

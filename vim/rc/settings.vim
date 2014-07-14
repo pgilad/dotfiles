@@ -183,7 +183,7 @@ endif
 if has('persistent_undo')
     call s:create_dir(g:config.undoDir)
     set undofile
-    let &undodir=g:config.undoDir
+    let &undodir=fnameescape(expand(g:config.undoDir))
 endif
 
 " TODO think about this. regex doesn't work
@@ -196,7 +196,7 @@ endif
 if has('spell')
     call s:create_dir(g:config.spellDir)
     set nospell
-    let &spellfile=g:config.spellFile
+    let &spellfile=fnameescape(expand(g:config.spellFile))
     set spelllang=en_us
 endif
 
