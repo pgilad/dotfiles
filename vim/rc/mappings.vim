@@ -15,6 +15,8 @@ nnoremap <silent> <F12>c :silent !start "C:\Program Files (x86)\Google\Chrome\Ap
 """"""""""""""""""""""""""""
 "  Regular keys unbinding  "
 """"""""""""""""""""""""""""
+" clear search highlights
+nnoremap gc :<c-u>nohlsearch<cr>
 " switch between 0 and ^
 noremap 0 ^
 noremap ^ 0

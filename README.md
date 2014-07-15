@@ -23,7 +23,7 @@ My config files, mainly Vim & Zsh aimed at working in Windows (7/8) and Ubuntu &
 
 ## Installation
 
-- Git clone this repository into your ~/.dotfiles
+- Git clone this repository into your `~/.dotfiles`
 ```sh
 $ git clone https://github.com/pgilad/dotfiles.git ~/.dotfiles
 ```
@@ -32,29 +32,33 @@ $ git clone https://github.com/pgilad/dotfiles.git ~/.dotfiles
 
 ### Windows
 
-- run `install/install.cmd`. If it fails - you will need Administrator permission for it.
+- Run `install/install.cmd`. If it fails - you will need Administrator permission for it.
 
-### Ubuntu
+### Ubuntu & OSX
 
-- run `install/install.sh`
+- Run `install/install.sh`
 
-### OSX
+### OSX Optional Setup
 
-- run `install/install.sh`
-- optionally setup `brew bundle ~./dotfiles/install/Brewfile`
-- optionally setup `brew bundle ~/.dotfiles/install/Caskfile`
+- Make sure your OSX version is latest
+- Install XCode
+- `brew bundle ~./dotfiles/install/Brewfile`
+- `brew bundle ~/.dotfiles/install/Caskfile`
+
+### What happens during install & load
+
+- Files from `link` are linked to `~/`.
+- Files from `source` are sourced on profile load.
+
+To source local files put them in `~/local/`:
+
+- Files in `~/local/` with pattern `filename.local` (hidden files included) are sourced on profile load.
 
 #### Customizing iTerm2 Themes:
 
-- clone [iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes)
-- import your favorite theme in iTerm2 -> Profiles -> Colors -> Import Theme
-- profit$$
-
-## Adding Local Files
-
-Any file you add with pattern `filename.local` (hidden files included) to `~/local/` will be auto-sourced with shell login.
-
-For example, if you have your own custom `.aliases` file you want auto-sourced, put it in `~/local/.aliases.local`
+- Clone [iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes)
+- Import your favorite theme in iTerm2 -> Profiles -> Colors -> Import Theme
+- Profit$$
 
 ## Local gitconfig
 

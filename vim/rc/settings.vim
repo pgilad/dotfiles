@@ -78,43 +78,42 @@ set nrformats-=octal                            " no octal numbers
 set hidden                                      " A buffer becomes hidden when it is abandoned
 set showfulltag
 set backspace=eol,start,indent                  " configure backspace the expected way
-set whichwrap+=<,>,h,l,[,],b,s,~
+set whichwrap+=<,>,~,h,l,[,],b,s                " which special chars wrap to next line
 set ignorecase                                  " ignore case when searching
 set smartcase                                   " be smart about searching
 set infercase                                   " ignore case in autocomplete
-set nohlsearch                                  " highlight search
+set hlsearch                                    " highlight search
 set incsearch                                   " increment search
 set synmaxcol=400
 set lazyredraw                                  " Don't redraw while executing macros (good performance config)
 set notimeout
-set t_Co=256                                  " 256bit terminal
+set t_Co=256                                    " 256bit terminal
 set ttimeout
 set ttimeoutlen=10
-set ttyfast                                   " fast terminal redraw
-set magic                                     " For regular expressions turn magic on
-set showmatch                                 " Show matching brackets when text indicator is over them
+set ttyfast                                     " fast terminal redraw
+set magic                                       " For regular expressions turn magic on
+set showmatch                                   " Show matching brackets when text indicator is over them
 set cpoptions-=m
 set matchtime=3
-set noerrorbells                              " No annoying sound on error
-set novisualbell                              " no annoying flashes
-set t_vb=                                     " disable visual bell
+set noerrorbells                                " No annoying sound on error
+set novisualbell                                " no annoying flashes
+set t_vb=                                       " disable visual bell
 set tm=500
-set number                                    " show line number
-set relativenumber                            " line numbers are relative
-set cursorline                                " highlight where cursor is
-set nowrap                                    " turn word wrap off
-set wrapscan
-set cpoptions+=$                              " when changing - mark block end with $
+set number                                      " show line number
+set relativenumber                              " line numbers are relative
+set cursorline                                  " highlight where cursor is
+set nowrap                                      " turn word wrapping on long lines off
+set wrapscan                                    " Searches wrap around the end of file
+set cpoptions+=$                                " when changing - mark block end with $
 set virtualedit=block
-set listchars=tab:>-,trail:~,nbsp:.,extends:> " highlight problematic chars
-set list                                      " show problematic chars
-set report=10                                 " min number of lines changed to report change
-set history=700                               " Sets how many lines of history VIM has to remember
-set nomodeline                                " security issue
-set splitright                                " Always splits to the right
-set splitbelow                                " and below
-set nostartofline                             " Don't reset cursor to start of line when moving around.
-
+set listchars=tab:>-,trail:~,nbsp:.,extends:>   " highlight problematic chars
+set list                                        " show problematic chars
+set report=10                                   " min number of lines changed to report change
+set history=700                                 " Sets how many lines of history VIM has to remember
+set nomodeline                                  " security issue
+set splitright                                  " Always splits targetting right
+set splitbelow                                  " Always split targetting below
+set nostartofline                               " Don't reset cursor to start of line when moving around.
 set helplang=en
 set keywordprg=:help
 set isfname-==                                " filenames do not contain =
@@ -137,7 +136,7 @@ if has('title')
 endif
 
 set expandtab                                 " Use spaces instead of tabs
-set smarttab
+set smarttab                                  " A tab in front of line insert blanks accord to shiftwidth
 set nojoinspaces                              " don't add multiple spaces on line joins
 set shiftwidth=4
 set tabstop=4
