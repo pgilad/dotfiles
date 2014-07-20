@@ -61,7 +61,7 @@ endif
 set fileformat=unix                             " Default fileformat
 set fileformats=unix,dos,mac                    " Automatic recognition of a new line cord.
 set viewoptions=folds,options,cursor,slash,unix
-set autoread
+set autoread                                    " auto read all on losing focus
 set autowriteall                                " auto write when losing focus
 set cryptmethod=blowfish
 set scrolloff=3                                 " Set 7 lines to the cursor - when moving vertically using j/k
@@ -100,7 +100,7 @@ set novisualbell                                " no annoying flashes
 set t_vb=                                       " disable visual bell
 set tm=500
 set number                                      " show line number
-set relativenumber                              " line numbers are relative
+set norelativenumber                              " line numbers are relative
 set cursorline                                  " highlight where cursor is
 set nowrap                                      " turn word wrapping on long lines off
 set wrapscan                                    " Searches wrap around the end of file

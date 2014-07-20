@@ -15,8 +15,8 @@ if has('autocmd')
         autocmd FileType html setlocal matchpairs+=<:>
 
         " saving on lost focus
-        autocmd FocusLost * :silent! wall
-        autocmd FileType javascript,html,json,jade,vim autocmd FileWritePre,FileAppendPre,FilterWritePre,BufWritePre <buffer> call TrimWhiteSpace()
+        " autocmd WinEnter,BufWinEnter,FocusGained * checktime
+        " autocmd FileType javascript,html,json,jade,vim autocmd FileWritePre,FileAppendPre,FilterWritePre,BufWritePre <buffer> call TrimWhiteSpace()
 
         " autocomplete
         autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
