@@ -350,6 +350,7 @@ NeoBundle 'tpope/vim-fugitive', {
             \ 'augroup' : 'fugitive',
             \ 'autoload': {
             \ 'commands': ['Gstatus', 'Gcommit', 'Gwrite', 'Git', 'Git!',
+            \               'Gblame',
             \               'Gcd', 'Glcd', 'Ggrep', 'Glog', 'Gdiff']
             \}
             \ }
@@ -377,31 +378,12 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'thinca/vim-visualstar'
 
-" NeoBundle 'gcmt/wildfire.vim', {
-" \ 'lazy': 1,
-" \  'autoload' : {
-" \   'mappings' : '<Plug>(wildfire-'
-" \  }
-" \ }
-" if neobundle#tap('wildfire.vim')
-" let g:wildfire_objects = {
-" \ '*' : ["i'", 'i"', "a'", 'a"', "i)", "i]", "i}", "ip"],
-" \ 'html': ["it", "at"]
-" \}
-" nmap <ENTER> <Plug>(wildfire-fuel)
-" nmap <BS> <Plug>(wildfire-water)
-" call neobundle#untap()
-" endif
 NeoBundle 'sjl/gundo.vim', {
             \ 'lazy': 1,
             \  'autoload' : {
             \   'commands': ['GundoShow', 'GundoToggle', 'GundoHide', 'GundoRenderGraph']
             \  }
             \ }
-"easy motion -current bound to <leader><leader> by default
-" NeoBundle 'Lokaltog/vim-easymotion'
-
-" NeoBundle 'thinca/vim-fontzoom', {'gui' : 1}
 NeoBundle 'tyru/open-browser.vim', {
             \ 'lazy': 1,
             \'autoload': {
@@ -433,11 +415,8 @@ if neobundle#tap('tabular')
     vnoremap <leader>a<Bar> :Tabularize /<Bar><cr>
     call neobundle#untap()
 endif
-
 " more maintained verison
 NeoBundle 'kris89/vim-multiple-cursors'
-" NeoBundle 'osyo-manga/vim-over'
-" NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'AndrewRadev/inline_edit.vim', {
             \ 'lazy': 1,
             \  'autoload' : {
@@ -463,7 +442,6 @@ if neobundle#tap('splitjoin.vim')
     nnoremap <leader>ss :SplitjoinSplit<cr>
     call neobundle#untap()
 endif
-
 NeoBundle 'AndrewRadev/linediff.vim', {
             \ 'lazy': 1,
             \  'autoload' : {
@@ -476,10 +454,6 @@ if neobundle#tap('linediff.vim')
     nnoremap <leader>lr :LinediffReset<cr>
     call neobundle#untap()
 endif
-
-"""""""""""""
-"  airline  "
-"""""""""""""
 NeoBundle 'bling/vim-airline'
 if neobundle#tap('vim-airline')
     let g:airline#extensions#tabline#enabled = 1
@@ -487,7 +461,6 @@ if neobundle#tap('vim-airline')
     let g:airline#extensions#tabline#left_alt_sep='¦'
     call neobundle#untap()
 endif
-
 NeoBundle 'AndrewRadev/switch.vim', {
             \ 'lazy': 1,
             \  'autoload' : {
@@ -519,7 +492,6 @@ if neobundle#tap('ultisnips')
     let g:UltiSnipsSnippetDirectories=['UltiSnips', 'mysnippets']
     call neobundle#untap()
 endif
-
 NeoBundle 'beloglazov/vim-online-thesaurus', {
             \ 'lazy': 1,
             \  'autoload' : {
@@ -531,14 +503,15 @@ if neobundle#tap('vim-online-thesaurus')
     nnoremap <leader>K :OnlineThesaurusCurrentWord<cr>
     call neobundle#untap()
 endif
-
+""""""""""""""""""""""""""
+"  Text Objects Plugins  "
+""""""""""""""""""""""""""
 NeoBundle 'kana/vim-textobj-user'          " required plugin
 NeoBundle 'kana/vim-textobj-line'          " al, il
 NeoBundle 'kana/vim-textobj-indent'        " ai, ii, aI, iI
 NeoBundle 'kana/vim-textobj-entire'        " ae, ie
 NeoBundle 'PeterRincker/vim-argumentative' " a, i,
 NeoBundle 'beloglazov/vim-textobj-quotes'  " q
-
 NeoBundle 'Raimondi/delimitMate', {
             \  'lazy' : 1,
             \  'autoload' : {
@@ -550,7 +523,6 @@ if neobundle#tap('delimitMate')
     let delimitMate_expand_space=1
     call neobundle#untap()
 endif
-
 NeoBundle 'einars/js-beautify', {
             \ 'lazy': 1,
             \  'autoload' : {
@@ -572,7 +544,6 @@ if neobundle#tap('syntastic')
     let g:syntastic_always_populate_loc_list = 1
     call neobundle#untap()
 endif
-
 "Comma and semi-colon
 NeoBundle 'lfilho/cosco.vim', {
             \ 'lazy': 1,
@@ -580,6 +551,18 @@ NeoBundle 'lfilho/cosco.vim', {
             \   'filetypes': ['json', 'javascript']
             \  }
             \ }
+if neobundle#tap('cosco.vim')
+    function! neobundle#hooks.on_source(bundle)
+        if has('autocmd')
+            augroup cosco_aucommands
+                autocmd!
+                autocmd FileType javascript,css,json nnoremap <buffer> <silent> <leader>; :call cosco#commaOrSemiColon()<cr>
+                autocmd FileType javascript,css,json inoremap <buffer> <silent> <leader>; <ESC>:call cosco#commaOrSemiColon()<cr>a
+            augroup END
+        endif
+    endfunction
+    call neobundle#untap()
+endif
 NeoBundle 'nanotech/jellybeans.vim'
 " NeoBundle 'Lokaltog/vim-distinguished'
 " NeoBundle 'vim-scripts/wombat256.vim'
