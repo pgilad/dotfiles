@@ -2,6 +2,7 @@
     name = Gilad Peleg
     email = giladp007@gmail.com
 [core]
+
     autocrlf = false
     excludesfile = ~/.dotfiles/git/.gitignore_global
     attributesfile = ~/.dotfiles/.gitattributes
@@ -47,7 +48,7 @@
     whitespace = fix
 [help]
     # Automatically correct and execute mistyped commands
-    autocorrect = 1
+    autocorrect = 20
 [diff]
     # Detect copies as well as renames
     renames = copies
@@ -55,6 +56,13 @@
     # Always prune remote-tracking branches
     # See http://albertogrespan.com/blog/always-prune-remote-tracking-branches/
     prune = true
+[advice]
+    pushNonFastForward = false
+    statusHints = true
+    commitBeforeMerge = false
+    resolveConflict = false
+    implicitIdentity = true
+    detachedHead = true
 [alias]
     br = branch
     ch = checkout
