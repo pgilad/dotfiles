@@ -88,6 +88,8 @@ nnoremap <leader>wc :bdelete<cr>
 nnoremap <silent> <leader>cp :let @+=expand("%:p")<cr>:echo "Copied current file
             \ path '".expand("%:p")."' to clipboard"<cr>
 
+nnoremap <silent> <leader>cu :let @+=expand("%:t:r")<cr>:echo "Copied current file
+            \ name '".expand("%:t:r")."' to clipboard"<cr>
 """""""""""""""
 "  <leader>n  "
 """""""""""""""
