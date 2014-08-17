@@ -1,54 +1,60 @@
-if has('autocmd')
-    " Removes trailing spaces
-    function! TrimWhiteSpace()
-        %s/\s\+$//e
-    endfunction
+if !has('autocmd') | finish | endif
 
-    " close sentence with comma or semi-colon
-    augroup my_auto_commands
-        autocmd!
-        " prevent indentation in jade
-        autocmd FileType jade setlocal noautoindent
-        autocmd FileType html setlocal matchpairs+=<:>
+" Removes trailing spaces
+function! TrimWhiteSpace()
+    %s/\s\+$//e
+endfunction
 
-        " saving on lost focus
-        " autocmd WinEnter,BufWinEnter,FocusGained * checktime
-        " autocmd FileType javascript,html,json,jade,vim autocmd FileWritePre,FileAppendPre,FilterWritePre,BufWritePre <buffer> call TrimWhiteSpace()
+augroup myfiletypes
+    autocmd!
+    autocmd BufNewFile,BufRead *.ajs                    setlocal filetype=javascript
+    autocmd BufNewFile,BufRead *.jshintrc,*.bowerrc     setlocal filetype=json
+    autocmd BufNewFile,BufRead *.kml                    setlocal filetype=xml
+    autocmd BufNewFile,BufRead *.txt                    setlocal filetype=text
+    autocmd BufNewFile,BufRead *.asm                    setlocal filetype=nasm
+    autocmd BufNewFile,BufRead *.xdot                   setlocal filetype=dot
+    autocmd BufNewFile,BufRead *.as                     setlocal filetype=actionscript
+    autocmd BufNewFile,BufRead *.m                      setlocal filetype=objc
+    autocmd BufNewFile,BufRead *.scala                  setlocal filetype=scala
+    autocmd BufNewFile,BufRead *.samsa                  setlocal filetype=jproperties
+    autocmd BufNewFile,BufRead *.md,*.markdown          setlocal filetype=markdown
+    autocmd BufNewFile,BufRead .tmux*.conf*             setlocal filetype=tmux
+augroup END
 
-        " autocomplete
-        autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-        autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-        autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-        autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-        autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-        " autocmd FileType javascript setlocal omnifunc=syntaxcomplete#Complete
-        " beautify
-        autocmd FileType javascript,json nnoremap <buffer> <leader>js :call JsBeautify()<cr>
-        autocmd FileType javascript,json vnoremap <buffer> <leader>js :call RangeJsBeautify()<cr>
-        autocmd FileType html nnoremap <buffer> <leader>js :call HtmlBeautify()<cr>
-        autocmd FileType html vnoremap <buffer> <leader>js :call RangeHtmlBeautify()<cr>
-        autocmd FileType css nnoremap <buffer> <leader>js :call CSSBeautify()<cr>
-        autocmd FileType css vnoremap <buffer> <leader>js :call RangeCSSBeautify()<cr>
+" close sentence with comma or semi-colon
+augroup my_auto_commands
+    autocmd!
+    " prevent indentation in jade
+    autocmd FileType jade setlocal noautoindent
+    autocmd FileType html setlocal matchpairs+=<:>
 
-        "pretty format json using python
-        autocmd FileType json nnoremap <buffer> <leader>fj :%!python -m json.tool<cr>
+    " saving on lost focus
+    " autocmd WinEnter,BufWinEnter,FocusGained * checktime
+    " autocmd FileType javascript,html,json,jade,vim autocmd FileWritePre,FileAppendPre,FilterWritePre,BufWritePre <buffer> call TrimWhiteSpace()
 
-        " Turn on spell check for certain filetypes automatically
-        autocmd BufRead,BufNewFile *.md setlocal spell spelllang=en_us
-        autocmd FileType gitcommit setlocal spell spelllang=en_us
+    " autocomplete
+    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+    " autocmd FileType javascript setlocal omnifunc=syntaxcomplete#Complete
 
-        " set filestypes
-        autocmd BufRead,BufNewFile *.ajs setlocal filetype=javascript
-        autocmd BufRead,BufNewFile *.jshintrc,*.bowerrc setlocal filetype=json
+    " beautify mappings local to filetypes
+    autocmd FileType javascript,json nnoremap <buffer> <leader>js :call JsBeautify()<cr>
+    autocmd FileType javascript,json vnoremap <buffer> <leader>js :call RangeJsBeautify()<cr>
+    autocmd FileType html nnoremap <buffer> <leader>js :call HtmlBeautify()<cr>
+    autocmd FileType html vnoremap <buffer> <leader>js :call RangeHtmlBeautify()<cr>
+    autocmd FileType css nnoremap <buffer> <leader>js :call CSSBeautify()<cr>
+    autocmd FileType css vnoremap <buffer> <leader>js :call RangeCSSBeautify()<cr>
 
-        " reload vimrc when saved
-        autocmd BufWritePost $MYVIMRC source $MYVIMRC
+    "pretty format json using python
+    autocmd FileType json nnoremap <buffer> <leader>fj :%!python -m json.tool<cr>
 
-        autocmd WinLeave * setlocal nocursorline
-        autocmd WinEnter * setlocal cursorline
-        " Disable paste.
-        autocmd InsertLeave * if &paste | set nopaste mouse=a | echo 'nopaste' | endif |
-                    \ if &l:diff | diffupdate | endif
-        autocmd InsertLeave * if &l:diff | diffupdate | endif
-    augroup END
-endif
+    " Turn on spell check for certain filetypes automatically
+    autocmd BufRead,BufNewFile *.md setlocal spell spelllang=en_us
+    autocmd FileType gitcommit setlocal spell spelllang=en_us
+
+    autocmd WinLeave * setlocal nocursorline
+    autocmd WinEnter * setlocal cursorline
+augroup END

@@ -341,6 +341,12 @@ NeoBundle 'kannokanno/previm', {
             \ 'filetypes' : ['markdown']
             \  }
             \ }
+NeoBundle 'tejr/vim-tmux', {
+            \ 'lazy': 1,
+            \  'autoload' : {
+            \ 'filetypes' : ['tmux']
+            \  }
+            \ }
 NeoBundle 'tpope/vim-unimpaired', {
             \ 'lazy': 0
             \ }
