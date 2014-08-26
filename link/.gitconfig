@@ -2,7 +2,6 @@
     name = Gilad Peleg
     email = giladp007@gmail.com
 [core]
-
     autocrlf = false
     excludesfile = ~/.dotfiles/git/.gitignore_global
     attributesfile = ~/.dotfiles/.gitattributes
@@ -39,9 +38,6 @@
     added = yellow
     changed = green
     untracked = cyan
-[apply]
-    # Detect whitespace errors when applying a patch
-    whitespace = fix
 [help]
     # Automatically correct and execute mistyped commands
     autocorrect = 20
@@ -54,7 +50,7 @@
     prune = true
 [advice]
     pushNonFastForward = false
-    statusHints = true
+    statusHints = false
     commitBeforeMerge = false
     resolveConflict = false
     implicitIdentity = true
