@@ -174,3 +174,9 @@ reportUpdated
 reportOnlyPkgs
 packageJson
 updateType
+needsBrackets
+needsQuotes
+quotedValue
+Bynens
+es3Warning
+ES3
