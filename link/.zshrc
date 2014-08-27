@@ -27,6 +27,8 @@ export VISUAL="$EDITOR"
 export PATH="/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 export SSH_KEY_PATH="~/.ssh"
 export AWS_CONFIG_FILE="~/.aws-config"
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 ### Added by the Heroku Toolbelt
 export PATH="$PATH:/usr/local/heroku/bin"

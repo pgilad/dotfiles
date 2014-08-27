@@ -18,7 +18,7 @@ augroup myfiletypes
     autocmd BufNewFile,BufRead *.scala                  setlocal filetype=scala
     autocmd BufNewFile,BufRead *.samsa                  setlocal filetype=jproperties
     autocmd BufNewFile,BufRead *.md,*.markdown          setlocal filetype=markdown
-    autocmd BufNewFile,BufRead .tmux*.conf*             setlocal filetype=tmux
+    autocmd BufNewFile,BufRead .tmux*.conf*,*.tmux      setlocal filetype=tmux
 augroup END
 
 " close sentence with comma or semi-colon
