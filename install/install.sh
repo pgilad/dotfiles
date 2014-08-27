@@ -37,7 +37,7 @@ if [[ "$OS" =~ ^Linux ]]; then
     # specify the sudoers filename
     sudoers_file=sudoers-dotfiles
     # sudoers file location
-    sudoers_src=$dotfiles/config/ubuntu/$sudoers_file
+    sudoers_src=$dotfiles/install/ubuntu/$sudoers_file
     # sudoers dest
     sudoers_dest=/etc/sudoers.d/$sudoers_file
     # copy sudoers to sudoers.d
