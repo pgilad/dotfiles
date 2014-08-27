@@ -59,6 +59,7 @@ install imagemagick --with-webp
 # most important install off course
 install vim --with-lua
 install macvim --with-cscope --with-lua --custom-icons --with-luajit --override-system-vim
+install reattach-to-user-namespace --wrap-pbcopy-pbpaste
 linkapps
 # Remove outdated versions from the cellar
 cleanup
