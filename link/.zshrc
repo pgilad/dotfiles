@@ -7,10 +7,11 @@ DOTFILES="$HOME/.dotfiles"
 ZSH="$HOME/.oh-my-zsh"
 ZSH_CUSTOM="$DOTFILES/zsh/custom"
 ZSH_THEME="vonder"
-HISTFILE="$HOME/.cache/.zsh_history"
 DISABLE_AUTO_UPDATE="true"
 DISABLE_AUTO_TITLE="true"
 COMPLETION_WAITING_DOTS="true"
+CACHE_DIR="$HOME/.cache"
+HISTFILE="$CACHE_DIR/.zsh_history"
 
 # set oh my zsh plugins
 plugins=(git zsh-syntax-highlighting git-extras)
@@ -34,7 +35,7 @@ export LANG=en_US.UTF-8
 export PATH="$PATH:/usr/local/heroku/bin"
 
 # create cache dir if it doesn't exist
-[[ ! -d "$HOME/.cache" ]] && mkdir "$HOME/.cache"
+[[ ! -d "$CACHE_DIR" ]] && mkdir "$CACHE_DIR"
 
 # Source oh my zsh
 [[ -f "$ZSH/oh-my-zsh.sh" ]] && source "$ZSH/oh-my-zsh.sh"
@@ -60,6 +61,6 @@ eval "$(grunt --completion=zsh 2> /dev/null)" || echo "Please install Grunt Cli:
 eval "$(gulp --completion=zsh 2> /dev/null)" || echo "Please install gulp: npm i -g gulp"
 
 # set fasd data file location
-export _FASD_DATA="$HOME/.cache/.fasd"
+export _FASD_DATA="$CACHE_DIR/.fasd"
 # Fasd
 eval "$(fasd --init posix-alias zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install 2> /dev/null)" || echo "Please install fasd"

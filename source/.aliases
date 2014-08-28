@@ -20,3 +20,5 @@ alias -g gdev="-p 59345 gilad@gilad.a.blazemeter.com"
 
 #npm aliases
 alias npmo="npm outdated --depth=0"
+
+alias v="vim"
