@@ -1,4 +1,4 @@
-# <img src="img/dotfiles.png" width="321" height="62" alt="dotfiles">
+# <img src="media/dotfiles.png" width="321" height="62" alt="dotfiles">
 > Full glory!
 
 ## Overview
@@ -20,6 +20,8 @@ My config files, mainly Vim & Zsh aimed at working in Windows (7/8) and Ubuntu &
 - Shell install scripts for windows and Linux
 - OS agnostic
 - Highly commented
+
+![](media/prompt.png)
 
 ## Installation
 
@@ -73,6 +75,8 @@ your E-mail and name for git.
 ```
 
 ## Vim
+
+![](media/vim.png)
 
 - Main file is `_vimrc`.
 - Bundles files (bundled using `NeoBundle`) is `bundles.vim`.
