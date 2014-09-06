@@ -32,6 +32,7 @@ install fasd
 install findutils
 install git
 install hub
+install irssi
 install git-extras
 install htop-osx
 install hub

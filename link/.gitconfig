@@ -41,6 +41,9 @@
 [help]
     # Automatically correct and execute mistyped commands
     autocorrect = 20
+[merge]
+    # Include summaries of merged commits in newly created merge commit messages
+    log = true
 [diff]
     # Detect copies as well as renames
     renames = copies
@@ -49,10 +52,10 @@
     # See http://albertogrespan.com/blog/always-prune-remote-tracking-branches/
     prune = true
 [advice]
-    pushNonFastForward = false
-    statusHints = false
-    commitBeforeMerge = false
-    resolveConflict = false
+    pushNonFastForward = true
+    statusHints = true
+    commitBeforeMerge = true
+    resolveConflict = true
     implicitIdentity = true
     detachedHead = true
 [alias]
@@ -78,4 +81,4 @@
 [include]
     path = ~/.gitconfig.local
 [status]
-	short = true
+    short = true

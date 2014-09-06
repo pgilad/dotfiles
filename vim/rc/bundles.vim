@@ -498,17 +498,6 @@ if neobundle#tap('ultisnips')
     let g:UltiSnipsSnippetDirectories=['UltiSnips', 'mysnippets']
     call neobundle#untap()
 endif
-NeoBundle 'beloglazov/vim-online-thesaurus', {
-            \ 'lazy': 1,
-            \  'autoload' : {
-            \ 'commands': ['OnlineThesaurusCurrentWord', 'Thesaurus']
-            \  }
-            \ }
-if neobundle#tap('vim-online-thesaurus')
-    let g:online_thesaurus_map_keys = 0
-    nnoremap <leader>K :OnlineThesaurusCurrentWord<cr>
-    call neobundle#untap()
-endif
 """"""""""""""""""""""""""
 "  Text Objects Plugins  "
 """"""""""""""""""""""""""

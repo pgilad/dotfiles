@@ -21,18 +21,25 @@ if [[ "$(uname)" =~ ^Darwin ]]; then
     plugins+=brew
 fi
 
-export EDITOR=$(which vim)
+# set the correct term with TMUX
+if [[ -n "$TMUX" ]]; then
+    export TERM=screen-256color
+else
+    export TERM=xterm-256color
+fi
+export EDITOR=vim
 export VISUAL="$EDITOR"
-
 # User configuration
 export PATH="/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 export SSH_KEY_PATH="~/.ssh"
 export AWS_CONFIG_FILE="~/.aws-config"
+# Prefer US English and use UTF-8
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-
 ### Added by the Heroku Toolbelt
 export PATH="$PATH:/usr/local/heroku/bin"
+# set fasd data file location
+export _FASD_DATA="$CACHE_DIR/.fasd"
 
 # create cache dir if it doesn't exist
 [[ ! -d "$CACHE_DIR" ]] && mkdir "$CACHE_DIR"
@@ -51,16 +58,19 @@ for file in $HOME/local/*.local(-.N); do
 done
 unset file
 
-# Add npm completion
-eval "$(npm completion 2> /dev/null)" || echo "Please install NPM."
-
-# grunt completion
-eval "$(grunt --completion=zsh 2> /dev/null)" || echo "Please install Grunt Cli: npm i -g grunt-cli"
-
-# gulp completion
-eval "$(gulp --completion=zsh 2> /dev/null)" || echo "Please install gulp: npm i -g gulp"
-
-# set fasd data file location
-export _FASD_DATA="$CACHE_DIR/.fasd"
-# Fasd
-eval "$(fasd --init posix-alias zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install 2> /dev/null)" || echo "Please install fasd"
+if which npm &> /dev/null; then
+    # Add npm completion
+    eval "$(npm completion)"
+fi
+if which grunt &> /dev/null; then
+    # grunt completion
+    eval "$(grunt --completion=zsh)"
+fi
+if which gulp &> /dev/null; then
+    # gulp completion
+    eval "$(gulp --completion=zsh)"
+fi
+if which fasd &> /dev/null; then
+    # Fasd
+    eval "$(fasd --init posix-alias zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install)"
+fi

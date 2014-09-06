@@ -8,7 +8,7 @@ bind s split-window -v
 bind v split-window -h
 
 bind-key -t vi-copy 'v' begin-selection
-bind-key -t vi-copy 'y' copy-selection
+bind-key -t vi-copy y copy-pipe 'xclip -in -selection clipboard'
 # move x clipboard into tmux paste buffer
 bind C-p run "tmux set-buffer \"$(/usr/bin/xclip -sel clip -o)\"; tmux paste-buffer"
 # move tmux copy buffer into x clipboard
