@@ -51,13 +51,13 @@
     # Always prune remote-tracking branches
     # See http://albertogrespan.com/blog/always-prune-remote-tracking-branches/
     prune = true
-[advice]
-    pushNonFastForward = true
-    statusHints = true
-    commitBeforeMerge = true
-    resolveConflict = true
-    implicitIdentity = true
-    detachedHead = true
+# [advice]
+#    pushNonFastForward = true
+#    statusHints = true
+#    commitBeforeMerge = true
+#    resolveConflict = true
+#    implicitIdentity = true
+#    detachedHead = true
 [alias]
     br = branch
     ch = checkout
@@ -80,5 +80,5 @@
     insteadOf = "gist:"
 [include]
     path = ~/.gitconfig.local
-[status]
-    short = true
+; [status]
+    ; short = true
