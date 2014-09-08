@@ -1,14 +1,16 @@
 # Open man page in new window
 bind / command-prompt "split-window 'exec man %%'"
-bind y run-shell "tmux show-buffer | xclip -sel clip -i" \; display-message "Copied tmux buffer to system clipboard"
+bind y run-shell "reattach-to-user-namespace -l zsh -c 'tmux show-buffer | pbcopy'"
 
 # split windows like vim
 # vim's definition of a horizontal/vertical split is reversed from tmux's
 bind s split-window -v
 bind v split-window -h
 
-bind-key -t vi-copy 'v' begin-selection
-bind-key -t vi-copy y copy-pipe 'xclip -in -selection clipboard'
+bind-key -t vi-copy v begin-selection
+bind-key -t vi-copy y copy-pipe "reattach-to-user-namespace pbcopy"
+bind-key -t vi-copy Y copy-end-of-line
+
 # move x clipboard into tmux paste buffer
 bind C-p run "tmux set-buffer \"$(/usr/bin/xclip -sel clip -o)\"; tmux paste-buffer"
 # move tmux copy buffer into x clipboard

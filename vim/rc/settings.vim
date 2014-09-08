@@ -150,9 +150,9 @@ set laststatus=2                              " Always show the status line
 
 " share clipboard with os
 if has('unnamedplus')
-    set clipboard=unnamedplus " gui gvim unix/mac
+    set clipboard+=unnamedplus " gui gvim unix/mac
 else
-    set clipboard=unnamed     " windows
+    set clipboard+=unnamed     " windows
 endif
 
 " Disable GetLatestVimPlugin.vim

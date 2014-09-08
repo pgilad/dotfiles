@@ -2,6 +2,7 @@
 "  F-# keys mapping  "
 """"""""""""""""""""""
 nnoremap <F1> <nop>
+inoremap <F1> <nop>
 " See undo tree
 nnoremap <F3> :GundoToggle<cr>
 " set spell check
