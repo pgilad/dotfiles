@@ -45,13 +45,13 @@ if has('wildmenu')
     endif
     set wildmode=longest,list,full     " like zsh
     set wildignore+=*.o,*.~,*.pyc
-    set wildignore+=.git/*
-    set wildignore+=.idea/*
-    set wildignore+=bower_components/*
-    set wildignore+=build/*
-    set wildignore+=builds/*
-    set wildignore+=node_modules/*
-    set wildignore+=tmp/*
+    set wildignore+=.git/**
+    set wildignore+=.idea/**
+    set wildignore+=bower_components/**
+    set wildignore+=build/**
+    set wildignore+=builds/**
+    set wildignore+=node_modules/**
+    set wildignore+=tmp/**
 endif
 
 if exists('&fileignorecase')

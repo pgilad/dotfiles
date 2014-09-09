@@ -81,7 +81,7 @@ endif
 " \ }
 NeoBundle 'kien/ctrlp.vim'
 if neobundle#tap('ctrlp.vim')
-    let g:ctrlp_custom_ignore = 'build/\|dist\|node_modules\|.idea\|.git\|workspace\|bower_components\'
+    let g:ctrlp_custom_ignore = 'build\|dist\|node_modules\|.idea\|.git\|workspace\|bower_components'
     let g:ctrlp_root_markers = ['.git']
     let g:ctrlp_max_height = 20         " maxiumum height of match window
     let g:ctrlp_switch_buffer = 'et'    " jump to a file if it's open already
