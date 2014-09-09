@@ -1,8 +1,3 @@
-# Disable sound
-setopt NO_BEEP
-# glob for dotfiles as well (hidden)
-setopt GLOB_DOTS
-
 DOTFILES="$HOME/.dotfiles"
 ZSH="$HOME/.oh-my-zsh"
 ZSH_CUSTOM="$DOTFILES/zsh/custom"
@@ -13,20 +8,13 @@ COMPLETION_WAITING_DOTS="true"
 CACHE_DIR="$HOME/.cache"
 HISTFILE="$CACHE_DIR/.zsh_history"
 
-# set oh my zsh plugins
-plugins=(git zsh-syntax-highlighting git-extras)
-
-# OS specific settings
-if [[ "$(uname)" =~ ^Darwin ]]; then
-    plugins+=brew
-fi
-
 # set the correct term with TMUX
 if [[ -n "$TMUX" ]]; then
     export TERM=screen-256color
 else
     export TERM=xterm-256color
 fi
+
 export EDITOR=vim
 export VISUAL="$EDITOR"
 # User configuration
@@ -41,11 +29,26 @@ export PATH="$PATH:/usr/local/heroku/bin"
 # set fasd data file location
 export _FASD_DATA="$CACHE_DIR/.fasd"
 
+# Disable sound
+setopt NO_BEEP
+# glob for dotfiles as well (hidden)
+setopt GLOB_DOTS
+
 # create cache dir if it doesn't exist
 [[ ! -d "$CACHE_DIR" ]] && mkdir "$CACHE_DIR"
 
+# set oh my zsh plugins
+plugins=(git zsh-syntax-highlighting git-extras)
+
+# OS specific settings
+if [[ "$(uname)" =~ ^Darwin ]]; then
+    plugins+=brew
+fi
+
 # Source oh my zsh
-[[ -f "$ZSH/oh-my-zsh.sh" ]] && source "$ZSH/oh-my-zsh.sh"
+if [[ -f "$ZSH/oh-my-zsh.sh" ]]; then
+    source "$ZSH/oh-my-zsh.sh"
+fi
 
 # list all files in directory not alerting about no match
 for file in $DOTFILES/source/*(-.N); do

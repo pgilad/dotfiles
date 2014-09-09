@@ -6,6 +6,7 @@
     excludesfile = ~/.dotfiles/git/.gitignore_global
     attributesfile = ~/.dotfiles/.gitattributes
     editor = vim
+    pager = less -FRSX
     # Treat spaces before tabs and all kinds of trailing whitespace as an error
     # [default] trailing-space: looks for spaces at the end of a line
     # [default] space-before-tab: looks for spaces before tabs at the beginning of a line
@@ -23,6 +24,8 @@
     autosetupmerge = true
 [color]
     interactive = auto
+    diff = auto
+    branch = auto
     # Enable colored output for git commands
     ui = auto
 [color "branch"]
@@ -30,7 +33,7 @@
     local = yellow
     remote = green
 [color "diff"]
-    meta = yellow bold
+    meta = yellow
     frag = magenta bold
     old = red bold
     new = green bold
@@ -51,13 +54,13 @@
     # Always prune remote-tracking branches
     # See http://albertogrespan.com/blog/always-prune-remote-tracking-branches/
     prune = true
-# [advice]
-#    pushNonFastForward = true
-#    statusHints = true
-#    commitBeforeMerge = true
-#    resolveConflict = true
-#    implicitIdentity = true
-#    detachedHead = true
+[advice]
+    pushNonFastForward = false
+    statusHints = false
+    commitBeforeMerge = true
+    resolveConflict = true
+    implicitIdentity = true
+    detachedHead = true
 [alias]
     br = branch
     ch = checkout
@@ -66,6 +69,11 @@
     fe = fetch
     pu = push
     st = status
+    gl = log --oneline --decorate --stat --graph
+[status]
+    short = true
+    # Always show paths relative to git root
+    relativePaths = false
 [url "git@github.com:"]
     insteadOf = "gh:"
     pushInsteadOf = "github:"
@@ -80,5 +88,3 @@
     insteadOf = "gist:"
 [include]
     path = ~/.gitconfig.local
-; [status]
-    ; short = true
