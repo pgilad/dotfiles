@@ -84,8 +84,8 @@ prompt_pure_setup() {
     add-zsh-hook preexec prompt_pure_preexec
 
     zstyle ':vcs_info:*' enable git
-    zstyle ':vcs_info:git*' formats 'branch:%F{yellow}%b%f'
-    zstyle ':vcs_info:git*' actionformats 'branch:%F{yellow}%b|%a'
+    zstyle ':vcs_info:git*' formats '%F{yellow}%b%f'
+    zstyle ':vcs_info:git*' actionformats '%F{yellow}%b|%a'
 
     # if using ssh connection show username@host
     [[ -n "$SSH_CONNECTION" ]] && prompt_pure_username=' [%F{cyan}%n@%m%f]'
