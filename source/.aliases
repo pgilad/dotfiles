@@ -10,13 +10,9 @@ function gli() {
     echo "Running npm install $1-$2 --save-dev"
     npm install $1-$2 --save-dev
 }
-# sync dot files up/down
-alias dotup='cd ~/.dotfiles && git add -A && git commit -am "update dotfiles" && git push'
-alias dotdown='cd ~/.dotfiles && git pull'
 
 # start simple server
 alias serve="python -m SimpleHTTPServer"
-alias -g gdev="-p 59345 gilad@gilad.a.blazemeter.com"
 
 #npm aliases
 alias npmo="npm outdated --depth=0"
