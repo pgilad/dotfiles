@@ -22,6 +22,8 @@
 [branch]
     # Checking remote branches are setup with tracking by default
     autosetupmerge = true
+    # always git pull --rebase, not more Merge commits spam
+    ; autosetuprebase = always
 [color]
     interactive = auto
     diff = auto
