@@ -8,16 +8,17 @@ endfunction
 augroup myfiletypes
     autocmd!
     autocmd BufNewFile,BufRead *.ajs                    setlocal filetype=javascript
+    autocmd BufNewFile,BufRead *.as                     setlocal filetype=actionscript
+    autocmd BufNewFile,BufRead *.asm                    setlocal filetype=nasm
     autocmd BufNewFile,BufRead *.jshintrc,*.bowerrc     setlocal filetype=json
     autocmd BufNewFile,BufRead *.kml                    setlocal filetype=xml
-    autocmd BufNewFile,BufRead *.txt                    setlocal filetype=text
-    autocmd BufNewFile,BufRead *.asm                    setlocal filetype=nasm
-    autocmd BufNewFile,BufRead *.xdot                   setlocal filetype=dot
-    autocmd BufNewFile,BufRead *.as                     setlocal filetype=actionscript
     autocmd BufNewFile,BufRead *.m                      setlocal filetype=objc
-    autocmd BufNewFile,BufRead *.scala                  setlocal filetype=scala
-    autocmd BufNewFile,BufRead *.samsa                  setlocal filetype=jproperties
     autocmd BufNewFile,BufRead *.md,*.markdown          setlocal filetype=markdown
+    autocmd BufNewFile,BufRead *.samsa                  setlocal filetype=jproperties
+    autocmd BufNewFile,BufRead *.scala                  setlocal filetype=scala
+    autocmd BufNewFile,BufRead *.ts                     setlocal filetype=typescript
+    autocmd BufNewFile,BufRead *.txt                    setlocal filetype=text
+    autocmd BufNewFile,BufRead *.xdot                   setlocal filetype=dot
     autocmd BufNewFile,BufRead .tmux*.conf*,*.tmux      setlocal filetype=tmux
 augroup END
 

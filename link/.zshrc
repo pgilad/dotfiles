@@ -8,10 +8,17 @@ COMPLETION_WAITING_DOTS="true"
 CACHE_DIR="$HOME/.cache"
 HISTFILE="$CACHE_DIR/.zsh_history"
 
+################
+#  ZSH config  #
+################
 # Disable sound
 setopt NO_BEEP
 # glob for dotfiles as well (hidden)
 setopt GLOB_DOTS
+
+###############
+#  Pre setup  #
+###############
 # create cache dir if it doesn't exist
 [[ ! -d "$CACHE_DIR" ]] && mkdir "$CACHE_DIR"
 

@@ -331,6 +331,12 @@ if neobundle#tap('javascript-libraries-syntax.vim')
     call neobundle#untap()
 endif
 
+NeoBundleLazy 'leafgarland/typescript-vim', {
+            \ 'lazy': 1,
+            \  'autoload' : {
+            \   'filetypes': ['typescript']
+            \  }
+            \ }
 NeoBundleLazy 'tpope/vim-markdown', {'autoload':{'filetypes':['markdown']}}
 NeoBundleLazy 'waylan/vim-markdown-extra-preview', {'autoload':{'filetypes':['markdown']}}
 NeoBundleLazy 'jtratner/vim-flavored-markdown.git', {'autoload':{'filetypes':['markdown']}}
