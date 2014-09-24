@@ -25,12 +25,12 @@ setw -g window-status-current-attr bright
 
 # show host name and IP address on left side of status bar
 set -g status-left-length 70
-set -g status-left "#[fg=green]: #h : #[fg=brightblue]#(curl icanhazip.com) #[fg=yellow]#(ifconfig en0 | grep 'inet ' | awk '{print $2}') #(ifconfig en1 | grep 'inet ' | awk '{print \"en1 \" $2}') #[fg=red]#(ifconfig tun0 | grep 'inet ' | awk '{print \"vpn \" $2}') "
+set -g status-left " #[fg=green]#h :: #[fg=brightblue]#(curl icanhazip.com) :: #[fg=yellow]#(ifconfig en0 | grep 'inet ' | awk '{print $2}') #(ifconfig en1 | grep 'inet ' | awk '{print \"en1 \" $2}') #[fg=red]#(ifconfig tun0 | grep 'inet ' | awk '{print \"vpn \" $2}') "
 
 # show session name, window & pane number, date and time on right side of
 # status bar
 set -g status-right-length 60
-set -g status-right "#[fg=blue]#S #I:#P #[fg=yellow]:: %d %b %Y #[fg=green]:: %l:%M %p"
+set -g status-right "#[fg=blue]#S :: #I:#P #[fg=yellow] :: %d %b %Y #[fg=green] :: %l:%M %p"
 
 # Highlight active window
-# setw -g window-status-current-bg blue
+setw -g window-status-current-bg blue

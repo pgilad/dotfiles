@@ -11,8 +11,6 @@ nnoremap <F4> :setlocal spell!<cr>
 nnoremap <F6> :set invpaste<CR>:set paste?<CR>
 " format from 2 spaces to 4 spaces
 nnoremap <F7> :<C-U>set ts=2 sts=2 noexpandtab<cr>:retab!<cr>:set ts=4 sts=4 expandtab<cr>:retab<cr>
-" open in chrome
-nnoremap <silent> <F12>c :silent !start "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" %:p<cr>
 """"""""""""""""""""""""""""
 "  Regular keys unbinding  "
 """"""""""""""""""""""""""""
@@ -56,8 +54,6 @@ vnoremap <c-r> "hy:%s/<c-r>h//gc<left><left><left>
 
 nnoremap <silent>\w :execute 'grep! ' . expand('<cword>')<cr>:copen<cr>
 
-" copy editorconfig from .dotfiles to current path
-nnoremap <leader>de :exec '!copy ' . expand('~/.dotfiles/.editorconfig') . ' ' . expand('%:p:h/')<cr>
 """"""""""""""""""""""""""
 "  Command-line mapping  "
 """"""""""""""""""""""""""
@@ -77,7 +73,7 @@ cnoremap <c-n> <down>
 """""""""""""""
 "  <leader>r  "
 """""""""""""""
-nnoremap <silent> <leader>rt i=strftime('%c')<cr>
+nnoremap <silent> <leader>ts i=strftime('%c')<cr>
 
 " show list
 nnoremap <silent> <leader>ls :set list!<CR>
@@ -122,6 +118,7 @@ nnoremap <silent> <leader>us :UltiSnipsEdit<cr>
 nnoremap <silent> <leader>eu :NeoBundleUpdate<cr>
 nnoremap <silent> <leader>el :NeoBundleUpdatesLog<cr>
 
+" execute current line as command
 nnoremap <leader>ex :execute getline(".")<cr>
 vnoremap <leader>ex :<c-u>execute getreg("*")<cr>
 "clear all double+ empty lines
@@ -140,8 +137,6 @@ nmap <leader>oo <Plug>(openbrowser-open)
 nmap <leader>os <Plug>(openbrowser-smart-search)
 vmap <leader>os <Plug>(openbrowser-smart-search)
 
-"open explorer in path of current buffer
-nnoremap <leader>oe :silent! !start explorer %:p:h:gs?\/?\\?<cr>
 """""""""""""""
 "  <leader>m  "
 """""""""""""""
