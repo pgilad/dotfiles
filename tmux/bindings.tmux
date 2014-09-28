@@ -19,3 +19,7 @@ bind k select-pane -U
 bind l select-pane -R
 
 bind r source-file ~/.tmux.conf
+
+# redisplay ^L
+unbind ^L
+bind ^L refresh-client

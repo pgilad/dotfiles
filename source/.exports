@@ -1,3 +1,8 @@
+# User configuration
+export PATH="/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin"
+export PATH="$PATH:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+### Added by the Heroku Toolbelt
+export PATH="$PATH:/usr/local/heroku/bin"
 # set the correct term with TMUX
 if [[ -n "$TMUX" ]]; then
     export TERM=screen-256color
@@ -7,14 +12,13 @@ fi
 
 export EDITOR=vim
 export VISUAL="$EDITOR"
-# User configuration
-export PATH="/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 export SSH_KEY_PATH="~/.ssh"
 export AWS_CONFIG_FILE="~/.aws-config"
 # Prefer US English and use UTF-8
 export LANG=en_US.UTF-8
 export LC_ALL="$LANG"
-### Added by the Heroku Toolbelt
-export PATH="$PATH:/usr/local/heroku/bin"
 # set fasd data file location
 export _FASD_DATA="$CACHE_DIR/.fasd"
+export HISTSIZE=4096
+# ignore history duplicate of last command
+export HISTCONTROL=ignoredups
