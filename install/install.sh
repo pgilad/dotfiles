@@ -29,7 +29,7 @@ if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
     echo "Should .oh-my-zsh be installed to $HOME/.oh-my-zsh ?"
     select result in Yes No; do
         if [[ "$result" == "Yes" ]]; then
-            git clone git@github.com:robbyrussell/oh-my-zsh.git "$HOME/.oh-my-zsh"
+            git clone https://github.com/robbyrussell/oh-my-zsh.git "$HOME/.oh-my-zsh"
         fi
         break
     done
@@ -89,6 +89,12 @@ iHeader "Handling vim install"
 if [[ ! -d "$vim_bundles" ]]; then
     iStep "Creating vim bundles directory at $vim_bundles"
     mkdir -p "$vim_bundles"
+fi
+
+if [[ ! $SHELL =~ zsh ]]; then
+    iHeader "Changin shell to zsh"
+    chsh -s /bin/zsh
+    iGood "done"
 fi
 iFinishStep "Vim installation complete"
 echo "\n"

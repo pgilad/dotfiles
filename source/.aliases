@@ -18,3 +18,5 @@ alias serve="python -m SimpleHTTPServer"
 alias npmo="npm outdated --depth=0"
 
 alias v="vim"
+
+gitwap="git log -i --grep=wap --no-merges --color --decorate --pretty='format: * %s'"

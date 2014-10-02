@@ -31,10 +31,14 @@ fi
 #  oh-my-zsh  #
 ###############
 # set oh my zsh plugins
-plugins=(git zsh-syntax-highlighting git-extras tmux)
+plugins=(git zsh-syntax-highlighting git-extras)
 # OS specific settings
 if [[ "$(uname)" =~ ^Darwin ]]; then
     plugins+=brew
+fi
+# set the correct term with TMUX
+if [[ -n "$TMUX" ]]; then
+    plugins+=tmux
 fi
 # Source oh my zsh
 if [[ -f "$ZSH/oh-my-zsh.sh" ]]; then
