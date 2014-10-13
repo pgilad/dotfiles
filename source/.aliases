@@ -6,16 +6,12 @@ alias poweroff='sudo /sbin/poweroff -r now'
 alias halt='sudo /sbin/halt -r now'
 alias shutdown='sudo /sbin/shutdown -r now'
 
-function gli() {
-    echo "Running npm install $1-$2 --save-dev"
-    npm install $1-$2 --save-dev
-}
-
 # start simple server
 alias serve="python -m SimpleHTTPServer"
 
-#npm aliases
+# npm aliases
 alias npmo="npm outdated --depth=0"
+alias npmnewest="npm outdated --depth=0 --parseable | cut -d: -f4"
 
 alias v="vim"
 
