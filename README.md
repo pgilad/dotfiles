@@ -2,7 +2,7 @@
 > Full glory!
 
 ## Overview
-My config files, mainly Vim & Zsh aimed at working in Windows (7/8) and Ubuntu & OSX.
+My config files, mainly Vim & Zsh aimed at working in Linux & OSX.
 
 ## Key Features
 - Uses [NeoBundle](https://github.com/Shougo/neobundle.vim) as package manager.
@@ -12,14 +12,6 @@ My config files, mainly Vim & Zsh aimed at working in Windows (7/8) and Ubuntu &
 - Geared towards portability.
 - Equipped to handle web development (HTML/CSS/Js/Frameworks/etc...)
 - NERDTree/CtrlP for browsing (but soon enough will use Unite for that too)
-
-## Goals
-
-- As Object-Oriented as possible
-- As lazy-loaded as possible (due to 75+ Vim packages)
-- Shell install scripts for windows and Linux
-- OS agnostic
-- Highly commented
 
 ![](media/prompt.png)
 
@@ -32,13 +24,13 @@ $ git clone https://github.com/pgilad/dotfiles.git ~/.dotfiles
 
 - Change your shell to `zsh` (`chsh -s /bin/zsh`)
 
-### Windows
-
-- Run `install/install.cmd`. If it fails - you will need Administrator permission for it.
-
 ### Ubuntu & OSX
 
 - Run `install/install.sh`
+
+### Windows
+
+- Run `install/install.cmd`. If it fails - you will need Administrator permission for it.
 
 ### OSX Optional Setup
 

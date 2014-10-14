@@ -1,5 +1,5 @@
 function! s:create_dir(dir)
-    let make_dir=expand(a:dir)
+    let make_dir=fnamemodify(a:dir, ':h')
     if isdirectory(make_dir)
         return
     endif
@@ -187,9 +187,10 @@ if has('folding')
 endif
 
 if has('persistent_undo')
-    call s:create_dir(g:config.undoDir)
+    let filePath=fnameescape(expand(g:config.undoDir))
+    call s:create_dir(filePath)
     set undofile
-    let &undodir=fnameescape(expand(g:config.undoDir))
+    let &undodir=filePath
 endif
 
 " TODO think about this. regex doesn't work
@@ -200,7 +201,8 @@ if executable('ag')
 endif
 
 if has('spell')
-    call s:create_dir(g:config.spellDir)
+    let filePath=fnameescape(expand(g:config.spellDir))
+    call s:create_dir(filePath)
     set nospell
     let &spellfile=fnameescape(expand(g:config.spellFile))
     set spelllang=en_us
