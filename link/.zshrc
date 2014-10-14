@@ -32,7 +32,7 @@ fi
 #  oh-my-zsh  #
 ###############
 # set oh my zsh plugins
-plugins=(git zsh-syntax-highlighting git-extras)
+plugins=(zsh-syntax-highlighting git-extras)
 
 # OS specific settings
 if [[ "$(uname)" =~ ^Darwin ]]; then
