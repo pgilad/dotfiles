@@ -1,5 +1,6 @@
 DOTFILES="$HOME/.dotfiles"
 CACHE_DIR="$HOME/.cache"
+SOURCE_DIR="$DOTFILES/source"
 
 HISTFILE="$CACHE_DIR/.zsh_history"
 DISABLE_AUTO_UPDATE="true"
@@ -21,11 +22,13 @@ setopt GLOB_DOTS
 #  Pre setup  #
 ###############
 # create cache dir if it doesn't exist
-[[ ! -d "$CACHE_DIR" ]] && mkdir -p "$CACHE_DIR"
+if [[ ! -d "$CACHE_DIR" ]]; then
+    mkdir -p "$CACHE_DIR"
+fi
 
 #source exported vars
-if [[ -f "$DOTFILES/source/.exports" ]]; then
-    source "$DOTFILES/source/.exports"
+if [[ -f "$SOURCE_DIR/.exports" ]]; then
+    source "$SOURCE_DIR/.exports"
 fi
 
 ###############
@@ -47,18 +50,14 @@ if [[ -f "$ZSH/oh-my-zsh.sh" ]]; then
     source "$ZSH/oh-my-zsh.sh"
 fi
 
-if [[ -f "$DOTFILES/source/.aliases" ]]; then
-    source "$DOTFILES/source/.aliases"
+if [[ -f "$SOURCE_DIR/.aliases" ]]; then
+    source "$SOURCE_DIR/.aliases"
 fi
 
-if [[ -f "$DOTFILES/source/.completions" ]]; then
-    source "$DOTFILES/source/.completions"
+if [[ -f "$SOURCE_DIR/.completions" ]]; then
+    source "$SOURCE_DIR/.completions"
 fi
 
-# find files to automatically source. Do not alert about empty matches
-files=("$HOME"/local/*.local(-.N))
-for file in $files; do
-    source "$file"
-done
-
-unset files file
+if [[ -f "$HOME/.extra" ]]; then
+    source "$HOME/.extra"
+fi

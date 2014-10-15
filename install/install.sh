@@ -70,6 +70,8 @@ if [[ "$OS" =~ ^Darwin ]]; then
         # install homebrew
         ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
     fi
+    scriptPath="$(dirname $0)"
+    source $scriptPath/brewfile.sh
     iFinishStep "OSX installation complete"
 fi
 

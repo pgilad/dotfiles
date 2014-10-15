@@ -1,6 +1,3 @@
-[user]
-    name = Gilad Peleg
-    email = giladp007@gmail.com
 [core]
     autocrlf = false
     excludesfile = ~/.dotfiles/git/.gitignore_global

@@ -2,7 +2,7 @@
 > Full glory!
 
 ## Overview
-My config files, mainly Vim & Zsh aimed at working in Linux & OSX.
+My config files, mainly Vim, Tmux, Git & Zsh aimed at working in Linux & OSX.
 
 ## Key Features
 - Uses [NeoBundle](https://github.com/Shougo/neobundle.vim) as package manager.
@@ -11,60 +11,56 @@ My config files, mainly Vim & Zsh aimed at working in Linux & OSX.
 - Awesome **shell prompt** based on [pure](https://github.com/sindresorhus/pure)
 - Geared towards portability.
 - Equipped to handle web development (HTML/CSS/Js/Frameworks/etc...)
-- NERDTree/CtrlP for browsing (but soon enough will use Unite for that too)
+- NERDTree/CtrlP for browsing
 
 ![](media/prompt.png)
 
 ## Installation
 
-- Git clone this repository into your `~/.dotfiles`
 ```sh
+# Git clone this repository into your `~/.dotfiles`
 $ git clone https://github.com/pgilad/dotfiles.git ~/.dotfiles
+
+# Run bootstrap script on Linux/OSX
+sh ~/.dotfiles/install/install.sh
+
+# Optionally apply hacker defaults on OSX
+sh ~/.dotfiles/install/osx.sh
+
+# on Windows - run `install/install.cmd`
 ```
-
-- Change your shell to `zsh` (`chsh -s /bin/zsh`)
-
-### Ubuntu & OSX
-
-- Run `install/install.sh`
-
-### Windows
-
-- Run `install/install.cmd`. If it fails - you will need Administrator permission for it.
-
-### OSX Optional Setup
-
-- Make sure your OSX version is latest
-- Install XCode
-- `brew bundle ~./dotfiles/install/Brewfile`
-- `brew bundle ~/.dotfiles/install/Caskfile`
 
 ### What happens during install & load
 
-- Files from `link` are linked to `~/`.
+- Files from `link` are symlinked to `~/`.
 - Files from `source` are sourced on profile load.
+- If `~/.extra` exists it is sourced on profile load.
+- Git config is extended with `~/.gitconfig.local` if it exists.
 
-To source local files put them in `~/local/`:
+### Overriding settings
 
-- Files in `~/local/` with pattern `filename.local` (hidden files included) are sourced on profile load.
+#### Profile overrides
+
+Place any profile load overrides you want in `~/.extra`
+
+#### Git overrides
+
+To override `.gitconfig` params add a `~/.gitconfig.local` file.
+Anything you add here will extend and override existing params from `.gitconfig`.
+
+For example:
+
+```
+[user]
+    name = Gilad Peleg
+    email = giladp007@gmail.com
+```
 
 #### Customizing iTerm2 Themes:
 
 - Clone [iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes)
 - Import your favorite theme in iTerm2 -> Profiles -> Colors -> Import Theme
 - Profit$$
-
-## Local gitconfig
-
-To adjust `.gitconfig` to your user.name and E-mail, add a `~/.gitconfig.local` file.
-Anything you add here will override the general `.gitconfig`. This is mostly useful for setting
-your E-mail and name for git.
-
-```
-[user]
-    name = Dan Croak
-    email = dan@thoughtbot.com
-```
 
 ## Vim
 
