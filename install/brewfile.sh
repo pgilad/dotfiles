@@ -86,7 +86,6 @@ CASKS=(
     imagealpha
     imageoptim
     iterm2
-    java
     karabiner
     mou
     onyx
@@ -109,8 +108,11 @@ function install_brewfiles() {
 
     # apply ugly hack because it doesn't work for me otherwise
     for formula in "${FORMULAS[@]}"; do
-        $(printf "%s" "brew install $formula")
-        # brew install $formula
+        package=$(echo $formula | cut -d ' ' -f 1)
+        if ! brew list $package &> /dev/null; then
+            params=$(echo $formula | cut -s -d ' ' -f 2-)
+            brew install $package $params
+        fi
     done
 }
 
@@ -131,17 +133,17 @@ function main() {
     iStep "installing brew formulas"
     install_brewfiles
     iStep "installing brew cask apps"
-    install_caskfiles
+    # install_caskfiles
 
     iStep "Running brew cleanup"
-    brew cleanup
-    brew cask cleanup
-    brew cask alfred link
-    brew prune
-    brew linkapps
-    brew tap --repair
+    # brew cleanup
+    # brew cask cleanup
+    # brew cask alfred link
+    # brew prune
+    # brew linkapps
+    # brew tap --repair
     iStep "Brew doctor"
-    brew doctor
+    # brew doctor
 }
 
 main

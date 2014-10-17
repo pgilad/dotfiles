@@ -190,3 +190,13 @@ E2E
 pre
 Tmux
 symlinked
+HISTCONTROL
+ignoredups
+fasd
+UTF
+aws
+Toolbelt
+sbin
+lightdm
+HISTSIZE
+usr

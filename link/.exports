@@ -22,3 +22,6 @@ export _FASD_DATA="$CACHE_DIR/.fasd"
 export HISTSIZE=4096
 # ignore history duplicate of last command
 export HISTCONTROL=ignoredups
+
+# NPM Environment Config
+export NPM_CONFIG_PREFIX=/usr/local
