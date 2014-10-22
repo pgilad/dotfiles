@@ -22,10 +22,10 @@ My config files, mainly Vim, Tmux, Git & Zsh aimed at working in Linux & OSX.
 $ git clone https://github.com/pgilad/dotfiles.git ~/.dotfiles
 
 # Run bootstrap script on Linux/OSX
-sh ~/.dotfiles/install/install.sh
+source ~/.dotfiles/install/install.sh
 
 # Optionally apply hacker defaults on OSX
-sh ~/.dotfiles/install/osx.sh
+source ~/.dotfiles/install/osx.sh
 
 # on Windows - run `install/install.cmd`
 ```
@@ -33,7 +33,6 @@ sh ~/.dotfiles/install/osx.sh
 ### What happens during install & load
 
 - Files from `link` are symlinked to `~/`.
-- Files from `source` are sourced on profile load.
 - If `~/.extra` exists it is sourced on profile load.
 - Git config is extended with `~/.gitconfig.local` if it exists.
 

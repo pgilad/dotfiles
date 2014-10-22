@@ -24,4 +24,10 @@ export HISTSIZE=4096
 export HISTCONTROL=ignoredups
 
 # NPM Environment Config
-export NPM_CONFIG_PREFIX=/usr/local
+export NPM_PACKAGES="$HOME/.npm-packages"
+export PATH="$PATH:$NPM_PACKAGES/bin"
+export NPM_CONFIG_PREFIX="$NPM_PACKAGES"
+export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
+# Unset manpath so we can inherit from /etc/manpath via the `manpath`
+unset MANPATH  # delete if you already modified MANPATH elsewhere in your config
+MANPATH="$NPM_PACKAGES/share/man:$(manpath)"

@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 # dotfiles dir
 dotfiles="$HOME/.dotfiles"
 # vim bundles directory
@@ -10,11 +10,11 @@ oh_my_zsh_dir="$HOME/.oh-my-zsh"
 # detect OS
 OS="$(uname -s)"
 
-function iHeader()     { echo "\033[1m$@\033[0m";  }
-function iStep()       { echo "  \033[1;33m➜\033[0m $@"; }
-function iFinishStep() { echo "  \033[1;32m✔\033[0m $@"; }
-function iGood()       { echo "    \033[1;32m✔\033[0m $@"; }
-function iBad()        { echo "    \033[1;31m✖\033[0m $@"; }
+function iHeader()     { echo -e "\033[1m$@\033[0m";  }
+function iStep()       { echo -e "  \033[1;33m➜\033[0m $@"; }
+function iFinishStep() { echo -e "  \033[1;32m✔\033[0m $@"; }
+function iGood()       { echo -e "    \033[1;32m✔\033[0m $@"; }
+function iBad()        { echo -e "    \033[1;31m✖\033[0m $@"; }
 
 iHeader "Starting bootstrap install made by https://github.com/pgilad"
 
@@ -76,14 +76,16 @@ if [[ "$OS" =~ ^Darwin ]]; then
 fi
 
 iHeader "Creating symlinks"
-for filename in $link_dir/{.,_}[!.]*(:t); do
-    iStep "Handling file: $filename"
-    if [[ ! -e ~/"$filename" ]]; then
-        ln -sf "$link_dir/$filename" ~/ &&
-            iGood "Symlink created: ~/$filename" ||
-            iBad "Problem with symlinking ~/$filename"
+shopt -s dotglob
+for filename in "$link_dir/"*; do
+    baseFile="$(basename "$filename")"
+    iStep "Handling file: $baseFile"
+    if [[ ! -e ~/"$baseFile" ]]; then
+        ln -sf "$filename" ~/"$baseFile" &&
+            iGood "Symlink created: ~/$baseFile" ||
+            iBad "Problem with symlinking ~/$baseFile"
     else
-        iBad "Symlink skipped, file exists: ~/$filename"
+        iBad "Symlink skipped, file exists: ~/$baseFile"
     fi
 done
 iFinishStep "Symlinking complete"
@@ -97,10 +99,14 @@ fi
 iFinishStep "Vim Installation Complete"
 
 if [[ ! "$SHELL" =~ zsh ]]; then
-    iHeader "Changing shell to Zsh. Welcome to the future..."
-    chsh -s /bin/zsh
-    iGood "done changing shell"
+    if [[ ! -x "$(command -v zsh)" ]]; then
+        iHeader "Changing shell to Zsh. Welcome to the future..."
+        chsh -s /bin/zsh
+        iGood "done changing shell"
+    else
+        iBad "Zsh not found in your system."
+    fi
 fi
-echo "\n"
+echo -e "\n"
 iFinishStep "Installation complete!"
 unset iHeader iStep iGood iBad iFinishStep
