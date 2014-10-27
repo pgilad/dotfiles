@@ -150,3 +150,5 @@ nnoremap <leader>mg mjyiwgg0/require ovar * = require('gulp-*')A;`j:nohlsear
 nnoremap <leader>mr mjyiwgg0/require ovar * = require('*')A;`j:nohlsearch<cr>
 
 nnoremap <leader>hg ggO/* global App */<esc>
+
+iabbrev mit@ MIT @[Gilad Peleg](http://giladpeleg.com)

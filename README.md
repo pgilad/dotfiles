@@ -136,3 +136,7 @@ set secure
 - [Shougo's dotfiles](https://github.com/Shougo/shougo-s-github)
 - [Cowboy's dotfiles](https://github.com/cowboy/dotfiles)
 - [Mathias's dotfiles](https://github.com/mathiasbynens/dotfiles)
+
+## License
+
+MIT @[Gilad Peleg](http://giladpeleg.com)

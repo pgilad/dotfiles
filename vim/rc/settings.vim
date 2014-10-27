@@ -39,11 +39,11 @@ if has('gui_running')
 endif
 
 if has('wildmenu')
-    set wildmenu                       " Turn on the WiLd menu
+    set wildmenu                       " Turn on the Wild menu
     if exists('&wildignorecase')
         set wildignorecase             " ignore case in wildmenu
     endif
-    set wildmode=longest,list,full     " like zsh
+    set wildmode=longest,list,full     " like Zsh
     set wildignore+=*.o,*.~,*.pyc
     set wildignore+=.git/**
     set wildignore+=.idea/**
@@ -80,7 +80,7 @@ set suffixesadd+=.json                          " list of suffixes to add when u
 set ruler                                       " Always show current position
 set cmdheight=1                                 " Height of the command bar
 set showcmd                                     " show partial commands
-set showmode                                    " show which mode i'm on
+set showmode                                    " show which mode I'm on
 set nrformats-=octal                            " no octal numbers
 set hidden                                      " A buffer becomes hidden when it is abandoned
 set showfulltag
@@ -118,8 +118,8 @@ set list                                        " show problematic chars
 set report=10                                   " min number of lines changed to report change
 set history=700                                 " Sets how many lines of history VIM has to remember
 set nomodeline                                  " security issue
-set splitright                                  " Always splits targetting right
-set splitbelow                                  " Always split targetting below
+set splitright                                  " Always splits targeting right
+set splitbelow                                  " Always split targeting below
 set nostartofline                               " Don't reset cursor to start of line when moving around.
 set helplang=en
 set keywordprg=:help
@@ -149,15 +149,15 @@ set shiftwidth=4
 set tabstop=4
 set softtabstop=4
 set shiftround                                " < and > round to nearest multiple of tabstop
-set linebreak                                 " Linebreak on 500 characters
+set linebreak                                 " Line break on 500 characters
 set textwidth=500                             " max width of text inserted
 set noautoindent
 set smartindent
 set laststatus=2                              " Always show the status line
 
-" share clipboard with os
+" share clipboard with OS
 if has('unnamedplus')
-    set clipboard+=unnamedplus " gui gvim unix/mac
+    set clipboard+=unnamedplus " Gui gVim Unix/mac
 else
     set clipboard+=unnamed     " windows
 endif
@@ -183,7 +183,7 @@ if has('folding')
     set foldmethod=indent " fold based on indent
     set foldnestmax=7     " deepest fold is 3 levels
     set foldlevelstart=0
-    set nofoldenable      " dont fold by default
+    set nofoldenable      " don't fold by default
 endif
 
 if has('persistent_undo')
@@ -203,7 +203,7 @@ endif
 if has('spell')
     let filePath=fnameescape(expand(g:config.spellDir))
     call s:create_dir(filePath)
-    set nospell
+    set spell
     let &spellfile=fnameescape(expand(g:config.spellFile))
     set spelllang=en_us
 endif
