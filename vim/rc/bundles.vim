@@ -1,9 +1,9 @@
 let s:neobundle_git_path='!git clone %s://github.com/Shougo/neobundle.vim.git'
 
 if has('vim_starting')
-    " add neobundle to rtp
+    " add NeoBundle to rtp
     execute 'set rtp ^='. fnameescape(g:config.bundlesPath . 'neobundle.vim/')
-    " install neobundle if doesn't exist and we have git. TODO - create curl alternative
+    " install NeoBundle if doesn't exist and we have git. TODO - create curl alternative
     if !isdirectory(expand(g:config.bundlesPath . 'neobundle.vim')) && executable('git')
         execute printf(s:neobundle_git_path,
                     \ (exists('$http_proxy') ? 'https' : 'git'))
@@ -13,7 +13,7 @@ endif
 
 call neobundle#begin(expand(g:config.bundlesPath))
 
-" Let neobundle handle bundles
+" Let NeoBundle handle bundles
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'Shougo/vimproc', {
@@ -26,14 +26,6 @@ NeoBundle 'Shougo/vimproc', {
             \ }
 NeoBundle 'L9'
 NeoBundle 'editorconfig/editorconfig-vim'
-" NeoBundle 'Valloric/YouCompleteMe', {
-" \ 'disable' : g:config.env.windows,
-" \ 'vim_version':'7.3.584',
-" \ 'build' : {
-" \   'unix' : './install.sh --clang-completer',
-" \   'mac' : './install.sh --clang-completer'
-" \  },
-" \ }
 NeoBundle 'Shougo/neocomplete', {
             \ 'lazy': 1,
             \ 'autoload': {
@@ -83,11 +75,11 @@ NeoBundle 'kien/ctrlp.vim'
 if neobundle#tap('ctrlp.vim')
     let g:ctrlp_custom_ignore = 'build\|dist\|node_modules\|.idea\|.git\|workspace\|bower_components'
     let g:ctrlp_root_markers = ['.git']
-    let g:ctrlp_max_height = 20         " maxiumum height of match window
+    let g:ctrlp_max_height = 20         " maximum height of match window
     let g:ctrlp_switch_buffer = 'et'    " jump to a file if it's open already
     let g:ctrlp_follow_symlinks=1
     let g:ctrlp_max_files=2000
-    let g:ctrlp_clear_cache_on_exit=0   " speed up by not removing clearing cache evertime
+    let g:ctrlp_clear_cache_on_exit=0   " speed up by not removing clearing cache every time
     let g:ctrlp_mruf_max = 250          " number of recently opened files
     let g:ctrlp_show_hidden = 1
     nnoremap <c-p> :CtrlP<cr>
@@ -197,7 +189,7 @@ if neobundle#tap('nerdtree')
     let NERDTreeWinSize=30
     let NERDTreeDirArrows=1
     let NERDChristmasTree=1
-    let NERDTreeAutoDeleteBuffer=1 "auto delete buffers on nerdtree delete
+    let NERDTreeAutoDeleteBuffer=1 "auto delete buffers on NERDTree delete
     let NERDTreeIgnore=['\~$', '^\.\.$', '\.swp$', '\.hg$', '\.svn$', '\.bzr', '\.git$']
     let NERDSpaceDelims=1
     let NERDCreateDefaultMappings = 1
@@ -213,8 +205,12 @@ NeoBundle 'scrooloose/nerdcommenter', {
             \ }
 NeoBundle 'nathanaelkane/vim-indent-guides'
 if neobundle#tap('vim-indent-guides')
-    let g:indent_guides_enable_on_vim_startup = 1
     let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'qf']
+    let g:indent_guides_auto_colors = 0
+    let g:indent_guides_enable_on_vim_startup = 1
+    let g:indent_guides_color_change_percent = 5
+    hi IndentGuidesOdd  ctermbg=black
+    hi IndentGuidesEven ctermbg=darkgrey
     call neobundle#untap()
 endif
 
@@ -377,25 +373,17 @@ if neobundle#tap('vim-fugitive')
     call neobundle#untap()
 endif
 
-NeoBundle 'gregsexton/gitv', {
-            \ 'lazy': 1,
-            \ 'depends': ['tpope/vim-fugitive'],
-            \  'autoload' : {
-            \   'commands': ['Gitv']
-            \  }
-            \ }
+NeoBundleLazy 'vim-ruby/vim-ruby', {
+      \ 'mappings' : '<Plug>',
+      \ 'filetypes' : 'ruby'
+      \ }
+
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'tpope/vim-surround'
 " NeoBundle 'tpope/vim-abolish.git'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'thinca/vim-visualstar'
 
-NeoBundle 'sjl/gundo.vim', {
-            \ 'lazy': 1,
-            \  'autoload' : {
-            \   'commands': ['GundoShow', 'GundoToggle', 'GundoHide', 'GundoRenderGraph']
-            \  }
-            \ }
 NeoBundle 'tyru/open-browser.vim', {
             \ 'lazy': 1,
             \'autoload': {
@@ -427,7 +415,7 @@ if neobundle#tap('tabular')
     vnoremap <leader>a<Bar> :Tabularize /<Bar><cr>
     call neobundle#untap()
 endif
-" more maintained verison
+" more maintained version
 NeoBundle 'kris89/vim-multiple-cursors'
 NeoBundle 'AndrewRadev/inline_edit.vim', {
             \ 'lazy': 1,
@@ -442,18 +430,6 @@ if neobundle#tap('inline_edit.vim')
     call neobundle#untap()
 endif
 
-"gS to split, gJ to join
-NeoBundle 'AndrewRadev/splitjoin.vim', {
-            \ 'lazy': 1,
-            \  'autoload' : {
-            \   'commands': ['SplitjoinSplit', 'SplitjoinJoin']
-            \  }
-            \ }
-if neobundle#tap('splitjoin.vim')
-    nnoremap <leader>sj :SplitjoinJoin<cr>
-    nnoremap <leader>ss :SplitjoinSplit<cr>
-    call neobundle#untap()
-endif
 NeoBundle 'AndrewRadev/linediff.vim', {
             \ 'lazy': 1,
             \  'autoload' : {
@@ -533,44 +509,24 @@ NeoBundle 'einars/js-beautify', {
 NeoBundle 'scrooloose/syntastic', {
             \ 'lazy': 1,
             \  'autoload' : {
-            \   'filetypes': ['javascript', 'json', 'less', 'css', 'jade', 'html', 'sh']
+            \   'filetypes': ['javascript', 'coffee', 'zsh',
+            \ 'json', 'less', 'css', 'jade', 'html', 'sh']
             \  }
             \ }
 if neobundle#tap('syntastic')
     let g:syntastic_mode_map = {
                 \ 'mode': 'passive',
-                \ 'active_filetypes': ['javascript', 'json', 'less', 'css', 'jade', 'html', 'zsh'],
+                \ 'active_filetypes': ['javascript', 'json', 'coffee',
+                \ 'less', 'css', 'jade', 'html', 'zsh'],
                 \ 'passive_filetypes': [] }
     let g:syntastic_enable_balloons = 0
     let g:syntastic_always_populate_loc_list = 1
     call neobundle#untap()
 endif
-"Comma and semi-colon
-NeoBundle 'lfilho/cosco.vim', {
-            \ 'lazy': 1,
-            \  'autoload' : {
-            \   'filetypes': ['json', 'javascript']
-            \  }
-            \ }
-if neobundle#tap('cosco.vim')
-    function! neobundle#hooks.on_source(bundle)
-        if has('autocmd')
-            augroup cosco_aucommands
-                autocmd!
-                autocmd FileType javascript,css,json nnoremap <buffer> <silent> <leader>; :call cosco#commaOrSemiColon()<cr>
-                autocmd FileType javascript,css,json inoremap <buffer> <silent> <leader>; <ESC>:call cosco#commaOrSemiColon()<cr>a
-            augroup END
-        endif
-    endfunction
-    call neobundle#untap()
-endif
 NeoBundle 'nanotech/jellybeans.vim'
-" NeoBundle 'Lokaltog/vim-distinguished'
-" NeoBundle 'vim-scripts/wombat256.vim'
 " NeoBundle 'chriskempson/vim-tomorrow-theme'
 " NeoBundle 'sjl/badwolf'
 " NeoBundle 'w0ng/vim-hybrid'
 " NeoBundle 'tomasr/molokai'
-" NeoBundle 'tpope/vim-vividchalk'
 let g:config.colorscheme = "jellybeans"
 call neobundle#end()

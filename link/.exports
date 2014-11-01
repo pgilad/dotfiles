@@ -27,6 +27,7 @@ export HISTCONTROL=ignoredups
 export NPM_PACKAGES="$HOME/.npm-packages"
 export PATH="$PATH:$NPM_PACKAGES/bin"
 export NPM_CONFIG_PREFIX="$NPM_PACKAGES"
+export NPM_CONFIG_LOGLEVEL="warn"
 export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 # Unset manpath so we can inherit from /etc/manpath via the `manpath`
 unset MANPATH  # delete if you already modified MANPATH elsewhere in your config
