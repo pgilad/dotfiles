@@ -1,10 +1,5 @@
 if !has('autocmd') | finish | endif
 
-" Removes trailing spaces
-function! TrimWhiteSpace()
-    %s/\s\+$//e
-endfunction
-
 augroup myfiletypes
     autocmd!
     autocmd BufNewFile,BufRead *.ajs                    setlocal filetype=javascript
@@ -25,13 +20,16 @@ augroup END
 " close sentence with comma or semi-colon
 augroup my_auto_commands
     autocmd!
-    " prevent indentation in jade
-    autocmd FileType jade setlocal noautoindent
+    " prevent indentation in jade, coffeescript
+    " autocmd FileType coffee,jade setlocal noautoindent
     autocmd FileType html setlocal matchpairs+=<:>
+
+    " the following line makes vim ignore camelCase and CamelCase words so they
+    " are not highlighted as spelling mistakes
+    autocmd Syntax * syn match CamelCase "\(\<\|_\)\%(\u\l*\)\{2,}\(\>\|_\)\|\<\%(\l\l*\)\%(\u\l*\)\{1,}\>" transparent containedin=.*Comment.*,.*String.*,VimwikiLink contains=@NoSpell contained
 
     " saving on lost focus
     " autocmd WinEnter,BufWinEnter,FocusGained * checktime
-    " autocmd FileType javascript,html,json,jade,vim autocmd FileWritePre,FileAppendPre,FilterWritePre,BufWritePre <buffer> call TrimWhiteSpace()
 
     " autocomplete
     autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS

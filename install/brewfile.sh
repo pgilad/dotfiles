@@ -80,6 +80,7 @@ CASKS=(
     dropbox
     evernote
     firefox
+    cheatsheet
     google-chrome
     google-chrome-canary
     hipchat

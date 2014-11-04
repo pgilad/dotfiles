@@ -1,3 +1,11 @@
+############
+#  prefix  #
+############
+unbind -n C-b
+unbind -n C-a
+set -g prefix C-a
+bind a send-prefix
+
 # Open man page in new window
 bind / command-prompt "split-window 'exec man %%'"
 bind y run-shell "tmux show-buffer | pbcopy"

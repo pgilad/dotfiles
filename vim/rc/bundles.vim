@@ -523,6 +523,12 @@ if neobundle#tap('syntastic')
     let g:syntastic_always_populate_loc_list = 1
     call neobundle#untap()
 endif
+
+NeoBundle 'junegunn/vim-pseudocl'
+NeoBundle 'junegunn/vim-oblique', {
+            \ 'depends' : 'junegunn/vim-pseudocl',
+            \ }
+
 NeoBundle 'nanotech/jellybeans.vim'
 " NeoBundle 'chriskempson/vim-tomorrow-theme'
 " NeoBundle 'sjl/badwolf'
