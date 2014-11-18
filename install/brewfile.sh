@@ -66,6 +66,8 @@ FORMULAS=(
     'watch'
     'webkit2png'
     'zsh'
+    'virtualbox'
+    'vagrant'
     'docker'
     'boot2docker'
     'gnu-sed --default-names'
