@@ -23,6 +23,7 @@ FORMULAS=(
     'ctags'
     'curl'
     'fasd'
+    'awscli'
     'findutils'
     'fping'
     'git'
@@ -130,24 +131,24 @@ function install_caskfiles() {
 
 function main() {
     iStep "running brew update"
-    # brew update
+    brew update
     iStep "running brew upgrade"
-    # brew upgrade
+    brew upgrade
 
     iStep "installing brew formulas"
     install_brewfiles
     iStep "installing brew cask apps"
-    # install_caskfiles
+    install_caskfiles
 
     iStep "Running brew cleanup"
-    # brew cleanup
-    # brew cask cleanup
-    # brew cask alfred link
-    # brew prune
-    # brew linkapps
-    # brew tap --repair
+    brew cleanup
+    brew cask cleanup
+    brew cask alfred link
+    brew prune
+    brew linkapps
+    brew tap --repair
     iStep "Brew doctor"
-    # brew doctor
+    brew doctor
 }
 
 main

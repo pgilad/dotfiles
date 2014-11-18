@@ -28,7 +28,7 @@ fi
 [[ -f "$HOME/.exports" ]] && source "$HOME/.exports"
 
 # set oh my zsh plugins
-plugins=(zsh-syntax-highlighting git-extras)
+plugins=(zsh-syntax-highlighting git-extras aws)
 
 # OS specific settings
 if [[ "$(uname)" =~ ^Darwin ]]; then
