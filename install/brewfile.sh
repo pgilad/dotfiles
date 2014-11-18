@@ -66,6 +66,8 @@ FORMULAS=(
     'watch'
     'webkit2png'
     'zsh'
+    'docker'
+    'boot2docker'
     'gnu-sed --default-names'
     'imagemagick --with-webp'
     'reattach-to-user-namespace --wrap-pbcopy-pbpaste'
