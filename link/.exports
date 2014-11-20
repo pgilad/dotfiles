@@ -3,6 +3,8 @@ export PATH="/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin"
 export PATH="$PATH:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 ### Added by the Heroku Toolbelt
 export PATH="$PATH:/usr/local/heroku/bin"
+export PATH="$PATH:~/Android"
+export PATH="$PATH:/Users/pgilad/repos/work/flow/bin"
 # set the correct term with TMUX
 if [[ -n "$TMUX" ]]; then
     export TERM=screen-256color

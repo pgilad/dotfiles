@@ -28,7 +28,7 @@ fi
 [[ -f "$HOME/.exports" ]] && source "$HOME/.exports"
 
 # set oh my zsh plugins
-plugins=(zsh-syntax-highlighting git-extras aws)
+plugins=(zsh-syntax-highlighting git-extras)
 
 # OS specific settings
 if [[ "$(uname)" =~ ^Darwin ]]; then
@@ -39,13 +39,13 @@ if [[ -n "$TMUX" ]]; then
     plugins+=tmux
 fi
 
-if [[ -f "$ZSH/oh-my-zsh.sh" ]]; then
-    source "$ZSH/oh-my-zsh.sh"
-fi
+# source oh my zsh
+[[ -f "$ZSH/oh-my-zsh.sh" ]] && source "$ZSH/oh-my-zsh.sh"
 
-# Load the shell dotfiles
-# # * ~/.extra can be used for other settings you don’t want to commit.
-for file in "$HOME"/.{aliases,completions,extra}; do
-    [[ -r "$file" && -f "$file" ]] && source "$file";
-done;
-unset file;
+[[ -f "$HOME/.aliases" ]] && source "$HOME/.aliases"
+[[ -f "$HOME/.completions" ]] && source "$HOME/.completions"
+[[ -f "$HOME/.extra" ]] && source "$HOME/.extra"
+
+if which rbenv > /dev/null; then
+    eval "$(rbenv init -)";
+fi
