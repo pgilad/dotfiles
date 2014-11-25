@@ -22,10 +22,10 @@ My config files, mainly Vim, Tmux, Git & Zsh aimed at working in Linux & OSX.
 $ git clone https://github.com/pgilad/dotfiles.git ~/.dotfiles
 
 # Run bootstrap script on Linux/OSX
-source ~/.dotfiles/install/install.sh
+$ source ~/.dotfiles/install/install.sh
 
 # Optionally apply hacker defaults on OSX
-source ~/.dotfiles/install/osx.sh
+$ source ~/.dotfiles/install/osx.sh
 
 # on Windows - run `install/install.cmd`
 ```

@@ -155,11 +155,12 @@ set noautoindent
 set smartindent
 set laststatus=2                              " Always show the status line
 
-" share clipboard with OS
-if has('unnamedplus')
-    set clipboard+=unnamedplus " Gui gVim Unix/mac
-else
-    set clipboard+=unnamed     " windows
+if has('clipboard')
+    if has('unnamedplus')
+        set clipboard+=unnamedplus " Gui gVim Unix/mac
+    else
+        set clipboard+=unnamed     " windows
+    endif
 endif
 
 " Disable GetLatestVimPlugin.vim

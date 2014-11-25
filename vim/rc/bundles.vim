@@ -214,6 +214,18 @@ if neobundle#tap('vim-indent-guides')
     call neobundle#untap()
 endif
 
+NeoBundle 'cespare/vim-toml', {
+            \ 'lazy': 1,
+            \  'autoload' : {
+            \ 'filetypes': ['toml']
+            \  }
+            \ }
+NeoBundle 'StanAngeloff/php.vim', {
+            \ 'lazy': 1,
+            \  'autoload' : {
+            \ 'filetypes': ['php']
+            \  }
+            \ }
 NeoBundle 'Shougo/junkfile.vim', {
             \ 'lazy': 1,
             \  'autoload' : {
@@ -509,15 +521,19 @@ NeoBundle 'einars/js-beautify', {
 NeoBundle 'scrooloose/syntastic', {
             \ 'lazy': 1,
             \  'autoload' : {
-            \   'filetypes': ['javascript', 'coffee', 'zsh',
-            \ 'json', 'less', 'css', 'jade', 'html', 'sh']
+            \   'filetypes': [
+            \ 'javascript', 'coffee', 'zsh',
+            \ 'json', 'less', 'css', 'jade',
+            \ 'ruby', 'html', 'sh']
             \  }
             \ }
 if neobundle#tap('syntastic')
     let g:syntastic_mode_map = {
                 \ 'mode': 'passive',
-                \ 'active_filetypes': ['javascript', 'json', 'coffee',
-                \ 'less', 'css', 'jade', 'html', 'zsh'],
+                \ 'active_filetypes': [
+                \ 'javascript', 'json', 'coffee',
+                \ 'less', 'css', 'jade', 'html',
+                \ 'ruby', 'zsh'],
                 \ 'passive_filetypes': [] }
     let g:syntastic_enable_balloons = 0
     let g:syntastic_always_populate_loc_list = 1
@@ -536,3 +552,8 @@ NeoBundle 'nanotech/jellybeans.vim'
 " NeoBundle 'tomasr/molokai'
 let g:config.colorscheme = "jellybeans"
 call neobundle#end()
+
+if !has('vim_starting')
+    " Installation check.
+    NeoBundleCheck
+endif

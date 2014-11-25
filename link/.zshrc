@@ -28,7 +28,7 @@ fi
 [[ -f "$HOME/.exports" ]] && source "$HOME/.exports"
 
 # set oh my zsh plugins
-plugins=(zsh-syntax-highlighting git-extras)
+plugins=(zsh-syntax-highlighting git-extras git)
 
 # OS specific settings
 if [[ "$(uname)" =~ ^Darwin ]]; then
@@ -46,6 +46,7 @@ fi
 [[ -f "$HOME/.completions" ]] && source "$HOME/.completions"
 [[ -f "$HOME/.extra" ]] && source "$HOME/.extra"
 
-if which rbenv > /dev/null; then
+
+if [[ -x "$(command -v rbenv)" ]]; then
     eval "$(rbenv init -)";
 fi
