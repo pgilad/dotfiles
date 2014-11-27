@@ -26,11 +26,8 @@ NeoBundle 'Shougo/vimproc', {
             \ }
 NeoBundle 'L9'
 NeoBundle 'editorconfig/editorconfig-vim'
-NeoBundle 'Shougo/neocomplete', {
-            \ 'lazy': 1,
-            \ 'autoload': {
+NeoBundleLazy 'Shougo/neocomplete', {
             \   'insert': 1
-            \   }
             \ }
 if neobundle#tap('neocomplete')
     " Disable AutoComplPop.
@@ -85,50 +82,37 @@ if neobundle#tap('ctrlp.vim')
     nnoremap <c-p> :CtrlP<cr>
     call neobundle#untap()
 endif
-NeoBundle 'xolox/vim-reload', {
-            \ 'lazy': 1,
-            \  'autoload' : {
-            \   'filetypes': ['vim']
-            \  }
-            \ }
+" NeoBundle 'xolox/vim-reload', {
+" \ 'lazy': 1,
+" \  'autoload' : {
+" \   'filetypes': ['vim']
+" \  }
+" \ }
 NeoBundle 'pgilad/vim-skeletons'
 if neobundle#tap('vim-skeletons')
     let skeletons#autoRegister = 0
     let skeletons#skeletonsDir = ["~/.dotfiles/vim/skeletons"]
     call neobundle#untap()
 endif
-NeoBundle 'Shougo/unite.vim', {
-            \ 'lazy': 1,
-            \ 'autoload': {
+NeoBundleLazy 'Shougo/unite.vim', {
             \   'commands' : [{ 'name' : 'Unite',
             \                 'complete' : 'customlist,unite#complete_source'},
             \                 'UniteWithCursorWord', 'UniteWithInput']
-            \   }
             \ }
-NeoBundle 'osyo-manga/unite-filetype', {
-            \ 'lazy': 1,
+NeoBundleLazy 'osyo-manga/unite-filetype', {
             \'depends': ['Shougu/unite.vim'],
-            \ 'autoload': {
             \ 'unite_sources': ['filetype']
-            \   }
             \ }
-NeoBundle 'Shougo/unite-outline', {
-            \ 'lazy': 1,
+NeoBundleLazy 'Shougo/unite-outline', {
             \ 'depends': ['Shougu/unite.vim'],
-            \ 'autoload': {
             \ 'unite_sources': ['outline']
-            \   }
             \ }
 NeoBundle 'Shougo/unite-mru', {
-            \ 'lazy': 0,
             \'depends': ['Shougu/unite.vim']
             \ }
-NeoBundle 'ujihisa/unite-colorscheme', {
-            \ 'lazy': 1,
+NeoBundleLazy 'ujihisa/unite-colorscheme', {
             \'depends': ['Shougu/unite.vim'],
-            \ 'autoload': {
             \ 'unite_sources': ['colorscheme']
-            \   }
             \ }
 if neobundle#tap('unite.vim')
     let g:unite_enable_start_insert = 1
@@ -151,7 +135,7 @@ if neobundle#tap('unite.vim')
         call unite#filters#sorter_default#use(['sorter_rank'])
     endfunction
 
-    "map bindings... use [Space] but release it for plugins
+    " map bindings... use [Space] but release it for plugins
     nmap <space> [unite]
     xmap <space> [unite]
     nnoremap [unite] <nop>
@@ -173,13 +157,10 @@ if neobundle#tap('unite.vim')
     call neobundle#untap()
 endif
 
-NeoBundle 'scrooloose/nerdtree', {
-            \ 'lazy': 1,
-            \  'autoload' : {
+NeoBundleLazy 'scrooloose/nerdtree', {
             \   'explorer' : 1,
             \       'commands': ['NERDTree', 'NERDTreeToggle', 'NERDTreeFind',
             \               'NERDTreeClose', 'NERDTreeCWD', 'NERDTreeFromBookmark', 'NERDTreeMirror']
-            \  }
             \ }
 if neobundle#tap('nerdtree')
     let NERDTreeShowBookmarks=1
@@ -198,10 +179,7 @@ if neobundle#tap('nerdtree')
     call neobundle#untap()
 endif
 NeoBundle 'scrooloose/nerdcommenter', {
-            \ 'lazy': 0,
-            \ 'autoload': {
             \   'mappings' : ['<Plug>NERDCommenter']
-            \}
             \ }
 NeoBundle 'nathanaelkane/vim-indent-guides'
 if neobundle#tap('vim-indent-guides')
@@ -214,125 +192,69 @@ if neobundle#tap('vim-indent-guides')
     call neobundle#untap()
 endif
 
-NeoBundle 'cespare/vim-toml', {
-            \ 'lazy': 1,
-            \  'autoload' : {
+NeoBundleLazy 'cespare/vim-toml', {
             \ 'filetypes': ['toml']
-            \  }
             \ }
-NeoBundle 'StanAngeloff/php.vim', {
-            \ 'lazy': 1,
-            \  'autoload' : {
+NeoBundleLazy 'StanAngeloff/php.vim', {
             \ 'filetypes': ['php']
-            \  }
             \ }
-NeoBundle 'Shougo/junkfile.vim', {
-            \ 'lazy': 1,
-            \  'autoload' : {
-            \   'commands': 'JunkfileOpen',
-            \   'unite_sources': ['junkfile', 'junkfile/new']
-            \  }
+NeoBundleLazy 'Shougo/junkfile.vim', {
+            \  'commands': 'JunkfileOpen',
+            \  'unite_sources': ['junkfile', 'junkfile/new']
             \ }
-NeoBundle 'kchmck/vim-coffee-script', {
-            \  'lazy' : 1,
-            \  'autoload' : {
-            \    'filetypes' : ['coffee']
-            \  }
+NeoBundleLazy 'kchmck/vim-coffee-script', {
+            \  'filetypes' : ['coffee']
             \}
-NeoBundle 'ap/vim-css-color', {
-            \ 'lazy': 1,
-            \  'autoload' : {
+NeoBundleLazy 'ap/vim-css-color', {
             \   'filetypes':['css','scss','sass','less','styl']
-            \  }
             \ }
-NeoBundle 'hail2u/vim-css3-syntax', {
-            \ 'lazy': 1,
-            \  'autoload' : {
+NeoBundleLazy 'hail2u/vim-css3-syntax', {
             \   'filetypes':['css', 'less']
-            \  }
             \ }
-NeoBundle 'cakebaker/scss-syntax.vim', {
-            \ 'lazy': 1,
-            \  'autoload' : {
+NeoBundleLazy 'cakebaker/scss-syntax.vim', {
             \   'filetypes':['sass', 'scss']
-            \  }
             \ }
-NeoBundle 'wavded/vim-stylus', {
-            \ 'lazy': 1,
-            \  'autoload' : {
+NeoBundleLazy 'wavded/vim-stylus', {
             \   'filetypes': ['stylus']
-            \  }
             \ }
-NeoBundle 'groenewege/vim-less', {
-            \ 'lazy': 1,
-            \  'autoload' : {
+NeoBundleLazy 'groenewege/vim-less', {
             \   'filetypes':['less', 'css']
-            \  }
             \ }
-NeoBundle 'csscomb/vim-csscomb', {
-            \ 'lazy': 1,
-            \  'autoload' : {
+NeoBundleLazy 'csscomb/vim-csscomb', {
             \   'filetypes': ['css', 'less', 'sass']
-            \  }
             \ }
-NeoBundle 'othree/html5.vim', {
-            \ 'lazy': 1,
-            \  'autoload' : {
+NeoBundleLazy 'othree/html5.vim', {
             \   'filetypes':['html']
-            \  }
             \ }
-NeoBundle 'hokaccha/vim-html5validator', {
-            \ 'lazy': 1,
-            \  'autoload' : {
+NeoBundleLazy 'hokaccha/vim-html5validator', {
             \ 'filetypes' : ['html']
-            \  }
             \ }
-NeoBundle 'digitaltoad/vim-jade', {
-            \ 'lazy': 1,
-            \  'autoload' : {
+NeoBundleLazy 'digitaltoad/vim-jade', {
             \   'filetypes':['jade']
-            \  }
             \ }
-NeoBundle 'gregsexton/MatchTag', {
-            \ 'lazy': 1,
-            \  'autoload' : {
+NeoBundleLazy 'gregsexton/MatchTag', {
             \   'filetypes':['html','xml']
-            \  }
             \ }
-NeoBundle 'othree/xml.vim', {
-            \ 'lazy': 1,
-            \  'autoload' : {
+NeoBundleLazy 'othree/xml.vim', {
             \   'filetypes':['xml']
-            \  }
             \ }
-NeoBundle 'jelera/vim-javascript-syntax', {
-            \ 'lazy': 1,
-            \  'autoload' : {
+NeoBundleLazy 'jelera/vim-javascript-syntax', {
             \   'filetypes':['javascript']
-            \  }
             \ }
-NeoBundle 'pangloss/vim-javascript', {
-            \ 'lazy': 1,
-            \  'autoload' : {
+NeoBundleLazy 'pangloss/vim-javascript', {
             \   'filetypes':['javascript']
-            \  }
             \ }
-NeoBundle 'maksimr/vim-jsbeautify', {
-            \ 'lazy': 1,
-            \  'autoload' : {
+NeoBundleLazy 'maksimr/vim-jsbeautify', {
             \   'filetypes':['javascript', 'json', 'html']
-            \  }
             \ }
-NeoBundleLazy 'leshill/vim-json', {'autoload':{'filetypes':['javascript','json']}}
-NeoBundleLazy 'elzr/vim-json', {'autoload':{'filetypes':['json']}}
-NeoBundleLazy 'moll/vim-node', {'autoload':{'filetypes':['javascript']}}
-NeoBundleLazy 'itspriddle/vim-jquery.git', {'autoload':{'filetypes':['javascript']}}
-NeoBundleLazy 'heavenshell/vim-jsdoc', {'autoload':{'filetypes':['javascript']}}
+NeoBundleLazy 'leshill/vim-json', {'filetypes':['javascript','json']}
+NeoBundleLazy 'elzr/vim-json', {'filetypes':['json']}
+NeoBundleLazy 'moll/vim-node', {'filetypes':['javascript']}
+NeoBundleLazy 'itspriddle/vim-jquery.git', {'filetypes':['javascript']}
+NeoBundleLazy 'heavenshell/vim-jsdoc', {'filetypes':['javascript']}
 
 NeoBundleLazy 'othree/javascript-libraries-syntax.vim', {
-            \ 'autoload':{
             \   'filetypes':['javascript','coffee']
-            \   }
             \ }
 if neobundle#tap('javascript-libraries-syntax.vim')
     let g:used_javascript_libs = 'underscore,angularjs,jquery,jasmine,angularui,requirejs,backbone'
@@ -340,39 +262,24 @@ if neobundle#tap('javascript-libraries-syntax.vim')
 endif
 
 NeoBundleLazy 'leafgarland/typescript-vim', {
-            \ 'lazy': 1,
-            \  'autoload' : {
             \   'filetypes': ['typescript']
-            \  }
             \ }
-NeoBundleLazy 'tpope/vim-markdown', {'autoload':{'filetypes':['markdown']}}
-NeoBundleLazy 'waylan/vim-markdown-extra-preview', {'autoload':{'filetypes':['markdown']}}
-NeoBundleLazy 'jtratner/vim-flavored-markdown.git', {'autoload':{'filetypes':['markdown']}}
-NeoBundle 'kannokanno/previm', {
-            \ 'lazy': 1,
+NeoBundleLazy 'tpope/vim-markdown', {'filetypes':['markdown']}
+NeoBundleLazy 'waylan/vim-markdown-extra-preview', {'filetypes':['markdown']}
+NeoBundleLazy 'jtratner/vim-flavored-markdown.git', {'filetypes':['markdown']}
+NeoBundleLazy 'kannokanno/previm', {
             \ 'depends' : ['open-browser.vim'],
-            \  'autoload' : {
             \ 'filetypes' : ['markdown']
-            \  }
             \ }
-NeoBundle 'tejr/vim-tmux', {
-            \ 'lazy': 1,
-            \  'autoload' : {
+NeoBundleLazy 'tejr/vim-tmux', {
             \ 'filetypes' : ['tmux']
-            \  }
             \ }
-NeoBundle 'tpope/vim-unimpaired', {
-            \ 'lazy': 0
-            \ }
-"Git support
-NeoBundle 'tpope/vim-fugitive', {
-            \ 'lazy': 1,
+NeoBundle 'tpope/vim-unimpaired'
+
+NeoBundleLazy 'tpope/vim-fugitive', {
             \ 'augroup' : 'fugitive',
-            \ 'autoload': {
             \ 'commands': ['Gstatus', 'Gcommit', 'Gwrite', 'Git', 'Git!',
-            \               'Gblame',
-            \               'Gcd', 'Glcd', 'Ggrep', 'Glog', 'Gdiff']
-            \}
+            \               'Gblame', 'Gcd', 'Glcd', 'Ggrep', 'Glog', 'Gdiff']
             \ }
 if neobundle#tap('vim-fugitive')
     nnoremap <leader>gs :Gstatus<cr>
@@ -386,9 +293,9 @@ if neobundle#tap('vim-fugitive')
 endif
 
 NeoBundleLazy 'vim-ruby/vim-ruby', {
-      \ 'mappings' : '<Plug>',
-      \ 'filetypes' : 'ruby'
-      \ }
+            \ 'mappings' : '<Plug>',
+            \ 'filetypes' : 'ruby'
+            \ }
 
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'tpope/vim-surround'
@@ -396,19 +303,13 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'thinca/vim-visualstar'
 
-NeoBundle 'tyru/open-browser.vim', {
-            \ 'lazy': 1,
-            \'autoload': {
+NeoBundleLazy 'tyru/open-browser.vim', {
             \   'commands' : ['OpenBrowserSearch', 'OpenBrowser'],
             \   'functions' : 'openbrowser#open',
             \   'mappings': '<Plug>(openbrowser-'
-            \}
             \ }
-NeoBundle 'godlygeek/tabular', {
-            \ 'lazy': 1,
-            \  'autoload' : {
+NeoBundleLazy 'godlygeek/tabular', {
             \   'commands': ['Tabularize']
-            \  }
             \ }
 if neobundle#tap('tabular')
     nnoremap <leader>a& :Tabularize /&<cr>
@@ -429,11 +330,8 @@ if neobundle#tap('tabular')
 endif
 " more maintained version
 NeoBundle 'kris89/vim-multiple-cursors'
-NeoBundle 'AndrewRadev/inline_edit.vim', {
-            \ 'lazy': 1,
-            \  'autoload' : {
+NeoBundleLazy 'AndrewRadev/inline_edit.vim', {
             \   'commands': ['InlineEdit']
-            \  }
             \ }
 if neobundle#tap('inline_edit.vim')
     nnoremap <leader>ie :InlineEdit<cr>
@@ -442,11 +340,8 @@ if neobundle#tap('inline_edit.vim')
     call neobundle#untap()
 endif
 
-NeoBundle 'AndrewRadev/linediff.vim', {
-            \ 'lazy': 1,
-            \  'autoload' : {
+NeoBundleLazy 'AndrewRadev/linediff.vim', {
             \   'commands': ['Linediff', 'LinediffReset']
-            \  }
             \ }
 if neobundle#tap('linediff.vim')
     vnoremap <leader>ld :Linediff<cr>
@@ -461,11 +356,8 @@ if neobundle#tap('vim-airline')
     let g:airline#extensions#tabline#left_alt_sep='¦'
     call neobundle#untap()
 endif
-NeoBundle 'AndrewRadev/switch.vim', {
-            \ 'lazy': 1,
-            \  'autoload' : {
+NeoBundleLazy 'AndrewRadev/switch.vim', {
             \   'commands': ['Switch']
-            \  }
             \ }
 if neobundle#tap('switch.vim')
     let g:switch_custom_definitions =
@@ -495,37 +387,31 @@ endif
 """"""""""""""""""""""""""
 "  Text Objects Plugins  "
 """"""""""""""""""""""""""
-NeoBundle 'kana/vim-textobj-user'          " required plugin
-NeoBundle 'kana/vim-textobj-line'          " al, il
-NeoBundle 'kana/vim-textobj-indent'        " ai, ii, aI, iI
-NeoBundle 'kana/vim-textobj-entire'        " ae, ie
-NeoBundle 'PeterRincker/vim-argumentative' " a, i,
-NeoBundle 'beloglazov/vim-textobj-quotes'  " q
-NeoBundle 'Raimondi/delimitMate', {
-            \  'lazy' : 1,
-            \  'autoload' : {
+NeoBundle 'kana/vim-textobj-user'
+" al aL
+NeoBundle 'kana/vim-textobj-line', { 'depends': 'kana/vim-textobj-user' }
+" ai, ii, aI, iI
+NeoBundle 'kana/vim-textobj-indent', { 'depends': 'kana/vim-textobj-user' }
+" ae, ie
+NeoBundle 'kana/vim-textobj-entire', { 'depends': 'kana/vim-textobj-user' }
+" a, i,
+NeoBundle 'PeterRincker/vim-argumentative'
+NeoBundleLazy 'Raimondi/delimitMate', {
             \    'insert' : 1
-            \  }
             \}
 if neobundle#tap('delimitMate')
     let delimitMate_expand_cr=1
     let delimitMate_expand_space=1
     call neobundle#untap()
 endif
-NeoBundle 'einars/js-beautify', {
-            \ 'lazy': 1,
-            \  'autoload' : {
+NeoBundleLazy 'einars/js-beautify', {
             \   'filetypes' : ['html', 'js', 'css']
-            \  }
             \ }
-NeoBundle 'scrooloose/syntastic', {
-            \ 'lazy': 1,
-            \  'autoload' : {
+NeoBundleLazy 'scrooloose/syntastic', {
             \   'filetypes': [
             \ 'javascript', 'coffee', 'zsh',
             \ 'json', 'less', 'css', 'jade',
             \ 'ruby', 'html', 'sh']
-            \  }
             \ }
 if neobundle#tap('syntastic')
     let g:syntastic_mode_map = {

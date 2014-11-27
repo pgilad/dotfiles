@@ -89,6 +89,7 @@ prompt_pure_setup() {
 
     # if using ssh connection show username@host
     [[ -n "$SSH_CONNECTION" ]] && prompt_pure_username=' [%F{cyan}%n@%m%f]'
+    # prompt_pure_username='%F{red}%n%f@%F{cyan}%m%f'
 
     # prompt turns red if the previous command didn't exit with 0
     PROMPT='%(?.%F{magenta}.%F{red})❯%f '
