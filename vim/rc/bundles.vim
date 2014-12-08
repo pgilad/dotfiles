@@ -18,11 +18,11 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'Shougo/vimproc', {
             \ 'build' : {
-            \     'windows' : 'make -f make_mingw32.mak',
-            \     'cygwin' : 'make -f make_cygwin.mak',
-            \     'mac' : 'make -f make_mac.mak',
-            \     'unix' : 'make -f make_unix.mak',
-            \    },
+            \  'windows' : 'make -f make_mingw32.mak',
+            \  'cygwin' : 'make -f make_cygwin.mak',
+            \  'mac' : 'make -f make_mac.mak',
+            \  'unix' : 'make -f make_unix.mak',
+            \  },
             \ }
 NeoBundle 'L9'
 NeoBundle 'editorconfig/editorconfig-vim'
@@ -96,8 +96,8 @@ if neobundle#tap('vim-skeletons')
 endif
 NeoBundleLazy 'Shougo/unite.vim', {
             \   'commands' : [{ 'name' : 'Unite',
-            \                 'complete' : 'customlist,unite#complete_source'},
-            \                 'UniteWithCursorWord', 'UniteWithInput']
+            \  'complete' : 'customlist,unite#complete_source'},
+            \  'UniteWithCursorWord', 'UniteWithInput']
             \ }
 NeoBundleLazy 'osyo-manga/unite-filetype', {
             \'depends': ['Shougu/unite.vim'],
@@ -158,9 +158,9 @@ if neobundle#tap('unite.vim')
 endif
 
 NeoBundleLazy 'scrooloose/nerdtree', {
-            \   'explorer' : 1,
-            \       'commands': ['NERDTree', 'NERDTreeToggle', 'NERDTreeFind',
-            \               'NERDTreeClose', 'NERDTreeCWD', 'NERDTreeFromBookmark', 'NERDTreeMirror']
+            \  'explorer' : 1,
+            \  'commands': ['NERDTree', 'NERDTreeToggle', 'NERDTreeFind',
+            \  'NERDTreeClose', 'NERDTreeCWD', 'NERDTreeFromBookmark', 'NERDTreeMirror']
             \ }
 if neobundle#tap('nerdtree')
     let NERDTreeShowBookmarks=1
@@ -279,7 +279,7 @@ NeoBundle 'tpope/vim-unimpaired'
 NeoBundleLazy 'tpope/vim-fugitive', {
             \ 'augroup' : 'fugitive',
             \ 'commands': ['Gstatus', 'Gcommit', 'Gwrite', 'Git', 'Git!',
-            \               'Gblame', 'Gcd', 'Glcd', 'Ggrep', 'Glog', 'Gdiff']
+            \ 'Gblame', 'Gcd', 'Glcd', 'Ggrep', 'Glog', 'Gdiff']
             \ }
 if neobundle#tap('vim-fugitive')
     nnoremap <leader>gs :Gstatus<cr>
@@ -351,9 +351,10 @@ if neobundle#tap('linediff.vim')
 endif
 NeoBundle 'bling/vim-airline'
 if neobundle#tap('vim-airline')
-    let g:airline#extensions#tabline#enabled = 1
+    let g:airline#extensions#tabline#enabled = 0
     let g:airline#extensions#tabline#left_sep=' '
     let g:airline#extensions#tabline#left_alt_sep='¦'
+    let g:airline#extensions#tmuxline#enabled = 0
     call neobundle#untap()
 endif
 NeoBundleLazy 'AndrewRadev/switch.vim', {
@@ -407,22 +408,18 @@ endif
 NeoBundleLazy 'einars/js-beautify', {
             \   'filetypes' : ['html', 'js', 'css']
             \ }
-NeoBundleLazy 'scrooloose/syntastic', {
-            \   'filetypes': [
-            \ 'javascript', 'coffee', 'zsh',
-            \ 'json', 'less', 'css', 'jade',
-            \ 'ruby', 'html', 'sh']
+NeoBundle 'scrooloose/syntastic', {
+            \   'filetypes': [ 'javascript', 'coffee', 'zsh', 'json',
+            \ 'less', 'css', 'jade', 'ruby', 'html', 'sh', 'php' ]
             \ }
 if neobundle#tap('syntastic')
     let g:syntastic_mode_map = {
                 \ 'mode': 'passive',
-                \ 'active_filetypes': [
-                \ 'javascript', 'json', 'coffee',
-                \ 'less', 'css', 'jade', 'html',
-                \ 'ruby', 'zsh'],
+                \ 'active_filetypes': neobundle#tapped.filetypes,
                 \ 'passive_filetypes': [] }
     let g:syntastic_enable_balloons = 0
     let g:syntastic_always_populate_loc_list = 1
+    let g:syntastic_aggregate_errors = 1
     call neobundle#untap()
 endif
 
@@ -430,6 +427,41 @@ NeoBundle 'junegunn/vim-pseudocl'
 NeoBundle 'junegunn/vim-oblique', {
             \ 'depends' : 'junegunn/vim-pseudocl',
             \ }
+
+NeoBundleLazy 'gorkunov/smartgf.vim', {
+            \ 'mappings': ['gs', 'gS'],
+            \ 'disabled': !executable('ag')
+            \ }
+if neobundle#tap('smartgf.vim')
+    "Key for running smartpaigf with all filters (ft/comments/def)
+    "default is 'gf'
+    let g:smartgf_key = 'gs'
+
+    "Key for running smartpaigf without filters
+    "default is 'gF'
+    let g:smartgf_no_filter_key = 'gS'
+
+    "Enable search with ruby gems from Gemfile
+    "default is 1
+    let g:smartgf_enable_gems_search = 0
+
+    "Enable auto-refreshing ctags file on window focus (works only with GUI)
+    "default is 1
+    let g:smartgf_auto_refresh_ctags = 0
+
+    "Max entries count to display (search results dialog)
+    "default is 9
+    let g:smartgf_max_entries_per_page = 9
+
+    "Min space between text and file path in the search results list
+    "default is 5
+    let g:smartgf_divider_width = 5
+
+    "Extensions to try for filenames which leave it off (will be tried in order)
+    " Default is as below
+    let g:smartgf_extensions = ['.js', '.coffee', '.json']
+    call neobundle#untap()
+endif
 
 NeoBundle 'nanotech/jellybeans.vim'
 " NeoBundle 'chriskempson/vim-tomorrow-theme'

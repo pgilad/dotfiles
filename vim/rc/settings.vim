@@ -99,8 +99,8 @@ set ttimeout
 set ttimeoutlen=10
 set ttyfast                                     " fast terminal redraw
 set magic                                       " For regular expressions turn magic on
-set showmatch                                   " Show matching brackets when text indicator is over them
 set cpoptions-=m
+set showmatch                                   " Show matching brackets when text indicator is over them
 set matchtime=3
 set noerrorbells                                " No annoying sound on error
 set novisualbell                                " no annoying flashes
