@@ -351,10 +351,15 @@ if neobundle#tap('linediff.vim')
 endif
 NeoBundle 'bling/vim-airline'
 if neobundle#tap('vim-airline')
-    let g:airline#extensions#tabline#enabled = 0
+    let g:airline_detect_modified=1
+    let g:airline_inactive_collapse=1
+    let g:airline_detect_paste=1
+    let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#left_sep=' '
     let g:airline#extensions#tabline#left_alt_sep='¦'
     let g:airline#extensions#tmuxline#enabled = 0
+    let g:airline#extensions#syntastic#enabled = 1
+    let g:airline#extensions#branch#enabled = 1
     call neobundle#untap()
 endif
 NeoBundleLazy 'AndrewRadev/switch.vim', {

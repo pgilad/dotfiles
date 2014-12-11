@@ -8,6 +8,7 @@ alias shutdown='sudo /sbin/shutdown -r now'
 
 # start simple server
 alias serve="python -m SimpleHTTPServer"
+alias phpserve="php -S localhost:8000"
 
 # npm aliases
 alias npmo="npm outdated --depth=0"
