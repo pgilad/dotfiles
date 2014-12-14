@@ -244,8 +244,13 @@ NeoBundleLazy 'jelera/vim-javascript-syntax', {
 NeoBundleLazy 'pangloss/vim-javascript', {
             \   'filetypes':['javascript']
             \ }
+NeoBundleLazy 'einars/js-beautify', {
+            \   'filetypes' : ['html', 'js', 'css']
+            \ }
 NeoBundleLazy 'maksimr/vim-jsbeautify', {
-            \   'filetypes':['javascript', 'json', 'html']
+            \ 'stay_same' : 1,
+            \ 'filetypes':['javascript', 'json', 'html', 'js', 'jsx', 'css'],
+            \ 'depends': ['einars/js-beautify', 'editorconfig-vim']
             \ }
 NeoBundleLazy 'leshill/vim-json', {'filetypes':['javascript','json']}
 NeoBundleLazy 'elzr/vim-json', {'filetypes':['json']}
@@ -279,7 +284,8 @@ NeoBundle 'tpope/vim-unimpaired'
 NeoBundleLazy 'tpope/vim-fugitive', {
             \ 'augroup' : 'fugitive',
             \ 'commands': ['Gstatus', 'Gcommit', 'Gwrite', 'Git', 'Git!',
-            \ 'Gblame', 'Gcd', 'Glcd', 'Ggrep', 'Glog', 'Gdiff']
+            \ 'Gblame', 'Gcd', 'Glcd', 'Ggrep', 'Glog', 'Gdiff',
+            \ 'Gbrowse']
             \ }
 if neobundle#tap('vim-fugitive')
     nnoremap <leader>gs :Gstatus<cr>
@@ -410,9 +416,6 @@ if neobundle#tap('delimitMate')
     let delimitMate_expand_space=1
     call neobundle#untap()
 endif
-NeoBundleLazy 'einars/js-beautify', {
-            \   'filetypes' : ['html', 'js', 'css']
-            \ }
 NeoBundle 'scrooloose/syntastic', {
             \   'filetypes': [ 'javascript', 'coffee', 'zsh', 'json',
             \ 'less', 'css', 'jade', 'ruby', 'html', 'sh', 'php' ]
