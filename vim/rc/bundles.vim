@@ -74,11 +74,13 @@ if neobundle#tap('ctrlp.vim')
     let g:ctrlp_root_markers = ['.git']
     let g:ctrlp_max_height = 20         " maximum height of match window
     let g:ctrlp_switch_buffer = 'et'    " jump to a file if it's open already
+    let g:ctrlp_clear_cache_on_exit=1   " speed up by not removing clearing cache every time
     let g:ctrlp_follow_symlinks=1
-    let g:ctrlp_max_files=2000
-    let g:ctrlp_clear_cache_on_exit=0   " speed up by not removing clearing cache every time
-    let g:ctrlp_mruf_max = 250          " number of recently opened files
+    let g:ctrlp_lazy_update = 0
+    let g:ctrlp_max_files = 2000
+    let g:ctrlp_mruf_max = 50          " number of recently opened files
     let g:ctrlp_show_hidden = 1
+    let g:ctrlp_max_history = 50
     nnoremap <c-p> :CtrlP<cr>
     call neobundle#untap()
 endif
@@ -252,7 +254,10 @@ NeoBundleLazy 'maksimr/vim-jsbeautify', {
             \ 'filetypes':['javascript', 'json', 'html', 'js', 'jsx', 'css'],
             \ 'depends': ['einars/js-beautify', 'editorconfig-vim']
             \ }
-NeoBundleLazy 'leshill/vim-json', {'filetypes':['javascript','json']}
+" NeoBundleLazy 'leshill/vim-json', {'filetypes':['javascript','json']}
+if neobundle#tap('leshill/vim-json')
+    " let g:vim_json_syntax_conceal = 0
+endif
 NeoBundleLazy 'elzr/vim-json', {'filetypes':['json']}
 NeoBundleLazy 'moll/vim-node', {'filetypes':['javascript']}
 NeoBundleLazy 'itspriddle/vim-jquery.git', {'filetypes':['javascript']}
