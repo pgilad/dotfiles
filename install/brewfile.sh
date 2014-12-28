@@ -11,64 +11,100 @@ TAPS=(
 
 FORMULAS=(
     'ack'
-    'ag'
+    'archey'
     'autoconf'
     'automake'
+    'awscli'
     'bash'
     'bash-completion'
+    'bison'
     'brew-cask'
+    'cheat'
     'cloc'
     'cmake'
     'coreutils'
     'ctags'
     'curl'
     'fasd'
-    'awscli'
     'findutils'
     'fping'
+    'freetype'
+    'gdbm'
+    'gettext'
     'git'
     'git-extras'
     'git-flow'
+    'glib'
+    'gmp'
+    'gnutls'
     'gzip'
-    'homebrew/dupes/grep'
-    'hping'
+    'heing'
     'htop-osx'
     'hub'
+    'icu4c'
     'id3tool'
     'irssi'
     'jmeter'
+    'jpeg'
     'jq'
     'lesspipe'
+    'lib'
+    'libelf'
+    'libevent'
+    'libffi'
+    'libgcrypt'
+    'libgpg-error'
+    'libidn'
+    'libpng'
+    'libtasn1'
+    'libtool'
+    'libyaml'
     'lua'
     'luajit'
     'man2html'
     'maven'
     'md5sha1sum'
-    'mongo'
+    'mongodb'
     'moreutils'
     'msmtp'
     'mysql'
     'ncurses'
+    'nettle'
     'nkf'
     'nmap'
     'node'
+    'objective-caml'
     'openssl'
+    'pcre'
+    'php56'
+    'phpmd'
+    'pkg-config'
     'python'
+    'rbenv'
     'readline'
     'redis'
     'rename'
-    'rbenv'
+    'rlwrap'
+    'ruby'
     'ruby-build'
     'sl'
+    'sqlite'
     'ssh-copy-id'
+    'the_silver_searcher'
+    'tidy'
     'tmux'
     'tree'
+    'unixodbc'
+    'unrar'
     'unzip'
+    'urlview'
     'watch'
     'webkit2png'
+    'webp'
+    'xz'
+    'zlib'
     'zsh'
-    'docker'
-    'boot2docker'
+    'homebrew/dupes/grep'
     'gnu-sed --default-names'
     'imagemagick --with-webp'
     'reattach-to-user-namespace --wrap-pbcopy-pbpaste'
@@ -81,25 +117,41 @@ FORMULAS=(
 
 CASKS=(
     alfred
+    betterzipql
     dropbox
     evernote
     firefox
-    cheatsheet
+    firefoxdeveloperedition
+    gimp
     google-chrome
     google-chrome-canary
     hipchat
     imagealpha
     imageoptim
     iterm2
+    java
     karabiner
+    kismac
+    lightpaper
     mou
-    onyx
     opera
+    qlcolorcode
+    qlmarkdown
+    quicklook-csv
+    quicklook-json
+    seil
+    sequel-pro
     silverlight
+    sizeup
     skype
+    sourcetree
+    sublime-text
     the-unarchiver
+    torbrowser
     transmission
     vagrant
+    vagrant-manager
+    vienna
     virtualbox
     vlc
 )
