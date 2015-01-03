@@ -15,6 +15,12 @@ My config files, mainly Vim, Tmux, Git & Zsh aimed at working in Linux & OSX.
 
 ![](media/prompt.png)
 
+## Dependencies
+
+- Git
+- Vim
+- Zsh
+
 ## Installation
 
 ```sh

@@ -249,15 +249,12 @@ NeoBundleLazy 'pangloss/vim-javascript', {
 NeoBundleLazy 'einars/js-beautify', {
             \   'filetypes' : ['html', 'js', 'css']
             \ }
-NeoBundleLazy 'maksimr/vim-jsbeautify', {
-            \ 'stay_same' : 1,
+NeoBundleLazy 'pgilad/vim-jsbeautify', {
+            \ 'rev': 'refactor/patch-1',
             \ 'filetypes':['javascript', 'json', 'html', 'js', 'jsx', 'css'],
             \ 'depends': ['einars/js-beautify', 'editorconfig-vim']
             \ }
-" NeoBundleLazy 'leshill/vim-json', {'filetypes':['javascript','json']}
-if neobundle#tap('leshill/vim-json')
-    " let g:vim_json_syntax_conceal = 0
-endif
+
 NeoBundleLazy 'elzr/vim-json', {'filetypes':['json']}
 NeoBundleLazy 'moll/vim-node', {'filetypes':['javascript']}
 NeoBundleLazy 'itspriddle/vim-jquery.git', {'filetypes':['javascript']}
@@ -441,6 +438,9 @@ NeoBundle 'junegunn/vim-oblique', {
             \ 'depends' : 'junegunn/vim-pseudocl',
             \ }
 
+NeoBundleLazy 'Wolfy87/vim-expand', {
+            \ 'commands': ['Expand']
+            \ }
 NeoBundleLazy 'gorkunov/smartgf.vim', {
             \ 'mappings': ['gs', 'gS'],
             \ 'disabled': !executable('ag')
