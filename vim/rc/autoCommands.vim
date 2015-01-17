@@ -9,6 +9,7 @@ augroup myfiletypes
     autocmd BufNewFile,BufRead *.kml                    setlocal filetype=xml
     autocmd BufNewFile,BufRead *.m                      setlocal filetype=objc
     autocmd BufNewFile,BufRead *.md,*.markdown          setlocal filetype=markdown
+    autocmd BufNewFile,BufRead *.rs                     setlocal filetype=rust
     autocmd BufNewFile,BufRead *.samsa                  setlocal filetype=jproperties
     autocmd BufNewFile,BufRead *.scala                  setlocal filetype=scala
     autocmd BufNewFile,BufRead *.ts                     setlocal filetype=typescript

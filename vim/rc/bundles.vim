@@ -70,7 +70,8 @@ endif
 " \ }
 NeoBundle 'kien/ctrlp.vim'
 if neobundle#tap('ctrlp.vim')
-    let g:ctrlp_custom_ignore = 'build\|dist\|node_modules\|.idea\|.git\|workspace\|bower_components'
+    let g:ctrlp_custom_ignore = 'public\|build\|dist\|node_modules\|.idea\|.git\|workspace\|bower_components'
+    let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
     let g:ctrlp_root_markers = ['.git']
     let g:ctrlp_max_height = 20         " maximum height of match window
     let g:ctrlp_switch_buffer = 'et'    " jump to a file if it's open already
@@ -124,6 +125,10 @@ if neobundle#tap('unite.vim')
     let g:unite_source_history_yank_enable = 1
     let g:unite_source_history_yank_save_clipboard = 1
     let g:unite_update_time = 200
+    let g:unite_source_grep_command = 'ag'
+    let g:unite_source_grep_default_opts = '--nocolor --nogroup --column --line-numbers --smart-case'
+    let g:unite_source_grep_recursive_opt = ''
+    let g:unite_source_grep_max_candidates = 15
 
     function! neobundle#hooks.on_source(bundle)
         call unite#custom#source(
@@ -153,8 +158,10 @@ if neobundle#tap('unite.vim')
     nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=mru -start-insert file_mru<CR>
     nnoremap <silent> [unite]t :<C-u>Unite -buffer-name=filetypes -start-insert filetype<CR>
     nnoremap <silent> [unite]y :<C-u>Unite -buffer-name=yank history/yank<CR>
+    nnoremap <silent> [unite]s :<C-u>UniteWithCursorWord -buffer-name=search -no-empty grep:.:<cr>
     " search word in current buffer
     nnoremap <silent><expr> [unite]*  ":<C-u>UniteWithCursorWord -buffer-name=search%".bufnr('%')." line:all:wrap<CR>"
+
 
     call neobundle#untap()
 endif
@@ -253,6 +260,10 @@ NeoBundleLazy 'pgilad/vim-jsbeautify', {
             \ 'rev': 'refactor/patch-1',
             \ 'filetypes':['javascript', 'json', 'html', 'js', 'jsx', 'css'],
             \ 'depends': ['einars/js-beautify', 'editorconfig-vim']
+            \ }
+NeoBundle 'wting/rust.vim', {
+            \ 'lazy': 1,
+            \ 'filetypes': ['rust']
             \ }
 
 NeoBundleLazy 'elzr/vim-json', {'filetypes':['json']}
@@ -442,37 +453,21 @@ NeoBundleLazy 'Wolfy87/vim-expand', {
             \ 'commands': ['Expand']
             \ }
 NeoBundleLazy 'gorkunov/smartgf.vim', {
-            \ 'mappings': ['gs', 'gS'],
+            \ 'mappings': '<Plug>(smartgf-search',
             \ 'disabled': !executable('ag')
             \ }
 if neobundle#tap('smartgf.vim')
-    "Key for running smartpaigf with all filters (ft/comments/def)
-    "default is 'gf'
-    let g:smartgf_key = 'gs'
-
-    "Key for running smartpaigf without filters
-    "default is 'gF'
-    let g:smartgf_no_filter_key = 'gS'
-
-    "Enable search with ruby gems from Gemfile
-    "default is 1
+    let g:smartgf_create_default_mappings = 0
     let g:smartgf_enable_gems_search = 0
-
-    "Enable auto-refreshing ctags file on window focus (works only with GUI)
-    "default is 1
     let g:smartgf_auto_refresh_ctags = 0
-
-    "Max entries count to display (search results dialog)
-    "default is 9
     let g:smartgf_max_entries_per_page = 9
-
-    "Min space between text and file path in the search results list
-    "default is 5
     let g:smartgf_divider_width = 5
-
-    "Extensions to try for filenames which leave it off (will be tried in order)
-    " Default is as below
     let g:smartgf_extensions = ['.js', '.coffee', '.json']
+
+    nmap gs <Plug>(smartgf-search)
+    vmap gs <Plug>(smartgf-search)
+    nmap gS <Plug>(smartgf-search-unfiltered)
+    vmap gS <Plug>(smartgf-search-unfiltered)
     call neobundle#untap()
 endif
 
