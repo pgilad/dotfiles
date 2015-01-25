@@ -28,7 +28,7 @@ fi
 [[ -f "$HOME/.exports" ]] && source "$HOME/.exports"
 
 # set oh my zsh plugins
-plugins=(zsh-syntax-highlighting git-extras git)
+plugins=(zsh-syntax-highlighting git-extras git vagrant)
 
 # OS specific settings
 if [[ "$(uname)" =~ ^Darwin ]]; then
