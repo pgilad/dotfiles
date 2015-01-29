@@ -26,27 +26,30 @@ NeoBundle 'Shougo/vimproc', {
             \ }
 NeoBundle 'L9'
 NeoBundle 'editorconfig/editorconfig-vim'
-NeoBundleLazy 'Shougo/neocomplete', {
-            \   'insert': 1
-            \ }
-if neobundle#tap('neocomplete')
-    " Disable AutoComplPop.
-    let g:acp_enableAtStartup = 0
-    " Use neocomplete.
-    let g:neocomplete#enable_at_startup = 1
-    " Use smartcase.
-    let g:neocomplete#enable_smart_case = 1
-    " Set minimum syntax keyword length.
-    let g:neocomplete#sources#syntax#min_keyword_length = 3
-    " Set auto completion length.
-    let g:neocomplete#auto_completion_start_length = 2
-    " Set manual completion length.
-    let g:neocomplete#manual_completion_start_length = 0
-    " Set minimum keyword length.
-    let g:neocomplete#min_keyword_length = 3
-    let g:neocomplete#enable_auto_delimiter = 1
-    let g:neocomplete#max_list = 100
-    call neobundle#untap()
+
+if has('lua') && v:version >= 703
+    NeoBundleLazy 'Shougo/neocomplete', {
+                \   'insert': 1
+                \ }
+    if neobundle#tap('neocomplete')
+        " Disable AutoComplPop.
+        let g:acp_enableAtStartup = 0
+        " Use neocomplete.
+        let g:neocomplete#enable_at_startup = 1
+        " Use smartcase.
+        let g:neocomplete#enable_smart_case = 1
+        " Set minimum syntax keyword length.
+        let g:neocomplete#sources#syntax#min_keyword_length = 3
+        " Set auto completion length.
+        let g:neocomplete#auto_completion_start_length = 2
+        " Set manual completion length.
+        let g:neocomplete#manual_completion_start_length = 0
+        " Set minimum keyword length.
+        let g:neocomplete#min_keyword_length = 3
+        let g:neocomplete#enable_auto_delimiter = 1
+        let g:neocomplete#max_list = 100
+        call neobundle#untap()
+    endif
 endif
 " NeoBundle 'Shougo/vimfiler.vim', {
 " \ 'lazy': 1,
@@ -70,7 +73,8 @@ endif
 " \ }
 NeoBundle 'kien/ctrlp.vim'
 if neobundle#tap('ctrlp.vim')
-    let g:ctrlp_custom_ignore = 'public\|build\|dist\|node_modules\|.idea\|.git\|workspace\|bower_components'
+    let ctrlp_ignore = ['public', 'build', 'dist', 'node_modules', '.idea', '.git', 'workspace', 'bower_components']
+    let g:ctrlp_custom_ignore = join(ctrlp_ignore, '\|')
     " let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
     let g:ctrlp_root_markers = ['.git']
     let g:ctrlp_max_height = 20         " maximum height of match window
@@ -94,7 +98,7 @@ endif
 NeoBundle 'pgilad/vim-skeletons'
 if neobundle#tap('vim-skeletons')
     let skeletons#autoRegister = 0
-    let skeletons#skeletonsDir = ["~/.dotfiles/vim/skeletons"]
+    let skeletons#skeletonsDir = ['~/.dotfiles/vim/skeletons']
     call neobundle#untap()
 endif
 NeoBundleLazy 'Shougo/unite.vim', {
@@ -190,6 +194,7 @@ endif
 NeoBundle 'scrooloose/nerdcommenter', {
             \   'mappings' : ['<Plug>NERDCommenter']
             \ }
+
 NeoBundle 'nathanaelkane/vim-indent-guides'
 if neobundle#tap('vim-indent-guides')
     let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'qf']
@@ -261,8 +266,7 @@ NeoBundleLazy 'pgilad/vim-jsbeautify', {
             \ 'filetypes':['javascript', 'json', 'html', 'js', 'jsx', 'css'],
             \ 'depends': ['einars/js-beautify', 'editorconfig-vim']
             \ }
-NeoBundle 'wting/rust.vim', {
-            \ 'lazy': 1,
+NeoBundleLazy 'wting/rust.vim', {
             \ 'filetypes': ['rust']
             \ }
 
@@ -327,6 +331,7 @@ NeoBundleLazy 'tyru/open-browser.vim', {
             \   'functions' : 'openbrowser#open',
             \   'mappings': '<Plug>(openbrowser-'
             \ }
+
 NeoBundleLazy 'godlygeek/tabular', {
             \   'commands': ['Tabularize']
             \ }
@@ -347,8 +352,7 @@ if neobundle#tap('tabular')
     vnoremap <leader>a<Bar> :Tabularize /<Bar><cr>
     call neobundle#untap()
 endif
-" more maintained version
-NeoBundle 'kris89/vim-multiple-cursors'
+
 NeoBundleLazy 'AndrewRadev/inline_edit.vim', {
             \   'commands': ['InlineEdit']
             \ }
@@ -368,6 +372,7 @@ if neobundle#tap('linediff.vim')
     nnoremap <leader>lr :LinediffReset<cr>
     call neobundle#untap()
 endif
+
 NeoBundle 'bling/vim-airline'
 if neobundle#tap('vim-airline')
     let g:airline_detect_modified=1
@@ -381,6 +386,7 @@ if neobundle#tap('vim-airline')
     let g:airline#extensions#branch#enabled = 1
     call neobundle#untap()
 endif
+
 NeoBundleLazy 'AndrewRadev/switch.vim', {
             \   'commands': ['Switch']
             \ }
@@ -421,6 +427,7 @@ NeoBundle 'kana/vim-textobj-indent', { 'depends': 'kana/vim-textobj-user' }
 NeoBundle 'kana/vim-textobj-entire', { 'depends': 'kana/vim-textobj-user' }
 " a, i,
 NeoBundle 'PeterRincker/vim-argumentative'
+
 NeoBundleLazy 'Raimondi/delimitMate', {
             \    'insert' : 1
             \}
@@ -429,14 +436,19 @@ if neobundle#tap('delimitMate')
     let delimitMate_expand_space=1
     call neobundle#untap()
 endif
-NeoBundle 'scrooloose/syntastic', {
-            \   'filetypes': [ 'javascript', 'coffee', 'zsh', 'json',
-            \ 'less', 'css', 'jade', 'ruby', 'html', 'sh', 'php' ]
-            \ }
+
+NeoBundleLazy 'scrooloose/syntastic'
 if neobundle#tap('syntastic')
+    let filetypes = ['javascript', 'coffee', 'zsh', 'json', 'less',
+                \ 'css', 'jade', 'ruby', 'html', 'sh', 'php']
+    call neobundle#config({
+                \   'autoload' : {
+                \     'filetypes' : filetypes
+                \     },
+                \ })
     let g:syntastic_mode_map = {
                 \ 'mode': 'passive',
-                \ 'active_filetypes': neobundle#tapped.filetypes,
+                \ 'active_filetypes': filetypes,
                 \ 'passive_filetypes': [] }
     let g:syntastic_enable_balloons = 0
     let g:syntastic_always_populate_loc_list = 1
@@ -447,10 +459,6 @@ endif
 NeoBundle 'junegunn/vim-pseudocl'
 NeoBundle 'junegunn/vim-oblique', {
             \ 'depends' : 'junegunn/vim-pseudocl',
-            \ }
-
-NeoBundleLazy 'Wolfy87/vim-expand', {
-            \ 'commands': ['Expand']
             \ }
 NeoBundleLazy 'gorkunov/smartgf.vim', {
             \ 'mappings': '<Plug>(smartgf-search',

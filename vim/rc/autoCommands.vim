@@ -40,16 +40,6 @@ augroup my_auto_commands
     autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
     " autocmd FileType javascript setlocal omnifunc=syntaxcomplete#Complete
 
-    " beautify mappings local to filetypes
-    " autocmd FileType css nnoremap <buffer> <leader>js :<c-u>call CSSBeautify()<cr>
-    " autocmd FileType css vnoremap <buffer> <leader>js :call RangeCSSBeautify()<cr>
-    " autocmd FileType html nnoremap <buffer> <leader>js :<c-u>call HtmlBeautify()<cr>
-    " autocmd FileType html vnoremap <buffer> <leader>js :call RangeHtmlBeautify()<cr>
-    " autocmd FileType javascript nnoremap <buffer> <leader>js :<c-u>call JsBeautify()<cr>
-    " autocmd FileType javascript vnoremap <buffer> <leader>js :call RangeJsBeautify()<cr>
-    " autocmd FileType json nnoremap <buffer> <leader>js :<c-u>call JsonBeautify()<cr>
-    " autocmd FileType json vnoremap <buffer> <leader>js :call RangeJsonBeautify()<cr>
-
     autocmd FileType css,html,javascript,jsx,json nnoremap <silent> <buffer> <leader>js :<c-u>call Beautify()<cr>
     autocmd FileType css,html,javascript,jsx,json vnoremap <silent> <buffer> <leader>js :call BeautifyRange()<cr>
 

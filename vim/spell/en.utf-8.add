@@ -810,3 +810,6 @@ testIntervals
 testsIntervals
 gettext
 moreutils
+humanizeDuration
+prettyEnded
+showSessions

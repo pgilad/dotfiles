@@ -84,7 +84,6 @@ CASKS=(
     alfred
     betterzipql
     dropbox
-    evernote
     firefox
     firefoxdeveloperedition
     gimp
@@ -110,9 +109,7 @@ CASKS=(
     sizeup
     skype
     sourcetree
-    sublime-text
     the-unarchiver
-    torbrowser
     transmission
     vagrant
     vagrant-manager
