@@ -81,7 +81,6 @@ FORMULAS=(
 # 'phpmd'
 
 CASKS=(
-    alfred
     betterzipql
     dropbox
     firefox
@@ -157,7 +156,6 @@ function main() {
     iStep "Running brew cleanup"
     brew cleanup
     brew cask cleanup
-    brew cask alfred link
     brew prune
     brew linkapps
     brew tap --repair
