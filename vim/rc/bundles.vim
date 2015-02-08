@@ -391,6 +391,7 @@ NeoBundleLazy 'AndrewRadev/switch.vim', {
             \   'commands': ['Switch']
             \ }
 if neobundle#tap('switch.vim')
+    let g:switch_mapping = ""
     let g:switch_custom_definitions =
                 \ [
                 \   ['/', '\\'],
