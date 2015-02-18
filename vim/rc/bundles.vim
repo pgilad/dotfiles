@@ -73,7 +73,7 @@ endif
 " \ }
 NeoBundle 'kien/ctrlp.vim'
 if neobundle#tap('ctrlp.vim')
-    let ctrlp_ignore = ['public', 'build', 'dist', 'node_modules', '.idea', '.git', 'workspace', 'bower_components']
+    let ctrlp_ignore = ['public', 'build', 'dist', 'node_modules', '.idea', '.git', 'bower_components']
     let g:ctrlp_custom_ignore = join(ctrlp_ignore, '\|')
     " let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
     let g:ctrlp_root_markers = ['.git']
