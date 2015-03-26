@@ -440,6 +440,7 @@ endif
 
 NeoBundleLazy 'scrooloose/syntastic'
 if neobundle#tap('syntastic')
+    let g:syntastic_javascript_checkers=['jshint', 'jscs']
     let filetypes = ['javascript', 'coffee', 'zsh', 'json', 'less',
                 \ 'css', 'jade', 'ruby', 'html', 'sh', 'php']
     call neobundle#config({
@@ -453,7 +454,7 @@ if neobundle#tap('syntastic')
                 \ 'passive_filetypes': [] }
     let g:syntastic_enable_balloons = 0
     let g:syntastic_always_populate_loc_list = 1
-    let g:syntastic_aggregate_errors = 1
+    let g:syntastic_aggregate_errors = 0
     call neobundle#untap()
 endif
 
