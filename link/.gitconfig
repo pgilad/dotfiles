@@ -69,6 +69,8 @@
     pu = push
     st = status
     gl = log --oneline --decorate --stat --graph
+    # print a pretty list of remote branches with last commit date and author name
+    branches = !git for-each-ref --sort=-committerdate --format='%(committerdate:relative):%(authorname):%(refname:short)' refs/remotes | column -t -s:
 [status]
     short = true
     # Always show paths relative to git root

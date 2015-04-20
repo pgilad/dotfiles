@@ -73,19 +73,21 @@ endif
 " \ }
 NeoBundle 'kien/ctrlp.vim'
 if neobundle#tap('ctrlp.vim')
-    let ctrlp_ignore = ['public', 'build', 'dist', 'node_modules', '.idea', '.git', 'bower_components']
+    let ctrlp_ignore = ['public', 'build\/', 'dist', 'node_modules\/', '.idea', '.git', 'bower_components']
     let g:ctrlp_custom_ignore = join(ctrlp_ignore, '\|')
     " let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-    let g:ctrlp_root_markers = ['.git']
-    let g:ctrlp_max_height = 20         " maximum height of match window
-    let g:ctrlp_switch_buffer = 'et'    " jump to a file if it's open already
     let g:ctrlp_clear_cache_on_exit=1   " speed up by not removing clearing cache every time
+    let g:ctrlp_follow_symlinks = 1
     let g:ctrlp_follow_symlinks=1
     let g:ctrlp_lazy_update = 0
-    let g:ctrlp_max_files = 2000
-    let g:ctrlp_mruf_max = 50          " number of recently opened files
-    let g:ctrlp_show_hidden = 1
+    let g:ctrlp_max_depth = 50
+    let g:ctrlp_max_files = 5000
+    let g:ctrlp_max_height = 20         " maximum height of match window
     let g:ctrlp_max_history = 50
+    let g:ctrlp_mruf_max = 50          " number of recently opened files
+    let g:ctrlp_root_markers = ['.git']
+    let g:ctrlp_show_hidden = 1
+    let g:ctrlp_switch_buffer = 'et'    " jump to a file if it's open already
     nnoremap <c-p> :CtrlP<cr>
     call neobundle#untap()
 endif
@@ -321,6 +323,14 @@ NeoBundleLazy 'vim-ruby/vim-ruby', {
             \ }
 
 NeoBundle 'airblade/vim-gitgutter'
+if neobundle#tap('vim-gitgutter')
+    let g:gitgutter_enabled = 1
+    let g:gitgutter_map_keys = 0
+    let g:gitgutter_escape_grep = 1
+    let g:gitgutter_eager = 0
+    let g:gitgutter_realtime = 0
+    call neobundle#untap()
+endif
 NeoBundle 'tpope/vim-surround'
 " NeoBundle 'tpope/vim-abolish.git'
 NeoBundle 'tpope/vim-repeat'
@@ -440,21 +450,23 @@ endif
 
 NeoBundleLazy 'scrooloose/syntastic'
 if neobundle#tap('syntastic')
-    let g:syntastic_javascript_checkers=['jshint', 'jscs']
+
     let filetypes = ['javascript', 'coffee', 'zsh', 'json', 'less',
                 \ 'css', 'jade', 'ruby', 'html', 'sh', 'php']
     call neobundle#config({
                 \   'autoload' : {
                 \     'filetypes' : filetypes
-                \     },
+                \     }
                 \ })
     let g:syntastic_mode_map = {
                 \ 'mode': 'passive',
                 \ 'active_filetypes': filetypes,
                 \ 'passive_filetypes': [] }
+    let g:syntastic_javascript_checkers=['jscs', 'jshint']
     let g:syntastic_enable_balloons = 0
     let g:syntastic_always_populate_loc_list = 1
-    let g:syntastic_aggregate_errors = 0
+    let g:syntastic_aggregate_errors = 1
+    let g:syntastic_id_checkers = 1
     call neobundle#untap()
 endif
 

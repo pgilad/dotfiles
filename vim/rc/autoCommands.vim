@@ -2,21 +2,22 @@ if !has('autocmd') | finish | endif
 
 augroup myfiletypes
     autocmd!
-    autocmd BufNewFile,BufRead *.ajs                    setlocal filetype=javascript
-    autocmd BufNewFile,BufRead *.as                     setlocal filetype=actionscript
-    autocmd BufNewFile,BufRead *.asm                    setlocal filetype=nasm
-    autocmd BufNewFile,BufRead *.jshintrc,*.bowerrc     setlocal filetype=json
-    autocmd BufNewFile,BufRead *.jscsrc                 setlocal filetype=json
-    autocmd BufNewFile,BufRead *.kml                    setlocal filetype=xml
-    autocmd BufNewFile,BufRead *.m                      setlocal filetype=objc
-    autocmd BufNewFile,BufRead *.md,*.markdown          setlocal filetype=markdown
-    autocmd BufNewFile,BufRead *.rs                     setlocal filetype=rust
-    autocmd BufNewFile,BufRead *.samsa                  setlocal filetype=jproperties
-    autocmd BufNewFile,BufRead *.scala                  setlocal filetype=scala
-    autocmd BufNewFile,BufRead *.ts                     setlocal filetype=typescript
-    autocmd BufNewFile,BufRead *.txt                    setlocal filetype=text
-    autocmd BufNewFile,BufRead *.xdot                   setlocal filetype=dot
-    autocmd BufNewFile,BufRead .tmux*.conf*,*.tmux      setlocal filetype=tmux
+    autocmd BufNewFile,BufRead *.ajs,*.es6,*.es      setlocal filetype=javascript
+    autocmd BufNewFile,BufRead *.twig                setlocal filetype=html
+    autocmd BufNewFile,BufRead *.as                  setlocal filetype=actionscript
+    autocmd BufNewFile,BufRead *.asm                 setlocal filetype=nasm
+    autocmd BufNewFile,BufRead *.jshintrc,*.bowerrc  setlocal filetype=json
+    autocmd BufNewFile,BufRead *.jscsrc              setlocal filetype=json
+    autocmd BufNewFile,BufRead *.kml                 setlocal filetype=xml
+    autocmd BufNewFile,BufRead *.m                   setlocal filetype=objc
+    autocmd BufNewFile,BufRead *.md,*.markdown       setlocal filetype=markdown
+    autocmd BufNewFile,BufRead *.rs                  setlocal filetype=rust
+    autocmd BufNewFile,BufRead *.samsa               setlocal filetype=jproperties
+    autocmd BufNewFile,BufRead *.scala               setlocal filetype=scala
+    autocmd BufNewFile,BufRead *.ts                  setlocal filetype=typescript
+    autocmd BufNewFile,BufRead *.txt                 setlocal filetype=text
+    autocmd BufNewFile,BufRead *.xdot                setlocal filetype=dot
+    autocmd BufNewFile,BufRead .tmux*.conf*,*.tmux   setlocal filetype=tmux
 augroup END
 
 " close sentence with comma or semi-colon

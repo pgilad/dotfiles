@@ -91,7 +91,7 @@ set smartcase                                   " be smart about searching
 set infercase                                   " ignore case in autocomplete
 set hlsearch                                    " highlight search
 set incsearch                                   " increment search
-set synmaxcol=400
+set synmaxcol=200
 set lazyredraw                                  " Don't redraw while executing macros (good performance config)
 set notimeout
 set t_Co=256                                    " 256bit terminal

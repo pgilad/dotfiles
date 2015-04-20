@@ -27,7 +27,9 @@ nnoremap j gj
 nnoremap k gk
 
 " quit everything
-nnoremap Q :<c-u>qa<cr>
+" commented since it sometimes lead to unwanted exits
+" nnoremap Q :<c-u>qa<cr>
+nnoremap Q <nop>
 
 " change cursor position in insert mode
 inoremap <c-h> <left>
