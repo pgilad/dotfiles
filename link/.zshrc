@@ -1,14 +1,3 @@
-DOTFILES="$HOME/.dotfiles"
-CACHE_DIR="$HOME/.cache"
-
-HISTFILE="$CACHE_DIR/.zsh_history"
-DISABLE_AUTO_UPDATE="true"
-DISABLE_AUTO_TITLE="true"
-COMPLETION_WAITING_DOTS="true"
-ZSH="$HOME/.oh-my-zsh"
-ZSH_CUSTOM="$DOTFILES/zsh/custom"
-ZSH_THEME="vonder"
-
 ################
 #  ZSH config  #
 ################
@@ -17,6 +6,8 @@ setopt NO_BEEP
 # glob for dotfiles as well (hidden)
 setopt GLOB_DOTS
 
+[[ -f "$HOME/.exports" ]] && source "$HOME/.exports"
+
 ###############
 #  Pre setup  #
 ###############
@@ -24,8 +15,6 @@ setopt GLOB_DOTS
 if [[ ! -d "$CACHE_DIR" ]]; then
     mkdir -p "$CACHE_DIR"
 fi
-
-[[ -f "$HOME/.exports" ]] && source "$HOME/.exports"
 
 # set oh my zsh plugins
 plugins=(zsh-syntax-highlighting git-extras git vagrant)
@@ -37,16 +26,14 @@ fi
 
 if [[ -n "$TMUX" ]]; then
     plugins+=tmux
+    plugins+=tmuxinator
 fi
 
-# source oh my zsh
 [[ -f "$ZSH/oh-my-zsh.sh" ]] && source "$ZSH/oh-my-zsh.sh"
-
 [[ -f "$HOME/.aliases" ]] && source "$HOME/.aliases"
 [[ -f "$HOME/.completions" ]] && source "$HOME/.completions"
 [[ -f "$HOME/.extra" ]] && source "$HOME/.extra"
 
-
 if [[ -x "$(command -v rbenv)" ]]; then
-    eval "$(rbenv init -)";
+    eval "$(rbenv init - --no-rehash)";
 fi

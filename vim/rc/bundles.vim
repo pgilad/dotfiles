@@ -73,22 +73,31 @@ endif
 " \ }
 NeoBundle 'kien/ctrlp.vim'
 if neobundle#tap('ctrlp.vim')
-    let ctrlp_ignore = ['public', 'build\/', 'dist', 'node_modules\/', '.idea', '.git', 'bower_components']
+    let ctrlp_ignore = ['public', 'build', 'dist', 'node_modules', '.idea', '.git', 'bower_components']
     let g:ctrlp_custom_ignore = join(ctrlp_ignore, '\|')
-    " let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-    let g:ctrlp_clear_cache_on_exit=1   " speed up by not removing clearing cache every time
+
+    let g:ctrlp_by_filename = 1
+    let g:ctrlp_clear_cache_on_exit = 1 " speed up by not removing clearing cache every time
+    let g:ctrlp_cmd = 'CtrlP'
     let g:ctrlp_follow_symlinks = 1
-    let g:ctrlp_follow_symlinks=1
     let g:ctrlp_lazy_update = 0
     let g:ctrlp_max_depth = 50
     let g:ctrlp_max_files = 5000
     let g:ctrlp_max_height = 20         " maximum height of match window
     let g:ctrlp_max_history = 50
-    let g:ctrlp_mruf_max = 50          " number of recently opened files
+    let g:ctrlp_mruf_max = 50           " number of recently opened files
+    let g:ctrlp_open_new_file = 'r'
     let g:ctrlp_root_markers = ['.git']
     let g:ctrlp_show_hidden = 1
     let g:ctrlp_switch_buffer = 'et'    " jump to a file if it's open already
+    let g:ctrlp_working_path_mode = 'ra'
     nnoremap <c-p> :CtrlP<cr>
+
+    if executable('git')
+        let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others']
+        let g:ctrlp_use_caching = 0
+    endif
+
     call neobundle#untap()
 endif
 " NeoBundle 'xolox/vim-reload', {
@@ -99,7 +108,7 @@ endif
 " \ }
 NeoBundle 'pgilad/vim-skeletons'
 if neobundle#tap('vim-skeletons')
-    let skeletons#autoRegister = 0
+    let skeletons#autoRegister = 1
     let skeletons#skeletonsDir = ['~/.dotfiles/vim/skeletons']
     call neobundle#untap()
 endif
@@ -199,10 +208,13 @@ NeoBundle 'scrooloose/nerdcommenter', {
 
 NeoBundle 'nathanaelkane/vim-indent-guides'
 if neobundle#tap('vim-indent-guides')
-    let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'qf']
+    let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'qf', 'vimshell', 'markdown']
     let g:indent_guides_auto_colors = 0
-    let g:indent_guides_enable_on_vim_startup = 1
     let g:indent_guides_color_change_percent = 5
+    let g:indent_guides_enable_on_vim_startup = 1
+    let g:indent_guides_start_level = 1
+    let g:indent_guides_guide_size = 0
+
     hi IndentGuidesOdd  ctermbg=black
     hi IndentGuidesEven ctermbg=darkgrey
     call neobundle#untap()
@@ -226,6 +238,9 @@ NeoBundleLazy 'ap/vim-css-color', {
             \ }
 NeoBundleLazy 'hail2u/vim-css3-syntax', {
             \   'filetypes':['css', 'less']
+            \ }
+NeoBundleLazy 'ingydotnet/yaml-vim', {
+            \   'filetypes':['yml', 'yaml']
             \ }
 NeoBundleLazy 'cakebaker/scss-syntax.vim', {
             \   'filetypes':['sass', 'scss']

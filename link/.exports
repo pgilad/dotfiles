@@ -1,10 +1,23 @@
-# User configuration
-export PATH="/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin"
-export PATH="$PATH:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
-### Added by the Heroku Toolbelt
-export PATH="$PATH:/usr/local/heroku/bin"
-export PATH="$PATH:$HOME/Android"
-export PATH="$PATH:/Users/pgilad/repos/work/flow/bin"
+export DOTFILES="$HOME/.dotfiles"
+export CACHE_DIR="$HOME/.cache"
+export ZSH="$HOME/.oh-my-zsh"
+
+DIRS=(
+    "/usr/lib/lightdm/lightdm"
+    "/usr/local/sbin"
+    "/usr/local/bin"
+    "/usr/sbin"
+    "/usr/bin"
+    "/sbin"
+    "/bin"
+    "/usr/games"
+    "/usr/local/games"
+    "/usr/local/heroku/bin"
+    "$HOME/Android"
+    "$HOME/repos/work/flow/bin"
+)
+export PATH=$(IFS=:; echo "${DIRS[*]}")
+
 # set the correct term with TMUX
 if [[ -n "$TMUX" ]]; then
     export TERM=screen-256color
@@ -24,6 +37,14 @@ export _FASD_DATA="$CACHE_DIR/.fasd"
 export HISTSIZE=4096
 # ignore history duplicate of last command
 export HISTCONTROL=ignoredups
+
+export HISTFILE="$CACHE_DIR/.zsh_history"
+export DISABLE_AUTO_UPDATE="true"
+export DISABLE_AUTO_TITLE="true"
+export COMPLETION_WAITING_DOTS="true"
+export ZSH_CUSTOM="$DOTFILES/zsh/custom"
+export ZSH_THEME="vonder"
+export RBENV_ROOT=/usr/local/var/rbenv
 
 # NPM Environment Config
 export NPM_PACKAGES="$HOME/.npm-packages"

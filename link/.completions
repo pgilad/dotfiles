@@ -1,19 +1,15 @@
 if which npm &> /dev/null; then
-    # Add npm completion
     . <(npm completion)
 fi
 
 if which grunt &> /dev/null; then
-    # grunt completion
     eval "$(grunt --completion=zsh)"
 fi
 
 if which gulp &> /dev/null; then
-    # gulp completion
     eval "$(gulp --completion=zsh)"
 fi
 
 if which fasd &> /dev/null; then
-    # Fasd completion
     eval "$(fasd --init posix-alias zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install)"
 fi
