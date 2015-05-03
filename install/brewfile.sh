@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
 
 TAPS=(
     'caskroom/cask'
@@ -15,12 +15,15 @@ FORMULAS=(
     'automake'
     'awscli'
     'bash'
+    'gpg'
     'bash-completion'
+    'boot2docker'
     'brew-cask'
     'cheat'
     'coreutils'
     'ctags'
     'curl'
+    'docker'
     'fasd'
     'findutils'
     'freetype'
@@ -41,6 +44,7 @@ FORMULAS=(
     'md5sha1sum'
     'mongodb'
     'moreutils'
+    'mysql'
     'nettle'
     'node'
     'objective-caml'
@@ -82,7 +86,9 @@ FORMULAS=(
 
 CASKS=(
     betterzipql
+    chromium
     dropbox
+    evernote
     firefox
     firefoxdeveloperedition
     gimp
@@ -107,14 +113,16 @@ CASKS=(
     silverlight
     sizeup
     skype
-    sourcetree
+    sublime-text
     the-unarchiver
+    torbrowser
     transmission
     vagrant
     vagrant-manager
     vienna
     virtualbox
     vlc
+    xquartz
 )
 
 function install_brewfiles() {
@@ -145,8 +153,9 @@ function install_caskfiles() {
 function main() {
     iStep "running brew update"
     brew update
+
     iStep "running brew upgrade"
-    brew upgrade
+    brew upgrade --all
 
     iStep "installing brew formulas"
     install_brewfiles
@@ -159,6 +168,7 @@ function main() {
     brew prune
     brew linkapps
     brew tap --repair
+
     iStep "Brew doctor"
     brew doctor
 }

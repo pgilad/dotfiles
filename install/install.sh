@@ -70,8 +70,8 @@ if [[ "$OS" =~ ^Darwin ]]; then
         # install homebrew
         ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
     fi
-    scriptPath="$(dirname $0)"
-    source $scriptPath/brewfile.sh
+    scriptPath=$(dirname "$0")
+    source "$scriptPath/brewfile.sh"
     iFinishStep "OSX installation complete"
 fi
 
@@ -81,9 +81,7 @@ for filename in "$link_dir/"*; do
     baseFile="$(basename "$filename")"
     iStep "Handling file: $baseFile"
     if [[ ! -e ~/"$baseFile" ]]; then
-        ln -sf "$filename" ~/"$baseFile" &&
-            iGood "Symlink created: ~/$baseFile" ||
-            iBad "Problem with symlinking ~/$baseFile"
+        ln -sf "$filename" ~/"$baseFile" && iGood "Symlink created: ~/$baseFile"
     else
         iBad "Symlink skipped, file exists: ~/$baseFile"
     fi

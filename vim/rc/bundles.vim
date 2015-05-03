@@ -76,7 +76,7 @@ if neobundle#tap('ctrlp.vim')
     let ctrlp_ignore = ['public', 'build', 'dist', 'node_modules', '.idea', '.git', 'bower_components']
     let g:ctrlp_custom_ignore = join(ctrlp_ignore, '\|')
 
-    let g:ctrlp_by_filename = 1
+    let g:ctrlp_by_filename = 0
     let g:ctrlp_clear_cache_on_exit = 1 " speed up by not removing clearing cache every time
     let g:ctrlp_cmd = 'CtrlP'
     let g:ctrlp_follow_symlinks = 1
@@ -269,24 +269,29 @@ NeoBundleLazy 'gregsexton/MatchTag', {
 NeoBundleLazy 'othree/xml.vim', {
             \   'filetypes':['xml']
             \ }
-NeoBundleLazy 'jelera/vim-javascript-syntax', {
+" NeoBundleLazy 'jelera/vim-javascript-syntax', {
+" \   'filetypes':['javascript']
+" \ }
+NeoBundleLazy 'othree/yajs.vim', {
             \   'filetypes':['javascript']
             \ }
 NeoBundleLazy 'pangloss/vim-javascript', {
             \   'filetypes':['javascript']
             \ }
 NeoBundleLazy 'einars/js-beautify', {
-            \   'filetypes' : ['html', 'js', 'css']
+            \   'filetypes' : ['html', 'css', 'js']
             \ }
 NeoBundleLazy 'pgilad/vim-jsbeautify', {
             \ 'rev': 'refactor/patch-1',
             \ 'filetypes':['javascript', 'json', 'html', 'js', 'jsx', 'css'],
             \ 'depends': ['einars/js-beautify', 'editorconfig-vim']
             \ }
+" NeoBundleLazy 'millermedeiros/vim-esformatter', {
+             " \   'filetypes' : ['js']
+             " \ }
 NeoBundleLazy 'wting/rust.vim', {
             \ 'filetypes': ['rust']
             \ }
-
 NeoBundleLazy 'elzr/vim-json', {'filetypes':['json']}
 NeoBundleLazy 'moll/vim-node', {'filetypes':['javascript']}
 NeoBundleLazy 'itspriddle/vim-jquery.git', {'filetypes':['javascript']}
@@ -300,6 +305,7 @@ if neobundle#tap('javascript-libraries-syntax.vim')
     call neobundle#untap()
 endif
 
+NeoBundle 'evidens/vim-twig'
 NeoBundleLazy 'leafgarland/typescript-vim', {
             \   'filetypes': ['typescript']
             \ }

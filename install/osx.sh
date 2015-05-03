@@ -46,6 +46,9 @@ defaults write com.apple.loginwindow LoginwindowLaunchesRelaunchApps -bool false
 # Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
+defaults write InitialKeyRepeat -int 12
+defaults write KeyRepeat -int 1
+
 # Enable subpixel font rendering on non-Apple LCDs
 defaults write NSGlobalDomain AppleFontSmoothing -int 2
 
@@ -187,10 +190,14 @@ defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
 # Prevent Time Machine from prompting to use new hard drives as backup volume
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
-# Kill affected applications
-for app in Safari Finder Dock Mail SystemUIServer; do killall "$app" > /dev/null 2>&1; done
-echo "Done. Note that some of these changes require a logout/restart to take effect."
-
 defaults write com.tapbots.TweetbotMac TextAutomaticQuoteSubstitution -bool NO
 defaults write com.tapbots.TweetbotMac TextAutoCorrect -bool NO
 defaults write com.tapbots.TweetbotMac TextAutomaticTextReplacement -bool NO
+
+#Store screenshots in subfolder on desktop
+mkdir ~/Desktop/Screenshots
+defaults write com.apple.screencapture location ~/Desktop/Screenshots
+
+# Kill affected applications
+for app in Chrome Safari Finder Dock Mail SystemUIServer; do killall "$app" > /dev/null 2>&1; done
+echo "Done. Note that some of these changes require a logout/restart to take effect."

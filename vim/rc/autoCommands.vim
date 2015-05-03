@@ -3,11 +3,11 @@ if !has('autocmd') | finish | endif
 augroup myfiletypes
     autocmd!
     autocmd BufNewFile,BufRead *.ajs,*.es6,*.es      setlocal filetype=javascript
-    autocmd BufNewFile,BufRead *.twig                setlocal filetype=html
+    " autocmd BufNewFile,BufRead *.twig              setlocal filetype=html
     autocmd BufNewFile,BufRead *.as                  setlocal filetype=actionscript
     autocmd BufNewFile,BufRead *.asm                 setlocal filetype=nasm
-    autocmd BufNewFile,BufRead *.jshintrc,*.bowerrc  setlocal filetype=json
-    autocmd BufNewFile,BufRead *.jscsrc              setlocal filetype=json
+    autocmd BufNewFile,BufRead .jshintrc,.bowerrc    setlocal filetype=json
+    autocmd BufNewFile,BufRead .jscsrc               setlocal filetype=json
     autocmd BufNewFile,BufRead *.kml                 setlocal filetype=xml
     autocmd BufNewFile,BufRead *.m                   setlocal filetype=objc
     autocmd BufNewFile,BufRead *.md,*.markdown       setlocal filetype=markdown
