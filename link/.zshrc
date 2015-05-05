@@ -1,3 +1,4 @@
+#!/usr/bin/zsh bash
 ################
 #  ZSH config  #
 ################
@@ -24,8 +25,11 @@ if [[ "$(uname)" =~ ^Darwin ]]; then
     plugins+=brew
 fi
 
-if [[ -n "$TMUX" ]]; then
+if [[ -x "$(command -v tmux)" ]]; then
     plugins+=tmux
+fi
+
+if [[ -x "$(command -v tmuxinator)" ]]; then
     plugins+=tmuxinator
 fi
 

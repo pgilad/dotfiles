@@ -471,7 +471,6 @@ endif
 
 NeoBundleLazy 'scrooloose/syntastic'
 if neobundle#tap('syntastic')
-
     let filetypes = ['javascript', 'coffee', 'zsh', 'json', 'less',
                 \ 'css', 'jade', 'ruby', 'html', 'sh', 'php']
     call neobundle#config({

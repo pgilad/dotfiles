@@ -64,6 +64,7 @@ FORMULAS=(
     'tree'
     'unrar'
     'unzip'
+    'shellcheck'
     'urlview'
     'watch'
     'webkit2png'
