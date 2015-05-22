@@ -99,6 +99,11 @@ set ttimeout
 set ttimeoutlen=10
 set ttyfast                                     " fast terminal redraw
 set magic                                       " For regular expressions turn magic on
+
+if has('diff')
+    set diffopt+=iwhite
+endif
+
 set cpoptions-=m
 set showmatch                                   " Show matching brackets when text indicator is over them
 set matchtime=3

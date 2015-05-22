@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 # dotfiles dir
 dotfiles="$HOME/.dotfiles"
 # vim bundles directory
@@ -61,22 +62,15 @@ if [[ "$OS" =~ ^Linux ]]; then
     iFinishStep "Linux installation complete"
 fi
 
-# OSX-only stuff.
-if [[ "$OS" =~ ^Darwin ]]; then
-    iHeader "Running OSX setup"
-    # Install Homebrew.
-    if [[ ! -x "$(command -v brew)" ]]; then
-        iStep "Installing Homebrew"
-        # install homebrew
-        ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
-    fi
-    scriptPath=$(dirname "$0")
-    source "$scriptPath/brewfile.sh"
-    iFinishStep "OSX installation complete"
+iHeader "Running vim setup"
+# make vim bundles dir
+if [[ ! -d "$vim_bundles" ]]; then
+    iStep "Creating vim bundles directory at $vim_bundles"
+    mkdir -p "$vim_bundles"
 fi
+iFinishStep "Vim Installation Complete"
 
 iHeader "Creating symlinks"
-shopt -s dotglob
 for filename in "$link_dir/"*; do
     baseFile="$(basename "$filename")"
     iStep "Handling file: $baseFile"
@@ -88,23 +82,33 @@ for filename in "$link_dir/"*; do
 done
 iFinishStep "Symlinking complete"
 
-iHeader "Running vim setup"
-# make vim bundles dir
-if [[ ! -d "$vim_bundles" ]]; then
-    iStep "Creating vim bundles directory at $vim_bundles"
-    mkdir -p "$vim_bundles"
-fi
-iFinishStep "Vim Installation Complete"
-
 if [[ ! "$SHELL" =~ zsh ]]; then
     if [[ ! -x "$(command -v zsh)" ]]; then
         iHeader "Changing shell to Zsh. Welcome to the future..."
-        chsh -s /bin/zsh
+        sudo chsh -s /bin/zsh
         iGood "done changing shell"
     else
         iBad "Zsh not found in your system."
     fi
 fi
+
+# OSX-only stuff.
+if [[ "$OS" =~ ^Darwin ]]; then
+    iHeader "Running OSX setup"
+    # Install Homebrew.
+    if [[ ! -x "$(command -v brew)" ]]; then
+        iStep "Installing Homebrew"
+        # install homebrew
+        ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+    fi
+    brew update
+    brew upgrade --all
+    brew tap Homebrew/bundle
+    scriptPath=$(dirname "$0")
+    brew bundle --file="$scriptPath/Brewfile"
+    iFinishStep "OSX installation complete"
+fi
+
 echo -e "\n"
 iFinishStep "Installation complete!"
 unset iHeader iStep iGood iBad iFinishStep

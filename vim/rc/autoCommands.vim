@@ -2,22 +2,22 @@ if !has('autocmd') | finish | endif
 
 augroup myfiletypes
     autocmd!
-    autocmd BufNewFile,BufRead *.ajs,*.es6,*.es      setfiletype=javascript
-    " autocmd BufNewFile,BufRead *.twig              setfiletype=html
-    autocmd BufNewFile,BufRead *.as                  setfiletype=actionscript
-    autocmd BufNewFile,BufRead *.asm                 setfiletype=nasm
-    autocmd BufNewFile,BufRead .jshintrc,.bowerrc    setfiletype=json
-    autocmd BufNewFile,BufRead .jscsrc               setfiletype=json
-    autocmd BufNewFile,BufRead *.kml                 setfiletype=xml
-    autocmd BufNewFile,BufRead *.m                   setfiletype=objc
-    autocmd BufNewFile,BufRead *.md,*.markdown       setfiletype=markdown
-    autocmd BufNewFile,BufRead *.rs                  setfiletype=rust
-    autocmd BufNewFile,BufRead *.samsa               setfiletype=jproperties
-    autocmd BufNewFile,BufRead *.scala               setfiletype=scala
-    autocmd BufNewFile,BufRead *.ts                  setfiletype=typescript
-    autocmd BufNewFile,BufRead *.txt                 setfiletype=text
-    autocmd BufNewFile,BufRead *.xdot                setfiletype=dot
-    autocmd BufNewFile,BufRead .tmux*.conf*,*.tmux   setfiletype=tmux
+    autocmd BufNewFile,BufRead *.ajs,*.es6,*.es      setlocal filetype=javascript
+    " autocmd BufNewFile,BufRead *.twig              setlocal filetype=html
+    autocmd BufNewFile,BufRead *.as                  setlocal filetype=actionscript
+    autocmd BufNewFile,BufRead *.asm                 setlocal filetype=nasm
+    autocmd BufNewFile,BufRead .jshintrc,.bowerrc    setlocal filetype=json
+    autocmd BufNewFile,BufRead .jscsrc               setlocal filetype=json
+    autocmd BufNewFile,BufRead *.kml                 setlocal filetype=xml
+    autocmd BufNewFile,BufRead *.m                   setlocal filetype=objc
+    autocmd BufNewFile,BufRead *.md,*.markdown       setlocal filetype=markdown
+    autocmd BufNewFile,BufRead *.rs                  setlocal filetype=rust
+    autocmd BufNewFile,BufRead *.samsa               setlocal filetype=jproperties
+    autocmd BufNewFile,BufRead *.scala               setlocal filetype=scala
+    autocmd BufNewFile,BufRead *.ts                  setlocal filetype=typescript
+    autocmd BufNewFile,BufRead *.txt                 setlocal filetype=text
+    autocmd BufNewFile,BufRead *.xdot                setlocal filetype=dot
+    autocmd BufNewFile,BufRead .tmux*.conf*,*.tmux   setlocal filetype=tmux
 augroup END
 
 " close sentence with comma or semi-colon
@@ -42,8 +42,10 @@ augroup my_auto_commands
     autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
     " autocmd FileType javascript setlocal omnifunc=syntaxcomplete#Complete
 
-    autocmd FileType css,html,javascript,jsx,json nnoremap <silent> <buffer> <leader>js :<c-u>call Beautify()<cr>
-    autocmd FileType css,html,javascript,jsx,json vnoremap <silent> <buffer> <leader>js :call BeautifyRange()<cr>
+    autocmd FileType css,html,jsx,json nnoremap <silent> <buffer> <leader>js :<c-u>call Beautify()<cr>
+    autocmd FileType javascript nnoremap <silent> <buffer> <leader>js :<c-u>call JsBeautify()<cr>
+    autocmd FileType css,html,jsx,json vnoremap <silent> <buffer> <leader>js :call BeautifyRange()<cr>
+    autocmd FileType javascript vnoremap <silent> <buffer> <leader>js :call RangeJsBeautify()<cr>
 
     "pretty format json using python
     autocmd FileType json nnoremap <buffer> <leader>fj :%!python -m json.tool<cr>
