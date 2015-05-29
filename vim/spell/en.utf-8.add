@@ -1050,3 +1050,5 @@ failedEmbeddedResources
 showRecorder
 sudo
 iojs
+cjsx
+errors2

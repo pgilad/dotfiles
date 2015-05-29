@@ -460,14 +460,14 @@ NeoBundle 'kana/vim-textobj-entire', { 'depends': 'kana/vim-textobj-user' }
 " a, i,
 NeoBundle 'PeterRincker/vim-argumentative'
 
-NeoBundleLazy 'Raimondi/delimitMate', {
-            \    'insert' : 1
-            \}
-if neobundle#tap('delimitMate')
-    let delimitMate_expand_cr=1
-    let delimitMate_expand_space=1
-    call neobundle#untap()
-endif
+" NeoBundleLazy 'Raimondi/delimitMate', {
+            " \    'insert' : 1
+           " \}
+" if neobundle#tap('delimitMate')
+    " let delimitMate_expand_cr=1
+    " let delimitMate_expand_space=1
+    " call neobundle#untap()
+" endif
 
 NeoBundleLazy 'scrooloose/syntastic'
 if neobundle#tap('syntastic')
