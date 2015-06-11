@@ -281,8 +281,12 @@ NeoBundleLazy 'pangloss/vim-javascript', {
 NeoBundleLazy 'einars/js-beautify', {
             \   'filetypes' : ['html', 'css', 'js']
             \ }
+" NeoBundleLazy 'pgilad/vim-jsbeautify', {
+            " \ 'rev': 'refactor/patch-1',
+            " \ 'filetypes':['javascript', 'json', 'html', 'js', 'jsx', 'css'],
+            " \ 'depends': ['einars/js-beautify', 'editorconfig-vim']
+            " \ }
 NeoBundleLazy 'pgilad/vim-jsbeautify', {
-            \ 'rev': 'refactor/patch-1',
             \ 'filetypes':['javascript', 'json', 'html', 'js', 'jsx', 'css'],
             \ 'depends': ['einars/js-beautify', 'editorconfig-vim']
             \ }
@@ -471,8 +475,11 @@ NeoBundle 'PeterRincker/vim-argumentative'
 
 NeoBundleLazy 'scrooloose/syntastic'
 if neobundle#tap('syntastic')
-    let filetypes = ['javascript', 'coffee', 'zsh', 'json', 'less',
-                \ 'css', 'jade', 'ruby', 'html', 'sh', 'php']
+    let filetypes = [
+                \  'javascript', 'coffee', 'zsh', 'json', 'less',
+                \ 'css', 'jade', 'ruby', 'html', 'sh', 'php',
+                \ 'python'
+                \ ]
     call neobundle#config({
                 \   'autoload' : {
                 \     'filetypes' : filetypes
@@ -482,6 +489,8 @@ if neobundle#tap('syntastic')
                 \ 'mode': 'passive',
                 \ 'active_filetypes': filetypes,
                 \ 'passive_filetypes': [] }
+    let g:syntastic_python_checkers = ['python', 'pylint -E']
+    let g:syntastic_ruby_checkers = ['rubocop']
     let g:syntastic_javascript_checkers=['jscs', 'jshint']
     let g:syntastic_enable_balloons = 0
     let g:syntastic_always_populate_loc_list = 1
