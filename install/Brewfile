@@ -66,6 +66,7 @@ brew 'webkit2png'
 brew 'webp'
 brew 'zlib'
 brew 'zsh'
+brew 'heroku-toolbelt'
 brew 'homebrew/dupes/grep'
 brew 'gnu-sed', args: ['default-names']
 brew 'imagemagick', args: ['with-webp']
