@@ -1,6 +1,8 @@
 export DOTFILES="$HOME/.dotfiles"
 export CACHE_DIR="$HOME/.cache"
 export ZSH="$HOME/.oh-my-zsh"
+# tell npm to install concurrently
+export JOBS=max
 
 DIRS=(
     "/usr/lib/lightdm/lightdm"

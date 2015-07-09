@@ -286,7 +286,7 @@ NeoBundleLazy 'einars/js-beautify', {
             " \ 'filetypes':['javascript', 'json', 'html', 'js', 'jsx', 'css'],
             " \ 'depends': ['einars/js-beautify', 'editorconfig-vim']
             " \ }
-NeoBundleLazy 'pgilad/vim-jsbeautify', {
+NeoBundleLazy 'maksimr/vim-jsbeautify', {
             \ 'filetypes':['javascript', 'json', 'html', 'js', 'jsx', 'css'],
             \ 'depends': ['einars/js-beautify', 'editorconfig-vim']
             \ }
@@ -305,7 +305,7 @@ NeoBundleLazy 'othree/javascript-libraries-syntax.vim', {
             \   'filetypes':['javascript','coffee']
             \ }
 if neobundle#tap('javascript-libraries-syntax.vim')
-    let g:used_javascript_libs = 'underscore,angularjs,jquery,jasmine,angularui,requirejs,backbone'
+    let g:used_javascript_libs = 'underscore,angularjs,jquery,jasmine,angularui,requirejs,backbone,react'
     call neobundle#untap()
 endif
 
@@ -329,7 +329,7 @@ NeoBundleLazy 'tpope/vim-fugitive', {
             \ 'augroup' : 'fugitive',
             \ 'commands': ['Gstatus', 'Gcommit', 'Gwrite', 'Git', 'Git!',
             \ 'Gblame', 'Gcd', 'Glcd', 'Ggrep', 'Glog', 'Gdiff',
-            \ 'Gbrowse']
+            \ 'Gbrowse', 'Gedit']
             \ }
 if neobundle#tap('vim-fugitive')
     nnoremap <leader>gs :Gstatus<cr>
@@ -523,10 +523,6 @@ if neobundle#tap('smartgf.vim')
 endif
 
 NeoBundle 'nanotech/jellybeans.vim'
-" NeoBundle 'chriskempson/vim-tomorrow-theme'
-" NeoBundle 'sjl/badwolf'
-" NeoBundle 'w0ng/vim-hybrid'
-" NeoBundle 'tomasr/molokai'
 let g:config.colorscheme = "jellybeans"
 call neobundle#end()
 

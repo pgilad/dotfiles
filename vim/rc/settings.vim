@@ -91,7 +91,7 @@ set smartcase                                   " be smart about searching
 set infercase                                   " ignore case in autocomplete
 set hlsearch                                    " highlight search
 set incsearch                                   " increment search
-set synmaxcol=400
+set synmaxcol=2000
 set lazyredraw                                  " Don't redraw while executing macros (good performance config)
 set notimeout
 set t_Co=256                                    " 256bit terminal
@@ -104,6 +104,7 @@ if has('diff')
     set diffopt+=iwhite
 endif
 
+set report=0
 set cpoptions-=m
 set showmatch                                   " Show matching brackets when text indicator is over them
 set matchtime=3
@@ -161,10 +162,9 @@ set smartindent
 set laststatus=2                              " Always show the status line
 
 if has('clipboard')
+    set clipboard=unnamed
     if has('unnamedplus')
-        set clipboard+=unnamedplus " Gui gVim Unix/mac
-    else
-        set clipboard+=unnamed     " windows
+        set clipboard+=unnamedplus
     endif
 endif
 
@@ -177,9 +177,6 @@ endif
 let g:loaded_netrwPlugin = 1
 let g:loaded_matchparen = 0
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Files, backups and undo
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nobackup      " no backups of files
 set nowritebackup
 set noswapfile    " no swap files
