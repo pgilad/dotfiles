@@ -491,7 +491,20 @@ if neobundle#tap('syntastic')
                 \ 'passive_filetypes': [] }
     let g:syntastic_python_checkers = ['python', 'pylint -E']
     let g:syntastic_ruby_checkers = ['rubocop']
-    let g:syntastic_javascript_checkers=['jscs', 'jshint']
+    function! JavascriptCheckers(curpath)
+        let checkers = []
+        if filereadable(a:curpath . '/.jscsrc')
+            call add(checkers, 'jscs')
+        endif
+        if filereadable(a:curpath . '/.jshintrc')
+            call add(checkers, 'jshint')
+        endif
+        if filereadable(a:curpath . '/.eslintrc')
+            call add(checkers, 'eslint')
+        endif
+        return checkers
+    endfunction
+    let g:syntastic_javascript_checkers=JavascriptCheckers(getcwd())
     let g:syntastic_enable_balloons = 0
     let g:syntastic_always_populate_loc_list = 1
     let g:syntastic_aggregate_errors = 1

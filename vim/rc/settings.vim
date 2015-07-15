@@ -65,6 +65,7 @@ if &term =~ '256color'
     set t_ut=
 endif
 
+let &more=0
 set fileformat=unix                             " Default fileformat
 set fileformats=unix,dos,mac                    " Automatic recognition of a new line cord.
 set viewoptions=folds,options,cursor,slash,unix
