@@ -1095,3 +1095,15 @@ clonedeep
 dirname
 codepipeline
 showSubscribedFolders
+subviews
+syslog
+hasSandbox
+thresholdsCount
+hasSandboxLocation
+getLocations
+hasFeature
+isModuleEnabled
+preversion
+appDynamicsIntegration
+trialAlerts
+codePipeline
