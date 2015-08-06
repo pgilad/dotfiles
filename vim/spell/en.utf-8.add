@@ -1107,3 +1107,7 @@ preversion
 appDynamicsIntegration
 trialAlerts
 codePipeline
+sharedFolderId
+credFields
+isNew
+hasChildGrid

@@ -131,6 +131,7 @@ nnoremap <leader>ec :g/^\n$/d<cr>
 """""""""""""""
 " Switch commands.
 nnoremap <silent> <leader>sw :Switch<CR>
+nmap <leader>so vii:sort i<cr>
 """""""""""""""
 "  <leader>o  "
 """""""""""""""
