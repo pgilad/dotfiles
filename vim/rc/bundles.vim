@@ -28,9 +28,7 @@ NeoBundle 'L9'
 NeoBundle 'editorconfig/editorconfig-vim'
 
 if has('lua') && v:version >= 703
-    NeoBundleLazy 'Shougo/neocomplete', {
-                \   'insert': 1
-                \ }
+    NeoBundle 'Shougo/neocomplete'
     if neobundle#tap('neocomplete')
         " Disable AutoComplPop.
         let g:acp_enableAtStartup = 0
@@ -47,7 +45,7 @@ if has('lua') && v:version >= 703
         " Set minimum keyword length.
         let g:neocomplete#min_keyword_length = 3
         let g:neocomplete#enable_auto_delimiter = 1
-        let g:neocomplete#max_list = 100
+        let g:neocomplete#max_list = 30
         call neobundle#untap()
     endif
 endif
@@ -106,6 +104,10 @@ endif
 " \   'filetypes': ['vim']
 " \  }
 " \ }
+"
+NeoBundleLazy 'Glench/Vim-Jinja2-Syntax', {
+\   'filetypes': ['jinja2', 'j2', 'jinja']
+\ }
 NeoBundle 'pgilad/vim-skeletons'
 if neobundle#tap('vim-skeletons')
     let skeletons#autoRegister = 1
@@ -278,17 +280,12 @@ NeoBundleLazy 'othree/yajs.vim', {
 NeoBundleLazy 'pangloss/vim-javascript', {
             \   'filetypes':['javascript']
             \ }
-NeoBundleLazy 'einars/js-beautify', {
+NeoBundleLazy 'beautify-web/js-beautify', {
             \   'filetypes' : ['html', 'css', 'js']
             \ }
-" NeoBundleLazy 'pgilad/vim-jsbeautify', {
-            " \ 'rev': 'refactor/patch-1',
-            " \ 'filetypes':['javascript', 'json', 'html', 'js', 'jsx', 'css'],
-            " \ 'depends': ['einars/js-beautify', 'editorconfig-vim']
-            " \ }
 NeoBundleLazy 'maksimr/vim-jsbeautify', {
             \ 'filetypes':['javascript', 'json', 'html', 'js', 'jsx', 'css'],
-            \ 'depends': ['einars/js-beautify', 'editorconfig-vim']
+            \ 'depends': ['beautify-web/js-beautify', 'editorconfig-vim']
             \ }
 " NeoBundleLazy 'millermedeiros/vim-esformatter', {
              " \   'filetypes' : ['js']
@@ -325,20 +322,17 @@ NeoBundleLazy 'tejr/vim-tmux', {
             \ }
 NeoBundle 'tpope/vim-unimpaired'
 
-NeoBundleLazy 'tpope/vim-fugitive', {
-            \ 'augroup' : 'fugitive',
-            \ 'commands': ['Gstatus', 'Gcommit', 'Gwrite', 'Git', 'Git!',
-            \ 'Gblame', 'Gcd', 'Glcd', 'Ggrep', 'Glog', 'Gdiff',
-            \ 'Gbrowse', 'Gedit']
+NeoBundle 'tpope/vim-fugitive', {
+            \ 'augroup' : 'fugitive'
             \ }
 if neobundle#tap('vim-fugitive')
     nnoremap <leader>gs :Gstatus<cr>
     nnoremap <leader>gw :Gwrite<cr>
     nnoremap <leader>gp :Git push<cr>
-    function! neobundle#hooks.on_post_source(bundle)
+    " function! neobundle#hooks.on_post_source(bundle)
         " detect git root for each open buffer
-        bufdo call fugitive#detect(expand('%:p'))
-    endfunction
+        " bufdo call fugitive#detect(expand('%:p'))
+    " endfunction
     call neobundle#untap()
 endif
 

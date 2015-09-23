@@ -2,15 +2,10 @@
 "  F-# keys mapping  "
 """"""""""""""""""""""
 nnoremap <F1> <nop>
-inoremap <F1> <nop>
-" See undo tree
-nnoremap <F3> :GundoToggle<cr>
-" set spell check
-nnoremap <F4> :setlocal spell!<cr>
 " toggle paste
-nnoremap <F6> :set invpaste<CR>:set paste?<CR>
+nnoremap <F6> :<c-u>set invpaste<cr>:set paste?<cr>
 " format from 2 spaces to 4 spaces
-nnoremap <F7> :<C-U>set ts=2 sts=2 noexpandtab<cr>:retab!<cr>:set ts=4 sts=4 expandtab<cr>:retab<cr>
+nnoremap <F7> :<c-u>set ts=2 sts=2 noexpandtab<cr>:retab!<cr>:set ts=4 sts=4 expandtab<cr>:retab<cr>
 """"""""""""""""""""""""""""
 "  Regular keys unbinding  "
 """"""""""""""""""""""""""""
@@ -21,14 +16,13 @@ noremap 0 ^
 noremap ^ 0
 
 " easy way to normal mode
-inoremap jj <ESC>
+inoremap jj <esc>
 " better line navigation
 nnoremap j gj
 nnoremap k gk
 
 " quit everything
 " commented since it sometimes lead to unwanted exits
-" nnoremap Q :<c-u>qa<cr>
 nnoremap Q <nop>
 
 " change cursor position in insert mode
@@ -78,10 +72,10 @@ cnoremap <c-n> <down>
 nnoremap <silent> <leader>ts i=strftime('%c')<cr>
 
 " show list
-nnoremap <silent> <leader>ls :set list!<CR>
+nnoremap <silent> <leader>ls :set list!<cr>
 
 "<leader>w: Close current buffer
-nnoremap <leader>wc :bdelete<cr>
+nnoremap <leader>wc :bd<cr>
 
 "<leader>p: Copy the full path of the current file to the clipboard
 nnoremap <silent> <leader>cp :let @+=expand("%:p")<cr>:echo "Copied current file
@@ -121,7 +115,7 @@ nnoremap <silent> <leader>eu :NeoBundleUpdate<cr>
 nnoremap <silent> <leader>el :NeoBundleUpdatesLog<cr>
 
 " execute current line as command
-nnoremap <leader>ex :execute getline(".")<cr>
+nnoremap <leader>ex :<c-u>execute getline(".")<cr>
 vnoremap <leader>ex :<c-u>execute getreg("*")<cr>
 "clear all double+ empty lines
 nnoremap <leader>ec :g/^\n$/d<cr>
@@ -130,7 +124,7 @@ nnoremap <leader>ec :g/^\n$/d<cr>
 "  <leader>s  "
 """""""""""""""
 " Switch commands.
-nnoremap <silent> <leader>sw :Switch<CR>
+nnoremap <silent> <leader>sw :Switch<cr>
 nmap <leader>so vii:sort i<cr>
 """""""""""""""
 "  <leader>o  "
@@ -147,26 +141,3 @@ vmap <leader>os <Plug>(openbrowser-smart-search)
 nnoremap <leader>mp :Me<cr>
 " break chaining on .then
 nnoremap <leader>m<cr> /\%<c-r>=line('.')<cr>l\.then:nohlsearch<cr>i l
-" add require('gulp-.. on current word
-nnoremap <leader>mg mjyiwgg0/require ovar * = require('gulp-*')A;`j:nohlsearch<cr>
-" add require(''); .. on current word
-nnoremap <leader>mr mjyiwgg0/require ovar * = require('*')A;`j:nohlsearch<cr>
-
-nnoremap <leader>hg ggO/* global App */<esc>
-
-iabbrev mit@ MIT @[Gilad Peleg](http://giladpeleg.com)
-
-" Replace word under cursor (which should be a GitHub username)
-" with some user info ("Full Name <email@address>").
-" If info could not be found, "Not found" is inserted.
-function! <SID>InsertGitHubUserInfo()
-    let user = expand('<cWORD>')
-    " final slice is to remove ending newline
-    let info = system('github_user_info ' . user . ' 2> /dev/null')[:-2]
-    if v:shell_error
-        let info = 'Not found'
-    endif
-    execute "normal! diWa" . info . "\<esc>"
-endfunction
-
-nnoremap <silent> <leader>gu :call <SID>InsertGitHubUserInfo()<cr>

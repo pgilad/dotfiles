@@ -74,7 +74,6 @@
     commits = !git log --pretty=format:"%ad:%an:%d:%B" --branches --date=short --all --since=1.week.ago
 [status]
     short = true
-    # Always show paths relative to git root
     relativePaths = false
 [url "git@github.com:"]
     insteadOf = "gh:"

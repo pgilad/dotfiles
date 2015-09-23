@@ -17,3 +17,8 @@ alias npmnewest="npm outdated --depth=0 --parseable | cut -d: -f4"
 alias v="vim"
 
 alias gitwap="git log -i --grep=wap --no-merges --color --decorate --pretty='format: * %s'"
+
+alias opensocks='networksetup -setsocksfirewallproxy "WI-FI" localhost 8080'
+alias closesocks='networksetup -setsocksfirewallproxystate "WI-FI" off'
+
+alias listenports='lsof -i | grep LISTEN'
