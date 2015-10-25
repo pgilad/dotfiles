@@ -1,15 +1,14 @@
-#!/usr/bin/zsh bash
 # Disable sound
 setopt NO_BEEP
 # glob for dotfiles as well (hidden)
 setopt GLOB_DOTS
 
 [[ -f "$HOME/.exports" ]] && source "$HOME/.exports"
-if [[ ! -d "$CACHE_DIR" ]]; then
-    mkdir -p "$CACHE_DIR"
-fi
+[[ ! -d "$CACHE_DIR" ]] && mkdir -p "$CACHE_DIR"
+
 plugins=(zsh-syntax-highlighting git-extras git vagrant)
 if [[ "$(uname)" =~ ^Darwin ]]; then
+    source $(brew --prefix nvm)/nvm.sh
     plugins+=brew
 fi
 if [[ -x "$(command -v tmux)" ]]; then
@@ -23,6 +22,5 @@ fi
 [[ -f "$HOME/.completions" ]] && source "$HOME/.completions"
 [[ -f "$HOME/.extra" ]] && source "$HOME/.extra"
 
-if [[ -x "$(command -v rbenv)" ]]; then
-    eval "$(rbenv init - --no-rehash)";
-fi
+[[ -x "$(command -v rbenv)" ]] && eval "$(rbenv init - --no-rehash)"
+

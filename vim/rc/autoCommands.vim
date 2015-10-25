@@ -6,8 +6,10 @@ augroup myfiletypes
     " autocmd BufNewFile,BufRead *.twig              setlocal filetype=html
     autocmd BufNewFile,BufRead *.as                  setlocal filetype=actionscript
     autocmd BufNewFile,BufRead *.asm                 setlocal filetype=nasm
-    autocmd BufNewFile,BufRead .jshintrc,.bowerrc    setlocal filetype=json
+    autocmd BufNewFile,BufRead .bowerrc              setlocal filetype=json
+    autocmd BufNewFile,BufRead .eslintrc             setlocal filetype=json
     autocmd BufNewFile,BufRead .jscsrc               setlocal filetype=json
+    autocmd BufNewFile,BufRead .jshintrc             setlocal filetype=json
     autocmd BufNewFile,BufRead *.kml                 setlocal filetype=xml
     autocmd BufNewFile,BufRead *.m                   setlocal filetype=objc
     autocmd BufNewFile,BufRead *.md,*.markdown       setlocal filetype=markdown
@@ -27,13 +29,6 @@ augroup my_auto_commands
     " autocmd FileType coffee,jade setlocal noautoindent
     autocmd FileType html setlocal matchpairs+=<:>
 
-    " the following line makes vim ignore camelCase and CamelCase words so they
-    " are not highlighted as spelling mistakes
-    autocmd Syntax * syn match CamelCase "\(\<\|_\)\%(\u\l*\)\{2,}\(\>\|_\)\|\<\%(\l\l*\)\%(\u\l*\)\{1,}\>" transparent containedin=.*Comment.*,.*String.*,VimwikiLink contains=@NoSpell contained
-
-    " saving on lost focus
-    " autocmd WinEnter,BufWinEnter,FocusGained * checktime
-
     " autocomplete
     autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
     autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -48,7 +43,7 @@ augroup my_auto_commands
     autocmd FileType javascript vnoremap <silent> <buffer> <leader>js :call RangeJsBeautify()<cr>
 
     "pretty format json using python
-    autocmd FileType json nnoremap <buffer> <leader>fj :%!python -m json.tool<cr>
+    autocmd FileType json nnoremap <buffer> <leader>pf :%!python -m json.tool<cr>
 
     " Turn on spell check for certain filetypes automatically
     autocmd BufRead,BufNewFile *.md setlocal spell spelllang=en_us

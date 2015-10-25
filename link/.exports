@@ -4,21 +4,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # tell npm to install concurrently
 export JOBS=max
 
-DIRS=(
-    "/usr/lib/lightdm/lightdm"
-    "/usr/local/sbin"
-    "/usr/local/bin"
-    "/usr/sbin"
-    "/usr/bin"
-    "/sbin"
-    "/bin"
-    "/usr/games"
-    "/usr/local/games"
-    "/usr/local/heroku/bin"
-    "$HOME/Android"
-    "$HOME/repos/work/flow/bin"
-)
-export PATH=$(IFS=:; echo "${DIRS[*]}")
+export EDITOR=vim
+export VISUAL="$EDITOR"
 
 # set the correct term with TMUX
 if [[ -n "$TMUX" ]]; then
@@ -27,19 +14,29 @@ else
     export TERM=xterm-256color
 fi
 
-export EDITOR=vim
-export VISUAL="$EDITOR"
 export SSH_KEY_PATH="~/.ssh"
-export AWS_CONFIG_FILE="~/.aws-config"
+export AWS_CONFIG_FILE="~/.aws/config"
+export AWS_DEFAULT_PROFILE="default"
+
 # Prefer US English and use UTF-8
 export LANG=en_US.UTF-8
-export LC_ALL="$LANG"
+export LC_ALL=en_US.UTF-8
+
+# Highlight section titles in manual pages.
+export LESS_TERMCAP_md="${yellow}";
+
+# Don’t clear the screen after quitting a manual page.
+export MANPAGER='less -X';
+
+# Always enable colored `grep` output.
+export GREP_OPTIONS='--color=auto';
+
 # set fasd data file location
 export _FASD_DATA="$CACHE_DIR/.fasd"
 export HISTSIZE=4096
+
 # ignore history duplicate of last command
 export HISTCONTROL=ignoredups
-
 export HISTFILE="$CACHE_DIR/.zsh_history"
 export DISABLE_AUTO_UPDATE="true"
 export DISABLE_AUTO_TITLE="true"
@@ -47,13 +44,7 @@ export COMPLETION_WAITING_DOTS="true"
 export ZSH_CUSTOM="$DOTFILES/zsh/custom"
 export ZSH_THEME="vonder"
 export RBENV_ROOT=/usr/local/var/rbenv
+export PATH="/usr/local/sbin:$PATH"
+export NVM_DIR=~/.nvm
 
-# NPM Environment Config
-export NPM_PACKAGES="$HOME/.npm-packages"
-export PATH="$PATH:$NPM_PACKAGES/bin"
-export NPM_CONFIG_PREFIX="$NPM_PACKAGES"
-export NPM_CONFIG_LOGLEVEL="warn"
-export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
-# Unset manpath so we can inherit from /etc/manpath via the `manpath`
-unset MANPATH  # delete if you already modified MANPATH elsewhere in your config
-MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
+NODE_REPL_HISTORY_FILE=~/.node_history;

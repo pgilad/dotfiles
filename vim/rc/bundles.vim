@@ -98,16 +98,11 @@ if neobundle#tap('ctrlp.vim')
 
     call neobundle#untap()
 endif
-" NeoBundle 'xolox/vim-reload', {
-" \ 'lazy': 1,
-" \  'autoload' : {
-" \   'filetypes': ['vim']
-" \  }
-" \ }
-"
+
 NeoBundleLazy 'Glench/Vim-Jinja2-Syntax', {
 \   'filetypes': ['jinja2', 'j2', 'jinja']
 \ }
+
 NeoBundle 'pgilad/vim-skeletons'
 if neobundle#tap('vim-skeletons')
     let skeletons#autoRegister = 1
@@ -178,7 +173,6 @@ if neobundle#tap('unite.vim')
     nnoremap <silent> [unite]s :<C-u>UniteWithCursorWord -buffer-name=search -no-empty grep:.:<cr>
     " search word in current buffer
     nnoremap <silent><expr> [unite]*  ":<C-u>UniteWithCursorWord -buffer-name=search%".bufnr('%')." line:all:wrap<CR>"
-
 
     call neobundle#untap()
 endif
@@ -271,9 +265,6 @@ NeoBundleLazy 'gregsexton/MatchTag', {
 NeoBundleLazy 'othree/xml.vim', {
             \   'filetypes':['xml']
             \ }
-" NeoBundleLazy 'jelera/vim-javascript-syntax', {
-" \   'filetypes':['javascript']
-" \ }
 NeoBundleLazy 'othree/yajs.vim', {
             \   'filetypes':['javascript']
             \ }
@@ -287,9 +278,6 @@ NeoBundleLazy 'maksimr/vim-jsbeautify', {
             \ 'filetypes':['javascript', 'json', 'html', 'js', 'jsx', 'css'],
             \ 'depends': ['beautify-web/js-beautify', 'editorconfig-vim']
             \ }
-" NeoBundleLazy 'millermedeiros/vim-esformatter', {
-             " \   'filetypes' : ['js']
-             " \ }
 NeoBundleLazy 'wting/rust.vim', {
             \ 'filetypes': ['rust']
             \ }
@@ -360,27 +348,6 @@ NeoBundleLazy 'tyru/open-browser.vim', {
             \   'functions' : 'openbrowser#open',
             \   'mappings': '<Plug>(openbrowser-'
             \ }
-
-NeoBundleLazy 'godlygeek/tabular', {
-            \   'commands': ['Tabularize']
-            \ }
-if neobundle#tap('tabular')
-    nnoremap <leader>a& :Tabularize /&<cr>
-    vnoremap <leader>a& :Tabularize /&<cr>
-    nnoremap <leader>a" :Tabularize /"<cr>
-    vnoremap <leader>a" :Tabularize /"<cr>
-    nnoremap <leader>a= :Tabularize /=<cr>
-    vnoremap <leader>a= :Tabularize /=<cr>
-    nnoremap <leader>a: :Tabularize /:<cr>
-    vnoremap <leader>a: :Tabularize /:<cr>
-    nnoremap <leader>a:: :Tabularize /:\zs<cr>
-    vnoremap <leader>a:: :Tabularize /:\zs<cr>
-    nnoremap <leader>a, :Tabularize /,<cr>
-    vnoremap <leader>a, :Tabularize /,<cr>
-    nnoremap <leader>a<Bar> :Tabularize /<Bar><cr>
-    vnoremap <leader>a<Bar> :Tabularize /<Bar><cr>
-    call neobundle#untap()
-endif
 
 NeoBundleLazy 'AndrewRadev/inline_edit.vim', {
             \   'commands': ['InlineEdit']
@@ -458,15 +425,6 @@ NeoBundle 'kana/vim-textobj-entire', { 'depends': 'kana/vim-textobj-user' }
 " a, i,
 NeoBundle 'PeterRincker/vim-argumentative'
 
-" NeoBundleLazy 'Raimondi/delimitMate', {
-            " \    'insert' : 1
-           " \}
-" if neobundle#tap('delimitMate')
-    " let delimitMate_expand_cr=1
-    " let delimitMate_expand_space=1
-    " call neobundle#untap()
-" endif
-
 NeoBundleLazy 'scrooloose/syntastic'
 if neobundle#tap('syntastic')
     let filetypes = [
@@ -485,8 +443,22 @@ if neobundle#tap('syntastic')
                 \ 'passive_filetypes': [] }
     let g:syntastic_python_checkers = ['python', 'pylint -E']
     let g:syntastic_ruby_checkers = ['rubocop']
-    function! JavascriptCheckers(curpath)
+
+    function! s:SetLocalNodeBin(curpath, program, syntastic_option)
+        let local_program = finddir('node_modules', '.;') . '/.bin/' . a:program
+        if matchstr(local_program, '^\/\\w') == ''
+            let local_program = a:curpath . '/' . local_program
+        endif
+        if executable(local_program)
+            execute 'let ' . a:syntastic_option . ' = "'.local_program.'"'
+        endif
+    endfunction
+
+    function! s:JavascriptCheckers(curpath)
         let checkers = []
+        call s:SetLocalNodeBin(a:curpath, 'eslint', 'g:syntastic_javascript_eslint_exec')
+        call s:SetLocalNodeBin(a:curpath, 'jshint', 'g:syntastic_javascript_eslint_exec')
+        call s:SetLocalNodeBin(a:curpath, 'jscs', 'g:syntastic_javascript_eslint_exec')
         if filereadable(a:curpath . '/.jscsrc')
             call add(checkers, 'jscs')
         endif
@@ -498,7 +470,7 @@ if neobundle#tap('syntastic')
         endif
         return checkers
     endfunction
-    let g:syntastic_javascript_checkers=JavascriptCheckers(getcwd())
+    let g:syntastic_javascript_checkers=s:JavascriptCheckers(getcwd())
     let g:syntastic_enable_balloons = 0
     let g:syntastic_always_populate_loc_list = 1
     let g:syntastic_aggregate_errors = 1
