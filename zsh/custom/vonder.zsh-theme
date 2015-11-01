@@ -84,15 +84,18 @@ prompt_pure_setup() {
     add-zsh-hook preexec prompt_pure_preexec
 
     zstyle ':vcs_info:*' enable git
+    zstyle ':vcs_info:*' use-simple true
     zstyle ':vcs_info:git*' formats '%F{yellow}%b%f'
     zstyle ':vcs_info:git*' actionformats '%F{yellow}%b|%a'
 
-    # if using ssh connection show username@host
-    [[ -n "$SSH_CONNECTION" ]] && prompt_pure_username=' [%F{cyan}%n@%m%f]'
-    # prompt_pure_username='%F{red}%n%f@%F{cyan}%m%f'
+    # show username@host if logged in through SSH
+    [[ "$SSH_CONNECTION" != '' ]] && prompt_pure_username=' %F{242}%n@%m%f'
+
+    # show username@host if root, with username in white
+    [[ $UID -eq 0 ]] && prompt_pure_username=' %F{white}%n%f%F{242}@%m%f'
 
     # prompt turns red if the previous command didn't exit with 0
-    PROMPT='%(?.%F{magenta}.%F{red})❯%f '
+    PROMPT="%(?.%F{magenta}.%F{red})${PURE_PROMPT_SYMBOL:-❯}%f "
 }
 
 prompt_pure_setup "$@"

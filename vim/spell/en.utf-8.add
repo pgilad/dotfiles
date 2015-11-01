@@ -1342,3 +1342,11 @@ isLabelsDropdownShown
 isLegacyBilling
 onStripeToken
 stripeCheckout
+nextPayment
+dedicatedIps
+stdResp
+loadingBlocks
+loadingBlock
+getTotalThresholds
+showAll
+isExpanded

@@ -11,9 +11,6 @@ if [[ "$(uname)" =~ ^Darwin ]]; then
     source $(brew --prefix nvm)/nvm.sh
     plugins+=brew
 fi
-if [[ -x "$(command -v tmux)" ]]; then
-    plugins+=tmux
-fi
 if [[ -x "$(command -v tmuxinator)" ]]; then
     plugins+=tmuxinator
 fi
@@ -23,4 +20,3 @@ fi
 [[ -f "$HOME/.extra" ]] && source "$HOME/.extra"
 
 [[ -x "$(command -v rbenv)" ]] && eval "$(rbenv init - --no-rehash)"
-
