@@ -3,13 +3,8 @@ if !has('autocmd') | finish | endif
 augroup myfiletypes
     autocmd!
     autocmd BufNewFile,BufRead *.ajs,*.es6,*.es      setlocal filetype=javascript
-    " autocmd BufNewFile,BufRead *.twig              setlocal filetype=html
     autocmd BufNewFile,BufRead *.as                  setlocal filetype=actionscript
     autocmd BufNewFile,BufRead *.asm                 setlocal filetype=nasm
-    autocmd BufNewFile,BufRead .bowerrc              setlocal filetype=json
-    autocmd BufNewFile,BufRead .eslintrc             setlocal filetype=json
-    autocmd BufNewFile,BufRead .jscsrc               setlocal filetype=json
-    autocmd BufNewFile,BufRead .jshintrc             setlocal filetype=json
     autocmd BufNewFile,BufRead *.kml                 setlocal filetype=xml
     autocmd BufNewFile,BufRead *.m                   setlocal filetype=objc
     autocmd BufNewFile,BufRead *.md,*.markdown       setlocal filetype=markdown
@@ -19,6 +14,11 @@ augroup myfiletypes
     autocmd BufNewFile,BufRead *.ts                  setlocal filetype=typescript
     autocmd BufNewFile,BufRead *.txt                 setlocal filetype=text
     autocmd BufNewFile,BufRead *.xdot                setlocal filetype=dot
+    autocmd BufNewFile,BufRead .babelrc              setlocal filetype=json
+    autocmd BufNewFile,BufRead .bowerrc              setlocal filetype=json
+    autocmd BufNewFile,BufRead .eslintrc             setlocal filetype=json
+    autocmd BufNewFile,BufRead .jscsrc               setlocal filetype=json
+    autocmd BufNewFile,BufRead .jshintrc             setlocal filetype=json
     autocmd BufNewFile,BufRead .tmux*.conf*,*.tmux   setlocal filetype=tmux
 augroup END
 
@@ -26,7 +26,7 @@ augroup END
 augroup my_auto_commands
     autocmd!
     " prevent indentation in jade, coffeescript
-    " autocmd FileType coffee,jade setlocal noautoindent
+    autocmd FileType coffee,jade setlocal noautoindent
     autocmd FileType html setlocal matchpairs+=<:>
 
     " autocomplete

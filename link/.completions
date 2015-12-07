@@ -2,10 +2,6 @@ if which npm &> /dev/null; then
     . <(npm completion)
 fi
 
-if which grunt &> /dev/null; then
-    eval "$(grunt --completion=zsh)"
-fi
-
 if which gulp &> /dev/null; then
     eval "$(gulp --completion=zsh)"
 fi

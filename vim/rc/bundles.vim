@@ -198,10 +198,7 @@ if neobundle#tap('nerdtree')
     let NERDTreeBookmarksFile=expand('~/vimfiles/vim-bookmarks.txt')
     call neobundle#untap()
 endif
-NeoBundle 'scrooloose/nerdcommenter', {
-            \   'mappings' : ['<Plug>NERDCommenter']
-            \ }
-
+NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 if neobundle#tap('vim-indent-guides')
     let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'qf', 'vimshell', 'markdown']
