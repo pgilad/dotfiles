@@ -7,7 +7,10 @@ vim_bundles="$HOME/vimfiles/bundle"
 # dir to link files to
 link_dir="$dotfiles/link"
 cache_dir="$HOME/.cache"
-oh_my_zsh_dir="$HOME/.oh-my-zsh"
+zplug="$HOME/.zplug"
+zplug_repo=https://git.io/zplug
+zplug_target=~/.zplug/zplug
+
 # detect OS
 OS="$(uname -s)"
 
@@ -27,18 +30,18 @@ else
     iBad "$cache_dir already exists"
 fi
 
-iStep "Checking that $oh_my_zsh_dir exists"
-if [[ ! -d "$oh_my_zsh_dir" ]]; then
-    echo "Should .oh-my-zsh be installed to $oh_my_zsh_dir ?"
+iStep "Checking that zplug exists"
+if [[ ! -d "$zplug" ]]; then
+    echo "Should zplug be installed to $zplug ?"
     select result in Yes No; do
         if [[ "$result" == "Yes" ]]; then
-            git clone https://github.com/robbyrussell/oh-my-zsh.git "$oh_my_zsh_dir"
-            iGood "$oh_my_zsh_dir created"
+            curl -fLo "$zplug_target" --create-dirs $zplug_repo
+            iGood "zplug installed"
         fi
         break
     done
 else
-    iBad "$oh_my_zsh_dir already exists"
+    iBad "$zplug already exists"
 fi
 
 # Ubuntu-only stuff
