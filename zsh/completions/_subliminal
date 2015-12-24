@@ -1,0 +1,59 @@
+#compdef subliminal
+
+_arguments -C \
+    '1:cmd:->cmds' \
+    '2:options:->options' \
+    '*:: :->args' \
+    && ret=0
+
+case "$state" in
+    (cmds)
+        local commands; commands=(
+            'cache:Cache management.'
+            'download:download best subtitles.'
+            '--version:Show the version and exit.'
+            '--help:Show help message and exit.'
+        )
+        _describe -t commands 'command' commands && ret=0
+        ;;
+    (options)
+        case $line[1] in
+            (cache)
+                local cache; caches=(
+                    "--clear-subliminal:Clear subliminal's cache."
+                )
+                _describe -t caches 'cache' caches && ret=0
+                ;;
+            (download)
+                local download; downloads=(
+                    "-l:Language as IETF code, e.g. en, pt-BR (can be used multiple times). [required]"
+                    "--language:Language as IETF code, e.g. en, pt-BR (can be used multiple times). [required]"
+                    "-p:Provider to use (can be used multiple times)."
+                    "--provider:Provider to use (can be used multiple times)."
+                    "-a:Filter videos newer than AGE, e.g. 12h, 1w2d"
+                    "--age:Filter videos newer than AGE, e.g. 12h, 1w2d"
+                    "-e:Subtitle file encoding, default is to preserve original encoding."
+                    "--encoding:Subtitle file encoding, default is to preserve original encoding."
+                    "-s:Save subtitle without language code in the file name, i.e. use .srt extension."
+                    "--single:Save subtitle without language code in the file name, i.e. use .srt extension."
+                    "-f:Force download even if a subtitle already exist."
+                    "--force:Force download even if a subtitle already exist."
+                    "-hi:Prefer hearing impaired subtitles."
+                    "--hearing-impaired:Prefer hearing impaired subtitles."
+                )
+                _describe -t downloads 'start' downloads && ret=0
+                ;;
+        esac
+        ;;
+    (args)
+        case $line[1] in
+            (download)
+                _files
+                ;;
+        esac
+        ;;
+esac
+
+return 1
+
+_subliminal "$@"

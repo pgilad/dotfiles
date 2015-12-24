@@ -1,25 +1,6 @@
-# Always ignore extensions
-*~
-*.pyc
-*.err
-*.diff
-*.orig
-*.rej
-*.sass-cache
-*.sw?
-*.vi
-
-# Folder view configs
+# Folder view configuration files
 .DS_Store
-
-# General useless stuff
-.idea
-tmp/
-npm-debug.log
-
-# Library installed dependencies
-bower_components/
-node_modules/
+Desktop.ini
 
 # Thumbnail cache files
 ._*
@@ -28,3 +9,19 @@ Thumbs.db
 # Files that might appear on external disks
 .Spotlight-V100
 .Trashes
+
+# Compiled Python files
+*.pyc
+
+# Compiled C++ files
+*.out
+
+# Application specific files
+venv
+node_modules
+.sass-cache
+.idea
+tmp/
+temp/
+npm-debug.log
+bower_components
