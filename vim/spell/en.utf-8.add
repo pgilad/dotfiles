@@ -1448,3 +1448,13 @@ aggregate2
 newAggregatedReport
 aggregatereport
 labelName
+labelId
+columnName
+isLabelPassed
+medianResponseTime
+newAggregateReport
+dynaTrace
+ajaxError
+integrations
+legacyAggregateReport
+segmentsDelay

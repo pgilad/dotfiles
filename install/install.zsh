@@ -20,6 +20,11 @@ function iFinishStep() { echo -e "  \033[1;32m✔\033[0m $@"; }
 function iGood()       { echo -e "    \033[1;32m✔\033[0m $@"; }
 function iBad()        { echo -e "    \033[1;31m✖\033[0m $@"; }
 
+if [[ ! "$SHELL" =~ zsh ]]; then
+    iBad "Please run this script using Zsh shell"
+    exit 1
+fi
+
 iHeader "Starting bootstrap install made by https://github.com/pgilad"
 
 iStep "Creating Cache dir - $cache_dir"
@@ -74,7 +79,7 @@ fi
 iFinishStep "Vim Installation Complete"
 
 iHeader "Creating symlinks"
-for filename in "$link_dir/"*; do
+for filename in "$link_dir/"*(D); do
     baseFile="$(basename "$filename")"
     iStep "Handling file: $baseFile"
     if [[ ! -e ~/"$baseFile" ]]; then
@@ -84,16 +89,6 @@ for filename in "$link_dir/"*; do
     fi
 done
 iFinishStep "Symlinking complete"
-
-if [[ ! "$SHELL" =~ zsh ]]; then
-    if [[ ! -x "$(command -v zsh)" ]]; then
-        iHeader "Changing shell to Zsh. Welcome to the future..."
-        sudo chsh -s /bin/zsh
-        iGood "done changing shell"
-    else
-        iBad "Zsh not found in your system."
-    fi
-fi
 
 # OSX-only stuff.
 if [[ "$OS" =~ ^Darwin ]]; then

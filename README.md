@@ -27,13 +27,15 @@ My config files, mainly Vim, Tmux, Git & Zsh aimed at working in Linux & OSX.
 # Git clone this repository into your `~/.dotfiles`
 $ git clone https://github.com/pgilad/dotfiles.git ~/.dotfiles
 
+# Make sure you have Zsh as your shell
+$ chsh -s /bin/zsh
+$ exec zsh
+
 # Run bootstrap script on Linux/OSX
-$ source ~/.dotfiles/install/install.sh
+$ . ~/.dotfiles/install/install.zsh
 
 # Optionally apply hacker defaults on OSX
 $ source ~/.dotfiles/install/osx.sh
-
-# on Windows - run `install/install.cmd`
 ```
 
 ### What happens during install & load
@@ -135,7 +137,7 @@ set secure
 
 ## Zsh
 
-- Uses Oh-My-Zsh alongside customization and completion
+- Uses Zplug alongside customization and completion
 
 ## Thanks (in no particular order)
 
