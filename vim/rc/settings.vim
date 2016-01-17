@@ -92,7 +92,7 @@ set smartcase                                   " be smart about searching
 set infercase                                   " ignore case in autocomplete
 set hlsearch                                    " highlight search
 set incsearch                                   " increment search
-set synmaxcol=2000
+set synmaxcol=200
 set lazyredraw                                  " Don't redraw while executing macros (good performance config)
 set notimeout
 set t_Co=256                                    " 256bit terminal
@@ -114,8 +114,8 @@ set novisualbell                                " no annoying flashes
 set t_vb=                                       " disable visual bell
 set tm=500
 set number                                      " show line number
-set norelativenumber                              " line numbers are relative
-set cursorline                                  " highlight where cursor is
+set norelativenumber                            " line numbers are relative
+set nocursorline                                " don't highlight where cursor is
 set nowrap                                      " turn word wrapping on long lines off
 set wrapscan                                    " Searches wrap around the end of file
 set cpoptions+=$                                " when changing - mark block end with $

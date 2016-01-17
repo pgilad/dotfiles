@@ -271,6 +271,10 @@ NeoBundleLazy 'pangloss/vim-javascript', {
 NeoBundleLazy 'beautify-web/js-beautify', {
             \   'filetypes' : ['html', 'css', 'js']
             \ }
+if neobundle#tap('js-beautify')
+    nnoremap <leader>fj :!js-beautify % -r -X<cr>
+endif
+
 NeoBundleLazy 'maksimr/vim-jsbeautify', {
             \ 'filetypes':['javascript', 'json', 'html', 'js', 'jsx', 'css'],
             \ 'depends': ['beautify-web/js-beautify', 'editorconfig-vim']
