@@ -17,9 +17,9 @@ My config files, mainly Vim, Tmux, Git & Zsh aimed at working in Linux & OSX.
 
 ## Dependencies
 
-- Git
-- Vim
-- Zsh
+- `Git`
+- `Vim`
+- `Zsh`
 
 ## Installation
 
