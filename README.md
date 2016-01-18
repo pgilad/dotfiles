@@ -33,7 +33,12 @@ $ exec zsh
 $ . ~/.dotfiles/install/install.zsh
 
 # Optionally apply hacker defaults on OSX
-$ source ~/.dotfiles/install/osx.sh
+$ . ~/.dotfiles/install/osx.sh
+
+# After installation is complete, open a new shell or run:
+$ . ~/.zshrc
+$ zplug install
+$ zplug update --self
 ```
 
 ### What happens during install & load
