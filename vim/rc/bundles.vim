@@ -254,7 +254,7 @@ NeoBundleLazy 'hokaccha/vim-html5validator', {
             \ 'filetypes' : ['html']
             \ }
 NeoBundleLazy 'digitaltoad/vim-jade', {
-            \   'filetypes':['jade']
+            \   'filetypes':['jade', 'pug']
             \ }
 NeoBundleLazy 'gregsexton/MatchTag', {
             \   'filetypes':['html','xml']
