@@ -253,7 +253,7 @@ NeoBundleLazy 'othree/html5.vim', {
 NeoBundleLazy 'hokaccha/vim-html5validator', {
             \ 'filetypes' : ['html']
             \ }
-NeoBundleLazy 'digitaltoad/vim-jade', {
+NeoBundleLazy 'digitaltoad/vim-pug', {
             \   'filetypes':['jade', 'pug']
             \ }
 NeoBundleLazy 'gregsexton/MatchTag', {
@@ -402,6 +402,7 @@ endif
 
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
+NeoBundle 'fuadsaud/vim-react-snippets'
 if neobundle#tap('ultisnips')
     "set to where my /mysnippets directory exists
     set runtimepath+=~/.dotfiles/vim/

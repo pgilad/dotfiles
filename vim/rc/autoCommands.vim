@@ -14,6 +14,7 @@ augroup myfiletypes
     autocmd BufNewFile,BufRead *.ts                  setlocal filetype=typescript
     autocmd BufNewFile,BufRead *.txt                 setlocal filetype=text
     autocmd BufNewFile,BufRead *.xdot                setlocal filetype=dot
+    autocmd BufNewFile,BufRead *.jade                setlocal filetype=pug
     autocmd BufNewFile,BufRead .babelrc              setlocal filetype=json
     autocmd BufNewFile,BufRead .bowerrc              setlocal filetype=json
     autocmd BufNewFile,BufRead .eslintrc             setlocal filetype=json
