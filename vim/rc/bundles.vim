@@ -248,25 +248,28 @@ NeoBundleLazy 'csscomb/vim-csscomb', {
             \   'filetypes': ['css', 'less', 'sass']
             \ }
 NeoBundleLazy 'othree/html5.vim', {
-            \   'filetypes':['html']
+            \   'filetypes': ['html']
             \ }
 NeoBundleLazy 'hokaccha/vim-html5validator', {
             \ 'filetypes' : ['html']
             \ }
 NeoBundleLazy 'digitaltoad/vim-pug', {
-            \   'filetypes':['jade', 'pug']
+            \   'filetypes': ['jade', 'pug']
             \ }
 NeoBundleLazy 'gregsexton/MatchTag', {
-            \   'filetypes':['html','xml']
+            \   'filetypes': ['html','xml']
             \ }
 NeoBundleLazy 'othree/xml.vim', {
-            \   'filetypes':['xml']
+            \   'filetypes': ['xml']
+            \ }
+NeoBundleLazy 'samuelsimoes/vim-jsx-utils', {
+            \   'filetypes': ['javascript']
             \ }
 NeoBundleLazy 'othree/yajs.vim', {
-            \   'filetypes':['javascript']
+            \   'filetypes': ['javascript']
             \ }
 NeoBundleLazy 'pangloss/vim-javascript', {
-            \   'filetypes':['javascript']
+            \   'filetypes': ['javascript']
             \ }
 NeoBundleLazy 'beautify-web/js-beautify', {
             \   'filetypes' : ['html', 'css', 'js']
@@ -291,7 +294,7 @@ NeoBundleLazy 'othree/javascript-libraries-syntax.vim', {
             \   'filetypes':['javascript','coffee']
             \ }
 if neobundle#tap('javascript-libraries-syntax.vim')
-    let g:used_javascript_libs = 'underscore,angularjs,jquery,jasmine,angularui,requirejs,backbone,react'
+    let g:used_javascript_libs = 'underscore,angularjs,jquery,backbone,react'
     call neobundle#untap()
 endif
 
