@@ -7,9 +7,6 @@ vim_bundles="$HOME/vimfiles/bundle"
 # dir to link files to
 link_dir="$dotfiles/link"
 cache_dir="$HOME/.cache"
-zplug="$HOME/.zplug"
-zplug_repo=https://git.io/zplug
-zplug_target=~/.zplug/zplug
 
 # detect OS
 OS="$(uname -s)"
@@ -33,20 +30,6 @@ if [[ ! -d "$cache_dir" ]]; then
     iGood "$cache_dir created"
 else
     iBad "$cache_dir already exists"
-fi
-
-iStep "Checking that zplug exists"
-if [[ ! -d "$zplug" ]]; then
-    echo "Should zplug be installed to $zplug ?"
-    select result in Yes No; do
-        if [[ "$result" == "Yes" ]]; then
-            curl -fLo "$zplug_target" --create-dirs $zplug_repo
-            iGood "zplug installed"
-        fi
-        break
-    done
-else
-    iBad "$zplug already exists"
 fi
 
 # Ubuntu-only stuff

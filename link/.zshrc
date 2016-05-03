@@ -7,27 +7,11 @@ export PATH="/usr/local/sbin:$PATH"
 export CACHE_DIR="$HOME/.cache"
 export DOTFILES="$HOME/.dotfiles"
 
-fpath=($HOME/.dotfiles/zsh/completions $fpath)
-
-[[ ! -d "$CACHE_DIR" ]] && mkdir -p "$CACHE_DIR"
-
 # Don't clear the screen after quitting a manual page.
 export MANPAGER='less -X';
 
 # Always enable colored `grep` output.
 export GREP_OPTIONS='--color=auto';
-
-export _FASD_DATA="$CACHE_DIR/.fasd" # set fasd data file location
-export HISTSIZE=4096
-export HISTCONTROL=ignoredups # ignore history duplicate of last command
-export HISTFILE="$CACHE_DIR/.zsh_history"
-export LESS_TERMCAP_md="${yellow}" # Highlight section titles in manual pages.
-
-export ZSH_CUSTOM="$DOTFILES/zsh/custom"
-export ZSH_THEME="vonder"
-export DISABLE_AUTO_UPDATE=true
-export DISABLE_AUTO_TITLE=true
-
 export JOBS=max # tell npm to install concurrently
 export EDITOR=vim
 export VISUAL=vim
@@ -49,30 +33,47 @@ export LC_ALL=en_US.UTF-8
 
 export NODE_REPL_HISTORY_FILE=~/.node_history;
 
+export _FASD_DATA="$CACHE_DIR/.fasd" # set fasd data file location
+export HISTSIZE=4096
+export HISTCONTROL=ignoredups # ignore history duplicate of last command
+export HISTFILE="$CACHE_DIR/.zsh_history"
+export LESS_TERMCAP_md="${yellow}" # Highlight section titles in manual pages.
+export ZPLUG_HOME="$HOME/.zplug"
+
+[[ ! -d "$CACHE_DIR" ]] && mkdir -p "$CACHE_DIR"
+[[ -d "$ZPLUG_HOME" ]] || {
+    curl -sL git.io/zplug | zsh
+    source "$ZPLUG_HOME/zplug"
+    zplug update --self
+}
+
+fpath=($HOME/.dotfiles/zsh/completions $fpath)
+
 [[ -x "$(command -v rbenv)" ]] && eval "$(rbenv init - zsh --no-rehash)"
 
-source "$HOME/.zplug/zplug"
+source "$ZPLUG_HOME/zplug"
+
 # Let zplug manage itself
 zplug "b4b4r07/zplug"
 
-zplug "creationix/nvm", from:github, at:v0.29.0, as:plugin, of:nvm.sh
+zplug "creationix/nvm", from:github, as:plugin, use:nvm.sh
+zplug "lib/directories", from:oh-my-zsh
 zplug "plugins/brew", from:oh-my-zsh, if:"[[ $(uname) =~ ^Darwin ]]"
-zplug "plugins/git", from:oh-my-zsh
+zplug "plugins/docker", from:oh-my-zsh
+zplug "plugins/git", from:oh-my-zsh,  if:"(( $+commands[git] ))", nice:10
 zplug "plugins/git-extras", from:oh-my-zsh
 zplug "plugins/tmuxinator", from:oh-my-zsh
 zplug "plugins/vagrant", from:oh-my-zsh
+# zplug "themes/avit", from:oh-my-zsh
+zplug "zsh-users/zsh-history-substring-search"
+
+zplug "lib/theme-and-appearance", from:oh-my-zsh
+zplug "$DOTFILES/zsh/custom/vonder.zsh-theme", from:local, nice:10
+
 zplug "zsh-users/zsh-syntax-highlighting", nice:10
 
-# Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
-
-# Then, source plugins and add commands to $PATH
-zplug load --verbose
+zplug check || zplug install
+zplug load
 
 autoload -U compinit && compinit
 
