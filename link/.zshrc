@@ -41,6 +41,7 @@ export LESS_TERMCAP_md="${yellow}" # Highlight section titles in manual pages.
 export ZPLUG_HOME="$HOME/.zplug"
 
 [[ ! -d "$CACHE_DIR" ]] && mkdir -p "$CACHE_DIR"
+
 [[ -d "$ZPLUG_HOME" ]] || {
     curl -sL git.io/zplug | zsh
     source "$ZPLUG_HOME/zplug"
@@ -64,7 +65,6 @@ zplug "plugins/git", from:oh-my-zsh,  if:"(( $+commands[git] ))", nice:10
 zplug "plugins/git-extras", from:oh-my-zsh
 zplug "plugins/tmuxinator", from:oh-my-zsh
 zplug "plugins/vagrant", from:oh-my-zsh
-# zplug "themes/avit", from:oh-my-zsh
 zplug "zsh-users/zsh-history-substring-search"
 
 zplug "lib/theme-and-appearance", from:oh-my-zsh
