@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 # dotfiles dir
 dotfiles="$HOME/.dotfiles"
@@ -6,7 +6,8 @@ dotfiles="$HOME/.dotfiles"
 vim_bundles="$HOME/vimfiles/bundle"
 # dir to link files to
 link_dir="$dotfiles/link"
-cache_dir="$HOME/.cache"
+export CACHE_DIR="$HOME/.cache"
+[[ ! -d "$CACHE_DIR" ]] && mkdir -p "$CACHE_DIR"
 
 # detect OS
 OS="$(uname -s)"
@@ -23,35 +24,6 @@ if [[ ! "$SHELL" =~ zsh ]]; then
 fi
 
 iHeader "Starting bootstrap install made by https://github.com/pgilad"
-
-iStep "Creating Cache dir - $cache_dir"
-if [[ ! -d "$cache_dir" ]]; then
-    mkdir -p "$cache_dir"
-    iGood "$cache_dir created"
-else
-    iBad "$cache_dir already exists"
-fi
-
-# Ubuntu-only stuff
-if [[ "$OS" =~ ^Linux ]]; then
-    iHeader "Running Linux Setup"
-    # specify the sudoers filename
-    sudoers_file=sudoers-dotfiles
-    # sudoers file location
-    sudoers_src=$dotfiles/install/ubuntu/$sudoers_file
-    # sudoers dest
-    sudoers_dest=/etc/sudoers.d/$sudoers_file
-    # copy sudoers to sudoers.d
-    if [[ ! -e "$sudoers_dest" || "$sudoers_dest" -ot "$sudoers_src" ]]; then
-        iStep "Setting up sudo account for easier installing"
-        visudo -cf "$sudoers_src" >/dev/null &&
-            sudo cp "$sudoers_src" "$sudoers_dest" &&
-            sudo chmod 0440 "$sudoers_dest" &&
-            echo "File $sudoers_dest updated." ||
-            echo "Error updating $sudoers_dest file."
-    fi
-    iFinishStep "Linux installation complete"
-fi
 
 iHeader "Running vim setup"
 # make vim bundles dir

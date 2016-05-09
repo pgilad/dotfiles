@@ -1579,3 +1579,11 @@ vendorName
 PageVisibility
 dropzone
 locationsText
+wistia
+sm
+WebDriver
+basename
+filterByLocations
+filterByTestIds
+nodesColors
+processEntry

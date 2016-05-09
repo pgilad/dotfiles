@@ -435,7 +435,7 @@ if neobundle#tap('syntastic')
     let filetypes = [
                 \  'javascript', 'coffee', 'zsh', 'json', 'less',
                 \ 'css', 'jade', 'ruby', 'html', 'sh', 'php',
-                \ 'python'
+                \ 'python', 'bash'
                 \ ]
     call neobundle#config({
                 \   'autoload' : {
@@ -450,6 +450,7 @@ if neobundle#tap('syntastic')
     let g:syntastic_ruby_checkers = ['rubocop']
 
     function! s:SetLocalNodeBin(curpath, program, syntastic_option)
+        " try to use a local exec in node_modules
         let local_program = finddir('node_modules', '.;') . '/.bin/' . a:program
         if matchstr(local_program, '^\/\\w') == ''
             let local_program = a:curpath . '/' . local_program
@@ -464,10 +465,10 @@ if neobundle#tap('syntastic')
         call s:SetLocalNodeBin(a:curpath, 'eslint', 'g:syntastic_javascript_eslint_exec')
         call s:SetLocalNodeBin(a:curpath, 'jshint', 'g:syntastic_javascript_eslint_exec')
         call s:SetLocalNodeBin(a:curpath, 'jscs', 'g:syntastic_javascript_eslint_exec')
-        if filereadable(a:curpath . '/.jscsrc*')
+        if filereadable(a:curpath . '/.jscsrc')
             call add(checkers, 'jscs')
         endif
-        if filereadable(a:curpath . '/.jshintrc*')
+        if filereadable(a:curpath . '/.jshintrc')
             call add(checkers, 'jshint')
         endif
         if len(globpath(a:curpath, '.eslintrc*')) > 0
