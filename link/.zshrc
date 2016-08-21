@@ -61,6 +61,7 @@ zplug "zplug/zplug"
 # Don't forget to run `nvm install node && nvm alias default node`
 zplug "creationix/nvm", from:github, as:plugin, use:nvm.sh
 zplug "lib/directories", from:oh-my-zsh
+zplug "lib/completion", from:oh-my-zsh
 zplug "lib/key-bindings", from:oh-my-zsh
 zplug "plugins/brew", from:oh-my-zsh, if:"[[ $(uname) =~ ^Darwin ]]"
 zplug "plugins/docker", from:oh-my-zsh

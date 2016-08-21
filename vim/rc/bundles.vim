@@ -271,6 +271,12 @@ NeoBundleLazy 'othree/yajs.vim', {
 NeoBundleLazy 'pangloss/vim-javascript', {
             \   'filetypes': ['javascript']
             \ }
+NeoBundleLazy 'mxw/vim-jsx', {
+            \   'filetypes': ['javascript']
+            \ }
+if neobundle#tap('vim-jsx')
+    let g:jsx_ext_required = 0
+endif
 NeoBundleLazy 'beautify-web/js-beautify', {
             \   'filetypes' : ['html', 'css', 'js']
             \ }
@@ -308,9 +314,6 @@ NeoBundleLazy 'jtratner/vim-flavored-markdown.git', {'filetypes':['markdown']}
 NeoBundleLazy 'kannokanno/previm', {
             \ 'depends' : ['open-browser.vim'],
             \ 'filetypes' : ['markdown']
-            \ }
-NeoBundleLazy 'tejr/vim-tmux', {
-            \ 'filetypes' : ['tmux']
             \ }
 NeoBundle 'tpope/vim-unimpaired'
 
