@@ -54,10 +54,13 @@ if [[ "$OS" =~ ^Darwin ]]; then
         # install homebrew
         ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
     fi
+    iStep "Updating brew"
     brew update
+    iStep "Upgrading brew packages"
     brew upgrade --all
     brew tap Homebrew/bundle
     scriptPath=$(dirname "$0")
+    iStep "Installing brew packages... This might take a while"
     brew bundle --file="$scriptPath/Brewfile"
     iFinishStep "OSX installation complete"
 fi

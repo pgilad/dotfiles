@@ -1639,3 +1639,14 @@ styleMaps
 byOrganization
 ownerEmail
 libs
+availableLimits
+didInvalidate
+isFetching
+lastUpdated
+createSecurityAlertForm
+securityAlertForm
+beingTested
+beingRemoved
+beingUpdated
+beingAdded
+scrollspy
