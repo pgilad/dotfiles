@@ -409,6 +409,8 @@ endif
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'fuadsaud/vim-react-snippets'
+NeoBundle 'pgilad/vim-react-proptypes-snippets'
+
 if neobundle#tap('ultisnips')
     "set to where my /mysnippets directory exists
     set runtimepath+=~/.dotfiles/vim/
