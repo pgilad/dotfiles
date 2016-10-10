@@ -33,8 +33,10 @@ export ANDROID_HOME=/usr/local/opt/android-sdk
 # history settings
 export HISTSIZE=100000
 export SAVEHIST=100000
+export HISTFILESIZE=$HISTSIZE
 export HISTCONTROL=ignoredups
 export HISTFILE="${CACHE_DIR}/.zsh_history"
+export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help"
 
 # set the correct term with TMUX
 if [[ -n "${TMUX}" ]]; then
@@ -55,6 +57,8 @@ if [[ ! -d "${ZPLUG_HOME}" ]]; then
 else
     source "${ZPLUG_HOME}/init.zsh"
 fi
+
+zstyle ':zplug:tag' depth 42
 
 fpath=(${HOME}/.dotfiles/zsh/completions $fpath)
 
