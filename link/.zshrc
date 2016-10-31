@@ -49,6 +49,8 @@ fi
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
+zstyle ':zplug:tag' depth 42
+
 if [[ ! -d "${ZPLUG_HOME}" ]]; then
     echo "Installing zplug"
     curl --progress-bar -sL zplug.sh/installer | zsh
@@ -58,26 +60,17 @@ else
     source "${ZPLUG_HOME}/init.zsh"
 fi
 
-zstyle ':zplug:tag' depth 42
-
-fpath=(${HOME}/.dotfiles/zsh/completions $fpath)
+fpath=(${DOTFILES}/zsh/completions $fpath)
 
 zplug "zplug/zplug"
+
 zplug "creationix/nvm", from:github, as:plugin, use:nvm.sh
-zplug "robbyrussell/oh-my-zsh", use:"lib/directories.zsh"
-zplug "robbyrussell/oh-my-zsh", use:"lib/completion.zsh"
-zplug "robbyrussell/oh-my-zsh", use:"lib/key-bindings.zsh"
-zplug "plugins/brew", from:oh-my-zsh, if:"[[ $(uname) =~ ^Darwin ]]"
-zplug "plugins/docker", from:oh-my-zsh
-zplug "plugins/git", from:oh-my-zsh, if:"(( $+commands[git] ))", nice:10
+zplug "robbyrussell/oh-my-zsh", use:"lib/{key-bindings,completion,directories,theme-and-appearance}.zsh"
 zplug "plugins/git-extras", from:oh-my-zsh
 zplug "plugins/tmuxinator", from:oh-my-zsh
 zplug "plugins/vagrant", from:oh-my-zsh
 zplug "zsh-users/zsh-history-substring-search"
-
-zplug "robbyrussell/oh-my-zsh", use:"lib/theme-and-appearance.zsh"
 zplug "${DOTFILES}/zsh/custom/vonder.zsh-theme", from:local, nice:10
-
 zplug "zsh-users/zsh-syntax-highlighting", nice:10
 
 zplug check || zplug install
@@ -90,7 +83,10 @@ fi
 
 autoload -U compinit && compinit
 
-[[ -x "$(command -v rbenv)" ]] && eval "$(rbenv init - zsh --no-rehash)"
+if which rbenv &> /dev/null; then
+    eval "$(rbenv init - zsh --no-rehash)"
+fi
+
 [[ -f "${HOME}/.aliases" ]] && source "${HOME}/.aliases"
 [[ -f "${HOME}/.completions" ]] && source "${HOME}/.completions"
 [[ -f "${HOME}/.extra" ]] && source "${HOME}/.extra"
