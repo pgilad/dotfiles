@@ -7,7 +7,7 @@ setopt extended_history
 setopt hist_ignore_space
 
 export DOTFILES="${HOME}/.dotfiles"
-export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 export CACHE_DIR="${HOME}/.cache"
 [[ ! -d "${CACHE_DIR}" ]] && mkdir -p "${CACHE_DIR}"
 
@@ -62,16 +62,16 @@ fi
 
 fpath=(${DOTFILES}/zsh/completions $fpath)
 
-zplug "zplug/zplug"
+# zplug "zplug/zplug"
 
-zplug "creationix/nvm", from:github, as:plugin, use:nvm.sh
-zplug "robbyrussell/oh-my-zsh", use:"lib/{key-bindings,completion,directories,theme-and-appearance}.zsh"
-zplug "plugins/git-extras", from:oh-my-zsh
-zplug "plugins/tmuxinator", from:oh-my-zsh
-zplug "plugins/vagrant", from:oh-my-zsh
+zplug "creationix/nvm", use:nvm.sh
+zplug "robbyrussell/oh-my-zsh", use:"plugins/{git-extras,tmuxinator,vagrant}"
+zplug "robbyrussell/oh-my-zsh", use:"lib/{key-bindings,completion,directories}.zsh"
+
 zplug "zsh-users/zsh-history-substring-search"
-zplug "${DOTFILES}/zsh/custom/vonder.zsh-theme", from:local, nice:10
-zplug "zsh-users/zsh-syntax-highlighting", nice:10
+zplug "zsh-users/zsh-syntax-highlighting", defer:3
+
+zplug "simnalamburt/shellder", as:theme
 
 zplug check || zplug install
 zplug load
@@ -80,8 +80,6 @@ if zplug check "creationix/nvm" && [[ $(nvm current) == "none" ]]; then
     nvm install node
     nvm alias default node
 fi
-
-autoload -U compinit && compinit
 
 if which rbenv &> /dev/null; then
     eval "$(rbenv init - zsh --no-rehash)"

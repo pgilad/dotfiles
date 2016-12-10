@@ -1,6 +1,6 @@
 [core]
     autocrlf = false
-    excludesfile = ~/.dotfiles/git/.gitignore_global
+	excludesfile = /Users/pgilad/.dotfiles/git/.gitignore_global
     attributesfile = ~/.dotfiles/.gitattributes
     editor = vim
     pager = less -FRSX
@@ -89,3 +89,9 @@
     insteadOf = "gist:"
 [include]
     path = ~/.gitconfig.local
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
