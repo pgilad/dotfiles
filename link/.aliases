@@ -22,3 +22,5 @@ alias opensocks='networksetup -setsocksfirewallproxy "WI-FI" localhost 8080'
 alias closesocks='networksetup -setsocksfirewallproxystate "WI-FI" off'
 
 alias listenports='lsof -i | grep LISTEN'
+
+alias -g sublhe='subliminal download -l he'

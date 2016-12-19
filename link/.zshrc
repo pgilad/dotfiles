@@ -1,10 +1,47 @@
-setopt no_beep # Disable sound
 setopt glob_dots # glob for dotfiles as well (hidden)
-setopt share_history
-setopt inc_append_history
-setopt hist_ignore_all_dups
+setopt no_beep # Disable sound
+
+setopt append_history
 setopt extended_history
+setopt hist_expire_dups_first
+setopt hist_ignore_all_dups
+setopt hist_ignore_dups
 setopt hist_ignore_space
+setopt hist_verify
+setopt inc_append_history
+setopt share_history
+
+unsetopt menu_complete
+unsetopt flowcontrol
+
+setopt always_to_end
+setopt auto_menu
+setopt complete_in_word
+
+zstyle ':completion:*:*:*:*:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
+
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
+
+zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-directories
+
+zstyle ':completion::complete:*' use-cache 1
+zstyle ':completion::complete:*' cache-path $ZSH_CACHE_DIR
+
+bindkey '^r' history-incremental-search-backward
+
+setopt auto_pushd
+setopt pushd_ignore_dups
+setopt pushdminus
+
+alias -g ...='../..'
+alias -g ....='../../..'
+alias -g .....='../../../..'
+alias -g ......='../../../../..'
+
+alias lsa='ls -lah'
+alias ll='ls -lh'
 
 export DOTFILES="${HOME}/.dotfiles"
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
@@ -65,13 +102,14 @@ fpath=(${DOTFILES}/zsh/completions $fpath)
 # zplug "zplug/zplug"
 
 zplug "creationix/nvm", use:nvm.sh
-zplug "robbyrussell/oh-my-zsh", use:"plugins/{git-extras,tmuxinator,vagrant}"
-zplug "robbyrussell/oh-my-zsh", use:"lib/{key-bindings,completion,directories}.zsh"
+zplug "tj/git-extras", use:"etc/git-extras-completion.zsh", defer:3
+zplug "tmuxinator/tmuxinator", use:"completion/tmuxinator.zsh", defer:3
 
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-syntax-highlighting", defer:3
 
-zplug "simnalamburt/shellder", as:theme
+zplug "mafredri/zsh-async", on:sindresorhus/pure
+zplug "sindresorhus/pure", use:pure.zsh, defer:3
 
 zplug check || zplug install
 zplug load
