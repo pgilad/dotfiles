@@ -1,6 +1,6 @@
 [core]
     autocrlf = false
-	excludesfile = /Users/pgilad/.dotfiles/git/.gitignore_global
+    excludesfile = /Users/pgilad/.dotfiles/git/.gitignore_global
     attributesfile = ~/.dotfiles/.gitattributes
     editor = vim
     pager = less -FRSX
@@ -19,8 +19,6 @@
 [branch]
     # Checking remote branches are setup with tracking by default
     autosetupmerge = true
-    # always git pull --rebase, not more Merge commits spam
-    ; autosetuprebase = always
 [color]
     interactive = auto
     diff = auto
@@ -91,7 +89,7 @@
     path = ~/.gitconfig.local
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true

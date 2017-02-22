@@ -25,3 +25,5 @@ tmp/
 temp/
 npm-debug.log
 bower_components
+
+.idea/a.blazemeter.com.iml

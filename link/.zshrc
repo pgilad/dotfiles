@@ -99,7 +99,7 @@ fi
 
 fpath=(${DOTFILES}/zsh/completions $fpath)
 
-# zplug "zplug/zplug"
+zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
 zplug "creationix/nvm", use:nvm.sh
 zplug "tj/git-extras", use:"etc/git-extras-completion.zsh", defer:3
@@ -119,6 +119,11 @@ if zplug check "creationix/nvm" && [[ $(nvm current) == "none" ]]; then
     nvm alias default node
 fi
 
+if zplug check "zsh-users/zsh-history-substring-search"; then
+    bindkey '^[[A' history-substring-search-up
+    bindkey '^[[B' history-substring-search-down
+fi
+
 if which rbenv &> /dev/null; then
     eval "$(rbenv init - zsh --no-rehash)"
 fi
@@ -126,3 +131,5 @@ fi
 [[ -f "${HOME}/.aliases" ]] && source "${HOME}/.aliases"
 [[ -f "${HOME}/.completions" ]] && source "${HOME}/.completions"
 [[ -f "${HOME}/.extra" ]] && source "${HOME}/.extra"
+
+export PATH="$PATH:$HOME/.yarn/bin"

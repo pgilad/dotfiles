@@ -24,3 +24,5 @@ alias closesocks='networksetup -setsocksfirewallproxystate "WI-FI" off'
 alias listenports='lsof -i | grep LISTEN'
 
 alias -g sublhe='subliminal download -l he'
+
+alias ..="cd .."
