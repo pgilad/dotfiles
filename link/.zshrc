@@ -90,9 +90,9 @@ zstyle ':zplug:tag' depth 42
 
 if [[ ! -d "${ZPLUG_HOME}" ]]; then
     echo "Installing zplug"
-    curl --progress-bar -sL zplug.sh/installer | zsh
+    curl -sL --proto-redir -all,https https://zplug.sh/installer | zsh
     source "${ZPLUG_HOME}/init.zsh"
-    zplug update --self
+    zplug update
 else
     source "${ZPLUG_HOME}/init.zsh"
 fi
@@ -103,10 +103,10 @@ zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
 zplug "creationix/nvm", use:nvm.sh
 zplug "tj/git-extras", use:"etc/git-extras-completion.zsh", defer:3
-zplug "tmuxinator/tmuxinator", use:"completion/tmuxinator.zsh", defer:3
+zplug "tmuxinator/tmuxinator", as:plugin, use:"completion/tmuxinator.zsh", defer:3, if:"[[ command -v tmuxinator ]]"
 
 zplug "zsh-users/zsh-history-substring-search"
-zplug "zsh-users/zsh-syntax-highlighting", defer:3
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 zplug "mafredri/zsh-async", on:sindresorhus/pure
 zplug "sindresorhus/pure", use:pure.zsh, defer:3
