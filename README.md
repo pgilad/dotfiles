@@ -38,7 +38,9 @@ $ . ~/.dotfiles/install/osx.sh
 # After installation is complete, open a new shell or run:
 $ . ~/.zshrc
 $ zplug install
-$ zplug update --self
+
+# To update plugins
+$ zplug update
 ```
 
 ### What happens during install & load
