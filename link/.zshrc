@@ -103,7 +103,7 @@ zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
 zplug "creationix/nvm", use:nvm.sh
 zplug "tj/git-extras", use:"etc/git-extras-completion.zsh", defer:3
-zplug "tmuxinator/tmuxinator", as:plugin, use:"completion/tmuxinator.zsh", defer:3, if:"[[ command -v tmuxinator ]]"
+zplug "tmuxinator/tmuxinator", use:"completion/tmuxinator.zsh", defer:3, if:"[[ command -v tmuxinator ]]"
 
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
