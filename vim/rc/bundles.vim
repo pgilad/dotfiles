@@ -100,7 +100,6 @@ if neobundle#tap('ctrlp.vim')
 endif
 
 NeoBundleLazy 'nginx.vim', { 'filetypes': ['nginx'] }
-" NeoBundleLazy 'juanpabloaj/vim-istanbul', { 'filetypes': ['javascript'] }
 
 NeoBundleLazy 'Glench/Vim-Jinja2-Syntax', {
 \   'filetypes': ['jinja2', 'j2', 'jinja']
