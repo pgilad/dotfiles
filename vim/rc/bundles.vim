@@ -49,26 +49,7 @@ if has('lua') && v:version >= 703
         call neobundle#untap()
     endif
 endif
-" NeoBundle 'Shougo/vimfiler.vim', {
-" \ 'lazy': 1,
-" \ 'depends' : 'Shougo/unite.vim',
-" \'autoload': {
-" \ 'commands' : [
-" \         { 'name' : 'VimFiler',
-" \           'complete' : 'customlist,vimfiler#complete' },
-" \         { 'name' : 'VimFilerTab',
-" \           'complete' : 'customlist,vimfiler#complete' },
-" \         { 'name' : 'VimFilerExplorer',
-" \           'complete' : 'customlist,vimfiler#complete' },
-" \         { 'name' : 'Edit',
-" \           'complete' : 'customlist,vimfiler#complete' },
-" \         { 'name' : 'Write',
-" \           'complete' : 'customlist,vimfiler#complete' },
-" \         'Read', 'Source'],
-" \ 'mappings' : '<Plug>(vimfiler_',
-" \ 'explorer' : 1,
-" \ }
-" \ }
+
 NeoBundle 'kien/ctrlp.vim'
 if neobundle#tap('ctrlp.vim')
     let ctrlp_ignore = ['public', 'build', 'dist', 'node_modules', '.idea', '.git', 'bower_components']
@@ -215,70 +196,48 @@ if neobundle#tap('vim-indent-guides')
     call neobundle#untap()
 endif
 
-NeoBundleLazy 'cespare/vim-toml', {
-            \ 'filetypes': ['toml']
-            \ }
-NeoBundleLazy 'StanAngeloff/php.vim', {
-            \ 'filetypes': ['php']
-            \ }
+NeoBundleLazy 'cespare/vim-toml', { 'filetypes': ['toml'] }
+NeoBundleLazy 'StanAngeloff/php.vim', { 'filetypes': ['php'] }
 NeoBundleLazy 'Shougo/junkfile.vim', {
             \  'commands': 'JunkfileOpen',
             \  'unite_sources': ['junkfile', 'junkfile/new']
             \ }
-NeoBundleLazy 'kchmck/vim-coffee-script', {
-            \  'filetypes' : ['coffee']
-            \}
-NeoBundleLazy 'ap/vim-css-color', {
-            \   'filetypes':['css','scss','sass','less','styl']
-            \ }
-NeoBundleLazy 'hail2u/vim-css3-syntax', {
-            \   'filetypes':['css', 'less']
-            \ }
-NeoBundleLazy 'ingydotnet/yaml-vim', {
-            \   'filetypes':['yml', 'yaml']
-            \ }
-NeoBundleLazy 'cakebaker/scss-syntax.vim', {
-            \   'filetypes':['sass', 'scss']
-            \ }
-NeoBundleLazy 'wavded/vim-stylus', {
-            \   'filetypes': ['stylus']
-            \ }
-NeoBundleLazy 'groenewege/vim-less', {
-            \   'filetypes':['less', 'css']
-            \ }
-NeoBundleLazy 'csscomb/vim-csscomb', {
-            \   'filetypes': ['css', 'less', 'sass']
-            \ }
-NeoBundleLazy 'othree/html5.vim', {
-            \   'filetypes': ['html']
-            \ }
-NeoBundleLazy 'hokaccha/vim-html5validator', {
-            \ 'filetypes' : ['html']
-            \ }
-NeoBundleLazy 'digitaltoad/vim-pug', {
-            \   'filetypes': ['jade', 'pug']
-            \ }
-NeoBundleLazy 'gregsexton/MatchTag', {
-            \   'filetypes': ['html','xml']
-            \ }
-NeoBundleLazy 'othree/xml.vim', {
-            \   'filetypes': ['xml']
-            \ }
-NeoBundleLazy 'samuelsimoes/vim-jsx-utils', {
-            \   'filetypes': ['javascript']
-            \ }
-NeoBundleLazy 'othree/yajs.vim', {
-            \   'filetypes': ['javascript']
-            \ }
-NeoBundleLazy 'pangloss/vim-javascript', {
-            \   'filetypes': ['javascript']
-            \ }
-NeoBundleLazy 'mxw/vim-jsx', {
-            \   'filetypes': ['javascript']
-            \ }
+NeoBundleLazy 'kchmck/vim-coffee-script', { 'filetypes' : ['coffee'] }
+NeoBundleLazy 'ap/vim-css-color', { 'filetypes':['css','scss','sass','less','styl'] }
+NeoBundleLazy 'hail2u/vim-css3-syntax', { 'filetypes':['css', 'less'] }
+NeoBundleLazy 'ingydotnet/yaml-vim', { 'filetypes': ['yml', 'yaml'] }
+
+NeoBundleLazy 'cakebaker/scss-syntax.vim', { 'filetypes': ['sass', 'scss'] }
+NeoBundleLazy 'wavded/vim-stylus', { 'filetypes': ['stylus'] }
+NeoBundleLazy 'groenewege/vim-less', { 'filetypes': ['less', 'css'] }
+NeoBundleLazy 'csscomb/vim-csscomb', { 'filetypes': ['css', 'less', 'sass'] }
+NeoBundleLazy 'othree/html5.vim', { 'filetypes': ['html'] }
+NeoBundleLazy 'hokaccha/vim-html5validator', { 'filetypes' : ['html'] }
+NeoBundleLazy 'digitaltoad/vim-pug', { 'filetypes': ['jade', 'pug'] }
+NeoBundleLazy 'gregsexton/MatchTag', { 'filetypes': ['html','xml'] }
+NeoBundleLazy 'othree/xml.vim', { 'filetypes': ['xml'] }
+NeoBundleLazy 'samuelsimoes/vim-jsx-utils', { 'filetypes': ['javascript'] }
+NeoBundleLazy 'othree/yajs.vim', { 'filetypes': ['javascript'] }
+NeoBundleLazy 'pangloss/vim-javascript', { 'filetypes': ['javascript'] }
+
+NeoBundleLazy 'mxw/vim-jsx', { 'filetypes': ['javascript'] }
 if neobundle#tap('vim-jsx')
     let g:jsx_ext_required = 0
 endif
+
+" Defined as non-lazy because there is a loading problem
+NeoBundle 'moll/vim-node'
+
+NeoBundleLazy 'itspriddle/vim-jquery.git', {'filetypes': ['javascript']}
+NeoBundleLazy 'heavenshell/vim-jsdoc', {'filetypes': ['javascript']}
+NeoBundleLazy 'othree/javascript-libraries-syntax.vim', {
+            \   'filetypes': ['javascript','coffee']
+            \ }
+if neobundle#tap('javascript-libraries-syntax.vim')
+    let g:used_javascript_libs = 'underscore,angularjs,jquery,backbone,react'
+    call neobundle#untap()
+endif
+
 NeoBundleLazy 'beautify-web/js-beautify', {
             \   'filetypes' : ['html', 'css', 'js']
             \ }
@@ -293,19 +252,7 @@ NeoBundleLazy 'maksimr/vim-jsbeautify', {
 NeoBundleLazy 'wting/rust.vim', {
             \ 'filetypes': ['rust']
             \ }
-NeoBundleLazy 'elzr/vim-json', {'filetypes':['json']}
-NeoBundleLazy 'moll/vim-node', {'filetypes':['javascript']}
-NeoBundleLazy 'itspriddle/vim-jquery.git', {'filetypes':['javascript']}
-NeoBundleLazy 'heavenshell/vim-jsdoc', {'filetypes':['javascript']}
-
-NeoBundleLazy 'othree/javascript-libraries-syntax.vim', {
-            \   'filetypes':['javascript','coffee']
-            \ }
-if neobundle#tap('javascript-libraries-syntax.vim')
-    let g:used_javascript_libs = 'underscore,angularjs,jquery,backbone,react'
-    call neobundle#untap()
-endif
-
+NeoBundleLazy 'elzr/vim-json', {'filetypes': ['json']}
 NeoBundle 'evidens/vim-twig'
 NeoBundleLazy 'leafgarland/typescript-vim', {
             \   'filetypes': ['typescript']
