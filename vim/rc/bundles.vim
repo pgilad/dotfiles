@@ -227,7 +227,7 @@ endif
 
 " Defined as non-lazy because there is a loading problem
 " NeoBundle 'moll/vim-node'
-NeoBundle 'pgilad/vim-node', {'rev': 'patch-1'}
+NeoBundle 'pgilad/vim-node', {'rev': 'patch-2'}
 
 NeoBundleLazy 'itspriddle/vim-jquery.git', {'on_ft': ['javascript']}
 NeoBundleLazy 'heavenshell/vim-jsdoc', {'on_ft': ['javascript']}

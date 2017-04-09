@@ -3,7 +3,6 @@ export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 export CACHE_DIR="${HOME}/.cache"
 [[ ! -d "${CACHE_DIR}" ]] && mkdir -p "${CACHE_DIR}"
 
-
 # history settings
 export HISTSIZE=1024
 export SAVEHIST=1024
