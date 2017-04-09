@@ -1,6 +1,6 @@
 if !has('autocmd') | finish | endif
 
-augroup myfiletypes
+augroup my_filetypes
     autocmd!
     autocmd BufNewFile,BufRead *.ajs,*.es6,*.es      setlocal filetype=javascript
     autocmd BufNewFile,BufRead *.as                  setlocal filetype=actionscript
@@ -23,7 +23,6 @@ augroup myfiletypes
     autocmd BufNewFile,BufRead .tmux*.conf*,*.tmux   setlocal filetype=tmux
 augroup END
 
-" close sentence with comma or semi-colon
 augroup my_auto_commands
     autocmd!
     " prevent indentation in jade, coffeescript
