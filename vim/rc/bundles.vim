@@ -80,7 +80,8 @@ if neobundle#tap('ctrlp.vim')
     call neobundle#untap()
 endif
 
-NeoBundleLazy 'nginx.vim', { 'on_ft': ['nginx'] }
+NeoBundle 'evanmiller/nginx-vim-syntax'
+" NeoBundleLazy 'nginx.vim', { 'on_ft': ['nginx'] }
 
 NeoBundleLazy 'Glench/Vim-Jinja2-Syntax', {
 \   'on_ft': ['jinja2', 'j2', 'jinja']
@@ -238,6 +239,8 @@ if neobundle#tap('javascript-libraries-syntax.vim')
     let g:used_javascript_libs = 'underscore,angularjs,jquery,backbone,react'
     call neobundle#untap()
 endif
+
+NeoBundle 'probbles/logstash.vim'
 
 NeoBundleLazy 'beautify-web/js-beautify', {
             \   'on_ft' : ['html', 'css', 'js']
