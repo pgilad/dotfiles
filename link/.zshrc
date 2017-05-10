@@ -35,8 +35,8 @@ export EDITOR=vim
 export VISUAL=vim
 
 export SSH_KEY_PATH="${HOME}/.ssh"
-export AWS_CONFIG_FILE="${HOME}/.aws/config"
-export AWS_DEFAULT_PROFILE="default"
+# export AWS_CONFIG_FILE="${HOME}/.aws/config"
+# export AWS_DEFAULT_PROFILE="default"
 export ANDROID_HOME=/usr/local/opt/android-sdk
 
 # set the correct term with TMUX
