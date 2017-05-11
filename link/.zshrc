@@ -114,7 +114,9 @@ zstyle ':zplug:tag' depth 42
 
 if [[ ! -d "${ZPLUG_HOME}" ]]; then
     echo "Installing zplug"
-    curl -sL --proto-redir -all,https https://zplug.sh/installer | zsh
+    curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+    # zplug.sh domain has expired
+    # curl -sL --proto-redir -all,https https://zplug.sh/installer | zsh
     source "${ZPLUG_HOME}/init.zsh"
     zplug update
 else
@@ -123,7 +125,7 @@ fi
 
 fpath=(${DOTFILES}/zsh/completions $fpath)
 
-zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+zplug "zplug/zplug", hook-build:'zplug --self-manage'
 
 zplug "creationix/nvm", use:nvm.sh
 zplug "tj/git-extras", use:"etc/git-extras-completion.zsh", defer:3
@@ -140,7 +142,8 @@ zplug "sindresorhus/pure", use:pure.zsh, defer:3
 zplug check || zplug install
 zplug load
 
-if zplug check "creationix/nvm" && [[ $(nvm current) == "none" ]]; then
+if zplug check "creationix/nvm" && [[ $(nvm current) == "system" ]]; then
+    echo "Installting nvm latest node.js verion"
     nvm install node
     nvm alias default node
 fi
@@ -150,7 +153,7 @@ if zplug check "zsh-users/zsh-history-substring-search"; then
     bindkey '^[[B' history-substring-search-down
 fi
 
-if which rbenv &> /dev/null; then
+if command -v rbenv &> /dev/null; then
     eval "$(rbenv init - zsh --no-rehash)"
 fi
 

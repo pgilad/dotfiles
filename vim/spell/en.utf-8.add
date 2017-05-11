@@ -2028,3 +2028,9 @@ include
 getFiletype
 getFileType
 Nunjucks
+DEFAULT_STARTER_PLAN
+ALLOWEDdOMAINS
+isNewTest
+RegenerateApiKeyModal
+renderer
+zplug

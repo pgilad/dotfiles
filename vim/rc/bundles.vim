@@ -240,7 +240,7 @@ if neobundle#tap('javascript-libraries-syntax.vim')
     call neobundle#untap()
 endif
 
-NeoBundle 'probbles/logstash.vim'
+NeoBundle 'vim-scripts/logstash.vim'
 
 NeoBundleLazy 'beautify-web/js-beautify', {
             \   'on_ft' : ['html', 'css', 'js']
