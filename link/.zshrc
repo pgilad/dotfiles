@@ -35,8 +35,8 @@ export EDITOR=vim
 export VISUAL=vim
 
 export SSH_KEY_PATH="${HOME}/.ssh"
-# export AWS_CONFIG_FILE="${HOME}/.aws/config"
-# export AWS_DEFAULT_PROFILE="default"
+export AWS_CONFIG_FILE="${HOME}/.aws/config"
+export AWS_DEFAULT_PROFILE="default"
 export ANDROID_HOME=/usr/local/opt/android-sdk
 
 # set the correct term with TMUX
@@ -128,13 +128,13 @@ fpath=(${DOTFILES}/zsh/completions $fpath)
 zplug "zplug/zplug", hook-build:'zplug --self-manage'
 
 zplug "creationix/nvm", use:nvm.sh
-zplug "tj/git-extras", use:"etc/git-extras-completion.zsh", defer:3
-zplug "tmuxinator/tmuxinator", use:"completion/tmuxinator.zsh", defer:3, if:"[[ command -v tmuxinator ]]"
+zplug "tj/git-extras", use:"etc/git-extras-completion.zsh", defer:3, if:"[[ $(command -v git) ]]"
+zplug "tmuxinator/tmuxinator", use:"completion/tmuxinator.zsh", defer:3, if:"[[ $(command -v tmuxinator) ]]"
 
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "djui/alias-tips"
-zplug "paulirish/git-open", as:plugin
+zplug "paulirish/git-open", as:plugin, if:"[[ $(command -v git) ]]"
 
 zplug "mafredri/zsh-async", on:sindresorhus/pure
 zplug "sindresorhus/pure", use:pure.zsh, defer:3
