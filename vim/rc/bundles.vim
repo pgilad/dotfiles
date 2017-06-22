@@ -83,71 +83,6 @@ NeoBundle 'pgilad/vim-skeletons'
 let skeletons#autoRegister = 1
 let skeletons#skeletonsDir = ['~/.dotfiles/vim/skeletons']
 
-NeoBundleLazy 'Shougo/unite.vim', {
-            \   'on_cmd' : [{ 'name' : 'Unite',
-            \  'complete' : 'customlist,unite#complete_source'},
-            \  'UniteWithCursorWord', 'UniteWithInput']
-            \ }
-NeoBundleLazy 'osyo-manga/unite-filetype', {
-            \'depends': ['Shougu/unite.vim'],
-            \ 'unite_sources': ['filetype']
-            \ }
-NeoBundleLazy 'Shougo/unite-outline', {
-            \ 'depends': ['Shougu/unite.vim'],
-            \ 'unite_sources': ['outline']
-            \ }
-NeoBundle 'Shougo/unite-mru', {
-            \'depends': ['Shougu/unite.vim']
-            \ }
-NeoBundleLazy 'ujihisa/unite-colorscheme', {
-            \'depends': ['Shougu/unite.vim'],
-            \ 'unite_sources': ['colorscheme']
-            \ }
-
-let g:unite_enable_start_insert = 1
-let g:unite_split_rule = "botright"
-let g:unite_force_overwrite_statusline = 0
-let g:unite_winheight = 10
-let g:unite_source_history_yank_enable = 1
-let g:unite_source_history_yank_save_clipboard = 1
-let g:unite_update_time = 200
-let g:unite_source_grep_command = 'ag'
-let g:unite_source_grep_default_opts = '--nocolor --nogroup --column --line-numbers --smart-case'
-let g:unite_source_grep_recursive_opt = ''
-let g:unite_source_grep_max_candidates = 15
-
-function! neobundle#hooks.on_source(bundle)
-    call unite#custom#source(
-                \ 'buffer, file_rec, file_rec/async, file_rec/git',
-                \ 'matchers',
-                \ ['converter_relative_word', 'matcher_fuzzy'])
-    call unite#custom#source(
-                \ 'file_mru',
-                \ 'matchers',
-                \ ['matcher_project_files', 'matcher_fuzzy'])
-    call unite#filters#sorter_default#use(['sorter_rank'])
-endfunction
-
-" map bindings... use [Space] but release it for plugins
-nmap <space> [unite]
-xmap <space> [unite]
-nnoremap [unite] <nop>
-xnoremap [unite] <nop>
-
-nnoremap <silent> [unite]b :<C-u>Unite -buffer-name=buffers buffer<CR>
-nnoremap <silent> [unite]f :<C-u>Unite -buffer-name=files -start-insert file<CR>
-" start unite with recursive file search for filename under cursor
-nnoremap <silent> [unite]F :<C-u>execute 'Unite -buffer-name=find_files -start-insert file_rec/async -input=' . expand('<cfile>:t')<CR>
-nnoremap <silent> [unite]m :<C-u>Unite -buffer-name=mappings -start-insert mapping<CR>
-nnoremap <silent> [unite]o :<C-u>Unite -buffer-name=outline -start-insert outline<CR>
-nnoremap <silent> [unite]p :<C-u>Unite -buffer-name=files -start-insert file_rec<CR>
-nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=mru -start-insert file_mru<CR>
-nnoremap <silent> [unite]t :<C-u>Unite -buffer-name=filetypes -start-insert filetype<CR>
-nnoremap <silent> [unite]y :<C-u>Unite -buffer-name=yank history/yank<CR>
-nnoremap <silent> [unite]s :<C-u>UniteWithCursorWord -buffer-name=search -no-empty grep:.:<cr>
-" search word in current buffer
-nnoremap <silent><expr> [unite]*  ":<C-u>UniteWithCursorWord -buffer-name=search%".bufnr('%')." line:all:wrap<CR>"
-
 NeoBundleLazy 'scrooloose/nerdtree', {
             \  'on_path' : '.*',
             \  'on_cmd': ['NERDTree', 'NERDTreeToggle', 'NERDTreeFind',
@@ -185,7 +120,6 @@ NeoBundleLazy 'cespare/vim-toml', { 'on_ft': ['toml'] }
 NeoBundleLazy 'StanAngeloff/php.vim', { 'on_ft': ['php'] }
 NeoBundleLazy 'Shougo/junkfile.vim', {
             \  'on_cmd': 'JunkfileOpen',
-            \  'unite_sources': ['junkfile', 'junkfile/new']
             \ }
 NeoBundleLazy 'kchmck/vim-coffee-script', { 'on_ft' : ['coffee'] }
 NeoBundleLazy 'ap/vim-css-color', { 'on_ft':['css','scss','sass','less','styl'] }
@@ -261,14 +195,14 @@ NeoBundleLazy 'vim-ruby/vim-ruby', {
             \ }
 
 NeoBundle 'airblade/vim-gitgutter'
-let g:gitgutter_enabled = 1
-let g:gitgutter_map_keys = 0
-let g:gitgutter_escape_grep = 1
+
 let g:gitgutter_eager = 0
+let g:gitgutter_enabled = 1
+let g:gitgutter_escape_grep = 1
+let g:gitgutter_map_keys = 0
 let g:gitgutter_realtime = 0
 
 NeoBundle 'tpope/vim-surround'
-" NeoBundle 'tpope/vim-abolish.git'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'thinca/vim-visualstar'
 
@@ -294,6 +228,8 @@ vnoremap <leader>ld :Linediff<cr>
 nnoremap <leader>ld :Linediff<cr>
 nnoremap <leader>lr :LinediffReset<cr>
 
+NeoBundle 'w0rp/ale'
+
 NeoBundle 'bling/vim-airline'
 
 let g:airline_detect_modified=1
@@ -303,7 +239,6 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep=' '
 let g:airline#extensions#tabline#left_alt_sep='¦'
 let g:airline#extensions#tmuxline#enabled = 0
-let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 
 NeoBundleLazy 'AndrewRadev/switch.vim', {
@@ -347,59 +282,6 @@ NeoBundle 'kana/vim-textobj-entire', { 'depends': 'kana/vim-textobj-user' }
 " a, i,
 NeoBundle 'PeterRincker/vim-argumentative'
 
-NeoBundleLazy 'scrooloose/syntastic'
-
-let filetypes = [
-            \  'javascript', 'coffee', 'zsh', 'json', 'less',
-            \ 'css', 'jade', 'ruby', 'html', 'sh', 'php',
-            \ 'python', 'bash'
-            \ ]
-call neobundle#config({
-            \   'autoload' : {
-            \     'on_ft' : filetypes
-            \     }
-            \ })
-let g:syntastic_mode_map = {
-            \ 'mode': 'passive',
-            \ 'active_filetypes': filetypes,
-            \ 'passive_filetypes': [] }
-let g:syntastic_python_checkers = ['python', 'pylint -E']
-let g:syntastic_ruby_checkers = ['rubocop']
-
-function! s:SetLocalNodeBin(curpath, program, syntastic_option)
-    " try to use a local exec in node_modules
-    let local_program = finddir('node_modules', '.;') . '/.bin/' . a:program
-    if matchstr(local_program, '^\/\\w') == ''
-        let local_program = a:curpath . '/' . local_program
-    endif
-    if executable(local_program)
-        execute 'let ' . a:syntastic_option . ' = "'.local_program.'"'
-    endif
-endfunction
-
-function! s:JavascriptCheckers(curpath)
-    let checkers = []
-    call s:SetLocalNodeBin(a:curpath, 'eslint', 'g:syntastic_javascript_eslint_exec')
-    call s:SetLocalNodeBin(a:curpath, 'jshint', 'g:syntastic_javascript_eslint_exec')
-    call s:SetLocalNodeBin(a:curpath, 'jscs', 'g:syntastic_javascript_eslint_exec')
-    if filereadable(a:curpath . '/.jscsrc')
-        call add(checkers, 'jscs')
-    endif
-    if filereadable(a:curpath . '/.jshintrc')
-        call add(checkers, 'jshint')
-    endif
-    if len(globpath(a:curpath, '.eslintrc*')) > 0
-        call add(checkers, 'eslint')
-    endif
-    return checkers
-endfunction
-
-let g:syntastic_javascript_checkers=s:JavascriptCheckers(getcwd())
-let g:syntastic_enable_balloons = 0
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_id_checkers = 1
-
 NeoBundle 'junegunn/vim-pseudocl'
 NeoBundle 'junegunn/vim-oblique', {
             \ 'depends' : 'junegunn/vim-pseudocl',
@@ -423,6 +305,7 @@ vmap gS <Plug>(smartgf-search-unfiltered)
 
 NeoBundle 'nanotech/jellybeans.vim'
 let g:config.colorscheme = "jellybeans"
+
 call neobundle#end()
 
 if !has('vim_starting')
