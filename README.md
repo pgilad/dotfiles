@@ -6,7 +6,6 @@ My config files, mainly Vim, Tmux, Git & Zsh aimed at working in Linux & OSX.
 
 ## Key Features
 - Uses [NeoBundle](https://github.com/Shougo/neobundle.vim) as package manager.
-- Uses [Unite](https://github.com/Shougo/unite.vim) as an all-around explorer.
 - Zsh with [Zplug](https://github.com/zplug/zplug).
 - Awesome **shell prompt** based on [pure](https://github.com/sindresorhus/pure)
 - Geared towards portability.
