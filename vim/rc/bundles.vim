@@ -79,10 +79,6 @@ NeoBundleLazy 'Glench/Vim-Jinja2-Syntax', {
 \   'on_ft': ['jinja2', 'j2', 'jinja']
 \ }
 
-NeoBundle 'pgilad/vim-skeletons'
-let skeletons#autoRegister = 1
-let skeletons#skeletonsDir = ['~/.dotfiles/vim/skeletons']
-
 NeoBundleLazy 'scrooloose/nerdtree', {
             \  'on_path' : '.*',
             \  'on_cmd': ['NERDTree', 'NERDTreeToggle', 'NERDTreeFind',
@@ -138,6 +134,7 @@ NeoBundleLazy 'othree/xml.vim', { 'on_ft': ['xml'] }
 NeoBundleLazy 'samuelsimoes/vim-jsx-utils', { 'on_ft': ['javascript'] }
 NeoBundleLazy 'othree/yajs.vim', { 'on_ft': ['javascript'] }
 NeoBundleLazy 'pangloss/vim-javascript', { 'on_ft': ['javascript'] }
+NeoBundleLazy 'fatih/vim-go', { 'on_ft': ['go'] }
 
 NeoBundleLazy 'mxw/vim-jsx', { 'on_ft': ['javascript'] }
 let g:jsx_ext_required = 0

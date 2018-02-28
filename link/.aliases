@@ -26,3 +26,6 @@ alias listenports='lsof -i | grep LISTEN'
 alias -g sublhe='subliminal download -l he'
 
 alias ..="cd .."
+
+alias k="kubectl"
+alias dc="docker-compose"

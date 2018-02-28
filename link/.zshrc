@@ -5,8 +5,8 @@ export CACHE_DIR="${HOME}/.cache"
 [[ ! -d "${CACHE_DIR}" ]] && mkdir -p "${CACHE_DIR}"
 
 # history settings
-export HISTSIZE=1024
-export SAVEHIST=1024
+export HISTSIZE=100000
+export SAVEHIST=100000
 export HISTFILESIZE=$HISTSIZE
 export HISTCONTROL=ignoredups
 export HISTFILE="${CACHE_DIR}/.zsh_history"
@@ -38,6 +38,8 @@ export SSH_KEY_PATH="${HOME}/.ssh"
 export AWS_CONFIG_FILE="${HOME}/.aws/config"
 export AWS_DEFAULT_PROFILE="default"
 export ANDROID_HOME=/usr/local/opt/android-sdk
+
+export GPG_TTY=$(tty)
 
 # set the correct term with TMUX
 if [[ -n "${TMUX}" ]]; then
@@ -160,5 +162,3 @@ fi
 [[ -f "${HOME}/.aliases" ]] && source "${HOME}/.aliases"
 [[ -f "${HOME}/.completions" ]] && source "${HOME}/.completions"
 [[ -f "${HOME}/.extra" ]] && source "${HOME}/.extra"
-
-export PATH="$PATH:$HOME/.yarn/bin"
