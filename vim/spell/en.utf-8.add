@@ -2219,3 +2219,7 @@ unicode
 RegExp
 autosetuprebase
 Aviv
+telegraf
+grafana
+influxdb
+influxdb

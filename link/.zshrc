@@ -1,15 +1,15 @@
-export DOTFILES="${HOME}/.dotfiles"
+export DOTFILES="$HOME/.dotfiles"
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-export CACHE_DIR="${HOME}/.cache"
+export CACHE_DIR="$HOME/.cache"
 
-[[ ! -d "${CACHE_DIR}" ]] && mkdir -p "${CACHE_DIR}"
+[[ ! -d "$CACHE_DIR" ]] && mkdir -p "$CACHE_DIR"
 
 # history settings
 export HISTSIZE=100000
 export SAVEHIST=100000
 export HISTFILESIZE=$HISTSIZE
 export HISTCONTROL=ignoredups
-export HISTFILE="${CACHE_DIR}/.zsh_history"
+export HISTFILE="$CACHE_DIR/.zsh_history"
 export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help"
 
 alias -g ...='../..'
@@ -21,12 +21,12 @@ alias lsa='ls -lah'
 alias ll='ls -lh'
 
 # set fasd cache dir
-export _FASD_DATA="${CACHE_DIR}/.fasd" # set fasd data file location
-export ZPLUG_HOME="${HOME}/.zplug"
-export NODE_REPL_HISTORY_FILE="${HOME}/.node_history"
+export _FASD_DATA="$CACHE_DIR/.fasd" # set fasd data file location
+export ZPLUG_HOME="$HOME/.zplug"
+export NODE_REPL_HISTORY_FILE="$HOME/.node_history"
 
 export MANPAGER='less -X'; # Don't clear the screen after quitting a manual page.
-export LESS_TERMCAP_md="${yellow}" # Highlight section titles in manual pages.
+export LESS_TERMCAP_md="$yellow" # Highlight section titles in manual pages.
 
 # Always enable colored `grep` output.
 export GREP_OPTIONS='--color=auto';
@@ -34,15 +34,15 @@ export JOBS=max # tell npm to install concurrently
 export EDITOR=vim
 export VISUAL=vim
 
-export SSH_KEY_PATH="${HOME}/.ssh"
-export AWS_CONFIG_FILE="${HOME}/.aws/config"
+export SSH_KEY_PATH="$HOME/.ssh"
+export AWS_CONFIG_FILE="$HOME/.aws/config"
 export AWS_DEFAULT_PROFILE="default"
 export ANDROID_HOME=/usr/local/opt/android-sdk
 
 export GPG_TTY=$(tty)
 
 # set the correct term with TMUX
-if [[ -n "${TMUX}" ]]; then
+if [[ -n "$TMUX" ]]; then
     export TERM=screen-256color
 else
     export TERM=xterm-256color
@@ -114,20 +114,20 @@ bindkey '^[[Z' reverse-menu-complete
 
 zstyle ':zplug:tag' depth 42
 
-if [[ ! -d "${ZPLUG_HOME}" ]]; then
+if [[ ! -d "$ZPLUG_HOME" ]]; then
     echo "Installing zplug"
     curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
     # zplug.sh domain has expired
     # curl -sL --proto-redir -all,https https://zplug.sh/installer | zsh
-    source "${ZPLUG_HOME}/init.zsh"
+    source "$ZPLUG_HOME/init.zsh"
     zplug update
 else
-    source "${ZPLUG_HOME}/init.zsh"
+    source "$ZPLUG_HOME/init.zsh"
 fi
 
-fpath=(${DOTFILES}/zsh/completions $fpath)
+fpath=("$DOTFILES/zsh/completions" $fpath)
 
-zplug "zplug/zplug", hook-build:'zplug --self-manage'
+zplug "zplug/zplug", hook-build:"zplug --self-manage"
 
 zplug "creationix/nvm", use:nvm.sh
 zplug "tj/git-extras", use:"etc/git-extras-completion.zsh", defer:3, if:"[[ $(command -v git) ]]"
@@ -141,11 +141,14 @@ zplug "paulirish/git-open", as:plugin, if:"[[ $(command -v git) ]]"
 zplug "mafredri/zsh-async", on:sindresorhus/pure
 zplug "sindresorhus/pure", use:pure.zsh, defer:3
 
-zplug check || zplug install
+if ! zplug check; then
+    zplug install
+fi
+
 zplug load
 
-if zplug check "creationix/nvm" && [[ $(nvm current) == "system" ]]; then
-    echo "Installting nvm latest node.js verion"
+if zplug check "creationix/nvm" && [[ $(command -v nvm) ]] && [[ $(nvm current) == "system" ]]; then
+    echo "Installing nvm latest node.js version"
     nvm install node
     nvm alias default node
 fi
@@ -155,8 +158,16 @@ if zplug check "zsh-users/zsh-history-substring-search"; then
     bindkey '^[[B' history-substring-search-down
 fi
 
-if command -v rbenv &> /dev/null; then
+if [[ $(command -v rbenv) ]]; then
     eval "$(rbenv init - zsh --no-rehash)"
+fi
+
+if [[ $(command -v npm) ]]; then
+    . <(npm completion)
+fi
+
+if [[ $(command -v fasd) ]]; then
+    eval "$(fasd --init posix-alias zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install)"
 fi
 
 [[ -f "${HOME}/.aliases" ]] && source "${HOME}/.aliases"
