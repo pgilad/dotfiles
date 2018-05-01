@@ -29,3 +29,9 @@ alias ..="cd .."
 
 alias k="kubectl"
 alias dc="docker-compose"
+
+func jirao() {
+    open "https://blazemeter.atlassian.net/browse/WAP-$1"
+}
+
+alias devs=npm run dev-server -- --cert ~/.localhost-ssl/private.crt --key=~/.localhost-ssl/private.key

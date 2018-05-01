@@ -72,6 +72,8 @@ setopt extended_glob            # activate complex pattern globbing
 setopt glob_dots                # include dotfiles in globbing
 setopt print_exit_value         # print return value if non-zero
 setopt no_beep # Disable sound
+setopt prompt_subst
+
 unsetopt beep                   # no bell on error
 unsetopt bg_nice                # no lower prio for background jobs
 unsetopt clobber                # must use >| to truncate existing files
