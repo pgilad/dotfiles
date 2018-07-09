@@ -7,6 +7,11 @@ if !1 | finish | endif
 " Note: Vim is old
 set nocompatible
 
+if has('python3')
+  " Hack for https://github.com/vim/vim/issues/3117#issuecomment-402622616
+  silent! python3 1
+endif
+
 let g:config =  {
             \ 'baseDir': '~/.dotfiles/vim/rc/',
             \ 'loadFiles': {},

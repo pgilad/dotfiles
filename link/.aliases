@@ -1,37 +1,76 @@
-alias sysup="sudo apt-get autoclean -y && sudo apt-get autoremove -y && sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y"
-
 # reboot / halt / poweroff
-alias reboot='sudo /sbin/reboot -r now'
-alias poweroff='sudo /sbin/poweroff -r now'
-alias halt='sudo /sbin/halt -r now'
-alias shutdown='sudo /sbin/shutdown -r now'
+function reboot() {
+    sudo /sbin/reboot -r now
+}
+
+function poweroff() {
+    sudo /sbin/poweroff -r now
+}
+
+function halt() {
+    sudo /sbin/halt -r now
+}
+
+function shutdown() {
+    sudo /sbin/shutdown -r now
+}
 
 # start simple server
-alias serve="python -m SimpleHTTPServer"
-alias phpserve="php -S localhost:8000"
+function serve() {
+    python -m SimpleHTTPServer
+}
+
+function phpserve() {
+    php -S localhost:8000
+}
 
 # npm aliases
-alias npmo="npm outdated --depth=0"
-alias npmnewest="npm outdated --depth=0 --parseable | cut -d: -f4"
+function npmo() {
+    npm outdated --depth=0
+}
 
-alias v="vim"
+function npmnewest() {
+    npm outdated --depth=0 --parseable | cut -d: -f4
+}
 
-alias gitwap="git log -i --grep=wap --no-merges --color --decorate --pretty='format: * %s'"
+function gitwap() {
+    git log -i --grep=wap --no-merges --color --decorate --pretty=format: * %s
+}
 
-alias opensocks='networksetup -setsocksfirewallproxy "WI-FI" localhost 8080'
-alias closesocks='networksetup -setsocksfirewallproxystate "WI-FI" off'
+function opensocks() {
+    networksetup -setsocksfirewallproxy "WI-FI" localhost 8080
+}
 
-alias listenports='lsof -i | grep LISTEN'
+function closesocks() {
+    networksetup -setsocksfirewallproxystate "WI-FI" off
+}
 
-alias -g sublhe='subliminal download -l he'
+function listenports() {
+    lsof -i | grep LISTEN
+}
 
-alias ..="cd .."
+# alias -g sublhe='subliminal download -l he'
 
-alias k="kubectl"
-alias dc="docker-compose"
+function ..() {
+    cd ..
+}
 
-func jirao() {
+function k() {
+    kubectl
+}
+
+function dc() {
+    docker-compose
+}
+
+function jirao() {
     open "https://blazemeter.atlassian.net/browse/WAP-$1"
 }
 
-alias devs=npm run dev-server -- --cert ~/.localhost-ssl/private.crt --key=~/.localhost-ssl/private.key
+function devs() {
+    npm run dev-server -- --cert=$HOME/.localhost-ssl/private.crt --key=$HOME/.localhost-ssl/private.key
+}
+
+function ec2s() {
+    aws ec2 describe-instances --filter 'Name=tag:Name,Values=$1*' --region us-east-1
+}

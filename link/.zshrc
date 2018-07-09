@@ -172,6 +172,10 @@ if [[ $(command -v fasd) ]]; then
     eval "$(fasd --init posix-alias zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install)"
 fi
 
+if [[ $(command -v kubectl) ]]; then
+    . <(kubectl completion zsh)
+fi
+
 [[ -f "${HOME}/.aliases" ]] && source "${HOME}/.aliases"
 [[ -f "${HOME}/.completions" ]] && source "${HOME}/.completions"
 [[ -f "${HOME}/.extra" ]] && source "${HOME}/.extra"
