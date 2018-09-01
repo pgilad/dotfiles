@@ -17,7 +17,7 @@ function shutdown() {
 
 # start simple server
 function serve() {
-    python -m SimpleHTTPServer
+    python -m SimpleHTTPServer $@
 }
 
 function phpserve() {
@@ -26,7 +26,7 @@ function phpserve() {
 
 # npm aliases
 function npmo() {
-    npm outdated --depth=0
+    npm outdated --depth=0 $@
 }
 
 function npmnewest() {
@@ -56,15 +56,16 @@ function ..() {
 }
 
 function k() {
-    kubectl
+    kubectl $@
 }
 
 function dc() {
-    docker-compose
+    docker-compose $@
 }
 
 function jirao() {
-    open "https://blazemeter.atlassian.net/browse/WAP-$1"
+    id=$(echo $1 | sed 's/WAP-//gi')
+    open "https://blazemeter.atlassian.net/browse/WAP-$id"
 }
 
 function devs() {
@@ -73,4 +74,14 @@ function devs() {
 
 function ec2s() {
     aws ec2 describe-instances --filter 'Name=tag:Name,Values=$1*' --region us-east-1
+}
+
+function bzdev() {
+    local location="$HOME/repos/bzdev"
+    if [ "$VIRTUAL_ENV" != "$location/.venv" ]; then
+        local activate="$location/.venv/bin/activate"
+        echo "Sourcing $activate"
+        source $activate
+    fi
+    $(which python2) "$location/bzdev.py" $@
 }
