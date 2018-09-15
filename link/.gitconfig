@@ -3,7 +3,7 @@
     excludesfile = /Users/pgilad/.dotfiles/git/.gitignore_global
     attributesfile = ~/.dotfiles/.gitattributes
     editor = vim
-    pager = less -FRSX
+    pager = diff-so-fancy | less --tabs=2 -RFX
     # Treat spaces before tabs and all kinds of trailing whitespace as an error
     # [default] trailing-space: looks for spaces at the end of a line
     # [default] space-before-tab: looks for spaces before tabs at the beginning of a line
@@ -23,8 +23,9 @@
     interactive = auto
     diff = auto
     branch = auto
+
     # Enable colored output for git commands
-    ui = auto
+    ui = true
 [color "branch"]
     current = yellow reverse
     local = yellow
@@ -34,6 +35,8 @@
     frag = magenta bold
     old = red bold
     new = green bold
+    commit = yellow bold
+    whitespace = red reverse
 [color "status"]
     added = yellow
     changed = green
