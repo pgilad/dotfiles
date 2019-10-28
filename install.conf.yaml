@@ -8,6 +8,7 @@
     - '~/.config/fish/conf.d'
     - '~/.config/fish/functions'
     - '~/.config/git'
+    - '~/.config/npm'
     - '~/.config/tmux'
     - '~/.gnupg'
 
@@ -20,6 +21,7 @@
 - link:
     ~/.editorconfig: .editorconfig
     ~/.config/brew/Brewfile: brew/Brewfile
+    ~/.config/npm/.npmrc: npm/.npmrc
 
     # Fish shell config files
     ~/.config/fish/config.fish: fish/config.fish

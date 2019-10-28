@@ -39,3 +39,6 @@ set -gx GATSBY_CONCURRENT_DOWNLOAD 25
 
 # Poetry uses ~/Library/Caches/pypoetry/virtualenvs for Mac, let's be sane here
 set -gx POETRY_VIRTUALENVS_PATH "$XDG_CACHE_HOME/pypoetry/virtualenvs"
+
+set -gx NPM_CONFIG_USERCONFIG "$XDG_CONFIG_HOME/npm/.npmrc"
+set -gx NPM_CONFIG_CACHE "$XDG_CACHE_HOME/npm"
