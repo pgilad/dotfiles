@@ -1,0 +1,26 @@
+.idea/
+*.iml
+
+#files for git to ignore
+zsh-update
+
+#Anything ending with a tilde
+*~
+
+#Anything ending with a .class
+
+*.class
+
+#Vim temp files
+
+*.swp
+*.swo
+
+#Workbench backup files
+*.bak
+
+*.log*
+
+*.orig
+
+*.old

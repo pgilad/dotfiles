@@ -1,0 +1,63 @@
+---
+- clean:
+    - '~'
+    - '~/.config'
+    - '~/.config/brew'
+    - '~/.config/fish'
+    - '~/.config/fish/completions'
+    - '~/.config/fish/conf.d'
+    - '~/.config/fish/functions'
+    - '~/.config/git'
+    - '~/.config/tmux'
+    - '~/.gnupg'
+
+- defaults:
+    link:
+      create: true
+      force: true
+      relink: true
+
+- link:
+    ~/.editorconfig: .editorconfig
+    ~/.config/brew/Brewfile: brew/Brewfile
+
+    # Fish shell config files
+    ~/.config/fish/config.fish: fish/config.fish
+    ~/.config/fish/fishfile: fish/fishfile
+    ~/.config/fish/conf.d:
+      path: fish/conf.d/*.fish
+      glob: true
+    ~/.config/fish/functions:
+      path: fish/functions/*.fish
+      glob: true
+    ~/.config/fish/completions:
+      path: fish/completions/*.fish
+      glob: true
+
+    # Vim config files
+    ~/.vimrc: vim/.vimrc
+
+    # Git config files
+    ~/.config/git/attributes: git/.gitattributes
+    ~/.config/git/config: git/.gitconfig
+    ~/.config/git/ignore: git/.gitignore
+
+    # Git extra configs
+    ~/.config/git/.gitconfig-forter:
+      path: git/.gitconfig-forter
+      if: 'test -d ~/dev/forter'
+    ~/.config/git/.gitconfig-personal: git/.gitconfig-personal
+
+    # Tmux config files
+    ~/.tmux.conf: tmux/.tmux.conf
+    ~/.config/tmux/tmux-right-prompt.sh: tmux/tmux-right-prompt.sh
+    ~/.config/tmux/kube.tmux: tmux/kube.tmux
+
+    # GPG files
+    ~/.gnupg/gpg.conf: gpg/gpg.conf
+    ~/.gnupg/gpg-agent.conf:
+      path: gpg/gpg-agent.conf
+      if: "uname -s | grep -qi darwin"
+
+- shell:
+    - git submodule --quiet sync --recursive

@@ -1,0 +1,25 @@
+# OS X cruft
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows cruft
+Thumbs.db
+Desktop.ini
+
+# IntelliJ
+.idea/
+*.iml
+
+# Scala
+.sbtopts
+.jvmopts
+.metals/
+.bloop/
+
+# VSCode
+.vscode/
+
+# Python bytecode
+__pycache__/

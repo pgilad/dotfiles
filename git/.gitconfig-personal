@@ -1,0 +1,5 @@
+# vi: ft=gitconfig
+[user]
+    name = pgilad
+    email = gilad@giladpeleg.com
+    signingkey = FE7BE3F5D048AFE3
