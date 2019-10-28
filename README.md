@@ -12,12 +12,12 @@ My initial `dotfiles` were a great success for me, but I've since swapped severa
 mainly the installer (using the amazing [DotBot](https://github.com/anishathalye/dotbot)) and using
 [Fish shell](https://fishshell.com/) instead of zsh (Never looking back).
 
-It is said that "You cannot clone the same dotfiles twice" [Wiki](https://en.wikiquote.org/wiki/Heraclitus#Quotes).
+It is said that "You cannot clone the same dotfiles twice" - [Wiki](https://en.wikiquote.org/wiki/Heraclitus#Quotes).
 
 ## Installation
 
 ```sh
-$ git clone https://github.com/pgilad/dotfiles.git ~/.dotfiles
+$ git clone ---recurse-submodules https://github.com/pgilad/dotfiles.git ~/.dotfiles
 
 $ ~/.dotfiles/install.sh
 ```
