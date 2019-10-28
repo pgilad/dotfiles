@@ -9,8 +9,8 @@ the old version with Zsh and an installer? [Click here](https://github.com/pgila
 ## My dotfiles have aged, they're now `v2` !!!
 
 My initial `dotfiles` were a great success for me, but I've since swapped several technologies,
-mainly the installer (using the amazing [DotBot](https://github.com/anishathalye/dotbot) and using
-[Fish shell](https://fishshell.com/) instead of Zsh (Never looking back).
+mainly the installer (using the amazing [DotBot](https://github.com/anishathalye/dotbot)) and using
+[Fish shell](https://fishshell.com/) instead of zsh (Never looking back).
 
 It is said that "You cannot clone the same dotfiles twice" [Wiki](https://en.wikiquote.org/wiki/Heraclitus#Quotes).
 
@@ -21,7 +21,6 @@ $ git clone https://github.com/pgilad/dotfiles.git ~/.dotfiles
 
 $ ~/.dotfiles/install.sh
 ```
-
 
 ## License
 
