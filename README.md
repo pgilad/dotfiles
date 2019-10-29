@@ -17,7 +17,7 @@ the old version with Zsh and an installer? [Click here](https://github.com/pgila
 ## Installation
 
 ```sh
-$ git clone ---recurse-submodules https://github.com/pgilad/dotfiles.git ~/.dotfiles
+$ git clone --recurse-submodules https://github.com/pgilad/dotfiles.git ~/.dotfiles
 
 $ ~/.dotfiles/install.sh
 ```
