@@ -4,6 +4,6 @@
     email = gilad.peleg@forter.com
     signingkey = DC806316D550D9ED
 [tag]
-    gpg = true
+    gpgsign = true
 [commit]
-    gpg = true
+    gpgsign = true
