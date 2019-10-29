@@ -82,6 +82,7 @@
 [submodule]
     # Fetch submodules in parallel, with a reasonable number of jobs
     fetchJobs = 0
+    recurse = true
 [remote]
     pushDefault = origin
 [rerere]
