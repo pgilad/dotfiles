@@ -17,7 +17,6 @@
     # Note this will prevent the “Multiple working copies workflow” steps (shown below) from working.
     default = current
     followTags = true
-    ; gpgSign = if-asked
 [branch]
     # Checking remote branches are setup with tracking by default
     autoSetupMerge = always
@@ -74,8 +73,9 @@
     branch = false
 [credential]
     helper = store
+[tag]
+    verbose = true
 [commit]
-    gpgsign = false
     verbose = true
 [gpg]
     program = /usr/local/bin/gpg
@@ -96,7 +96,6 @@
 [transfer]
     # Check transferred objects
     fsckObjects = true
-
 [include]
     path = ".gitconfig-personal"
     # This file will only exist on work machine

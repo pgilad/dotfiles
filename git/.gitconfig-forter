@@ -2,4 +2,8 @@
 [user]
     name = pgilad
     email = gilad.peleg@forter.com
-    signingkey = FE7BE3F5D048AFE3
+    signingkey = E3A07B0B849CD263
+[tag]
+    gpg = true
+[commit]
+    gpg = true

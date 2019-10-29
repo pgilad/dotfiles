@@ -3,3 +3,7 @@
     name = pgilad
     email = gilad@giladpeleg.com
     signingkey = FE7BE3F5D048AFE3
+[tag]
+    gpg = true
+[commit]
+    gpg = true
