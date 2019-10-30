@@ -18,6 +18,11 @@
       force: true
       relink: true
 
+- create:
+    - '~/.config'
+    - '~/.cache/pip'
+    - '~/.cache/npm'
+
 - link:
     ~/.editorconfig: .editorconfig
     ~/.config/brew/Brewfile: brew/Brewfile
