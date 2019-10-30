@@ -7,10 +7,12 @@
     - '~/.config/fish/completions'
     - '~/.config/fish/conf.d'
     - '~/.config/fish/functions'
+    - '~/.config/fish/functions'
     - '~/.config/git'
     - '~/.config/npm'
     - '~/.config/tmux'
     - '~/.gnupg'
+    - '~/Library/Application Support/pypoetry'
 
 - defaults:
     link:
@@ -27,6 +29,10 @@
     ~/.editorconfig: .editorconfig
     ~/.config/brew/Brewfile: brew/Brewfile
     ~/.config/npm/.npmrc: npm/.npmrc
+
+    '~/Library/Application Support/pypoetry/config.toml':
+      path: poetry/config.toml
+      if: "uname -s | grep --quiet --ignore-case darwin"
 
     # Fish shell config files
     ~/.config/fish/config.fish: fish/config.fish
@@ -64,7 +70,7 @@
     ~/.gnupg/gpg.conf: gpg/gpg.conf
     ~/.gnupg/gpg-agent.conf:
       path: gpg/gpg-agent.conf
-      if: "uname -s | grep -qi darwin"
+      if: "uname -s | grep --quiet --ignore-case darwin"
 
 - shell:
     - git submodule --quiet sync --recursive
