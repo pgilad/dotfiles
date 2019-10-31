@@ -147,7 +147,6 @@ let g:indent_guides_guide_size = 0
 hi IndentGuidesOdd  ctermbg=black
 hi IndentGuidesEven ctermbg=darkgrey
 
-NeoBundleLazy 'bfontaine/Brewfile.vim'
 NeoBundleLazy 'dag/vim-fish', { 'on_ft': ['fish'] }
 NeoBundleLazy 'cespare/vim-toml', { 'on_ft': ['toml'] }
 NeoBundleLazy 'StanAngeloff/php.vim', { 'on_ft': ['php'] }
@@ -177,6 +176,7 @@ NeoBundleLazy 'mxw/vim-jsx', { 'on_ft': ['javascript'] }
 let g:jsx_ext_required = 0
 
 NeoBundle 'moll/vim-node'
+NeoBundle 'bfontaine/Brewfile.vim'
 
 NeoBundleLazy 'itspriddle/vim-jquery.git', {'on_ft': ['javascript']}
 NeoBundleLazy 'heavenshell/vim-jsdoc', {'on_ft': ['javascript']}
