@@ -42,3 +42,6 @@ set -gx GATSBY_CONCURRENT_DOWNLOAD 25
 
 set -gx NPM_CONFIG_USERCONFIG "$XDG_CONFIG_HOME/npm/.npmrc"
 set -gx NPM_CONFIG_CACHE "$XDG_CACHE_HOME/npm"
+
+# Opt out of brew analytics
+set -gx HOMEBREW_NO_ANALYTICS 1

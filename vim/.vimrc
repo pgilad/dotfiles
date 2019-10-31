@@ -17,9 +17,9 @@ if has('python3') && !has('patch-8.1.201')
 endif
 
 let g:config =  {
-            \ 'bundlesPath': '~/vimfiles/bundle/',
-            \ 'spellDir' : '~/vimfiles/spell/',
-            \ 'spellFile' : '~/vimfiles/spell/en.utf-8.add',
+            \ 'bundlesPath': '~/.local/share/vimfiles/bundle/',
+            \ 'spellDir' : '~/.local/share/vimfiles/spell/',
+            \ 'spellFile' : '~/.local/share/vimfiles/spell/en.utf-8.add',
             \ 'undoDir' : '~/.cache/vim/undo/',
             \ 'env' : {
             \   'windows': has('wind16') || has('win32') || has('win64'),
@@ -33,7 +33,7 @@ let g:config =  {
 let g:mapleader = ","
 let g:maplocalleader = ","
 
-let s:neobundle_git_path='!git clone %s://github.com/Shougo/neobundle.vim.git'
+let s:neobundle_git_path='!git clone --quiet %s://github.com/Shougo/neobundle.vim.git'
 
 if has('vim_starting')
     " add NeoBundle to rtp
@@ -147,6 +147,7 @@ let g:indent_guides_guide_size = 0
 hi IndentGuidesOdd  ctermbg=black
 hi IndentGuidesEven ctermbg=darkgrey
 
+NeoBundleLazy 'bfontaine/Brewfile.vim'
 NeoBundleLazy 'dag/vim-fish', { 'on_ft': ['fish'] }
 NeoBundleLazy 'cespare/vim-toml', { 'on_ft': ['toml'] }
 NeoBundleLazy 'StanAngeloff/php.vim', { 'on_ft': ['php'] }
