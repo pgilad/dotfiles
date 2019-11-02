@@ -1,6 +1,8 @@
 # dotfiles
 > If you always take your home with you, you're always home.
 
+[![Actions Status](https://github.com/pgilad/dotfiles/workflows/ci/badge.svg)](https://github.com/pgilad/dotfiles/actions)
+
 ## My dotfiles have aged, they're now `v2` !!!
 
 My initial `dotfiles` were a great success for me, but I've since swapped several technologies,
