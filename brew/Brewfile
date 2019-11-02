@@ -1,7 +1,4 @@
 tap "homebrew/bundle"
-tap "homebrew/cask"
-tap "homebrew/cask-versions"
-tap "homebrew/core"
 
 # brew "apache-spark"
 # brew "mackup"
