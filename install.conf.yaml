@@ -11,6 +11,8 @@
     - '~/.config/npm'
     - '~/.config/tmux'
     - '~/.gnupg'
+    - '~/.ssh'
+    - '~/.ssh/config.d'
     - '~/Library/Application Support/pypoetry'
 
 - defaults:
@@ -55,7 +57,7 @@
     ~/.config/git/config: git/.gitconfig
     ~/.config/git/ignore: git/.gitignore
 
-    # Git extra configs
+    # Git extra config
     ~/.config/git/.gitconfig-forter:
       path: git/.gitconfig-forter
       if: 'test -d ~/dev/forter'
@@ -71,6 +73,10 @@
     ~/.gnupg/gpg-agent.conf:
       path: gpg/gpg-agent.conf
       if: "uname -s | grep --quiet --ignore-case darwin"
+
+    ~/.ssh/config.d:
+      path: ssh/config.d/*
+      glob: true
 
 - shell:
     - git submodule --quiet sync --recursive
