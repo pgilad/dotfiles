@@ -2,6 +2,7 @@
 - clean:
     - '~'
     - '~/.config'
+    - '~/.config/aws'
     - '~/.config/brew'
     - '~/.config/fish'
     - '~/.config/fish/completions'
@@ -22,15 +23,17 @@
       relink: true
 
 - create:
-    - '~/.config'
-    - '~/.cache/pip'
     - '~/.cache/npm'
+    - '~/.cache/pip'
+    - '~/.config'
+    - '~/.local/share/aws/history'
     - '~/.local/share/vimfiles'
 
 - link:
     ~/.editorconfig: .editorconfig
     ~/.config/brew/Brewfile: brew/Brewfile
     ~/.config/npm/.npmrc: npm/.npmrc
+    ~/.config/aws/config: aws/config
 
     '~/Library/Application Support/pypoetry/config.toml':
       path: poetry/config.toml

@@ -45,3 +45,12 @@ set -gx NPM_CONFIG_CACHE "$XDG_CACHE_HOME/npm"
 
 # Opt out of brew analytics
 set -gx HOMEBREW_NO_ANALYTICS 1
+
+# Set AWS config file locations:
+# https://github.com/aws/aws-cli/issues/243
+
+# set -gx AWS_CREDENTIAL_FILE "$XDG_CONFIG_HOME/aws/credentials"
+# set -gx AWS_WEB_IDENTITY_TOKEN_FILE "$XDG_CONFIG_HOME/aws/token"
+set -gx AWS_CLI_HISTORY_FILE "$XDG_DATA_HOME/aws/history"
+set -gx AWS_CONFIG_FILE "$XDG_CONFIG_HOME/aws/config"
+set -gx AWS_SHARED_CREDENTIALS_FILE "$XDG_CONFIG_HOME/aws/credentials"
