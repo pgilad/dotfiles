@@ -1,5 +1,6 @@
 set -l paths_to_add \
     $HOME/bin \
+    $HOME/.local/bin \
     /usr/local/sbin \
     /usr/local/opt/openssl/bin \
     /usr/local/opt/ruby/bin \

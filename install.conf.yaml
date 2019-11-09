@@ -9,6 +9,7 @@
     - '~/.config/fish/conf.d'
     - '~/.config/fish/functions'
     - '~/.config/git'
+    - '~/.config/gnupg'
     - '~/.config/npm'
     - '~/.config/tmux'
     - '~/.gnupg'
@@ -23,10 +24,21 @@
       relink: true
 
 - create:
+    - '~/.cache/bundle'
+    - '~/.cache/gem'
+    - '~/.cache/less'
     - '~/.cache/npm'
     - '~/.cache/pip'
     - '~/.config'
-    - '~/.local/share/aws/history'
+    - '~/.local/bin'
+    - '~/.local/share/aws'
+    - '~/.local/share/bundle'
+    - '~/.local/share/gem'
+    - '~/.local/share/gradle'
+    - '~/.local/share/less'
+    - '~/.local/share/nvm'
+    - '~/.local/share/password-store'
+    - '~/.local/share/stack'
     - '~/.local/share/vimfiles'
 
 - link:
@@ -72,8 +84,8 @@
     ~/.config/tmux/kube.tmux: tmux/kube.tmux
 
     # GPG files
-    ~/.gnupg/gpg.conf: gpg/gpg.conf
-    ~/.gnupg/gpg-agent.conf:
+    ~/.config/gnupg/gpg.conf: gpg/gpg.conf
+    ~/.config/gnupg/gpg-agent.conf:
       path: gpg/gpg-agent.conf
       if: "uname -s | grep --quiet --ignore-case darwin"
 
