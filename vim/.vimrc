@@ -167,6 +167,7 @@ NeoBundleLazy 'hokaccha/vim-html5validator', { 'on_ft' : ['html'] }
 NeoBundleLazy 'digitaltoad/vim-pug', { 'on_ft': ['jade', 'pug'] }
 NeoBundleLazy 'gregsexton/MatchTag', { 'on_ft': ['html','xml'] }
 NeoBundleLazy 'othree/xml.vim', { 'on_ft': ['xml'] }
+NeoBundleLazy 'darfink/vim-plist', { 'on_ft': ['plist'] }
 NeoBundleLazy 'samuelsimoes/vim-jsx-utils', { 'on_ft': ['javascript'] }
 NeoBundleLazy 'othree/yajs.vim', { 'on_ft': ['javascript'] }
 NeoBundleLazy 'pangloss/vim-javascript', { 'on_ft': ['javascript'] }

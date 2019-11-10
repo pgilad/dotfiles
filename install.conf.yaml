@@ -16,6 +16,7 @@
     - '~/.ssh'
     - '~/.ssh/config.d'
     - '~/Library/Application Support/pypoetry'
+    - '~/Library/LaunchAgents'
 
 - defaults:
     link:
@@ -87,6 +88,9 @@
     ~/.config/gnupg/gpg.conf: gpg/gpg.conf
     ~/.config/gnupg/gpg-agent.conf:
       path: gpg/gpg-agent.conf
+      if: "uname -s | grep --quiet --ignore-case darwin"
+    ~/Library/LaunchAgents/setenv.gnupghome.plist:
+      path: gpg/setenv.gnupghome.plist
       if: "uname -s | grep --quiet --ignore-case darwin"
 
     ~/.ssh/config.d:
