@@ -69,8 +69,8 @@ set -gx BUNDLE_USER_CACHE "$XDG_CACHE_HOME/bundle"
 set -gx BUNDLE_USER_CONFIG "$XDG_CONFIG_HOME/bundle"
 set -gx BUNDLE_USER_PLUGIN "$XDG_DATA_HOME/bundle"
 
-# Docker
-set -gx DOCKER_CONFIG "$XDG_CONFIG_HOME/docker"
+# Docker - doesn't seem to work yet
+# set -gx DOCKER_CONFIG "$XDG_CONFIG_HOME/docker"
 
 # Gradle
 set -gx GRADLE_USER_HOME "$XDG_DATA_HOME/gradle"
