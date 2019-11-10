@@ -61,7 +61,8 @@ set -gx PIP_REQUIRE_VIRTUALENV true
 # Set pass password store location
 set -gx PASSWORD_STORE_DIR "$XDG_DATA_HOME/password-store"
 
-set -gx GNUPGHOME "$XDG_CONFIG_HOME/gnupg"
+# GPG Suite doesn't support a different home for gnupg :(
+# set -gx GNUPGHOME "$XDG_CONFIG_HOME/gnupg"
 
 # Ruby bundler
 set -gx BUNDLE_USER_CACHE "$XDG_CACHE_HOME/bundle"
