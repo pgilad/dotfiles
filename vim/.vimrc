@@ -393,7 +393,7 @@ augroup my_auto_commands
     autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
     autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
     autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-    " autocmd FileType javascript setlocal omnifunc=syntaxcomplete#Complete
+    autocmd FileType sshconfig setlocal omnifunc=syntaxcomplete#Complete
 
     autocmd FileType css,html,jsx,json nnoremap <silent> <buffer> <leader>js :<c-u>call Beautify()<cr>
     autocmd FileType javascript nnoremap <silent> <buffer> <leader>js :<c-u>call JsBeautify()<cr>
