@@ -17,11 +17,7 @@ function daily-update --description 'Keep Mac up-to date'
     sudo softwareupdate --install --all
 
     __echo-phase "Updating Brew"
-    brew update
-    brew upgrade
-    brew cleanup
-    brew update-reset
-    brew doctor
+    brew update; brew upgrade; brew cleanup; brew update-reset; brew doctor
 
     __echo-phase "Updating SDK"
     sdk install gradle; and sdk install maven; and sdk install groovy
@@ -30,7 +26,7 @@ function daily-update --description 'Keep Mac up-to date'
     nvm install node
 
     __echo-phase "Updating Fisher"
-    fisher; and fisher self-update
+    fisher; fisher self-update
 
     __echo-phase "Making sure Brewfile is up-to-date"
     brew bundle check --verbose --file="$XDG_CONFIG_HOME/brew/Brewfile"

@@ -9,6 +9,7 @@
     - '~/.config/fish/conf.d'
     - '~/.config/fish/functions'
     - '~/.config/git'
+    - '~/.config/karabiner'
     - '~/.config/npm'
     - '~/.config/tmux'
     - '~/.gnupg'
@@ -92,6 +93,10 @@
     ~/.ssh/config.d:
       path: ssh/config.d/*
       glob: true
+
+    ~/.config/karabiner/karabiner.json:
+      path: karabiner/karabiner.json
+      if: "uname -s | grep --quiet --ignore-case darwin"
 
 - shell:
     - git submodule --quiet update --init --recursive
