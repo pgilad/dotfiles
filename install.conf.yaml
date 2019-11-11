@@ -2,16 +2,21 @@
 - clean:
     - '~'
     - '~/.config'
+    - '~/.config/aws'
     - '~/.config/brew'
     - '~/.config/fish'
     - '~/.config/fish/completions'
     - '~/.config/fish/conf.d'
     - '~/.config/fish/functions'
     - '~/.config/git'
+    - '~/.config/karabiner'
     - '~/.config/npm'
     - '~/.config/tmux'
     - '~/.gnupg'
+    - '~/.ssh'
+    - '~/.ssh/config.d'
     - '~/Library/Application Support/pypoetry'
+    - '~/Library/LaunchAgents'
 
 - defaults:
     link:
@@ -20,15 +25,28 @@
       relink: true
 
 - create:
-    - '~/.config'
-    - '~/.cache/pip'
+    - '~/.cache/bundle'
+    - '~/.cache/gem'
+    - '~/.cache/less'
     - '~/.cache/npm'
+    - '~/.cache/pip'
+    - '~/.config'
+    - '~/.local/bin'
+    - '~/.local/share/aws'
+    - '~/.local/share/bundle'
+    - '~/.local/share/gem'
+    - '~/.local/share/gradle'
+    - '~/.local/share/less'
+    - '~/.local/share/nvm'
+    - '~/.local/share/password-store'
+    - '~/.local/share/stack'
     - '~/.local/share/vimfiles'
 
 - link:
     ~/.editorconfig: .editorconfig
     ~/.config/brew/Brewfile: brew/Brewfile
     ~/.config/npm/.npmrc: npm/.npmrc
+    ~/.config/aws/config: aws/config
 
     '~/Library/Application Support/pypoetry/config.toml':
       path: poetry/config.toml
@@ -55,7 +73,7 @@
     ~/.config/git/config: git/.gitconfig
     ~/.config/git/ignore: git/.gitignore
 
-    # Git extra configs
+    # Git extra config
     ~/.config/git/.gitconfig-forter:
       path: git/.gitconfig-forter
       if: 'test -d ~/dev/forter'
@@ -72,5 +90,19 @@
       path: gpg/gpg-agent.conf
       if: "uname -s | grep --quiet --ignore-case darwin"
 
+    ~/.ssh/config.d:
+      path: ssh/config.d/*
+      glob: true
+
+    ~/.config/karabiner/karabiner.json:
+      path: karabiner/karabiner.json
+      if: "uname -s | grep --quiet --ignore-case darwin"
+
 - shell:
-    - git submodule --quiet sync --recursive
+    - git submodule --quiet update --init --recursive
+    - chown -R $(whoami) ~/.gnupg
+    - find ~/.gnupg -type f -exec chmod 600 {} \;
+    - find ~/.gnupg -type d -exec chmod 700 {} \;
+    - chmod 700 ~/.ssh
+    - chmod 644 ~/.ssh/config
+    - chmod 644 ~/.ssh/config.d/*

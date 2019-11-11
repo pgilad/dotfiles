@@ -13,4 +13,4 @@ cd "${BASEDIR}"
 git -C "${DOTBOT_DIR}" submodule --quiet sync --recursive
 git submodule update --init --recursive "${DOTBOT_DIR}"
 
-"$DOTBOT_BIN_FULL_PATH" --base-directory "${BASEDIR}" --config-file "${CONFIG}" "${@}"
+"$DOTBOT_BIN_FULL_PATH" --quiet --base-directory "${BASEDIR}" --config-file "${CONFIG}" "${@}"
