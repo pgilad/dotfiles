@@ -90,10 +90,13 @@
       path: gpg/gpg-agent.conf
       if: "uname -s | grep --quiet --ignore-case darwin"
 
+    # SSH files
+    ~/.ssh/config: ssh/config
     ~/.ssh/config.d:
       path: ssh/config.d/*
       glob: true
 
+    # Karabiner
     ~/.config/karabiner/karabiner.json:
       path: karabiner/karabiner.json
       if: "uname -s | grep --quiet --ignore-case darwin"

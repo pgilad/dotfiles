@@ -1,0 +1,31 @@
+# Include other config files, for local system or system-specific ones.
+#
+# KEEP THIS LINE AT THE TOP; otherwise it's conditional by the first `Host`
+# directive.
+
+Include config.d/*
+
+Host *
+    IgnoreUnknown UseKeychain
+
+    AddKeysToAgent yes
+    Cipher aes128-ctr
+    Compression yes
+    ConnectTimeout 30
+    ForwardX11 no
+    SendEnv LANG LC_*
+    ServerAliveCountMax 10
+    ServerAliveInterval 30
+    TCPKeepAlive yes
+    UseKeychain yes
+    UseRoaming no
+
+    ControlMaster auto
+    ControlPath ~/.ssh/%C.sock
+    ControlPersist 10m
+
+Host github.com
+    HostName github.com
+    IdentityFile ~/.ssh/github_id
+    User git
+    PreferredAuthentications publickey
