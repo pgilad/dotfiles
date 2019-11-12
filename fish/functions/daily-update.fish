@@ -1,5 +1,4 @@
-# Defined in /var/folders/0c/_14xdpfn3b9dw81ndwyx9zjm0000gn/T//fish.OjCsgw/daily-update.fish @ line 2
-function daily-update --description 'Keep Mac up-to date'
+function daily-update --description 'Keep everything up to date'
     if not type -q cowsay
         echo "Please install cowsay"
         return 1
@@ -12,6 +11,8 @@ function daily-update --description 'Keep Mac up-to date'
     function __echo-phase
         cowsay $argv[1] | lolcat
     end
+
+    echo "Starting daily update routine 😄"
 
     __echo-phase "Updating OSX"
     sudo softwareupdate --install --all
@@ -33,4 +34,12 @@ function daily-update --description 'Keep Mac up-to date'
 
     __echo-phase "Updating Fish Completions"
     fish_update_completions
+
+    __echo-phase "Updating projects"
+    repos-update
+
+    __echo-phase "Install dotfiles"
+    install-dotfiles
+
+    echo "Finished daily update routine 😄"
 end
