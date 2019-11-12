@@ -96,7 +96,7 @@
     abbrevCommit = true
 [transfer]
     # Check transferred objects
-    fsckObjects = true
+    fsckObjects = false
 [include]
     path = ".gitconfig-personal"
     # This file will only exist on work machine

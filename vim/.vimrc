@@ -109,7 +109,7 @@ if executable('git')
     let g:ctrlp_use_caching = 0
 endif
 
-NeoBundle 'evanmiller/nginx-vim-syntax'
+NeoBundle 'rhowardiv/nginx-vim-syntax'
 NeoBundleLazy 'Glench/Vim-Jinja2-Syntax', {
 \   'on_ft': ['jinja2', 'j2', 'jinja']
 \ }
