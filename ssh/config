@@ -21,7 +21,7 @@ Host *
     UseRoaming no
 
     ControlMaster auto
-    ControlPath ~/.ssh/%C.sock
+    ControlPath ~/.ssh/control-%h-%p-%r.sock
     ControlPersist 10m
 
 Host github.com
