@@ -2,21 +2,23 @@ local hyper = {"cmd", "alt", "ctrl", "shift"}
 local log = hs.logger.new('hammerspoon','debug')
 
 function openApp(name)
-    local app = hs.application.get(name)
+    local app = hs.application.find(name)
     log.i("open app", name, app)
 
-    if app then
-        if app:isFrontmost() then
-            log.i("hiding app")
-            app:hide()
-        else
-            log.i("focusing app")
-            app:mainWindow():focus()
-        end
-    else
+    if not app then
         log.i("launching app")
         hs.application.launchOrFocus(name)
+        return
     end
+
+    if app:isFrontmost() then
+        log.i("hiding app")
+        app:hide()
+        return
+    end
+
+    log.i("focusing app")
+    app:mainWindow():focus()
 end
 
 function mountApp(appName)
