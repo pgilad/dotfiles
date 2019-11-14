@@ -101,6 +101,11 @@
       path: karabiner/karabiner.json
       if: "uname -s | grep --quiet --ignore-case darwin"
 
+    # Hammerspoon
+    ~/.hammerspoon:
+      path: hammerspoon
+      if: "uname -s | grep --quiet --ignore-case darwin"
+
 - shell:
     - git submodule --quiet update --init --recursive
     - chown -R $(whoami) ~/.gnupg
