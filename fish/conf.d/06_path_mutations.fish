@@ -1,5 +1,5 @@
 set -l paths_to_add \
-    $HOME/bin \
+    # $HOME/bin \ # forter bin tools
     $HOME/.local/bin \
     /usr/local/sbin \
     /usr/local/opt/openssl/bin \
