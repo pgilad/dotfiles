@@ -18,10 +18,6 @@ set -gx LDFLAGS "-L/usr/local/opt/openssl/lib"
 set -gx CPPFLAGS "-I/usr/local/opt/openssl/include"
 set -gx PKG_CONFIG_PATH "/usr/local/opt/openssl/lib/pkgconfig"
 
-# AWS settings
-set -gx AWS_CONFIG_FILE "$HOME/.aws/config"
-set -gx AWS_PROFILE "default"
-
 set -gx GREP_COLOR "1;37;45"
 
 set -q JAVA_HOME; or set -gx JAVA_HOME "$HOME/.sdkman/candidates/java/current"
@@ -53,7 +49,12 @@ set -gx HOMEBREW_NO_ANALYTICS 1
 # set -gx AWS_WEB_IDENTITY_TOKEN_FILE "$XDG_CONFIG_HOME/aws/token"
 set -gx AWS_CLI_HISTORY_FILE "$XDG_DATA_HOME/aws/history"
 set -gx AWS_CONFIG_FILE "$XDG_CONFIG_HOME/aws/config"
+set -gx AWS_PROFILE "default"
+# Version 2.x file
 set -gx AWS_SHARED_CREDENTIALS_FILE "$XDG_CONFIG_HOME/aws/credentials"
+# Version 1.x file
+set -gx AWS_CREDENTIAL_PROFILES_FILE "$XDG_CONFIG_HOME/aws/credentials"
+
 
 # Pip should only run inside a virtualenv
 set -gx PIP_REQUIRE_VIRTUALENV true
