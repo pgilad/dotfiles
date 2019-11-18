@@ -49,12 +49,9 @@ set -gx HOMEBREW_NO_ANALYTICS 1
 # set -gx AWS_WEB_IDENTITY_TOKEN_FILE "$XDG_CONFIG_HOME/aws/token"
 set -gx AWS_CLI_HISTORY_FILE "$XDG_DATA_HOME/aws/history"
 set -gx AWS_CONFIG_FILE "$XDG_CONFIG_HOME/aws/config"
+set -gx AWS_CREDENTIAL_PROFILES_FILE "$XDG_CONFIG_HOME/aws/credentials" # Version 1.x
 set -gx AWS_PROFILE "default"
-# Version 2.x file
-set -gx AWS_SHARED_CREDENTIALS_FILE "$XDG_CONFIG_HOME/aws/credentials"
-# Version 1.x file
-set -gx AWS_CREDENTIAL_PROFILES_FILE "$XDG_CONFIG_HOME/aws/credentials"
-
+set -gx AWS_SHARED_CREDENTIALS_FILE "$XDG_CONFIG_HOME/aws/credentials" # Version 2.x
 
 # Pip should only run inside a virtualenv
 set -gx PIP_REQUIRE_VIRTUALENV true
