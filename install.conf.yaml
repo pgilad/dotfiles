@@ -114,3 +114,5 @@
     - chmod 700 ~/.ssh
     - chmod 644 ~/.ssh/config
     - chmod 644 ~/.ssh/config.d/*
+    - pipx install pipenv
+    - pipx install poetry==1.0.0b5
