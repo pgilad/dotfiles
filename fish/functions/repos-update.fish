@@ -1,5 +1,4 @@
 function repos-update --description 'Development projects update'
-    echo "Starting development repos update"
     pushd (pwd)
     cd ~/dev
     for i in */
@@ -9,5 +8,4 @@ function repos-update --description 'Development projects update'
         cd ..
     end
     popd
-    echo "😄"
 end
