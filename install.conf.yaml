@@ -116,4 +116,4 @@
     - chmod 644 ~/.ssh/config.d/*
     - which pipx && pipx install pipenv || true
     - which pipx && pipx install poetry --pip-args="--pre" || true
-    - vim -c NeoBundleInstall -c NeoBundleUpdate -c q
+    - which vim && vim -c NeoBundleInstall -c NeoBundleUpdate -c q || true
