@@ -115,4 +115,4 @@
     - chmod 644 ~/.ssh/config
     - chmod 644 ~/.ssh/config.d/*
     - which pipx && pipx install pipenv || true
-    - which pipx && pipx install poetry==1.0.0b5 || true
+    - which pipx && pipx install poetry --pip-args="--pre" || true
