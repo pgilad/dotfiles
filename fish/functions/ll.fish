@@ -1,3 +1,3 @@
-function ll --description 'List contents of directory using long format' --wraps ls
-    command ls -lhaG $argv
+function ll --description 'List contents of directory using long format' --wraps lsd
+    command lsd --all --human-readable --long $argv
 end
