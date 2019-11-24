@@ -21,7 +21,9 @@ function daily-update --description 'Keep everything up to date'
     brew update; brew upgrade; brew cleanup; brew update-reset; brew doctor
 
     __echo-phase "Updating SDK"
-    sdk install gradle; and sdk install maven; and sdk install groovy
+    sdk install gradle < /dev/null
+    sdk install maven < /dev/null
+    sdk install groovy < /dev/null
 
     __echo-phase "Updating Node.js"
     nvm install node
