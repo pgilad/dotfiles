@@ -27,3 +27,12 @@ hs.hotkey.bind(hyper, 'j', mountApp("IntelliJ IDEA"))
 hs.hotkey.bind(hyper, 's', mountApp("Slack"))
 
 hs.notify.new({title='Hammerspoon', informativeText='Ready to rock 🤘'}):send()
+
+-- local wifiMenu = hs.menubar.newWithPriority(2147483645)
+
+-- function ssidChanged()
+    -- wifiMenu:setTitle(hs.wifi.currentNetwork() or "Offline")
+-- end
+
+-- wifiWatcher = hs.wifi.watcher.new(ssidChanged):start()
+-- ssidChanged()
