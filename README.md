@@ -1,7 +1,9 @@
 # My configuration files for macOS
-> Fish, Tmux, Karabiner, Hammerspoon, Brew, Npx, Dotbot
+> Fish, Tmux, Karabiner, Hammerspoon, Vim, Brew, Npx, Dotbot
 
 [![Actions Status](https://github.com/pgilad/dotfiles/workflows/ci/badge.svg)](https://github.com/pgilad/dotfiles/actions)
+
+![Screenfetch](media/screenfetch.png)
 
 ## My dotfiles have aged, they're now `v2` !!!
 
@@ -18,7 +20,7 @@ $ git clone --recurse-submodules https://github.com/pgilad/dotfiles.git ~/.dotfi
 $ ~/.dotfiles/install.sh
 ```
 
-## TODO
+## Todo
 
 - How does it install on a new mac?
 
