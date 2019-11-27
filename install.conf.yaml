@@ -107,8 +107,8 @@
       if: "uname -s | grep --quiet --ignore-case darwin"
 
     # Iterm2
-    ~/.config/iterm/com.googlecode.iterm2.plist:
-      path: iterm/com.googlecode.iterm2.plist
+    ~/.config/iterm2/com.googlecode.iterm2.plist:
+      path: iterm2/com.googlecode.iterm2.plist
       if: "uname -s | grep --quiet --ignore-case darwin"
 
 - shell:
