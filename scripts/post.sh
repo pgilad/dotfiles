@@ -19,7 +19,7 @@ if command -v vim; then
     vim -c NeoBundleInstall -c NeoBundleUpdate -c q
 fi
 
-if test uname -s | grep --quiet --ignore-case darwin; then
+if [[ "$OSTYPE" == "darwin"* ]]; then
     defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "~/.config/iterm2"
     defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
 fi
