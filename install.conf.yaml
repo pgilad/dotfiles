@@ -8,6 +8,7 @@
     - '~/.config/fish/completions'
     - '~/.config/fish/conf.d'
     - '~/.config/fish/functions'
+    - '~/.config/iterm2'
     - '~/.config/git'
     - '~/.config/karabiner'
     - '~/.config/npm'
