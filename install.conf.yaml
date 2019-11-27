@@ -106,6 +106,11 @@
       path: hammerspoon
       if: "uname -s | grep --quiet --ignore-case darwin"
 
+    # Iterm2
+    ~/.config/iterm/com.googlecode.iterm2.plist:
+      path: iterm/com.googlecode.iterm2.plist
+      if: "uname -s | grep --quiet --ignore-case darwin"
+
 - shell:
     - git submodule --quiet update --init --recursive
     - chown -R $(whoami) ~/.gnupg
@@ -117,3 +122,5 @@
     - which pipx && pipx install pipenv || true
     - which pipx && pipx install poetry --pip-args="--pre" || true
     - which vim && vim -c NeoBundleInstall -c NeoBundleUpdate -c q || true
+    - defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "~/.config/iterm"
+    - defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
