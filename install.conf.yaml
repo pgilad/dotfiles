@@ -8,8 +8,8 @@
     - '~/.config/fish/completions'
     - '~/.config/fish/conf.d'
     - '~/.config/fish/functions'
-    - '~/.config/iterm2'
     - '~/.config/git'
+    - '~/.config/iterm2'
     - '~/.config/karabiner'
     - '~/.config/npm'
     - '~/.config/tmux'
@@ -123,5 +123,5 @@
     - which pipx && pipx install pipenv || true
     - which pipx && pipx install poetry --pip-args="--pre" || true
     - which vim && vim -c NeoBundleInstall -c NeoBundleUpdate -c q || true
-    - defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "~/.config/iterm"
+    - defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "~/.config/iterm2"
     - defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
