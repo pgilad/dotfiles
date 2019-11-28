@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-set +x
+set -x
 
 git submodule --quiet update --init --recursive
 chown -R "$(whoami)" ~/.gnupg
@@ -26,4 +26,4 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
 fi
 
-set -x
+set +x
