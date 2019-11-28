@@ -1,26 +1,18 @@
 .idea/
-*.iml
+.vscode/
 
-#files for git to ignore
 zsh-update
 
-#Anything ending with a tilde
-*~
-
-#Anything ending with a .class
-
-*.class
-
-#Vim temp files
-
-*.swp
-*.swo
-
-#Workbench backup files
 *.bak
-
+*.class
+*.iml
+*.key
 *.log*
-
-*.orig
-
 *.old
+*.orig
+*.pem
+*.pub
+*.pyc
+*.swo
+*.swp
+*~
