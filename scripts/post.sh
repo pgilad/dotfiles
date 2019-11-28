@@ -16,7 +16,7 @@ if command -v pipx; then
 fi
 
 if command -v vim; then
-    vim -c NeoBundleInstall -c NeoBundleUpdate -c q
+    vim -c NeoBundleInstall -c q
 fi
 
 if [[ "$OSTYPE" == "darwin"* ]]; then

@@ -31,6 +31,9 @@ function daily-update --description 'Keep everything up to date'
     __echo-phase "Updating Fisher"
     fisher; fisher self-update
 
+    __echo-phase "Updating Vim Packages"
+    vim -c NeoBundleUpdate -c q
+
     __echo-phase "Making sure Brewfile is up-to-date"
     brew bundle check --verbose --file="$XDG_CONFIG_HOME/brew/Brewfile"
 
