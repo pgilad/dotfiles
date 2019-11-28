@@ -9,7 +9,6 @@
     - '~/.config/fish/conf.d'
     - '~/.config/fish/functions'
     - '~/.config/git'
-    - '~/.config/iterm2'
     - '~/.config/karabiner'
     - '~/.config/npm'
     - '~/.config/tmux'
@@ -105,11 +104,6 @@
     # Hammerspoon
     ~/.hammerspoon:
       path: hammerspoon
-      if: "uname -s | grep --quiet --ignore-case darwin"
-
-    # Iterm2
-    ~/.config/iterm2/com.googlecode.iterm2.plist:
-      path: iterm2/com.googlecode.iterm2.plist
       if: "uname -s | grep --quiet --ignore-case darwin"
 
 - shell:
