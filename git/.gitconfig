@@ -78,7 +78,7 @@
 [commit]
     verbose = true
 [gpg]
-    program = /usr/local/bin/gpg
+    program = gpg
 [submodule]
     # Fetch submodules in parallel, with a reasonable number of jobs
     fetchJobs = 0
