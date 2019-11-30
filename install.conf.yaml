@@ -108,4 +108,4 @@
 
 - shell:
   - command: ./scripts/post.sh
-    stderr: true
+    stdout: true
