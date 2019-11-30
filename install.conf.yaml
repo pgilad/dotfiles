@@ -107,4 +107,6 @@
       if: "uname -s | grep --quiet --ignore-case darwin"
 
 - shell:
-    - ./scripts/post.sh
+    - command: ./scripts/post.sh
+      stdout: true
+      stderr: true
