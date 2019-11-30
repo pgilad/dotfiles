@@ -107,5 +107,6 @@
       if: "uname -s | grep --quiet --ignore-case darwin"
 
 - shell:
-  - command: ./scripts/post.sh
-    stdout: true
+    - ./scripts/install-neobundle.sh
+    - command: ./scripts/post.sh
+      stderr: true
