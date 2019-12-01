@@ -16,5 +16,5 @@ if command -v pipx; then
 fi
 
 if command -v vim; then
-    vim -c NeoBundleInstall -c q
+    vim -c NeoBundleInstall -c q 2>/dev/null
 fi

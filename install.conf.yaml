@@ -2,6 +2,7 @@
 - clean:
     - '~'
     - '~/.config'
+    - '~/.config/alacritty'
     - '~/.config/aws'
     - '~/.config/brew'
     - '~/.config/fish'
@@ -10,8 +11,10 @@
     - '~/.config/fish/functions'
     - '~/.config/git'
     - '~/.config/karabiner'
+    - '~/.config/neofetch'
     - '~/.config/npm'
     - '~/.config/tmux'
+    - '~/.gnupg'
     - '~/.gnupg'
     - '~/.ssh'
     - '~/.ssh/config.d'
@@ -106,6 +109,14 @@
       path: hammerspoon
       if: "uname -s | grep --quiet --ignore-case darwin"
 
+    # Alacritty
+    ~/.config/alacritty/alacritty.yml:
+      path: alacritty/alacritty.yml
+      if: "uname -s | grep --quiet --ignore-case darwin"
+
+    # Neofetch
+    ~/.config/neofetch/config.conf: neofetch/config.conf
+
 - shell:
-  - command: ./scripts/post.sh
-    stderr: true
+    - command: ./scripts/post.sh
+      stderr: true
