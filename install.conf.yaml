@@ -120,7 +120,5 @@
 - shell:
     - command: ./scripts/install-neobundle.sh
       stderr: true
-      stdout: true
     - command: ./scripts/post.sh
       stderr: true
-      stdout: true
