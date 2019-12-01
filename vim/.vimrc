@@ -33,17 +33,8 @@ let g:config =  {
 let g:mapleader = ","
 let g:maplocalleader = ","
 
-let s:neobundle_git_path='!git clone --quiet %s://github.com/Shougo/neobundle.vim.git'
-
 if has('vim_starting')
-    " add NeoBundle to rtp
     execute 'set rtp ^='. fnameescape(g:config.bundlesPath . 'neobundle.vim/')
-    " install NeoBundle if doesn't exist and we have git. TODO - create curl alternative
-    if !isdirectory(expand(g:config.bundlesPath . 'neobundle.vim')) && executable('git')
-        execute printf(s:neobundle_git_path,
-                    \ (exists('$http_proxy') ? 'https' : 'git'))
-                    \ g:config.bundlesPath . 'neobundle.vim'
-    endif
 endif
 
 call neobundle#begin(expand(g:config.bundlesPath))

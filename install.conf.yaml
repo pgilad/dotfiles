@@ -118,5 +118,9 @@
     ~/.config/neofetch/config.conf: neofetch/config.conf
 
 - shell:
+    - command: ./scripts/install-neobundle.sh
+      stderr: true
+      stdout: true
     - command: ./scripts/post.sh
       stderr: true
+      stdout: true
