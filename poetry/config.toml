@@ -1,6 +1,6 @@
 [settings]
 
-[settings.virtualenvs]
+[virtualenvs]
 create = true
 
 [repositories]
