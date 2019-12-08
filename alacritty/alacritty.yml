@@ -59,7 +59,8 @@ background_opacity: 1.0
 mouse:
   hide_when_typing: true
   url:
-    modifiers: Command
+    launcher: open
+    modifiers: Command|Shift
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
   save_to_clipboard: true

@@ -1,6 +1,7 @@
 ---
 - clean:
     - '~'
+    - '~/.aws'
     - '~/.config'
     - '~/.config/alacritty'
     - '~/.config/aws'
@@ -49,7 +50,7 @@
     ~/.editorconfig: .editorconfig
     ~/.config/brew/Brewfile: brew/Brewfile
     ~/.config/npm/.npmrc: npm/.npmrc
-    ~/.config/aws/config: aws/config
+    ~/.aws/config: aws/config
 
     '~/Library/Application Support/pypoetry/config.toml':
       path: poetry/config.toml

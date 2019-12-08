@@ -2,6 +2,7 @@ set -l paths_to_add \
     # $HOME/bin \ # forter bin tools
     $HOME/.local/bin \
     /usr/local/sbin \
+    "/usr/local/opt/openssl@1.1/bin" \
     /usr/local/opt/openssl/bin \
     /usr/local/opt/ruby/bin \
     $HOME/.poetry/bin \
