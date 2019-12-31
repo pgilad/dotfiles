@@ -57,6 +57,7 @@ set -gx AWS_SHARED_CREDENTIALS_FILE "$HOME/.aws/credentials" # Version 2.x
 
 # Pip should only run inside a virtualenv
 set -gx PIP_REQUIRE_VIRTUALENV true
+set -gx PYENV_ROOT "$HOME/.pyenv"
 
 # Set pass password store location
 set -gx PASSWORD_STORE_DIR "$XDG_DATA_HOME/password-store"

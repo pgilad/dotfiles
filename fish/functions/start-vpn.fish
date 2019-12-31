@@ -1,6 +1,6 @@
 # Defined in /var/folders/0c/_14xdpfn3b9dw81ndwyx9zjm0000gn/T//fish.HPevI2/start-vpn.fish @ line 2
 function start-vpn
-	if pgrep -x openvpn > /dev/null
+    if pgrep -x openvpn > /dev/null
         echo "Openvpn already running"
         return
     end
@@ -21,4 +21,6 @@ function start-vpn
         --script-security 2 \
         --daemon
     popd
+
+    sudo killall -HUP mDNSResponder
 end

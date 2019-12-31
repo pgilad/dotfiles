@@ -3,8 +3,10 @@ set -l paths_to_add \
     $HOME/.local/bin \
     /usr/local/sbin \
     "/usr/local/opt/openssl@1.1/bin" \
+    $HOME/.cargo/bin \
     /usr/local/opt/openssl/bin \
     /usr/local/opt/ruby/bin \
+    $GEM_HOME/bin \
     $HOME/.poetry/bin \
     $HOME/.sdkman/candidates/*/current/bin
 

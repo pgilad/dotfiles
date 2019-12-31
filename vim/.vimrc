@@ -369,6 +369,7 @@ augroup my_filetypes
     autocmd BufNewFile,BufRead *.txt                 setlocal filetype=text
     autocmd BufNewFile,BufRead *.xdot                setlocal filetype=dot
     autocmd BufNewFile,BufRead *.jade                setlocal filetype=pug
+    autocmd BufNewFile,BufRead riemann.config        setlocal filetype=clojure
     autocmd BufNewFile,BufRead .babelrc,.bowerrc,.eslintrc,.jscsrc,.jshintrc,.nycrc setlocal filetype=json
     autocmd BufNewFile,BufRead .tmux*.conf*,*.tmux   setlocal filetype=tmux
 augroup END

@@ -55,6 +55,10 @@ shell:
   args:
     - --login
 
+key_bindings:
+  - { key: Left,     mods: Alt,     chars: "\x1bb"                       }
+  - { key: Right,    mods: Alt,     chars: "\x1bf"                       }
+
 background_opacity: 1.0
 mouse:
   hide_when_typing: true
