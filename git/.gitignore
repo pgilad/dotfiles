@@ -8,9 +8,10 @@
 Thumbs.db
 Desktop.ini
 
-# IntelliJ
+# Editors
 .idea/
 *.iml
+.vscode/
 
 # Scala
 .sbtopts
@@ -18,8 +19,11 @@ Desktop.ini
 .metals/
 .bloop/
 
-# VSCode
-.vscode/
-
-# Python bytecode
+# Python
 __pycache__/
+.python-version
+.pytest_cache
+.venv/
+.tox/
+.mypy_cache/
+*.pyc
