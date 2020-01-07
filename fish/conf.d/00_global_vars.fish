@@ -13,10 +13,11 @@ set -gx SSH_KEY_PATH "$HOME/.ssh"
 set -gx LANG en_US.UTF-8
 set -gx LC_ALL en_US.UTF-8
 
-# Set openssl paths for compiles and pkg-config
-set -gx LDFLAGS "-L/usr/local/opt/openssl/lib"
-set -gx CPPFLAGS "-I/usr/local/opt/openssl/include"
-set -gx PKG_CONFIG_PATH "/usr/local/opt/openssl/lib/pkgconfig"
+for pkg in openssl@1.1 curl readline gettext ncurses icu4c sqlite zlib
+    set -gx LDFLAGS "-L/usr/local/opt/$pkg/lib" $LDFLAGS
+    set -gx CPPFLAGS "-I/usr/local/opt/$pkg/include" $CPPFLAGS
+    set -gx PKG_CONFIG_PATH "/usr/local/opt/$pkg/lib/pkgconfig" $PKG_CONFIG_PATH
+end
 
 set -gx GREP_COLOR "1;37;45"
 
