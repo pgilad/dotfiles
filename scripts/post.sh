@@ -12,7 +12,6 @@ chmod 644 ~/.ssh/config.d/*
 
 if command -v pipx; then
     pipx install pipenv
-    pipx install poetry --pip-args="--pre"
 fi
 
 if command -v vim; then

@@ -5,6 +5,9 @@ window:
   dynamic_padding: false
   decorations: full
   startup_mode: Maximized
+  padding:
+    x: 3
+    y: 3
 scrolling:
   history: 50000
   multiplier: 3

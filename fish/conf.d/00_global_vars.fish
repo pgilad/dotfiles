@@ -13,7 +13,9 @@ set -gx SSH_KEY_PATH "$HOME/.ssh"
 set -gx LANG en_US.UTF-8
 set -gx LC_ALL en_US.UTF-8
 
-for pkg in openssl@1.1 curl readline gettext ncurses icu4c sqlite zlib
+set -gx LIBRARY_PATH "/usr/local/opt/openssl/lib/"
+
+for pkg in openssl openssl@1.1 curl readline gettext ncurses icu4c sqlite zlib mysql-client
     set -gx LDFLAGS "-L/usr/local/opt/$pkg/lib" $LDFLAGS
     set -gx CPPFLAGS "-I/usr/local/opt/$pkg/include" $CPPFLAGS
     set -gx PKG_CONFIG_PATH "/usr/local/opt/$pkg/lib/pkgconfig" $PKG_CONFIG_PATH
