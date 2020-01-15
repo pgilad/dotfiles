@@ -15,9 +15,11 @@ set -gx LC_ALL en_US.UTF-8
 
 set -gx LIBRARY_PATH "/usr/local/opt/openssl/lib/"
 
-for pkg in openssl openssl@1.1 curl readline gettext ncurses icu4c sqlite zlib mysql-client
-    set -gx LDFLAGS "-L/usr/local/opt/$pkg/lib" $LDFLAGS
+for pkg in openssl curl readline gettext ncurses icu4c sqlite zlib mysql-client
+    set -gx CFLAGS "-I/usr/local/opt/$pkg/include" $CFLAGS
     set -gx CPPFLAGS "-I/usr/local/opt/$pkg/include" $CPPFLAGS
+    set -gx LD_RUN_PATH "/usr/local/opt/$pkg/lib" $LD_RUN_PATH
+    set -gx LDFLAGS "-L/usr/local/opt/$pkg/lib" $LDFLAGS
     set -gx PKG_CONFIG_PATH "/usr/local/opt/$pkg/lib/pkgconfig" $PKG_CONFIG_PATH
 end
 
@@ -58,8 +60,10 @@ set -gx AWS_CREDENTIAL_PROFILES_FILE "$HOME/.aws/credentials" # Version 1.x
 set -gx AWS_PROFILE "default"
 set -gx AWS_SHARED_CREDENTIALS_FILE "$HOME/.aws/credentials" # Version 2.x
 
-# Pip should only run inside a virtualenv
+# Python
 set -gx PIP_REQUIRE_VIRTUALENV true
+set -gx PIP_DEFAULT_TIMEOUT 30
+set -gx PIP_CACHE_DIR "$XDG_CACHE_HOME/pip"
 set -gx PYENV_ROOT "$HOME/.pyenv"
 
 # Set pass password store location
