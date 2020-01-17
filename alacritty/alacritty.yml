@@ -59,8 +59,8 @@ shell:
     - --login
 
 key_bindings:
-  - { key: Left,     mods: Alt,     chars: "\x1bb"                       }
-  - { key: Right,    mods: Alt,     chars: "\x1bf"                       }
+- {key: Left, mods: Alt, chars: "\x1bb" }
+- {key: Right, mods: Alt, chars: "\x1bf" }
 
 background_opacity: 1.0
 mouse:
