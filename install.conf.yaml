@@ -119,7 +119,7 @@
     ~/.config/neofetch/config.conf: neofetch/config.conf
 
 - shell:
-    - command: ./scripts/install-neobundle.sh
+    - command: ./scripts/install-dein.sh
       stderr: true
     - command: ./scripts/post.sh
       stderr: true

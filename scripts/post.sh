@@ -9,11 +9,3 @@ find ~/.gnupg -type d -exec chmod 700 {} \;
 chmod 700 ~/.ssh
 chmod 644 ~/.ssh/config
 chmod 644 ~/.ssh/config.d/*
-
-if command -v pipx; then
-    pipx install pipenv
-fi
-
-if command -v vim; then
-    vim -c NeoBundleInstall -c q 2>/dev/null
-fi
