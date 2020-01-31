@@ -7,14 +7,11 @@ if &shell =~# 'fish$'
 endif
 
 let g:config =  {
-            \ 'deinPath': '~/.local/share/dein',
-            \ 'bundlesPath': '~/.local/share/vimfiles/bundle/',
             \ 'spellDir' : '~/.local/share/vimfiles/spell/',
             \ 'spellFile' : '~/.local/share/vimfiles/spell/en.utf-8.add',
             \ 'undoDir' : '~/.cache/vim/undo/',
             \ 'env' : {
             \   'windows': has('wind16') || has('win32') || has('win64'),
-            \   'cygwin': has('win32unix'),
             \   'mac': has('mac'),
             \   'unix': has('unix') && !has('gui_macvim')
             \ }
@@ -24,7 +21,7 @@ let g:config =  {
 let g:mapleader = ","
 let g:maplocalleader = ","
 
-let s:path = fnameescape(g:config.deinPath . '/repos/github.com/Shougo/dein.vim')
+let s:dein_path = '~/.local/share/dein'
 let s:dein_toml = '~/.dotfiles/vim/dein.toml'
 let s:dein_lazy_toml = '~/.dotfiles/vim/deinlazy.toml'
 
@@ -33,23 +30,23 @@ let g:dein#install_progress_type = 'title'
 let g:dein#enable_notification = 1
 let g:dein#install_log_filename = '~/dein.log'
 
-execute 'set runtimepath^=' . s:path
+set runtimepath^=~/.local/share/dein/repos/github.com/Shougo/dein.vim
 
-if !dein#load_state(g:config.deinPath)
-    finish
+if dein#load_state(s:dein_path)
+    call dein#begin(s:dein_path, [ expand('<sfile>'), s:dein_toml, s:dein_lazy_toml ])
+
+    call dein#add('~/.local/share/dein/repos/github.com/Shougo/dein.vim')
+    call dein#load_toml(s:dein_toml, {'lazy': 0})
+    call dein#load_toml(s:dein_lazy_toml, {'lazy': 1})
+
+    if !has('nvim')
+        call dein#add('roxma/nvim-yarp')
+        call dein#add('roxma/vim-hug-neovim-rpc')
+    endif
+
+    call dein#end()
+    call dein#save_state()
 endif
-
-call dein#begin(g:config.deinPath, [ expand('<sfile>'), s:dein_toml, s:dein_lazy_toml ])
-call dein#load_toml(s:dein_toml, {'lazy': 0})
-call dein#load_toml(s:dein_lazy_toml, {'lazy': 1})
-
-if !has('nvim')
-    call dein#add('roxma/nvim-yarp')
-    call dein#add('roxma/vim-hug-neovim-rpc')
-endif
-
-call dein#end()
-call dein#save_state()
 
 if !has('vim_starting') && dein#check_install()
   " Installation check.
