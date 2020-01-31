@@ -75,3 +75,31 @@ repo = 'pgilad/vim-react-proptypes-snippets'
 
 [[plugins]]
 repo = 'nanotech/jellybeans.vim'
+
+[[plugins]]
+repo = 'kana/vim-textobj-user'
+
+[[plugins]]
+repo = 'kana/vim-textobj-line'
+depends = 'kana/vim-textobj-user'
+
+[[plugins]]
+repo = 'kana/vim-textobj-indent'
+depends = 'kana/vim-textobj-user'
+
+[[plugins]]
+repo = 'kana/vim-textobj-entire'
+depends = 'kana/vim-textobj-user'
+
+[[plugins]]
+repo = 'PeterRincker/vim-argumentative'
+
+[[plugins]]
+repo = 'junegunn/vim-slash'
+
+[[plugins]]
+repo = 'tpope/vim-unimpaired'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+augroup = 'fugitive'

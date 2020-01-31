@@ -33,7 +33,7 @@ let g:dein#install_progress_type = 'title'
 let g:dein#enable_notification = 1
 let g:dein#install_log_filename = '~/dein.log'
 
-execute 'set runtimepath+=' . s:path
+execute 'set runtimepath^=' . s:path
 
 if !dein#load_state(g:config.deinPath)
     finish
@@ -98,12 +98,6 @@ if executable('git')
     let g:ctrlp_use_caching = 0
 endif
 
-" NeoBundleLazy 'scrooloose/nerdtree', {
-"             \  'on_path' : '.*',
-"             \  'on_cmd': ['NERDTree', 'NERDTreeToggle', 'NERDTreeFind',
-"             \  'NERDTreeClose', 'NERDTreeCWD', 'NERDTreeFromBookmark', 'NERDTreeMirror']
-"             \ }
-
 let NERDTreeShowBookmarks=1
 let NERDTreeShowHidden=1
 let NERDTreeQuitOnOpen=0
@@ -128,69 +122,19 @@ let g:indent_guides_guide_size = 0
 hi IndentGuidesOdd  ctermbg=black
 hi IndentGuidesEven ctermbg=darkgrey
 
-" NeoBundleLazy 'ap/vim-css-color', { 'on_ft':['css','scss','sass','less','styl'] }
-" NeoBundleLazy 'hail2u/vim-css3-syntax', { 'on_ft':['css', 'less'] }
-" NeoBundleLazy 'ingydotnet/yaml-vim', { 'on_ft': ['yml', 'yaml'] }
-
-" NeoBundleLazy 'cakebaker/scss-syntax.vim', { 'on_ft': ['sass', 'scss'] }
-" NeoBundleLazy 'wavded/vim-stylus', { 'on_ft': ['stylus'] }
-" NeoBundleLazy 'groenewege/vim-less', { 'on_ft': ['less', 'css'] }
-" NeoBundleLazy 'csscomb/vim-csscomb', { 'on_ft': ['css', 'less', 'sass'] }
-" NeoBundleLazy 'othree/html5.vim', { 'on_ft': ['html'] }
-" NeoBundleLazy 'hokaccha/vim-html5validator', { 'on_ft' : ['html'] }
-" NeoBundleLazy 'digitaltoad/vim-pug', { 'on_ft': ['jade', 'pug'] }
-" NeoBundleLazy 'gregsexton/MatchTag', { 'on_ft': ['html','xml'] }
-" NeoBundleLazy 'othree/xml.vim', { 'on_ft': ['xml'] }
-" NeoBundleLazy 'darfink/vim-plist', { 'on_ft': ['plist'] }
-" NeoBundleLazy 'samuelsimoes/vim-jsx-utils', { 'on_ft': ['javascript'] }
-" NeoBundleLazy 'othree/yajs.vim', { 'on_ft': ['javascript'] }
-" NeoBundleLazy 'pangloss/vim-javascript', { 'on_ft': ['javascript'] }
-
-" NeoBundleLazy 'mxw/vim-jsx', { 'on_ft': ['javascript'] }
 let g:jsx_ext_required = 0
 
-" NeoBundleLazy 'itspriddle/vim-jquery.git', {'on_ft': ['javascript']}
-" NeoBundleLazy 'heavenshell/vim-jsdoc', {'on_ft': ['javascript']}
-" NeoBundleLazy 'othree/javascript-libraries-syntax.vim', {
-            " \   'on_ft': ['javascript','coffee']
-            " \ }
 let g:used_javascript_libs = 'underscore,angularjs,jquery,backbone,react'
-
-" NeoBundle 'evidens/vim-twig'
-" NeoBundleLazy 'leafgarland/typescript-vim', {
-            " \   'on_ft': ['typescript']
-            " \ }
-" NeoBundleLazy 'tpope/vim-markdown', {'on_ft':['markdown']}
-" NeoBundleLazy 'waylan/vim-markdown-extra-preview', {'on_ft':['markdown']}
-" NeoBundleLazy 'jtratner/vim-flavored-markdown.git', {'on_ft':['markdown']}
-" NeoBundleLazy 'kannokanno/previm', {
-            " \ 'depends' : ['open-browser.vim'],
-            " \ 'on_ft' : ['markdown']
-            " \ }
-" NeoBundle 'tpope/vim-unimpaired'
-
-" NeoBundle 'tpope/vim-fugitive', {
-            " \ 'augroup' : 'fugitive'
-            " \ }
 
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>gp :Git push<cr>
-
-" NeoBundleLazy 'vim-ruby/vim-ruby', {
-            " \ 'on_map' : '<Plug>',
-            " \ 'on_ft' : 'ruby'
-            " \ }
 
 let g:gitgutter_eager = 0
 let g:gitgutter_enabled = 1
 let g:gitgutter_escape_grep = 1
 let g:gitgutter_map_keys = 0
 let g:gitgutter_realtime = 0
-
-" NeoBundleLazy 'AndrewRadev/linediff.vim', {
-            " \   'on_cmd': ['Linediff', 'LinediffReset']
-            " \ }
 
 vnoremap <leader>ld :Linediff<cr>
 nnoremap <leader>ld :Linediff<cr>
@@ -223,25 +167,6 @@ let g:UltiSnipsSnippetDirectories=['UltiSnips', 'mysnippets']
 """"""""""""""""""""""""""
 "  Text Objects Plugins  "
 """"""""""""""""""""""""""
-" NeoBundle 'kana/vim-textobj-user'
-" " al aL
-" NeoBundle 'kana/vim-textobj-line', { 'depends': 'kana/vim-textobj-user' }
-" " ai, ii, aI, iI
-" NeoBundle 'kana/vim-textobj-indent', { 'depends': 'kana/vim-textobj-user' }
-" " ae, ie
-" NeoBundle 'kana/vim-textobj-entire', { 'depends': 'kana/vim-textobj-user' }
-" " a, i,
-" NeoBundle 'PeterRincker/vim-argumentative'
-"
-" NeoBundle 'junegunn/vim-pseudocl'
-" NeoBundle 'junegunn/vim-oblique', {
-"             \ 'depends' : 'junegunn/vim-pseudocl',
-"             \ }
-" NeoBundleLazy 'gorkunov/smartgf.vim', {
-"             \ 'on_map': '<Plug>(smartgf-search',
-"             \ 'disabled': !executable('ag')
-"             \ }
-
 let g:smartgf_create_default_mappings = 0
 let g:smartgf_enable_gems_search = 0
 let g:smartgf_auto_refresh_ctags = 0
@@ -256,15 +181,7 @@ vmap gS <Plug>(smartgf-search-unfiltered)
 
 let g:config.colorscheme = "jellybeans"
 
-" call neobundle#end()
-
-if !has('vim_starting')
-    " Installation check.
-    " NeoBundleCheck
-endif
-
 set guioptions=Mc
-" set guioptions+=a " visual select auto-copy to clipboard
 
 syntax off
 filetype plugin indent off
@@ -665,9 +582,6 @@ nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
 
 " edit current filetype custom snippets
 nnoremap <silent> <leader>us :UltiSnipsEdit<cr>
-" update bundles
-nnoremap <silent> <leader>eu :NeoBundleUpdate<cr>
-nnoremap <silent> <leader>el :NeoBundleUpdatesLog<cr>
 
 " execute current line as command
 nnoremap <leader>ex :<c-u>execute getline(".")<cr>
