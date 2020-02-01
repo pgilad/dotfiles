@@ -23,21 +23,23 @@ let g:maplocalleader = ","
 
 let s:dein_path = '~/.local/share/dein'
 let s:dein_toml = '~/.dotfiles/vim/dein.toml'
-let s:dein_lazy_toml = '~/.dotfiles/vim/deinlazy.toml'
+let s:dein_toml_lazy = '~/.dotfiles/vim/deinlazy.toml'
+
+let s:dein_plugin_path = s:dein_path . "/repos/github.com/Shougo/dein.vim"
 
 let g:dein#auto_recache = 1
 let g:dein#install_progress_type = 'title'
 let g:dein#enable_notification = 1
 let g:dein#install_log_filename = '~/dein.log'
 
-set runtimepath^=~/.local/share/dein/repos/github.com/Shougo/dein.vim
+execute "set runtimepath^=" . s:dein_plugin_path
 
 if dein#load_state(s:dein_path)
-    call dein#begin(s:dein_path, [ expand('<sfile>'), s:dein_toml, s:dein_lazy_toml ])
+    call dein#begin(s:dein_path, [ expand('<sfile>'), s:dein_toml, s:dein_toml_lazy ])
 
-    call dein#add('~/.local/share/dein/repos/github.com/Shougo/dein.vim')
+    call dein#add(s:dein_plugin_path)
     call dein#load_toml(s:dein_toml, {'lazy': 0})
-    call dein#load_toml(s:dein_lazy_toml, {'lazy': 1})
+    call dein#load_toml(s:dein_toml_lazy, {'lazy': 1})
 
     if !has('nvim')
         call dein#add('roxma/nvim-yarp')
@@ -152,6 +154,16 @@ let g:airline#extensions#tabline#left_alt_sep='¦'
 let g:airline#extensions#tmuxline#enabled = 0
 let g:airline#extensions#branch#enabled = 1
 
+let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ }
+      \ }
+
 "set to where my /mysnippets directory exists
 set runtimepath+=~/.dotfiles/vim/
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -185,16 +197,12 @@ filetype plugin indent off
 
 augroup my_filetypes
     autocmd!
-    autocmd BufNewFile,BufRead *.ajs,*.es6,*.es      setlocal filetype=javascript
-    autocmd BufNewFile,BufRead *.as                  setlocal filetype=actionscript
     autocmd BufNewFile,BufRead *.asm                 setlocal filetype=nasm
     autocmd BufNewFile,BufRead *.kml                 setlocal filetype=xml
     autocmd BufNewFile,BufRead *.m                   setlocal filetype=objc
     autocmd BufNewFile,BufRead *.md,*.markdown       setlocal filetype=markdown
-    autocmd BufNewFile,BufRead *.rs                  setlocal filetype=rust
     autocmd BufNewFile,BufRead *.samsa               setlocal filetype=jproperties
     autocmd BufNewFile,BufRead *.scala               setlocal filetype=scala
-    autocmd BufNewFile,BufRead *.ts                  setlocal filetype=typescript
     autocmd BufNewFile,BufRead *.txt                 setlocal filetype=text
     autocmd BufNewFile,BufRead *.xdot                setlocal filetype=dot
     autocmd BufNewFile,BufRead *.jade                setlocal filetype=pug
@@ -216,11 +224,6 @@ augroup my_auto_commands
     autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
     autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
     autocmd FileType sshconfig setlocal omnifunc=syntaxcomplete#Complete
-
-    autocmd FileType css,html,jsx,json nnoremap <silent> <buffer> <leader>js :<c-u>call Beautify()<cr>
-    autocmd FileType javascript nnoremap <silent> <buffer> <leader>js :<c-u>call JsBeautify()<cr>
-    autocmd FileType css,html,jsx,json vnoremap <silent> <buffer> <leader>js :call BeautifyRange()<cr>
-    autocmd FileType javascript vnoremap <silent> <buffer> <leader>js :call RangeJsBeautify()<cr>
 
     "pretty format json using python
     autocmd FileType json nnoremap <buffer> <leader>pf :%!python -m json.tool<cr>
@@ -572,10 +575,11 @@ nnoremap <leader>nf :NERDTreeFind<cr>
 """""""""""""""
 "  <leader>e  "
 """""""""""""""
-" edit _vimrc
 nnoremap <silent> <leader>ev :edit $MYVIMRC<cr>
-" source myvimrc
 nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
+nnoremap <silent> <leader>eu :call dein#update()<cr>
+execute "nnoremap <silent> <leader>df :edit " . s:dein_toml . "<cr>"
+execute "nnoremap <silent> <leader>dl :edit " . s:dein_toml_lazy . "<cr>"
 
 " edit current filetype custom snippets
 nnoremap <silent> <leader>us :UltiSnipsEdit<cr>

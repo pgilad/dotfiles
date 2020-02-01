@@ -1,14 +1,12 @@
 set -l paths_to_add \
-    # $HOME/bin \ # forter bin tools
-    $HOME/.local/bin \
     /usr/local/sbin \
-    "/usr/local/opt/openssl@1.1/bin" \
-    $HOME/.cargo/bin \
+    $PIPX_BIN_DIR \
     /usr/local/opt/openssl/bin \
     /usr/local/opt/ruby/bin \
     $GEM_HOME/bin \
-    $HOME/.poetry/bin \
-    $HOME/.sdkman/candidates/*/current/bin
+    $HOME/.sdkman/candidates/*/current/bin \
+    $GOBIN \
+    $CARGOBIN
 
 for path_to_add in $paths_to_add
     test -d $path_to_add; and set -gx PATH $path_to_add (string match -v $path_to_add $PATH)
