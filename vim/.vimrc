@@ -188,8 +188,6 @@ vmap gs <Plug>(smartgf-search)
 nmap gS <Plug>(smartgf-search-unfiltered)
 vmap gS <Plug>(smartgf-search-unfiltered)
 
-let g:config.colorscheme = "jellybeans"
-
 set guioptions=Mc
 
 syntax off
@@ -464,19 +462,7 @@ set background=dark
 filetype plugin indent on
 syntax enable
 
-function! s:setDefaultColor()
-    color desert
-endfunction
-
-if exists('g:config.colorscheme')
-    try
-        exec 'colorscheme ' . g:config.colorscheme
-    catch
-        call s:setDefaultColor()
-    endtry
-else
-    call s:setDefaultColor()
-endif
+colorscheme jellybeans
 
 """"""""""""""""""""""
 "  F-# keys mapping  "
@@ -484,8 +470,6 @@ endif
 nnoremap <F1> <nop>
 " toggle paste
 nnoremap <F6> :<c-u>set invpaste<cr>:set paste?<cr>
-" format from 2 spaces to 4 spaces
-nnoremap <F7> :<c-u>set ts=2 sts=2 noexpandtab<cr>:retab!<cr>:set ts=4 sts=4 expandtab<cr>:retab<cr>
 """"""""""""""""""""""""""""
 "  Regular keys unbinding  "
 """"""""""""""""""""""""""""
@@ -587,6 +571,7 @@ nnoremap <silent> <leader>us :UltiSnipsEdit<cr>
 " execute current line as command
 nnoremap <leader>ex :<c-u>execute getline(".")<cr>
 vnoremap <leader>ex :<c-u>execute getreg("*")<cr>
+
 "clear all double+ empty lines
 nnoremap <leader>ec :g/^\n$/d<cr>
 
@@ -596,20 +581,5 @@ nnoremap <leader>ec :g/^\n$/d<cr>
 " Switch commands.
 nnoremap <silent> <leader>sw :Switch<cr>
 nmap <leader>so vii:sort i<cr>
-"""""""""""""""
-"  <leader>o  "
-"""""""""""""""
-" simply open search in browser
-nmap <leader>oo <Plug>(openbrowser-open)
-nmap <leader>os <Plug>(openbrowser-smart-search)
-vmap <leader>os <Plug>(openbrowser-smart-search)
-
-"""""""""""""""
-"  <leader>m  "
-"""""""""""""""
-"markdown preview
-nnoremap <leader>mp :Me<cr>
-" break chaining on .then
-nnoremap <leader>m<cr> /\%<c-r>=line('.')<cr>l\.then:nohlsearch<cr>i l
 
 set secure
