@@ -2,6 +2,6 @@
 
 [virtualenvs]
 create = true
-in-project = true
+in-project = false
 
 [repositories]

@@ -142,3 +142,7 @@ disabled = "!executable('ag')"
 [[plugins]]
 repo = 'AndrewRadev/linediff.vim'
 on_cmd = ['Linediff', 'LinediffReset']
+
+[[plugins]]
+repo = 'udalov/kotlin-vim'
+on_ft = ['kotlin', 'kt']
