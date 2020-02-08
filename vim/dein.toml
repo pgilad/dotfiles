@@ -59,8 +59,8 @@ repo = 'PieterjanMontens/vim-pipenv'
 # repo = 'bling/vim-airline'
 repo = 'itchyny/lightline.vim'
 
-[[plugins]]
-repo = 'SirVer/ultisnips'
+# [[plugins]]
+# repo = 'SirVer/ultisnips'
 
 [[plugins]]
 repo = 'honza/vim-snippets'
