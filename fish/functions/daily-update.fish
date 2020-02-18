@@ -14,27 +14,30 @@ function daily-update --description 'Keep everything up to date'
 
     echo "Starting daily update routine 😄"
 
-    __echo-phase "Updating OSX"
+    __echo-phase "Updating osx"
     sudo softwareupdate --install --all
 
-    __echo-phase "Updating Brew"
+    __echo-phase "Updating brew"
     brew update; brew upgrade; brew cleanup; brew update-reset; brew doctor
 
-    __echo-phase "Updating SDK"
+    __echo-phase "Updating JVM SDKs"
     sdk install gradle < /dev/null
     sdk install maven < /dev/null
     sdk install groovy < /dev/null
 
-    __echo-phase "Updating Node.js"
+    __echo-phase "Updating node.js"
     nvm install node
 
     __echo-phase "Updating Fisher"
     fisher; fisher self-update
 
-    __echo-phase "Making sure Brewfile is up-to-date"
+    __echo-phase "Making sure brewfile is up-to-date"
     brew bundle check --verbose --file="$XDG_CONFIG_HOME/brew/Brewfile"
 
-    __echo-phase "Updating Fish Completions"
+    __echo-phase "Generating external fish completions"
+    fish_generate_completions
+
+    __echo-phase "Updating fish completions"
     fish_update_completions
 
     __echo-phase "Updating projects"

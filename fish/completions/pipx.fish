@@ -1,3 +1,4 @@
+
 function __fish_pipx_complete
     set -x _ARGCOMPLETE 1
     set -x _ARGCOMPLETE_IFS \n
