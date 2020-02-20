@@ -85,6 +85,12 @@ set -gx BUNDLE_USER_CACHE "$XDG_CACHE_HOME/bundle"
 set -gx BUNDLE_USER_CONFIG "$XDG_CONFIG_HOME/bundle"
 set -gx BUNDLE_USER_PLUGIN "$XDG_DATA_HOME/bundle"
 
+# Ruby GEM
+set -gx GEM_HOME "$XDG_DATA_HOME/gem"
+set -gx GEM_SPEC_CACHE "$XDG_CACHE_HOME/gem"
+
+set -gx RUBY_CONFIGURE_OPTS "--with-openssl-dir=/usr/local/opt/openssl@1.1"
+
 # Docker - doesn't seem to work yet
 # set -gx DOCKER_CONFIG "$XDG_CONFIG_HOME/docker"
 
@@ -100,10 +106,6 @@ set -gx NVM_DIR "$XDG_DATA_HOME/nvm"
 
 # Set Haskell stack dir
 set -gx STACK_ROOT "$XDG_DATA_HOME/stack"
-
-# Ruby GEM
-set -gx GEM_HOME "$XDG_DATA_HOME/gem"
-set -gx GEM_SPEC_CACHE "$XDG_CACHE_HOME/gem"
 
 # Httpie
 set -gx HTTPIE_CONFIG_DIR "$XDG_CONFIG_HOME/httpie"
