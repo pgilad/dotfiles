@@ -109,3 +109,6 @@ set -gx STACK_ROOT "$XDG_DATA_HOME/stack"
 
 # Httpie
 set -gx HTTPIE_CONFIG_DIR "$XDG_CONFIG_HOME/httpie"
+
+# Use build enhancement for Docker
+set -gx DOCKER_BUILDKIT 1
