@@ -27,5 +27,5 @@ Host *
 Host github.com
     HostName github.com
     IdentityFile ~/.ssh/github_id
-    User git
     PreferredAuthentications publickey
+    User git
