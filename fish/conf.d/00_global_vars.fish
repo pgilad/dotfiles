@@ -23,7 +23,7 @@ set -gx LC_ALL en_US.UTF-8
     # set -gx LDFLAGS "-L/usr/local/opt/$pkg/lib" $LDFLAGS
     # set -gx PKG_CONFIG_PATH "/usr/local/opt/$pkg/lib/pkgconfig" $PKG_CONFIG_PATH
 # end
-set -gx DYLD_FALLBACK_LIBRARY_PATH /usr/local/opt/openssl/lib
+# set -gx DYLD_FALLBACK_LIBRARY_PATH /usr/local/opt/openssl/lib
 
 set -gx GREP_COLOR "1;37;45"
 
