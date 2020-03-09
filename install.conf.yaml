@@ -96,9 +96,17 @@
 
     # SSH files
     ~/.ssh/config: ssh/config
-    ~/.ssh/config.d:
-      path: ssh/config.d/*
-      glob: true
+    # ~/.ssh/config.d:
+      # path: ssh/config.d/*
+      # glob: true
+    ~/.ssh/config.d/pi:
+      path: ssh/config.d/pi
+    ~/.ssh/config.d/github-forter:
+      path: ssh/config.d/github-forter
+      if: 'test -d ~/dev/forter'
+    ~/.ssh/config.d/github-personal:
+      path: ssh/config.d/github-personal
+      if: '! test -d ~/dev/forter'
 
     # Karabiner
     ~/.config/karabiner/karabiner.json:

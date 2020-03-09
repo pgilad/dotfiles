@@ -1,0 +1,7 @@
+# vi: ft=sshconfig
+
+Host github.com
+    HostName github.com
+    IdentityFile ~/.ssh/id_rsa
+    PreferredAuthentications publickey
+    User git
