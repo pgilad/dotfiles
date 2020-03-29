@@ -562,7 +562,7 @@ nnoremap <leader>nf :NERDTreeFind<cr>
 """""""""""""""
 nnoremap <silent> <leader>ev :edit $MYVIMRC<cr>
 nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
-nnoremap <silent> <leader>eu :call dein#update()<cr>
+nnoremap <silent> <leader>eu :DeinUpdate<cr>
 execute "nnoremap <silent> <leader>df :edit " . s:dein_toml . "<cr>"
 execute "nnoremap <silent> <leader>dl :edit " . s:dein_toml_lazy . "<cr>"
 

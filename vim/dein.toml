@@ -105,3 +105,6 @@ augroup = 'fugitive'
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
 build = 'make'
+
+[[plugins]]
+repo = 'wsdjeg/dein-ui.vim'

@@ -97,6 +97,10 @@
 [transfer]
     # Check transferred objects
     fsckObjects = false
+
+[user]
+    useConfigOnly = true
+
 [include]
     path = ".gitconfig-personal"
     # This file will only exist on work machine
