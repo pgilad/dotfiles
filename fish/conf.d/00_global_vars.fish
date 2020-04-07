@@ -16,13 +16,16 @@ set -gx LC_ALL en_US.UTF-8
 # set -gx LIBRARY_PATH "/usr/local/opt/openssl/lib/"
 
 # Yucky brew workaround for building apps
-# for pkg in openssl curl readline gettext ncurses icu4c sqlite zlib mysql-client
-    # set -gx CFLAGS "-I/usr/local/opt/$pkg/include" $CFLAGS
-    # set -gx CPPFLAGS "-I/usr/local/opt/$pkg/include" $CPPFLAGS
-    # set -gx LD_RUN_PATH "/usr/local/opt/$pkg/lib" $LD_RUN_PATH
-    # set -gx LDFLAGS "-L/usr/local/opt/$pkg/lib" $LDFLAGS
-    # set -gx PKG_CONFIG_PATH "/usr/local/opt/$pkg/lib/pkgconfig" $PKG_CONFIG_PATH
-# end
+for pkg in openssl curl readline gettext ncurses icu4c sqlite zlib mysql-client tcl-tk
+    set -gx CFLAGS "-I/usr/local/opt/$pkg/include" $CFLAGS
+    set -gx CPPFLAGS "-I/usr/local/opt/$pkg/include" $CPPFLAGS
+    set -gx LD_RUN_PATH "/usr/local/opt/$pkg/lib" $LD_RUN_PATH
+    set -gx LDFLAGS "-L/usr/local/opt/$pkg/lib" $LDFLAGS
+    set -gx PKG_CONFIG_PATH "/usr/local/opt/$pkg/lib/pkgconfig" $PKG_CONFIG_PATH
+end
+
+# Required for tinker builds of pyenv's python
+set -gx PYTHON_CONFIGURE_OPTS "--with-tcltk-includes='-I/usr/local/opt/tcl-tk/include' --with-tcltk-libs='-L/usr/local/opt/tcl-tk/lib -ltcl8.6 -ltk8.6'"
 # set -gx DYLD_FALLBACK_LIBRARY_PATH /usr/local/opt/openssl/lib
 
 set -gx GREP_COLOR "1;37;45"

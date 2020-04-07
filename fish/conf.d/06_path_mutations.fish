@@ -5,6 +5,7 @@ set -l paths_to_add \
     # /usr/local/opt/ruby/bin \
     $GEM_HOME/bin \
     $HOME/.sdkman/candidates/*/current/bin \
+    /usr/local/opt/tcl-tk/bin \
     $GOBIN \
     $CARGOBIN
 
