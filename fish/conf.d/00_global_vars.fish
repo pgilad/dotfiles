@@ -6,6 +6,8 @@ set -q XDG_CONFIG_HOME; or set -gx XDG_CONFIG_HOME "$HOME/.config"
 set -q XDG_DATA_HOME; or set -gx XDG_DATA_HOME "$HOME/.local/share"
 set -q XDG_CACHE_HOME; or set -gx XDG_CACHE_HOME "$HOME/.cache"
 
+set -gx APPLICATIONS_HISTORY_PATH "$XDG_DATA_HOME/history"
+
 set -gx ANDROID_HOME /usr/local/opt/android-sdk
 set -gx GPG_TTY (tty)
 set -gx SSH_KEY_PATH "$HOME/.ssh"
@@ -43,7 +45,7 @@ set -gx CARGOBIN "$HOME/cargo/.bin"
 # Pipx
 set -gx PIPX_BIN_DIR "$HOME/.local/bin"
 
-set -gx LESSHISTFILE "$XDG_DATA_HOME/less/history"
+set -gx LESSHISTFILE "$APPLICATIONS_HISTORY_PATH/less_history"
 set -gx LESSKEY "$XDG_CONFIG_HOME/less/keys"
 
 # A hack for https://github.com/gatsbyjs/gatsby/issues/6654
@@ -65,7 +67,7 @@ set -gx HOMEBREW_NO_ANALYTICS 1
 # set -gx AWS_WEB_IDENTITY_TOKEN_FILE "$XDG_CONFIG_HOME/aws/token"
 # The world isn't ready for dotfiles free home dir :(
 # https://github.com/boto/boto/issues/3819
-set -gx AWS_CLI_HISTORY_FILE "$HOME/.aws/history"
+set -gx AWS_CLI_HISTORY_FILE "$APPLICATIONS_HISTORY_PATH/aws_history"
 set -gx AWS_CONFIG_FILE "$HOME/.aws/config"
 set -gx AWS_CREDENTIAL_PROFILES_FILE "$HOME/.aws/credentials" # Version 1.x
 set -gx AWS_PROFILE "default"
@@ -106,6 +108,7 @@ set -gx JUPYTER_CONFIG_DIR "$XDG_CONFIG_HOME/jupyter"
 
 # Set NVM dir
 set -gx NVM_DIR "$XDG_DATA_HOME/nvm"
+set -gx NODE_REPL_HISTORY "$APPLICATIONS_HISTORY_PATH/node_repl_history"
 
 # Set Haskell stack dir
 set -gx STACK_ROOT "$XDG_DATA_HOME/stack"
@@ -115,3 +118,6 @@ set -gx HTTPIE_CONFIG_DIR "$XDG_CONFIG_HOME/httpie"
 
 # Use build enhancement for Docker
 set -gx DOCKER_BUILDKIT 1
+
+set -gx REDISCLI_HISTFILE "$APPLICATIONS_HISTORY_PATH/redis_history"
+set -gx SQLITE_HISTORY "$APPLICATIONS_HISTORY_PATH/sqlite_history"
