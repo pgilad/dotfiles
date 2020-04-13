@@ -15,7 +15,7 @@ function daily-update --description 'Keep everything up to date'
     echo "Starting daily update routine 😄"
 
     __echo-phase "Updating osx"
-    sudo softwareupdate --install --all
+    softwareupdate --install --all
 
     __echo-phase "Updating brew"
     brew update; brew upgrade; brew cleanup; brew update-reset; brew doctor
