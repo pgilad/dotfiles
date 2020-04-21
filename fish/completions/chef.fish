@@ -1,7 +1,6 @@
-set -gx PATH "/opt/chef-workstation/bin" "/Users/giladpeleg/.chefdk/gem/ruby/2.6.0/bin" "/opt/chef-workstation/embedded/bin" "/Users/giladpeleg/.local/share/nvm/versions/node/v13.13.0/bin" "/Users/giladpeleg/.pyenv/versions/3.8.2/bin" "/usr/local/Cellar/pyenv/1.2.18/libexec" "/usr/local/Cellar/pyenv-virtualenv/1.1.5/shims" "/Users/giladpeleg/.pyenv/shims" "/Users/giladpeleg/go/bin" "/usr/local/opt/tcl-tk/bin" "/Users/giladpeleg/.sdkman/candidates/maven/current/bin" "/Users/giladpeleg/.sdkman/candidates/java/current/bin" "/Users/giladpeleg/.sdkman/candidates/groovy/current/bin" "/Users/giladpeleg/.sdkman/candidates/gradle/current/bin" "/Users/giladpeleg/.local/share/gem/bin" "/usr/local/opt/openssl/bin" "/Users/giladpeleg/.local/bin" "/usr/local/sbin" "/usr/local/bin" "/usr/bin" "/bin" "/usr/sbin" "/sbin" "/opt/X11/bin" "/Library/Apple/usr/bin" "/usr/local/MacGPG2/bin" "/usr/local/Cellar/pyenv-virtualenv/1.1.5/shims" "/Users/giladpeleg/.pyenv/shims" "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin" "/opt/chef-workstation/gitbin" 2>/dev/null;
 set -gx GEM_ROOT "/opt/chef-workstation/embedded/lib/ruby/gems/2.6.0";
-set -gx GEM_HOME "/Users/giladpeleg/.chefdk/gem/ruby/2.6.0";
-set -gx GEM_PATH "/Users/giladpeleg/.chefdk/gem/ruby/2.6.0:/opt/chef-workstation/embedded/lib/ruby/gems/2.6.0";
+set -gx GEM_HOME "$HOME/.chefdk/gem/ruby/2.6.0";
+set -gx GEM_PATH "$HOME/.chefdk/gem/ruby/2.6.0:/opt/chef-workstation/embedded/lib/ruby/gems/2.6.0";
 # Fish Shell command-line completions for Chef Workstation
 
 function __fish_chef_no_command --description 'Test if chef has yet to be given the main command'
