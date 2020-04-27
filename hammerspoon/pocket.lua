@@ -57,14 +57,9 @@ local function addToPocket(url)
             if not status or status ~= 200 then
                 logger.e("Error (" .. status .. ") while adding url (" .. url .. ") to Pocket.")
             else
-                logger.i("Added " .. url .. " to Pocket")
-                hs.notify.new(
-                    {
-                        title = "Hammerspoon",
-                        informativeText = "Added to Pocket",
-                        autoWithdraw = true
-                    }
-                ):send()
+                local message = "Added " .. url .. " to Pocket"
+                logger.i(message)
+                hs.alert.show(message)
             end
 
             hs.window.frontmostWindow():focus() -- Always focus frontmost window before returning
