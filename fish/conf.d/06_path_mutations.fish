@@ -7,10 +7,7 @@ set -l paths_to_add \
     $HOME/.sdkman/candidates/*/current/bin \
     /usr/local/opt/tcl-tk/bin \
     $GOBIN \
-    $CARGOBIN \
-    "/opt/chef-workstation/bin" \
-    "$HOME/.chefdk/gem/ruby/2.6.0/bin" \
-    "/opt/chef-workstation/embedded/bin"
+    $CARGOBIN
 
 for path_to_add in $paths_to_add
     test -d $path_to_add; and set -gx PATH $path_to_add (string match -v $path_to_add $PATH)
