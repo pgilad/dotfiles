@@ -1,9 +1,9 @@
 # My configuration files for macOS
-> Fish, Tmux, Karabiner, Hammerspoon, Vim, Brew, Npx, Dotbot
+> Fish, Tmux, Karabiner, Hammerspoon, Vim, Brew, NPX, Dotbot
 
 [![Actions Status](https://github.com/pgilad/dotfiles/workflows/ci/badge.svg)](https://github.com/pgilad/dotfiles/actions)
 
-![Screenfetch](media/screenfetch.png)
+![Screenfetch](media/neofetch.png)
 
 ## My dotfiles have aged, they're now `v2` !!!
 

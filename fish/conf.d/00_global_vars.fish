@@ -15,7 +15,7 @@ set -gx SSH_KEY_PATH "$HOME/.ssh"
 set -gx LANG en_US.UTF-8
 set -gx LC_ALL en_US.UTF-8
 
-# set -gx LIBRARY_PATH "/usr/local/opt/openssl/lib/"
+set -gx LIBRARY_PATH "/usr/local/opt/openssl/lib/"
 
 # Yucky brew workaround for building apps
 for pkg in openssl curl readline gettext ncurses icu4c sqlite zlib mysql-client tcl-tk
@@ -28,7 +28,7 @@ end
 
 # Required for tinker builds of pyenv's python
 set -gx PYTHON_CONFIGURE_OPTS "--with-tcltk-includes='-I/usr/local/opt/tcl-tk/include' --with-tcltk-libs='-L/usr/local/opt/tcl-tk/lib -ltcl8.6 -ltk8.6'"
-# set -gx DYLD_FALLBACK_LIBRARY_PATH /usr/local/opt/openssl/lib
+set -gx DYLD_FALLBACK_LIBRARY_PATH /usr/local/opt/openssl/lib
 
 set -gx GREP_COLOR "1;37;45"
 

@@ -3,6 +3,7 @@ set -l paths_to_add \
     $PIPX_BIN_DIR \
     /usr/local/opt/openssl/bin \
     # /usr/local/opt/ruby/bin \
+    /usr/local/Cellar/mysql/8.0.19/bin \
     $GEM_HOME/bin \
     $HOME/.sdkman/candidates/*/current/bin \
     /usr/local/opt/tcl-tk/bin \
