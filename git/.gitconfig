@@ -11,6 +11,8 @@
     trustctime = false
     ignorecase = false
     preloadIndex = true
+[pull]
+    rebase = false
 [push]
     # Avoids pushing other branches by accident when using a plain “git push”.
     # Git will only push the branch you are on by default.

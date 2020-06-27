@@ -73,7 +73,7 @@ complete -c poetry -A -n '__fish_seen_subcommand_from config' -l unset -d 'Unset
 # export
 complete -c poetry -A -n '__fish_seen_subcommand_from export' -l dev -d 'Include development dependencies.'
 complete -c poetry -A -n '__fish_seen_subcommand_from export' -l extras -d 'Extra sets of dependencies to include.'
-complete -c poetry -A -n '__fish_seen_subcommand_from export' -l format -d 'Format to export to.'
+complete -c poetry -A -n '__fish_seen_subcommand_from export' -l format -d 'Format to export to. Currently, only requirements.txt is supported.'
 complete -c poetry -A -n '__fish_seen_subcommand_from export' -l output -d 'The name of the output file.'
 complete -c poetry -A -n '__fish_seen_subcommand_from export' -l with-credentials -d 'Include credentials for extra indices.'
 complete -c poetry -A -n '__fish_seen_subcommand_from export' -l without-hashes -d 'Exclude hashes from the exported file.'
