@@ -33,6 +33,7 @@ set -gx DYLD_FALLBACK_LIBRARY_PATH /usr/local/opt/openssl/lib
 set -gx GREP_COLOR "1;37;45"
 
 set -q JAVA_HOME; or set -gx JAVA_HOME "$HOME/.sdkman/candidates/java/current"
+set -q GRADLE_USER_HOME; or set -gx GRADLE_USER_HOME "$XDG_DATA_HOME/gradle"
 
 # Go settings
 set -gx GOPATH "$HOME/go"
@@ -98,9 +99,6 @@ set -gx RUBY_CONFIGURE_OPTS "--with-openssl-dir=/usr/local/opt/openssl@1.1"
 
 # Docker - doesn't seem to work yet
 # set -gx DOCKER_CONFIG "$XDG_CONFIG_HOME/docker"
-
-# Gradle
-set -gx GRADLE_USER_HOME "$XDG_DATA_HOME/gradle"
 
 # Set iPython and Jupyter paths
 set -gx IPYTHONDIR "$XDG_CONFIG_HOME/jupyter"

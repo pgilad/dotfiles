@@ -2,7 +2,6 @@
 if command --search --quiet tmux
 and status is-login
 and not set --query TMUX
-  set -l TMUX_DEFAULT_SESSION_NAME default
-  tmux attach-session -t $TMUX_DEFAULT_SESSION_NAME 2>/dev/null
-  or tmux new-session -s $TMUX_DEFAULT_SESSION_NAME
+  # Create a new tmux session named default or join existing one
+  tmux new-session -A -s default
 end
