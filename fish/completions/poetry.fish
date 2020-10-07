@@ -50,9 +50,11 @@ complete -c poetry -A -n '__fish_seen_subcommand_from add' -l allow-prereleases 
 complete -c poetry -A -n '__fish_seen_subcommand_from add' -l dev -d 'Add as a development dependency.'
 complete -c poetry -A -n '__fish_seen_subcommand_from add' -l dry-run -d 'Output the operations but do not execute anything (implicitly enables --verbose).'
 complete -c poetry -A -n '__fish_seen_subcommand_from add' -l extras -d 'Extras to activate for the dependency.'
+complete -c poetry -A -n '__fish_seen_subcommand_from add' -l lock -d 'Do not perform operations (only update the lockfile).'
 complete -c poetry -A -n '__fish_seen_subcommand_from add' -l optional -d 'Add as an optional dependency.'
 complete -c poetry -A -n '__fish_seen_subcommand_from add' -l platform -d 'Platforms for which the dependency must be installed.'
 complete -c poetry -A -n '__fish_seen_subcommand_from add' -l python -d 'Python version for which the dependency must be installed.'
+complete -c poetry -A -n '__fish_seen_subcommand_from add' -l source -d 'Name of the source to use to install the package.'
 
 # build
 complete -c poetry -A -n '__fish_seen_subcommand_from build' -l format -d 'Limit the format to either sdist or wheel.'
@@ -87,14 +89,17 @@ complete -c poetry -A -n '__fish_seen_subcommand_from init' -l description -d 'D
 complete -c poetry -A -n '__fish_seen_subcommand_from init' -l dev-dependency -d 'Package to require for development, with an optional version constraint, e.g. requests:^2.10.0 or requests=2.11.1.'
 complete -c poetry -A -n '__fish_seen_subcommand_from init' -l license -d 'License of the package.'
 complete -c poetry -A -n '__fish_seen_subcommand_from init' -l name -d 'Name of the package.'
+complete -c poetry -A -n '__fish_seen_subcommand_from init' -l python -d 'Compatible Python versions.'
 
 # install
 complete -c poetry -A -n '__fish_seen_subcommand_from install' -l dry-run -d 'Output the operations but do not execute anything (implicitly enables --verbose).'
 complete -c poetry -A -n '__fish_seen_subcommand_from install' -l extras -d 'Extra sets of dependencies to install.'
 complete -c poetry -A -n '__fish_seen_subcommand_from install' -l no-dev -d 'Do not install the development dependencies.'
 complete -c poetry -A -n '__fish_seen_subcommand_from install' -l no-root -d 'Do not install the root package (the current project).'
+complete -c poetry -A -n '__fish_seen_subcommand_from install' -l remove-untracked -d 'Removes packages not present in the lock file.'
 
 # lock
+complete -c poetry -A -n '__fish_seen_subcommand_from lock' -l no-update -d 'Do not update locked versions, only refresh lock file.'
 
 # new
 complete -c poetry -A -n '__fish_seen_subcommand_from new' -l name -d 'Set the resulting package name.'
@@ -104,6 +109,7 @@ complete -c poetry -A -n '__fish_seen_subcommand_from new' -l src -d 'Use the sr
 complete -c poetry -A -n '__fish_seen_subcommand_from publish' -l build -d 'Build the package before publishing.'
 complete -c poetry -A -n '__fish_seen_subcommand_from publish' -l cert -d 'Certificate authority to access the repository.'
 complete -c poetry -A -n '__fish_seen_subcommand_from publish' -l client-cert -d 'Client certificate to access the repository.'
+complete -c poetry -A -n '__fish_seen_subcommand_from publish' -l dry-run -d 'Perform all actions except upload the package.'
 complete -c poetry -A -n '__fish_seen_subcommand_from publish' -l password -d 'The password to access the repository.'
 complete -c poetry -A -n '__fish_seen_subcommand_from publish' -l repository -d 'The repository to publish the package to.'
 complete -c poetry -A -n '__fish_seen_subcommand_from publish' -l username -d 'The username to access the repository.'
@@ -133,3 +139,4 @@ complete -c poetry -A -n '__fish_seen_subcommand_from update' -l lock -d 'Do not
 complete -c poetry -A -n '__fish_seen_subcommand_from update' -l no-dev -d 'Do not update the development dependencies.'
 
 # version
+complete -c poetry -A -n '__fish_seen_subcommand_from version' -l short -d 'Output the version number only'

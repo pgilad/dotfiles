@@ -18,7 +18,7 @@ function daily-update --description 'Keep everything up to date'
     softwareupdate --install --all
 
     __echo-phase "Updating brew"
-    brew update; brew upgrade; brew cask upgrade; brew cleanup; brew update-reset; brew doctor
+    brew update; brew upgrade; brew upgrade --cask; brew cleanup; brew update-reset; brew doctor
 
     __echo-phase "Updating JVM tools"
     sdk install gradle < /dev/null

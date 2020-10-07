@@ -1,7 +1,7 @@
 [core]
     autocrlf = input
     editor = vim
-    pager = "diff-so-fancy | less --tabs=4 -RFX"
+    pager = delta
     # Treat spaces before tabs and all kinds of trailing whitespace as an error
     # [default] trailing-space: looks for spaces at the end of a line
     # [default] space-before-tab: looks for spaces before tabs at the beginning of a line
@@ -11,6 +11,8 @@
     trustctime = false
     ignorecase = false
     preloadIndex = true
+[init]
+    defaultBranch = main
 [pull]
     rebase = false
 [push]
@@ -99,13 +101,18 @@
 [transfer]
     # Check transferred objects
     fsckObjects = false
-
 [user]
     useConfigOnly = true
-
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    features = side-by-side line-numbers decorations
+    whitespace-error-style = 22 reverse
+[delta "decorations"]
+    commit-decoration-style = bold yellow box ul
+    file-style = bold yellow ul
+    file-decoration-style = none
 [include]
     path = ".gitconfig-personal"
     # This file will only exist on work machine
     path = ".gitconfig-forter"
-[init]
-	defaultBranch = main

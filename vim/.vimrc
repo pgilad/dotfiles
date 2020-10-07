@@ -42,11 +42,6 @@ if dein#load_state(s:dein_path)
     call dein#load_toml(s:dein_toml, {'lazy': 0})
     call dein#load_toml(s:dein_toml_lazy, {'lazy': 1})
 
-    if !has('nvim')
-        call dein#add('roxma/nvim-yarp')
-        call dein#add('roxma/vim-hug-neovim-rpc')
-    endif
-
     call dein#end()
     call dein#save_state()
 endif
@@ -58,20 +53,12 @@ endif
 
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-" Set auto completion length.
-let g:neocomplete#auto_completion_start_length = 2
-" Set manual completion length.
-let g:neocomplete#manual_completion_start_length = 0
-" Set minimum keyword length.
-let g:neocomplete#min_keyword_length = 3
-let g:neocomplete#enable_auto_delimiter = 1
-let g:neocomplete#max_list = 30
+
+" let g:deoplete#enable_at_startup = 1
+
+" call deoplete#custom#option('smart_case', v:true)
+" call deoplete#custom#option('min_pattern_length', 3)
+" call deoplete#custom#option('max_candidates', 30)
 
 let ctrlp_ignore = ['public', 'build', 'dist', 'node_modules', '.idea', '.git']
 let g:ctrlp_custom_ignore = join(ctrlp_ignore, '\|')

@@ -1,7 +1,7 @@
 function repos-update --description 'Development projects update'
     pushd (pwd)
     if not test -d ~/dev
-        echo "Cannot find ~/dev dir\n"
+        echo "Cannot find ~/dev dir"
         return
     end
     cd ~/dev
@@ -9,15 +9,15 @@ function repos-update --description 'Development projects update'
         echo "Updating project $project"
         pushd $project
         if not test -d .git
-            echo "Not a git directory, skipping\n"
+            echo "Not a git directory, skipping"
             popd
             continue
         end
-        echo "Running git pull\n"
+        echo "Running git pull"
         git pull --quiet --recurse-submodules 2>/dev/null
-        echo "Trimming dead branches\n"
+        echo "Trimming dead branches"
         git-trim --no-confirm
-        echo "Done\n"
+        echo "Done"
         popd
     end
     popd

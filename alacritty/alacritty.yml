@@ -2,6 +2,7 @@
 env:
   TERM_PROGRAM: Alacritty
 window:
+  dynamic_title: true
   dynamic_padding: false
   decorations: full
   startup_mode: Maximized
@@ -81,7 +82,6 @@ mouse:
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
   save_to_clipboard: true
-dynamic_title: true
 working_directory: None
 enable_experimental_conpty_backend: false
 alt_send_esc: true
