@@ -153,3 +153,12 @@ build = 'make'
 
 [[plugins]]
 repo = 'wsdjeg/dein-ui.vim'
+
+[[plugins]]
+repo = 'cocopon/iceberg.vim'
+hook_add = '''
+augroup SetColorScheme 
+    au!
+    au VimEnter * nested colorscheme iceberg
+augroup END
+'''

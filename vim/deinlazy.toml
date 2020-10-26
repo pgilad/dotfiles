@@ -10,9 +10,9 @@ on_ft = 'vim'
 repo = 'dag/vim-fish'
 on_ft = 'fish'
 
-# [[plugins]]
-# repo = 'StanAngeloff/php.vim'
-# on_ft = 'php'
+[[plugins]]
+repo = 'StanAngeloff/php.vim'
+on_ft = 'php'
 
 [[plugins]]
 repo = 'kchmck/vim-coffee-script'
