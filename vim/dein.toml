@@ -117,9 +117,6 @@ repo = 'fuadsaud/vim-react-snippets'
 repo = 'pgilad/vim-react-proptypes-snippets'
 
 [[plugins]]
-repo = 'nanotech/jellybeans.vim'
-
-[[plugins]]
 repo = 'kana/vim-textobj-user'
 
 [[plugins]]
@@ -157,7 +154,7 @@ repo = 'wsdjeg/dein-ui.vim'
 [[plugins]]
 repo = 'cocopon/iceberg.vim'
 hook_add = '''
-augroup SetColorScheme 
+augroup SetColorScheme
     au!
     au VimEnter * nested colorscheme iceberg
 augroup END
