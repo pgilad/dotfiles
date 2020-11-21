@@ -122,3 +122,5 @@ set -gx REDISCLI_HISTFILE "$APPLICATIONS_HISTORY_PATH/redis_history"
 set -gx SQLITE_HISTORY "$APPLICATIONS_HISTORY_PATH/sqlite_history"
 
 set -gx BABEL_CACHE_PATH "$XDG_CACHE_HOME/babel/babel.json"
+
+set -gx STARSHIP_CONFIG "$XDG_CONFIG_HOME/starship/starship.toml"

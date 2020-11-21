@@ -56,6 +56,7 @@ hs.hotkey.bind(hyper, "c", mountApp("Google Chrome"))
 hs.hotkey.bind(hyper, "j", mountApp("IntelliJ IDEA"))
 hs.hotkey.bind(hyper, "s", mountApp("Slack"))
 hs.hotkey.bind(hyper, "t", mountApp("Alacritty"))
+hs.hotkey.bind(hyper, "o", mountApp("Obsidian"))
 
 hs.hotkey.bind(
     hyper,

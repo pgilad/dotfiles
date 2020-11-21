@@ -41,6 +41,7 @@ on_ft = ['css','scss','sass','less','styl']
 [[plugins]]
 repo = 'hail2u/vim-css3-syntax'
 on_ft = ['css', 'less']
+rev = 'main'
 
 [[plugins]]
 repo = 'ingydotnet/yaml-vim'

@@ -15,6 +15,7 @@
     - '~/.config/karabiner'
     - '~/.config/neofetch'
     - '~/.config/npm'
+    - '~/.config/starship'
     - '~/.config/tmux'
     - '~/.gnupg'
     - '~/.gnupg'
@@ -129,6 +130,8 @@
 
     # Neofetch
     ~/.config/neofetch/config.conf: neofetch/config.conf
+
+    ~/.config/starship/starship.toml: starship/starship.toml
 
 - shell:
     - command: ./scripts/install-dein.sh

@@ -1,0 +1,92 @@
+scan_timeout = 20
+add_newline = true
+
+[python]
+scan_for_pyfiles = false
+
+[directory]
+truncate_to_repo = false
+
+[aws]
+disabled = true
+
+[kubernetes]
+disabled = true
+
+[package]
+disabled = true
+
+[battery]
+disabled = true
+
+[cmake]
+disabled = true
+
+[conda]
+disabled = true
+
+[nix_shell]
+disabled = true
+
+[crystal]
+disabled = true
+
+[dart]
+disabled = true
+
+[dotnet]
+disabled = true
+
+[elixir]
+disabled = true
+
+[elm]
+disabled = true
+
+[erlang]
+disabled = true
+
+[gcloud]
+disabled = true
+
+[helm]
+disabled = true
+
+[julia]
+disabled = true
+
+[terraform]
+disabled = true
+
+[zig]
+disabled = true
+
+[swift]
+disabled = true
+
+[php]
+disabled = true
+
+[perl]
+disabled = true
+
+[lua]
+disabled = true
+
+[nim]
+disabled = true
+
+[ocaml]
+disabled = true
+
+[purescript]
+disabled = true
+
+[singularity]
+disabled = true
+
+[hg_branch]
+disabled = true
+
+[openstack]
+disabled = true

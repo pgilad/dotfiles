@@ -11,20 +11,28 @@ function show-repo-branch --description 'Show repository branches'
         set repo (basename $i)
         set full_path "$dev_dir/$repo"
 
-        echo -n "$repo: "
-
         if not test -d "$full_path/.git"
-            echo "Not a git directory"
+            # Not a git directory. Skipping
             continue
         end
+
+        echo -n "$repo: "
 
         set branch (git -C $full_path branch --show-current)
         if contains $branch $trunk_branches
             set_color green
-            echo "$branch"
+            echo -n "$branch"
         else
             set_color red
-            echo "$branch"
+            echo -n "$branch"
+        end
+        set_color normal
+        if git -C $full_path diff --quiet
+            echo ""
+        else
+            # dirty
+            set_color blue
+            echo " [*]"
         end
         set_color normal
     end
