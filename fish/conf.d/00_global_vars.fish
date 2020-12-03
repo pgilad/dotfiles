@@ -18,7 +18,7 @@ set -gx LC_ALL en_US.UTF-8
 set -gx LIBRARY_PATH "/usr/local/opt/openssl/lib/"
 
 # Yucky brew workaround for building apps
-for pkg in openssl curl readline gettext ncurses icu4c sqlite zlib mysql-client tcl-tk
+for pkg in openssl curl readline gettext ncurses icu4c sqlite zlib mysql-client tcl-tk libxml2 ruby
     set -gx CFLAGS "-I/usr/local/opt/$pkg/include" $CFLAGS
     set -gx CPPFLAGS "-I/usr/local/opt/$pkg/include" $CPPFLAGS
     set -gx LD_RUN_PATH "/usr/local/opt/$pkg/lib" $LD_RUN_PATH
@@ -97,6 +97,7 @@ set -gx GEM_HOME "$XDG_DATA_HOME/gem"
 set -gx GEM_SPEC_CACHE "$XDG_CACHE_HOME/gem"
 
 set -gx RUBY_CONFIGURE_OPTS "--with-openssl-dir=/usr/local/opt/openssl@1.1"
+set -gx SDKROOT (xcrun --show-sdk-path)
 
 # Docker - doesn't seem to work yet
 # set -gx DOCKER_CONFIG "$XDG_CONFIG_HOME/docker"

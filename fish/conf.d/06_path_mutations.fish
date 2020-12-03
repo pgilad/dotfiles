@@ -4,6 +4,7 @@ set -l paths_to_add \
     /usr/local/opt/openssl/bin \
     # /usr/local/opt/ruby/bin \
     /usr/local/Cellar/mysql/8.0.19/bin \
+    $HOME/.rbenv/shims \
     $GEM_HOME/bin \
     $HOME/.sdkman/candidates/*/current/bin \
     /usr/local/opt/tcl-tk/bin \

@@ -60,18 +60,6 @@ shell:
 key_bindings:
 - {key: Left, mods: Alt, chars: "\x1bb" }
 - {key: Right, mods: Alt, chars: "\x1bf" }
-  # Until https://github.com/alacritty/alacritty/issues/3188 is resolved
-- { key: Key0,      mods: Command,            action: None }
-- { key: Equals,    mods: Command,            action: None }
-- { key: Add,       mods: Command,            action: None }
-- { key: Minus,     mods: Command,            action: None }
-- { key: K,         mods: Command,            action: None }
-- { key: H,         mods: Command,            action: None }
-- { key: M,         mods: Command,            action: None }
-- { key: Q,         mods: Command,            action: None }
-- { key: W,         mods: Command,            action: None }
-- { key: F,         mods: Command,            action: None }
-- { key: Return,    mods: Command,            action: None }
 
 background_opacity: 1.0
 mouse:
