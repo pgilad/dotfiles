@@ -9,7 +9,9 @@ function daily-update --description 'Keep everything up to date'
     end
 
     function __echo-phase
+        echo
         cowsay $argv[1] | lolcat
+        echo
     end
 
     echo "Starting daily update routine 😄"
@@ -18,21 +20,26 @@ function daily-update --description 'Keep everything up to date'
     # softwareupdate --install --all
 
     __echo-phase "Updating brew"
-    brew update; brew upgrade; brew upgrade --cask; brew cleanup; brew update-reset; brew doctor
+    brew update
+    brew upgrade
+    brew upgrade --cask
+    brew cleanup
+    brew update-reset
+    brew doctor
 
     __echo-phase "Updating JVM tools"
     sdk install gradle < /dev/null
     sdk install maven < /dev/null
     sdk install groovy < /dev/null
 
-    __echo-phase "Updating nvm"
+    __echo-phase "Updating nvm version"
     update-nvm-version
 
-    __echo-phase "Updating node.js"
+    __echo-phase "Updating latest node.js"
     nvm install node
 
     __echo-phase "Updating Fisher"
-    fisher; fisher self-update
+    fisher update
 
     __echo-phase "Making sure brewfile is up-to-date"
     brew bundle check --verbose --file="$XDG_CONFIG_HOME/brew/Brewfile"

@@ -5,6 +5,7 @@ local logger = hs.logger.new("hammerspoon", "info")
 local hyper = {"cmd", "alt", "ctrl", "shift"}
 
 local pocket = require("pocket")
+local airPods = require("airPods")
 
 function openApp(name)
     app = hs.application.find(name)
@@ -74,6 +75,15 @@ hs.hotkey.bind(
         pocket.addToPocket(url)
     end
 )
+
+hs.hotkey.bind(hyper, "i", function()
+  local ok, output = airPods.airPods("Gilad Peleg's AirPods Pro")
+  if ok then
+    hs.alert.show(output)
+  else
+    hs.alert.show("Couldn't connect to AirPods!")
+  end
+end)
 
 -- re-sizing window
 hs.hotkey.bind(
