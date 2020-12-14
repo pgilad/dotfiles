@@ -77,12 +77,7 @@ hs.hotkey.bind(
 )
 
 hs.hotkey.bind(hyper, "i", function()
-  local ok, output = airPods.airPods("Gilad Peleg's AirPods Pro")
-  if ok then
-    hs.alert.show(output)
-  else
-    hs.alert.show("Couldn't connect to AirPods!")
-  end
+  airPods.toggle("Gilad-AirPods-Pro")
 end)
 
 -- re-sizing window
