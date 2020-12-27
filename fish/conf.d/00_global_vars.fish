@@ -125,3 +125,5 @@ set -gx SQLITE_HISTORY "$APPLICATIONS_HISTORY_PATH/sqlite_history"
 set -gx BABEL_CACHE_PATH "$XDG_CACHE_HOME/babel/babel.json"
 
 set -gx STARSHIP_CONFIG "$XDG_CONFIG_HOME/starship/starship.toml"
+
+set -gx nvm_default_version latest

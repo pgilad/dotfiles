@@ -32,11 +32,8 @@ function daily-update --description 'Keep everything up to date'
     sdk install maven < /dev/null
     sdk install groovy < /dev/null
 
-    __echo-phase "Updating nvm version"
-    update-nvm-version
-
     __echo-phase "Updating latest node.js"
-    nvm install node
+    nvm install latest
 
     __echo-phase "Updating Fisher"
     fisher update
