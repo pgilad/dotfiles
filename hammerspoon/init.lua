@@ -1,9 +1,16 @@
 hs.loadSpoon("SpoonInstall")
+
 spoon.SpoonInstall.use_syncinstall = true
+-- Make the alerts look nicer.
+hs.alert.defaultStyle.strokeColor =  {white = 1, alpha = 0}
+hs.alert.defaultStyle.fillColor =  {white = 0.05, alpha = 0.75}
+hs.alert.defaultStyle.radius =  10
+
+-- Disable the slow default window animations.
+hs.window.animationDuration = 0
 
 local logger = hs.logger.new("hammerspoon", "info")
 local hyper = {"cmd", "alt", "ctrl", "shift"}
-
 local pocket = require("pocket")
 local airPods = require("airPods")
 
@@ -104,6 +111,10 @@ hs.hotkey.bind(
         win:moveToUnit(hs.layout.right50)
     end
 )
+
+--hs.hotkey.bind(hyper, '6', function()
+--   hs.console.hswindow():focus()
+-- end)
 
 -- local wifiMenu = hs.menubar.newWithPriority(2147483645)
 

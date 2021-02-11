@@ -1,6 +1,7 @@
 
 function __fish_pipx_complete
     set -x _ARGCOMPLETE 1
+    set -x _ARGCOMPLETE_DFS \t
     set -x _ARGCOMPLETE_IFS \n
     set -x _ARGCOMPLETE_SUPPRESS_SPACE 1
     set -x _ARGCOMPLETE_SHELL fish

@@ -43,9 +43,6 @@ set -gx GOROOT "/usr/local/opt/go/libexec"
 # Rust - cargo
 set -gx CARGOBIN "$HOME/cargo/.bin"
 
-# Pipx
-set -gx PIPX_BIN_DIR "$HOME/.local/bin"
-
 set -gx LESSHISTFILE "$APPLICATIONS_HISTORY_PATH/less_history"
 set -gx LESSKEY "$XDG_CONFIG_HOME/less/keys"
 
@@ -61,25 +58,10 @@ set -gx NPM_CONFIG_CACHE "$XDG_CACHE_HOME/npm"
 # Opt out of brew analytics
 set -gx HOMEBREW_NO_ANALYTICS 1
 
-# Set AWS config file locations:
-# https://github.com/aws/aws-cli/issues/243
-
-# set -gx AWS_CREDENTIAL_FILE "$XDG_CONFIG_HOME/aws/credentials"
-# set -gx AWS_WEB_IDENTITY_TOKEN_FILE "$XDG_CONFIG_HOME/aws/token"
-# The world isn't ready for dotfiles free home dir :(
-# https://github.com/boto/boto/issues/3819
-set -gx AWS_CLI_HISTORY_FILE "$APPLICATIONS_HISTORY_PATH/aws_history"
-set -gx AWS_CONFIG_FILE "$HOME/.aws/config"
-set -gx AWS_CREDENTIAL_PROFILES_FILE "$HOME/.aws/credentials" # Version 1.x
-set -gx AWS_PROFILE "default"
-set -gx AWS_SHARED_CREDENTIALS_FILE "$HOME/.aws/credentials" # Version 2.x
-set -gx AWS_DEFAULT_REGION "us-east-1"
-
 # Python
 set -gx PIP_REQUIRE_VIRTUALENV true
 set -gx PIP_DEFAULT_TIMEOUT 30
 set -gx PIP_CACHE_DIR "$XDG_CACHE_HOME/pip"
-set -gx PYENV_ROOT "$HOME/.pyenv"
 
 # Set pass password store location
 set -gx PASSWORD_STORE_DIR "$XDG_DATA_HOME/password-store"
@@ -125,5 +107,3 @@ set -gx SQLITE_HISTORY "$APPLICATIONS_HISTORY_PATH/sqlite_history"
 set -gx BABEL_CACHE_PATH "$XDG_CACHE_HOME/babel/babel.json"
 
 set -gx STARSHIP_CONFIG "$XDG_CONFIG_HOME/starship/starship.toml"
-
-set -gx nvm_default_version latest
