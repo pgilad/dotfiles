@@ -1,5 +1,5 @@
 if status --is-interactive
-and type --quiet pyenv
+and type --query pyenv
 and not set --query VIRTUAL_ENV
     set -gx PYENV_ROOT "$HOME/.pyenv"
     set -gx PATH $PATH "$PYENV_ROOT/bin"
