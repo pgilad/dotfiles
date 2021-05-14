@@ -9,9 +9,9 @@ function __fish_pipx_complete
     set -x COMP_POINT (string length (commandline -cp))
     set -x COMP_TYPE
     if set -q _ARC_DEBUG
-        pipx 8>&1 9>&2 1>/dev/null 2>&1
-    else
         pipx 8>&1 9>&2 1>&9 2>&1
+    else
+        pipx 8>&1 9>&2 1>/dev/null 2>&1
     end
 end
 complete -c pipx -f -a '(__fish_pipx_complete)'

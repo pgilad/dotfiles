@@ -2,7 +2,7 @@ scan_timeout = 20
 add_newline = true
 
 [python]
-scan_for_pyfiles = false
+detect_extensions = []
 
 [directory]
 truncate_to_repo = false

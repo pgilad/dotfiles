@@ -12,6 +12,8 @@ Desktop.ini
 .idea/
 *.iml
 .vscode/
+.calva/
+.lsp/
 
 # Scala
 .sbtopts
