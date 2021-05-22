@@ -33,3 +33,6 @@ __pycache__/
 
 # Sdkman
 .sdkmanrc
+
+# Ruby
+.ruby-version

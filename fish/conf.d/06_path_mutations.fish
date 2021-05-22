@@ -2,7 +2,6 @@ set -l paths_to_add \
     /usr/local/sbin \
     /usr/local/opt/openssl/bin \
     /usr/local/opt/mysql@5.7/bin \
-    $HOME/.rbenv/shims \
     $GEM_HOME/bin \
     $HOME/.sdkman/candidates/*/current/bin \
     /usr/local/opt/tcl-tk/bin \

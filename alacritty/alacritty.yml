@@ -64,7 +64,7 @@ key_bindings:
 background_opacity: 1.0
 mouse:
   hide_when_typing: true
-  url:
+  hints:
     launcher: open
     modifiers: Command|Shift
 selection:
