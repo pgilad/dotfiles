@@ -122,7 +122,6 @@ fish_add_path --path \
     $OPENSSL_PATH/bin \
     $BREW_PREFIX/mysql@5.7/bin \
     $GEM_HOME/bin \
-    $HOME/.sdkman/candidates/*/current/bin \
     $BREW_PREFIX/tcl-tk/bin \
     $GOBIN \
     $CARGOBIN

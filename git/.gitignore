@@ -36,3 +36,6 @@ __pycache__/
 
 # Ruby
 .ruby-version
+
+# asdf
+.tool-versions
