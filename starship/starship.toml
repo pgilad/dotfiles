@@ -90,3 +90,6 @@ disabled = true
 
 [openstack]
 disabled = true
+
+[vagrant]
+disabled = true

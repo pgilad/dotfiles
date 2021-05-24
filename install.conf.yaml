@@ -46,7 +46,6 @@
     - '~/.local/share/gradle'
     - '~/.local/share/history'
     - '~/.local/share/less'
-    - '~/.local/share/nvm'
     - '~/.local/share/password-store'
     - '~/.local/share/stack'
     - '~/.local/share/vimfiles'
