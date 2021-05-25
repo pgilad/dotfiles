@@ -3,14 +3,12 @@ function venv --argument-names 'python_version' --description 'Create virtualenv
 
   if not test -n "$python_version"
     # Use default python version set by asdf
-    set python_bin (asdf where python)"/bin/python"
-  else
-    set python_bin (asdf where python $python_version)"/bin/python"
+    set python_version (asdf current python | awk '{ print $2 }')
   end
 
-  set -l venv_name (basename $PWD | tr . -)
+  set python_bin (asdf where python)"/bin/python"
+  set -l venv_name (basename $PWD | tr . -)"-$python_version"
 
-  echo
   if not test -e $python_bin
     echo "Python version `$python_version` is not installed."
     return 1
