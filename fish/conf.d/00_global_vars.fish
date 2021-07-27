@@ -20,7 +20,7 @@ set -gx LC_ALL en_US.UTF-8
 
 set -gx OPENSSL_PATH "$BREW_PREFIX/openssl@1.1"
 
-# set -gx LIBRARY_PATH "$OPENSSL_PATH/lib/"
+set -gx LIBRARY_PATH "$OPENSSL_PATH/lib/"
 
 # Yucky brew workaround for building apps
 # for pkg in openssl curl readline gettext ncurses icu4c sqlite zlib mysql-client tcl-tk libxml2
@@ -37,7 +37,7 @@ set -gx PYTHON_CONFIGURE_OPTS "--with-tcltk-includes='-I$BREW_PREFIX/tcl-tk/incl
 
 set -gx GREP_COLOR "1;37;45"
 
-set -q JAVA_HOME; or set -gx JAVA_HOME "$HOME/.sdkman/candidates/java/current"
+set -q JAVA_HOME; or set -gx JAVA_HOME "/Users/giladpeleg/.asdf/installs/java/adoptopenjdk-11.0.11+9"
 set -q GRADLE_USER_HOME; or set -gx GRADLE_USER_HOME "$XDG_DATA_HOME/gradle"
 
 # Go settings

@@ -1,6 +1,9 @@
 scan_timeout = 20
 add_newline = true
 
+[docker_context]
+disabled = true
+
 [python]
 detect_extensions = []
 

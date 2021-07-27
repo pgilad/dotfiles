@@ -145,6 +145,9 @@ repo = 'tpope/vim-fugitive'
 augroup = 'fugitive'
 
 [[plugins]]
+repo = 'tpope/vim-rhubarb'
+
+[[plugins]]
 repo = 'Shougo/vimproc.vim'
 build = 'make'
 

@@ -118,3 +118,5 @@
     path = ".gitconfig-personal"
     # This file will only exist on work machine
     path = ".gitconfig-forter"
+[feature]
+	manyFiles = true
