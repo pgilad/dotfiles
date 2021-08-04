@@ -54,8 +54,7 @@ set -gx LESSKEY "$XDG_CONFIG_HOME/less/keys"
 # A hack for https://github.com/gatsbyjs/gatsby/issues/6654
 set -gx GATSBY_CONCURRENT_DOWNLOAD 25
 
-# Poetry uses ~/Library/Caches/pypoetry/virtualenvs for Mac, let's be sane here
-# set -gx POETRY_VIRTUALENVS_PATH "$XDG_CACHE_HOME/pypoetry/virtualenvs"
+set -gx POETRY_VIRTUALENVS_PATH "$HOME/.virtualenvs"
 
 set -gx NPM_CONFIG_USERCONFIG "$XDG_CONFIG_HOME/npm/.npmrc"
 set -gx NPM_CONFIG_CACHE "$XDG_CACHE_HOME/npm"
@@ -115,6 +114,9 @@ set -gx STARSHIP_CONFIG "$XDG_CONFIG_HOME/starship/starship.toml"
 
 set -gx PIPX_BIN_DIR "$HOME/.local/bin"
 set -gx PATH $PATH $PIPX_BIN_DIR
+
+# Clojure lein
+set -gx LEIN_JVM_OPTS "-XX:+TieredCompilation -XX:TieredStopAtLevel=2"
 
 fish_add_path --path \
     /usr/local/sbin \
