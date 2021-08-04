@@ -27,11 +27,6 @@ function daily-update --description 'Keep everything up to date'
     brew update-reset
     brew doctor
 
-    __echo-phase "Updating JVM tools"
-    sdk install gradle < /dev/null
-    sdk install maven < /dev/null
-    sdk install groovy < /dev/null
-
     __echo-phase "Updating Fisher"
     fisher update
 
