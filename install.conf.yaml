@@ -7,6 +7,7 @@
     - '~/.config/alacritty'
     - '~/.config/aws'
     - '~/.config/brew'
+    - '~/.config/clj-kondo'
     - '~/.config/fish'
     - '~/.config/fish/completions'
     - '~/.config/fish/conf.d'
@@ -52,6 +53,7 @@
 
 - link:
     ~/.editorconfig: .editorconfig
+    ~/.config/clj-kondo/config.edn: clj-kondo/config.edn
     ~/.config/brew/Brewfile: brew/Brewfile
     ~/.config/npm/.npmrc: npm/.npmrc
     ~/.aws/config: aws/config

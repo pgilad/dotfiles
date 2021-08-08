@@ -1,0 +1,3 @@
+{:linters
+  {:unresolved-symbol
+    {:exclude [(riemann.streams/where [service])]}}}
