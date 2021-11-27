@@ -5,7 +5,7 @@ function repos-update --description 'Development projects update'
         return
     end
     cd ~/dev
-    set -l trunk_branches master develop
+    set -l trunk_branches master develop main
     for project in */
         echo "Updating project $project"
         pushd $project
@@ -16,7 +16,7 @@ function repos-update --description 'Development projects update'
         end
         set -l local_branch (git branch --show-current)
         if ! contains $local_branch $trunk_branches
-            echo "Not a develop or master branch"
+            echo "Not a $trunk_branches branch"
             popd
             continue
         end

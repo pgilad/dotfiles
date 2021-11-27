@@ -1,6 +1,6 @@
 function show-repo-branch --description 'Show repository branches'
     set dev_dir ~/dev
-    set trunk_branches master develop
+    set trunk_branches master develop main
 
     if not test -d $dev_dir
         echo "Development directory: $dev_dir not found"

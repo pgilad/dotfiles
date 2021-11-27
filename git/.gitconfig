@@ -76,7 +76,7 @@
     short = true
     branch = false
 [credential]
-    helper = store
+    helper = osxkeychain
 [tag]
     verbose = true
 [commit]
