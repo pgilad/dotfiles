@@ -14,4 +14,4 @@ function __fish_pipx_complete
         pipx 8>&1 9>&2 1>/dev/null 2>&1
     end
 end
-complete -c pipx -f -a '(__fish_pipx_complete)'
+complete --command pipx -f -a '(__fish_pipx_complete)'
