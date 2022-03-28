@@ -1,5 +1,5 @@
 [core]
-    autocrlf = input
+	autocrlf = false
     editor = vim
     pager = delta
     # Treat spaces before tabs and all kinds of trailing whitespace as an error
@@ -11,6 +11,7 @@
     trustctime = false
     ignorecase = false
     preloadIndex = true
+	eol = lf
 [init]
     defaultBranch = main
 [pull]
