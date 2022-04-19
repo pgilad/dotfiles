@@ -37,7 +37,7 @@ set -gx PYTHON_CONFIGURE_OPTS "--with-tcltk-includes='-I$BREW_PREFIX/tcl-tk/incl
 
 set -gx GREP_COLOR "1;37;45"
 
-set -q JAVA_HOME; or set -gx JAVA_HOME "/Users/giladpeleg/.asdf/installs/java/adoptopenjdk-11.0.11+9"
+# set -q JAVA_HOME; or set -gx JAVA_HOME "/Users/giladpeleg/.asdf/installs/java/adoptopenjdk-11.0.11+9"
 set -q GRADLE_USER_HOME; or set -gx GRADLE_USER_HOME "$XDG_DATA_HOME/gradle"
 
 # Go settings

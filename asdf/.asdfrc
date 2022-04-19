@@ -3,3 +3,4 @@ java_macos_integration_enable = no
 use_release_candidates = no
 always_keep_download = no
 plugin_repository_last_check_duration = 60
+java_macos_integration_enable = yes

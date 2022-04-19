@@ -108,7 +108,7 @@ complete -c docker -f -n '__fish_docker_no_subcommand' -s l -l log-level -d 'Set
 complete -c docker -f -n '__fish_docker_no_subcommand' -l label -d 'Set key=value labels to the daemon (displayed in `docker info`)'
 complete -c docker -f -n '__fish_docker_no_subcommand' -l mtu -d 'Set the containers network MTU'
 complete -c docker -f -n '__fish_docker_no_subcommand' -s p -l pidfile -d 'Path to use for daemon PID file'
-complete -c docker -f -n '__fish_docker_no_subcommand' -l registry-mirror -d 'Specify a preferred Docker registry mirror'
+complete -c docker -f -n '__fish_docker_no_subcommand' -l registry-mirror -d 'Specify a preferred registry mirror'
 complete -c docker -f -n '__fish_docker_no_subcommand' -s s -l storage-driver -d 'Force the Docker runtime to use a specific storage driver'
 complete -c docker -f -n '__fish_docker_no_subcommand' -l selinux-enabled -d 'Enable selinux support. SELinux does not presently support the BTRFS storage driver'
 complete -c docker -f -n '__fish_docker_no_subcommand' -l storage-opt -d 'Set storage driver options'
@@ -287,7 +287,7 @@ complete -c docker -A -f -n '__fish_seen_subcommand_from events' -l since -d 'Sh
 complete -c docker -A -f -n '__fish_seen_subcommand_from events' -l until -d 'Stream events until this timestamp'
 
 # exec
-complete -c docker -f -n '__fish_docker_no_subcommand' -a exec -d 'Run a command in a running container'
+complete -c docker -f -n '__fish_docker_no_subcommand' -a exec -d 'Execute a command in a running container'
 complete -c docker -A -f -n '__fish_seen_subcommand_from exec' -s d -l detach -d 'Detached mode: run command in the background'
 complete -c docker -A -f -n '__fish_seen_subcommand_from exec' -l detach-keys -d 'Override the key sequence for detaching a container'
 complete -c docker -A -f -n '__fish_seen_subcommand_from exec' -s e -l env -d 'Set environment variables'
@@ -358,14 +358,14 @@ complete -c docker -A -f -n '__fish_seen_subcommand_from load' -s i -l input -d 
 complete -c docker -A -f -n '__fish_seen_subcommand_from load' -s q -l quiet -d 'Suppress the load output'
 
 # login
-complete -c docker -f -n '__fish_docker_no_subcommand' -a login -d 'Log in to a Docker registry server'
+complete -c docker -f -n '__fish_docker_no_subcommand' -a login -d 'Log in to a registry'
 complete -c docker -A -f -n '__fish_seen_subcommand_from login' -l help -d 'Print usage'
 complete -c docker -A -f -n '__fish_seen_subcommand_from login' -s p -l password -d 'Password'
 complete -c docker -A -f -n '__fish_seen_subcommand_from login' -l password-stdin -d 'Take the password from stdin'
 complete -c docker -A -f -n '__fish_seen_subcommand_from login' -s u -l username -d 'Username'
 
 # logout
-complete -c docker -f -n '__fish_docker_no_subcommand' -a logout -d 'Log out from a Docker registry server'
+complete -c docker -f -n '__fish_docker_no_subcommand' -a logout -d 'Log out from a registry'
 
 # logs
 complete -c docker -f -n '__fish_docker_no_subcommand' -a logs -d 'Fetch the logs of a container'
@@ -414,14 +414,14 @@ complete -c docker -A -f -n '__fish_seen_subcommand_from ps' -s s -l size -d 'Di
 complete -c docker -A -f -n '__fish_seen_subcommand_from ps' -l since -d 'Show only containers created since Id or Name, include non-running ones.'
 
 # pull
-complete -c docker -f -n '__fish_docker_no_subcommand' -a pull -d 'Pull an image or a repository from a Docker registry server'
+complete -c docker -f -n '__fish_docker_no_subcommand' -a pull -d 'Download an image from a registry'
 complete -c docker -A -f -n '__fish_seen_subcommand_from pull' -s a -l all-tags -d 'Download all tagged images in the repository'
 complete -c docker -A -f -n '__fish_seen_subcommand_from pull' -l help -d 'Print usage'
 complete -c docker -A -f -n '__fish_seen_subcommand_from pull' -a '(__fish_print_docker_images)' -d "Image"
 complete -c docker -A -f -n '__fish_seen_subcommand_from pull' -a '(__fish_print_docker_repositories)' -d "Repository"
 
 # push
-complete -c docker -f -n '__fish_docker_no_subcommand' -a push -d 'Push an image or a repository to a Docker registry server'
+complete -c docker -f -n '__fish_docker_no_subcommand' -a push -d 'Upload an image to a registry'
 complete -c docker -A -f -n '__fish_seen_subcommand_from push' -l help -d 'Print usage'
 complete -c docker -A -f -n '__fish_seen_subcommand_from push' -a '(__fish_print_docker_images)' -d "Image"
 complete -c docker -A -f -n '__fish_seen_subcommand_from push' -a '(__fish_print_docker_repositories)' -d "Repository"
@@ -452,7 +452,7 @@ complete -c docker -A -f -n '__fish_seen_subcommand_from rmi' -l no-prune -d 'Do
 complete -c docker -A -f -n '__fish_seen_subcommand_from rmi' -a '(__fish_print_docker_images)' -d "Image"
 
 # run
-complete -c docker -f -n '__fish_docker_no_subcommand' -a run -d 'Run a command in a new container'
+complete -c docker -f -n '__fish_docker_no_subcommand' -a run -d 'Create and run a new container from an image'
 complete -c docker -A -f -n '__fish_seen_subcommand_from run' -s a -l attach -d 'Attach to STDIN, STDOUT or STDERR.'
 complete -c docker -A -f -n '__fish_seen_subcommand_from run' -l add-host -d 'Add a custom host-to-IP mapping (host:ip)'
 complete -c docker -A -f -n '__fish_seen_subcommand_from run' -s c -l cpu-shares -d 'CPU shares (relative weight)'
