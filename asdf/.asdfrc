@@ -1,6 +1,7 @@
-legacy_version_file = no
-java_macos_integration_enable = no
-use_release_candidates = no
+# See the docs for explanations: https://asdf-vm.com/manage/configuration.html
+
 always_keep_download = no
-plugin_repository_last_check_duration = 60
 java_macos_integration_enable = yes
+legacy_version_file = no
+plugin_repository_last_check_duration = 60
+use_release_candidates = no

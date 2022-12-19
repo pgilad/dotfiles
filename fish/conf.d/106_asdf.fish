@@ -1,4 +1,4 @@
-set -l asdf_path $BREW_PREFIX/asdf/asdf.fish
+set -l asdf_path $BREW_PREFIX/asdf/libexec/asdf.fish
 
 if test -e "$asdf_path"
     source "$asdf_path"

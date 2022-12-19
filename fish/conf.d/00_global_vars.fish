@@ -8,7 +8,7 @@ set -q XDG_CACHE_HOME; or set -gx XDG_CACHE_HOME "$HOME/.cache"
 
 set -gx APPLICATIONS_HISTORY_PATH "$XDG_DATA_HOME/history"
 
-# Much faster than brew --prefix
+# Much faster than brew --prefix which depends on Ruby slow start time
 set -gx BREW_PREFIX /usr/local/opt
 
 set -gx ANDROID_HOME /usr/local/opt/android-sdk

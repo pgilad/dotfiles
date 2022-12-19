@@ -59,8 +59,6 @@
     ~/.asdfrc: asdf/.asdfrc
     ~/.tool-versions: asdf/.tool-versions
     ~/.config/npm/.npmrc: npm/.npmrc
-    ~/.aws/config: aws/config
-
 
     '~/Library/Preferences/pypoetry/config.toml':
       path: poetry/config.toml
