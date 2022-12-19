@@ -1,4 +1,5 @@
-{:linters {:unresolved-symbol {:exclude [(riemann.streams/where [service else state tagged event])]}
+{:linters {:unresolved-symbol {:exclude [(riemann.streams/where [service else state tagged event else metric metric_f])
+                                         (riemann.streams/splitp [event])]}
            :shadowed-var {:level :warning}
            :unsorted-required-namespaces {:level :warning}}
  :lint-as {mount.core/defstate clojure.core/def}}

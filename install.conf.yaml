@@ -24,7 +24,7 @@
     - '~/.local/share/history'
     - '~/.ssh'
     - '~/.ssh/config.d'
-    - '~/Library/Application Support/pypoetry'
+    - '~/Library/Preferences/pypoetry'
     - '~/Library/LaunchAgents'
 
 - defaults:
@@ -61,7 +61,8 @@
     ~/.config/npm/.npmrc: npm/.npmrc
     ~/.aws/config: aws/config
 
-    '~/Library/Application Support/pypoetry/config.toml':
+
+    '~/Library/Preferences/pypoetry/config.toml':
       path: poetry/config.toml
       if: "uname -s | grep --quiet --ignore-case darwin"
 

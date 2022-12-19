@@ -20,6 +20,7 @@ set -gx LC_ALL en_US.UTF-8
 
 set -gx OPENSSL_PATH "$BREW_PREFIX/openssl@1.1"
 
+set -gx PAGER bat
 set -gx LIBRARY_PATH "$OPENSSL_PATH/lib/"
 
 # Yucky brew workaround for building apps

@@ -1,8 +1,9 @@
 function fish_generate_completions
     set -l complete_path ~/.dotfiles/fish/completions
 
-    echo "Generating poetry completions"
-    poetry completions fish > $complete_path/poetry.fish
+    # Skipped due to some issue
+    # echo "Generating poetry completions"
+    # poetry completions fish > $complete_path/poetry.fish
 
     echo "Generating docker completions"
     curl -s https://raw.githubusercontent.com/docker/cli/master/contrib/completion/fish/docker.fish > $complete_path/docker.fish
