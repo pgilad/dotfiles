@@ -3,5 +3,6 @@
 [virtualenvs]
 create = true
 in-project = false
+prefer-active-python = true
 
 [repositories]
