@@ -9,6 +9,8 @@ function awslogin --description "AWS Login SSO script"
         exit 1
     end
 
+    rm -rf ~/.aws/cache
+
     # Clear the existing cache
     find ~/.aws/cli/cache/ -delete -type f 2>/dev/null
 
