@@ -11,7 +11,6 @@ Host *
     IgnoreUnknown UseKeychain
 
     AddKeysToAgent yes
-    Cipher aes128-ctr
     Compression yes
     ConnectTimeout 30
     ForwardX11 no
@@ -20,7 +19,6 @@ Host *
     ServerAliveInterval 30
     TCPKeepAlive yes
     UseKeychain yes
-    UseRoaming no
 
     ControlMaster auto
     ControlPath ~/.ssh/control-%h-%p-%r.sock
