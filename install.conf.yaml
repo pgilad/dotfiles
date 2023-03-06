@@ -20,7 +20,6 @@
     - '~/.config/starship'
     - '~/.config/tmux'
     - '~/.gnupg'
-    - '~/.gnupg'
     - '~/.local/share/history'
     - '~/.ssh'
     - '~/.ssh/config.d'
@@ -57,7 +56,6 @@
     ~/.config/clj-kondo/config.edn: clj-kondo/config.edn
     ~/.config/brew/Brewfile: brew/Brewfile
     ~/.asdfrc: asdf/.asdfrc
-    ~/.tool-versions: asdf/.tool-versions
     ~/.config/npm/.npmrc: npm/.npmrc
 
     '~/Library/Preferences/pypoetry/config.toml':
