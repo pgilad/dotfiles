@@ -6,6 +6,7 @@ window:
   dynamic_padding: false
   decorations: full
   startup_mode: Maximized
+  option_as_alt: OnlyLeft
   padding:
     x: 3
     y: 3
@@ -62,10 +63,9 @@ selection:
   save_to_clipboard: true
 working_directory: None
 enable_experimental_conpty_backend: false
-alt_send_esc: true
 debug:
   render_timer: false
-  persistent_logging: false
+  persistent_logging: true
   log_level: Warn
   print_events: false
   ref_test: false

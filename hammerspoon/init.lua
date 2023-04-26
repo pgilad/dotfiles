@@ -126,10 +126,10 @@ hs.hotkey.bind(
 -- wifiWatcher = hs.wifi.watcher.new(ssidChanged):start()
 -- ssidChanged()
 --
-wifiMenu = hs.menubar.newWithPriority(2147483645)
+-- wifiMenu = hs.menubar.newWithPriority(2147483645)
 -- wifiMenu:setTitle(hs.wifi.currentNetwork())
 
-wifiWatcher = nil
+-- wifiWatcher = nil
 
 function ssidChanged()
     local wifiName = hs.wifi.currentNetwork()
@@ -140,7 +140,7 @@ function ssidChanged()
     end
 end
 
-wifiWatcher = hs.wifi.watcher.new(ssidChanged):start()
+-- wifiWatcher = hs.wifi.watcher.new(ssidChanged):start()
 
 hs.notify.new(
     {

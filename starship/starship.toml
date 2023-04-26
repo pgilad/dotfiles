@@ -1,11 +1,15 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
 scan_timeout = 20
 add_newline = true
+command_timeout = 500
 
 [docker_context]
 disabled = true
 
 [python]
-detect_extensions = []
+detect_extensions = ['py']
+python_binary = ['python']
 
 [directory]
 truncate_to_repo = false

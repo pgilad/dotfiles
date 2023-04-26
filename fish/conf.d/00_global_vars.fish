@@ -1,5 +1,6 @@
 set -gx EDITOR vim
 set -gx VISUAL vim
+set -gx SHELL /opt/homebrew/bin/fish
 
 # Ensure XDG variables are set
 set -q XDG_CONFIG_HOME; or set -gx XDG_CONFIG_HOME "$HOME/.config"
@@ -9,16 +10,15 @@ set -q XDG_CACHE_HOME; or set -gx XDG_CACHE_HOME "$HOME/.cache"
 set -gx APPLICATIONS_HISTORY_PATH "$XDG_DATA_HOME/history"
 
 # Much faster than brew --prefix which depends on Ruby slow start time
-set -gx BREW_PREFIX /usr/local/opt
+set -gx BREW_PREFIX /opt/homebrew/opt
 
-set -gx ANDROID_HOME /usr/local/opt/android-sdk
 set -gx GPG_TTY (tty)
 set -gx SSH_KEY_PATH "$HOME/.ssh"
 
 set -gx LANG en_US.UTF-8
 set -gx LC_ALL en_US.UTF-8
 
-set -gx OPENSSL_PATH "$BREW_PREFIX/openssl@1.1"
+set -gx OPENSSL_PATH "$BREW_PREFIX/openssl@3"
 
 set -gx PAGER bat
 set -gx LIBRARY_PATH "$OPENSSL_PATH/lib/"
@@ -33,7 +33,7 @@ set -gx LIBRARY_PATH "$OPENSSL_PATH/lib/"
 # end
 
 # Required for tinker builds of pyenv's python
-set -gx PYTHON_CONFIGURE_OPTS "--with-tcltk-includes='-I$BREW_PREFIX/tcl-tk/include' --with-tcltk-libs='-L$BREW_PREFIX/tcl-tk/lib -ltcl8.6 -ltk8.6'"
+# set -gx PYTHON_CONFIGURE_OPTS "--with-tcltk-includes='-I$BREW_PREFIX/tcl-tk/include' --with-tcltk-libs='-L$BREW_PREFIX/tcl-tk/lib -ltcl8.6 -ltk8.6'"
 # set -gx DYLD_FALLBACK_LIBRARY_PATH "$OPENSSL_PATH/lib"
 
 set -gx GREP_COLOR "1;37;45"
@@ -84,7 +84,7 @@ set -gx GEM_HOME "$XDG_DATA_HOME/gem"
 set -gx GEM_SPEC_CACHE "$XDG_CACHE_HOME/gem"
 
 set -gx RUBY_CONFIGURE_OPTS "--with-openssl-dir=$OPENSSL_PATH --with-readline-dir=$BREW_PREFIX/readline --with-libyaml-dir=$BREW_PREFIX/libyaml"
-set -gx SDKROOT (xcrun --show-sdk-path)
+# set -gx SDKROOT (xcrun --show-sdk-path)
 
 # Docker - doesn't seem to work yet
 # set -gx DOCKER_CONFIG "$XDG_CONFIG_HOME/docker"
@@ -118,6 +118,9 @@ set -gx PATH $PATH $PIPX_BIN_DIR
 
 # Clojure lein
 set -gx LEIN_JVM_OPTS "-XX:+TieredCompilation -XX:TieredStopAtLevel=2"
+
+set -gx ASDF_CONFIG_FILE "$XDG_CONFIG_HOME/asdf/.asdfrc"
+
 
 fish_add_path --path \
     /usr/local/sbin \

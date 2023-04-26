@@ -9,3 +9,5 @@ find ~/.gnupg -type d -exec chmod 700 {} \;
 chmod 700 ~/.ssh
 chmod 644 ~/.ssh/config
 chmod 644 ~/.ssh/config.d/*
+
+defaults write org.hammerspoon.Hammerspoon MJConfigFile ~/.config/hammerspoon/init.lua

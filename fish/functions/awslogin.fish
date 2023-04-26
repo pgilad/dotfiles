@@ -9,12 +9,13 @@ function awslogin --description "AWS Login SSO script"
         exit 1
     end
 
+    echo "Clearing AWS cache directory"
     rm -rf ~/.aws/cache
 
-    # Clear the existing cache
+    echo "Clear the existing cache"
     find ~/.aws/cli/cache/ -delete -type f 2>/dev/null
 
-    # Remove existing credentials
+    echo "Remove existing credentials"
     rm -rf ~/.aws/credentials
 
     set --erase AWS_ACCESS_KEY_ID

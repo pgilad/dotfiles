@@ -55,7 +55,7 @@
     ~/.editorconfig: .editorconfig
     ~/.config/clj-kondo/config.edn: clj-kondo/config.edn
     ~/.config/brew/Brewfile: brew/Brewfile
-    ~/.asdfrc: asdf/.asdfrc
+    ~/.config/asdf/.asdfrc: asdf/.asdfrc
     ~/.config/npm/.npmrc: npm/.npmrc
 
     '~/Library/Preferences/pypoetry/config.toml':
@@ -92,7 +92,6 @@
     # Tmux config files
     ~/.tmux.conf: tmux/.tmux.conf
     ~/.config/tmux/tmux-right-prompt.sh: tmux/tmux-right-prompt.sh
-    ~/.config/tmux/kube.tmux: tmux/kube.tmux
 
     # GPG files
     ~/.gnupg/gpg.conf: gpg/gpg.conf
@@ -120,7 +119,7 @@
       if: "uname -s | grep --quiet --ignore-case darwin"
 
     # Hammerspoon
-    ~/.hammerspoon:
+    ~/.config/hammerspoon:
       path: hammerspoon
       if: "uname -s | grep --quiet --ignore-case darwin"
 
