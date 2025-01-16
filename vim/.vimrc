@@ -64,7 +64,7 @@ endif
 
 if !has('vim_starting') && dein#check_install()
     # Installation check.
-    # dein#install()
+    dein#install()
 endif
 
 # Disable AutoComplPop.

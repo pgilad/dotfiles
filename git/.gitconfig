@@ -1,5 +1,5 @@
 [core]
-	autocrlf = false
+    autocrlf = false
     editor = vim
     pager = delta
     # Treat spaces before tabs and all kinds of trailing whitespace as an error
@@ -11,7 +11,8 @@
     trustctime = false
     ignorecase = false
     preloadIndex = true
-	eol = lf
+    eol = lf
+    excludesfile = ~/.config/git/ignore
 [init]
     defaultBranch = main
 [pull]
@@ -122,3 +123,8 @@
     path = ".gitconfig-forter"
 [feature]
 	manyFiles = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

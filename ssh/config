@@ -1,3 +1,5 @@
+Include /Users/gilad_peleg/.colima/ssh_config
+
 # vi: ft=sshconfig
 
 # Include other config files, for local system or system-specific ones.

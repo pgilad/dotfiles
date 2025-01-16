@@ -41,5 +41,9 @@ __pycache__/
 # asdf
 .tool-versions
 
+# mise
+.mise.toml
+mise.toml
+
 # redis stuff
 dump.rdb

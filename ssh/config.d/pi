@@ -3,6 +3,8 @@
 Host pi
     User pi
     HostName 192.168.0.141
+    IdentityFile ~/.ssh/github_id
 Host pi-wifi
     User pi
     HostName 192.168.0.140
+    IdentityFile ~/.ssh/github_id

@@ -36,15 +36,14 @@ function awslogin --description "AWS Login SSO script"
     set -Ux AWS_SESSION_TOKEN (echo $out | jq -r .Credentials.SessionToken)
 
     echo "[default]
-    aws_access_key_id=$AWS_ACCESS_KEY_ID
-    aws_secret_access_key=$AWS_SECRET_ACCESS_KEY
-    aws_session_token=$AWS_SESSION_TOKEN
+aws_access_key_id=$AWS_ACCESS_KEY_ID
+aws_secret_access_key=$AWS_SECRET_ACCESS_KEY
+aws_session_token=$AWS_SESSION_TOKEN
 
-    [$AWS_PROFILE]
-    aws_access_key_id=$AWS_ACCESS_KEY_ID
-    aws_secret_access_key=$AWS_SECRET_ACCESS_KEY
-    aws_session_token=$AWS_SESSION_TOKEN
-    " > ~/.aws/credentials
+[$AWS_PROFILE]
+aws_access_key_id=$AWS_ACCESS_KEY_ID
+aws_secret_access_key=$AWS_SECRET_ACCESS_KEY
+aws_session_token=$AWS_SESSION_TOKEN" > ~/.aws/credentials
 
     echo "Done"
 end

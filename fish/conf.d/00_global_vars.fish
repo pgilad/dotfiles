@@ -121,13 +121,18 @@ set -gx LEIN_JVM_OPTS "-XX:+TieredCompilation -XX:TieredStopAtLevel=2"
 
 set -gx ASDF_CONFIG_FILE "$XDG_CONFIG_HOME/asdf/.asdfrc"
 
+set -gx MISE_FISH_AUTO_ACTIVATE 0
+
 
 fish_add_path --path \
     /usr/local/sbin \
+    /opt/homebrew/sbin \
     $PIPX_BIN_DIR \
     $OPENSSL_PATH/bin \
-    $BREW_PREFIX/mysql@5.7/bin \
     $GEM_HOME/bin \
     $BREW_PREFIX/tcl-tk/bin \
+    $BREW_PREFIX/curl/bin \
     $GOBIN \
-    $CARGOBIN
+    $CARGOBIN \
+    $XDG_DATA_HOME/npm-global-modules/bin
+

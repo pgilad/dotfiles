@@ -23,7 +23,7 @@
     - '~/.local/share/history'
     - '~/.ssh'
     - '~/.ssh/config.d'
-    - '~/Library/Preferences/pypoetry'
+    - '~/Library/Application Support/pypoetry'
     - '~/Library/LaunchAgents'
 
 - defaults:
@@ -58,7 +58,8 @@
     ~/.config/asdf/.asdfrc: asdf/.asdfrc
     ~/.config/npm/.npmrc: npm/.npmrc
 
-    '~/Library/Preferences/pypoetry/config.toml':
+
+    '~/Library/Application Support/pypoetry/config.toml':
       path: poetry/config.toml
       if: "uname -s | grep --quiet --ignore-case darwin"
 
@@ -90,7 +91,7 @@
     ~/.config/git/.gitconfig-personal: git/.gitconfig-personal
 
     # Tmux config files
-    ~/.tmux.conf: tmux/.tmux.conf
+    ~/.config/tmux/tmux.conf: tmux/.tmux.conf
     ~/.config/tmux/tmux-right-prompt.sh: tmux/tmux-right-prompt.sh
 
     # GPG files
@@ -124,8 +125,8 @@
       if: "uname -s | grep --quiet --ignore-case darwin"
 
     # Alacritty
-    ~/.config/alacritty/alacritty.yml:
-      path: alacritty/alacritty.yml
+    ~/.config/alacritty/alacritty.toml:
+      path: alacritty/alacritty.toml
       if: "uname -s | grep --quiet --ignore-case darwin"
 
     # Neofetch
