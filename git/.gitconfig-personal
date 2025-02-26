@@ -1,9 +1,14 @@
 # vi: ft=gitconfig
 [user]
     name = pgilad
-    email = gilad@giladpeleg.com
-    signingkey = FE7BE3F5D048AFE3
+    email = giladp007@gmail.com
+    signingkey = AF3077E1DB0CA702
+
+[gpg]
+    program = gpg
+
 [tag]
     gpgsign = true
+
 [commit]
     gpgsign = true

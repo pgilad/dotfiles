@@ -11,9 +11,11 @@ set -gx APPLICATIONS_HISTORY_PATH "$XDG_DATA_HOME/history"
 
 # Much faster than brew --prefix which depends on Ruby slow start time
 set -gx BREW_PREFIX /opt/homebrew/opt
+set -gx HOMEBREW_NO_ENV_HINTS 1
 
 set -gx GPG_TTY (tty)
 set -gx SSH_KEY_PATH "$HOME/.ssh"
+set -gx SSH_AUTH_SOCK "$HOME/.1password/agent.sock"
 
 set -gx LANG en_US.UTF-8
 set -gx LC_ALL en_US.UTF-8

@@ -2,58 +2,64 @@
     autocrlf = false
     editor = vim
     pager = delta
-    # Treat spaces before tabs and all kinds of trailing whitespace as an error
-    # [default] trailing-space: looks for spaces at the end of a line
-    # [default] space-before-tab: looks for spaces before tabs at the beginning of a line
-    whitespace = space-before-tab,-indent-with-non-tab,trailing-space
-    # Make `git rebase` safer on OS X
-    # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+    whitespace = space-before-tab,trailing-space
     trustctime = false
     ignorecase = false
     preloadIndex = true
     eol = lf
     excludesfile = ~/.config/git/ignore
+
 [init]
     defaultBranch = main
+
 [pull]
     rebase = false
+
 [push]
     # Avoids pushing other branches by accident when using a plain “git push”.
     # Git will only push the branch you are on by default.
     # Note this will prevent the “Multiple working copies workflow” steps (shown below) from working.
     default = current
     followTags = true
+    autoSetupRemote = true
+
 [branch]
     # Checking remote branches are setup with tracking by default
     autoSetupMerge = always
+    sort = -committerdate
+
 [color]
-    branch = auto
-    diff = auto
-    interactive = auto
-    status = auto
     ui = auto
+
 [help]
     # Automatically correct and execute mistyped commands
     autocorrect = 20
+
 [merge]
     # Include summaries of merged commits in newly created merge commit messages
     log = true
+    conflictStyle = diff3
+
 [mergetool]
     # Do not prompt before every single merge and do not keep *.orig files
     # around after the merge
     prompt = false
     keepBackup = false
+
 [diff]
     # Detect copies as well as renames
     renames = copies
     mnemonicprefix = true
-    algorithm = patience
+    algorithm = histogram
     # Use blank lines as diff boundary to improve diffs
     compactionHeuristic = true
+
 [fetch]
     # Always prune remote-tracking branches
     # See http://albertogrespan.com/blog/always-prune-remote-tracking-branches/
     prune = true
+    pruneTags = true
+
 [advice]
     commitBeforeMerge = true
     detachedHead = true
@@ -61,6 +67,7 @@
     pushNonFastForward = false
     resolveConflict = true
     statusHints = false
+
 [alias]
     br = branch
     ch = checkout
@@ -73,56 +80,77 @@
     # print a pretty list of remote branches with last commit date and author name
     branches = !git for-each-ref --sort=-committerdate --format='%(committerdate:relative):%(authorname):%(refname:short)' refs/remotes | column -t -s:
     commits = !git log --pretty=format:"%ad:%an:%d:%B" --branches --date=short --all --since=1.week.ago
+
 [status]
     # Short git status output, but include branch info
     short = true
-    branch = false
+    branch = true
+
 [credential]
     helper = osxkeychain
+
 [tag]
     verbose = true
+
 [commit]
     verbose = true
+
 [gpg]
     program = gpg
+
 [submodule]
     # Fetch submodules in parallel, with a reasonable number of jobs
     fetchJobs = 0
     # Disabled due to issues in git pull
     recurse = true
+
 [remote]
     pushDefault = origin
+
 [rerere]
     # Track and remember conflict resolutions for replaying them, see
     # https://git-scm.com/blog/2010/03/08/rerere.html
     enabled = true
+
 [log]
     # Use mailmap files to map author information
     mailmap = true
     # Abbreviate hashes in git log
     abbrevCommit = true
+
 [transfer]
     # Check transferred objects
     fsckObjects = false
+
 [user]
     useConfigOnly = true
+
 [interactive]
     diffFilter = delta --color-only
+
 [delta]
     features = line-numbers decorations
     whitespace-error-style = 22 reverse
     plus-style = bold green "#002800"
     syntax-theme = Nord
+
 [delta "decorations"]
     commit-decoration-style = bold yellow box ul
     file-style = bold yellow ul
     file-decoration-style = none
-[include]
-    path = ".gitconfig-personal"
-    # This file will only exist on work machine
+
+[includeIf "gitdir:~/code/forter/"]
     path = ".gitconfig-forter"
+
+[includeIf "gitdir:~/code/personal/"]
+    path = ".gitconfig-personal"
+
+[includeIf "gitdir:~/.dotfiles/"]
+    path = ".gitconfig-personal"
+
 [feature]
 	manyFiles = true
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f

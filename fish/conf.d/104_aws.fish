@@ -8,6 +8,6 @@
 set -gx AWS_CLI_HISTORY_FILE "$APPLICATIONS_HISTORY_PATH/aws_history"
 set -gx AWS_CONFIG_FILE "$HOME/.aws/config"
 set -gx AWS_CREDENTIAL_PROFILES_FILE "$HOME/.aws/credentials" # Version 1.x
-set -gx AWS_PROFILE "main"
+set -gx AWS_PROFILE "assume-brain"
 set -gx AWS_SHARED_CREDENTIALS_FILE "$HOME/.aws/credentials" # Version 2.x
 set -gx AWS_DEFAULT_REGION "us-east-1"

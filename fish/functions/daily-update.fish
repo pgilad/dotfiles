@@ -17,7 +17,7 @@ function daily-update --description 'Keep everything up to date'
     echo "Starting daily update routine 😄"
 
     __echo-phase "Updating osx"
-    # softwareupdate --install --all
+    softwareupdate --install --all
 
     __echo-phase "Updating brew"
     brew update
@@ -27,7 +27,7 @@ function daily-update --description 'Keep everything up to date'
     brew update-reset
     brew doctor
 
-    __echo-phase "Updating Fisher"
+    __echo-phase "Updating Fisher - Fish pkg manager"
     fisher update
 
     __echo-phase "Making sure brewfile is up-to-date"
@@ -39,11 +39,14 @@ function daily-update --description 'Keep everything up to date'
     __echo-phase "Updating fish completions"
     fish_update_completions
 
+    __echo-phase "Updating Mise"
+    mise upgrade
+
     __echo-phase "Updating projects"
-    repos-update
+    # repos-update
 
     __echo-phase "Install dotfiles"
-    install-dotfiles
+    # install-dotfiles
 
     echo "Finished daily update routine 😄"
 end
