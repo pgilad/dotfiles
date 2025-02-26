@@ -1,5 +1,5 @@
 function show-repo-branch --description 'Show repository branches'
-    set dev_dir ~/dev
+    set dev_dir ~/code/forter
     set trunk_branches master develop main
 
     if not test -d $dev_dir
