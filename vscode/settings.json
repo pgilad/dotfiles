@@ -1,0 +1,24 @@
+{
+    "calva.paredit.defaultKeyMap": "strict",
+    "calva.prettyPrintingOptions": {
+        "enabled": false,
+        "maxLength": 50,
+        "printEngine": "pprint",
+        "width": 120
+    },
+    "editor.fontSize": 13,
+    "explorer.confirmDelete": false,
+    "git.openRepositoryInParentFolders": "never",
+    "github.copilot.enable": {
+        "*": false,
+        "markdown": false,
+        "plaintext": false,
+        "scminput": false
+    },
+    "github.gitProtocol": "ssh",
+    "makefile.configureOnOpen": true,
+    "telemetry.telemetryLevel": "off",
+    "window.zoomLevel": 2,
+    "workbench.colorTheme": "One Dark Pro",
+    "workbench.startupEditor": "none"
+}
