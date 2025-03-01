@@ -1,30 +1,30 @@
 ---
 - clean:
-    - '~'
-    - '~/.aws'
-    - '~/.cache/babel/'
-    - '~/.config'
-    - '~/.config/alacritty'
-    - '~/.config/asdf'
-    - '~/.config/aws'
-    - '~/.config/brew'
-    - '~/.config/clj-kondo'
-    - '~/.config/fish'
-    - '~/.config/fish/completions'
-    - '~/.config/fish/conf.d'
-    - '~/.config/fish/functions'
-    - '~/.config/git'
-    - '~/.config/karabiner'
-    - '~/.config/neofetch'
-    - '~/.config/npm'
-    - '~/.config/starship'
-    - '~/.config/tmux'
-    - '~/.config/pypoetry'
-    - '~/.gnupg'
-    - '~/.local/share/history'
-    - '~/.ssh'
-    - '~/.ssh/config.d'
-    - '~/Library/LaunchAgents'
+    - "~"
+    - "~/.aws"
+    - "~/.cache/babel/"
+    - "~/.config"
+    - "~/.config/alacritty"
+    - "~/.config/asdf"
+    - "~/.config/aws"
+    - "~/.config/brew"
+    - "~/.config/clj-kondo"
+    - "~/.config/fish"
+    - "~/.config/fish/completions"
+    - "~/.config/fish/conf.d"
+    - "~/.config/fish/functions"
+    - "~/.config/git"
+    - "~/.config/karabiner"
+    - "~/.config/neofetch"
+    - "~/.config/npm"
+    - "~/.config/starship"
+    - "~/.config/tmux"
+    - "~/.config/pypoetry"
+    - "~/.gnupg"
+    - "~/.local/share/history"
+    - "~/.ssh"
+    - "~/.ssh/config.d"
+    - "~/Library/LaunchAgents"
 
 - defaults:
     link:
@@ -33,24 +33,24 @@
       relink: true
 
 - create:
-    - '~/.cache/babel/'
-    - '~/.cache/bundle'
-    - '~/.cache/gem'
-    - '~/.cache/less'
-    - '~/.cache/npm'
-    - '~/.cache/pip'
-    - '~/.config'
-    - '~/.local/bin'
-    - '~/.local/share/aws'
-    - '~/.local/share/bundle'
-    - '~/.local/share/gem'
-    - '~/.local/share/gradle'
-    - '~/.local/share/history'
-    - '~/.local/share/less'
-    - '~/.local/share/password-store'
-    - '~/.local/share/stack'
-    - '~/.local/share/vimfiles'
-    - '~/.local/share/pypoetry'
+    - "~/.cache/babel/"
+    - "~/.cache/bundle"
+    - "~/.cache/gem"
+    - "~/.cache/less"
+    - "~/.cache/npm"
+    - "~/.cache/pip"
+    - "~/.config"
+    - "~/.local/bin"
+    - "~/.local/share/aws"
+    - "~/.local/share/bundle"
+    - "~/.local/share/gem"
+    - "~/.local/share/gradle"
+    - "~/.local/share/history"
+    - "~/.local/share/less"
+    - "~/.local/share/password-store"
+    - "~/.local/share/stack"
+    - "~/.local/share/vimfiles"
+    - "~/.local/share/pypoetry"
 
 - link:
     ~/.editorconfig: .editorconfig
@@ -87,7 +87,7 @@
     # Git extra config
     ~/.config/git/.gitconfig-forter:
       path: git/.gitconfig-forter
-      if: 'test -d ~/dev/forter'
+      if: "test -d ~/dev/forter"
     ~/.config/git/.gitconfig-personal: git/.gitconfig-personal
 
     # Tmux config files
@@ -103,16 +103,16 @@
     # SSH files
     ~/.ssh/config: ssh/config
     # ~/.ssh/config.d:
-      # path: ssh/config.d/*
-      # glob: true
+    # path: ssh/config.d/*
+    # glob: true
     ~/.ssh/config.d/pi:
       path: ssh/config.d/pi
     ~/.ssh/config.d/github-forter:
       path: ssh/config.d/github-forter
-      if: 'test -d ~/code/forter'
+      if: "test -d ~/code/forter"
     ~/.ssh/config.d/github-personal:
       path: ssh/config.d/github-personal
-      if: '! test -d ~/code/forter'
+      if: "! test -d ~/code/forter"
 
     # Karabiner
     ~/.config/karabiner/karabiner.json:
@@ -127,6 +127,15 @@
     # Alacritty
     ~/.config/alacritty/alacritty.toml:
       path: alacritty/alacritty.toml
+      if: "uname -s | grep --quiet --ignore-case darwin"
+
+    # VSCode
+    "~/Library/Application Support/Code/User/settings.json":
+      path: vscode/settings.json
+      if: "uname -s | grep --quiet --ignore-case darwin"
+
+    "~/Library/Application Support/Code/User/keybindings.json":
+      path: vscode/keybindings.json
       if: "uname -s | grep --quiet --ignore-case darwin"
 
     # Neofetch
