@@ -35,6 +35,9 @@
     # Automatically correct and execute mistyped commands
     autocorrect = 20
 
+[column]
+    ui = auto
+
 [merge]
     # Include summaries of merged commits in newly created merge commit messages
     log = true
@@ -49,6 +52,7 @@
 [diff]
     # Detect copies as well as renames
     renames = copies
+    colorMoved = plain
     mnemonicprefix = true
     algorithm = histogram
     # Use blank lines as diff boundary to improve diffs
@@ -57,8 +61,9 @@
 [fetch]
     # Always prune remote-tracking branches
     # See http://albertogrespan.com/blog/always-prune-remote-tracking-branches/
-    prune = true
-    pruneTags = true
+    prune = false
+    pruneTags = false
+    all = true
 
 [advice]
     commitBeforeMerge = true
@@ -91,6 +96,7 @@
 
 [tag]
     verbose = true
+    sort = version:refname
 
 [commit]
     verbose = true
@@ -111,6 +117,7 @@
     # Track and remember conflict resolutions for replaying them, see
     # https://git-scm.com/blog/2010/03/08/rerere.html
     enabled = true
+    autoupdate = true
 
 [log]
     # Use mailmap files to map author information
