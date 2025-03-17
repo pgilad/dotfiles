@@ -92,7 +92,6 @@
 
     # Tmux config files
     ~/.config/tmux/tmux.conf: tmux/.tmux.conf
-    ~/.config/tmux/tmux-right-prompt.sh: tmux/tmux-right-prompt.sh
 
     # GPG files
     ~/.gnupg/gpg.conf: gpg/gpg.conf

@@ -101,11 +101,7 @@ repo = 'plytophogy/vim-virtualenv'
 repo = 'PieterjanMontens/vim-pipenv'
 
 [[plugins]]
-# repo = 'bling/vim-airline'
 repo = 'itchyny/lightline.vim'
-
-# [[plugins]]
-# repo = 'SirVer/ultisnips'
 
 [[plugins]]
 repo = 'honza/vim-snippets'

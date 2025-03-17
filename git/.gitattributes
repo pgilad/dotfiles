@@ -1,2 +1,5 @@
 # * text=auto
 # Disabled because of https://github.com/mathiasbynens/dotfiles/issues/149 :(
+
+# Treat package-lock.json as binary to avoid it appearing in git diffs (annoying)
+package-lock.json -diff

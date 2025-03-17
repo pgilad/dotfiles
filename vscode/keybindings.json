@@ -1,3 +1,13 @@
 // Place your key bindings in this file to override the defaults
 [
+  {
+    "key": "cmd+backspace",
+    "command": "editor.action.deleteLines",
+    "when": "textInputFocus && !editorReadonly"
+  },
+  {
+    "key": "shift+cmd+k",
+    "command": "-editor.action.deleteLines",
+    "when": "textInputFocus && !editorReadonly"
+  }
 ]

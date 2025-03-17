@@ -1,4 +1,25 @@
 {
+    "[astro]": {
+        "editor.defaultFormatter": "astro-build.astro-vscode"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[markdown]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[ruby]": {
+        "editor.defaultFormatter": "Shopify.ruby-lsp"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[yaml]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
     "calva.paredit.defaultKeyMap": "strict",
     "calva.prettyPrintingOptions": {
         "enabled": false,
@@ -7,18 +28,47 @@
         "width": 120
     },
     "editor.fontSize": 13,
+    "editor.tabSize": 2,
     "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 500,
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/.hg/store/**": true,
+        "**/.venv/**": true,
+        "**/node_modules/**": true
+    },
     "git.openRepositoryInParentFolders": "never",
     "github.copilot.enable": {
-        "*": false,
+        "*": true,
         "markdown": false,
         "plaintext": false,
         "scminput": false
     },
     "github.gitProtocol": "ssh",
-    "makefile.configureOnOpen": true,
+    "grunt.autoDetect": "off",
+    "gulp.autoDetect": "off",
+    "jake.autoDetect": "off",
+    "rubyLsp.formatter": "none",
+    "rubyLsp.rubyVersionManager": {
+        "identifier": "mise"
+    },
+    "search.exclude": {
+        ".git/**": true,
+        "**/*.code-search": true,
+        "**/bower_components": true,
+        "**/node_modules": true
+    },
     "telemetry.telemetryLevel": "off",
-    "window.zoomLevel": 2,
+    "terminal.external.osxExec": "Alacritty.app",
+    "terminal.integrated.confirmOnExit": "always",
+    "terminal.integrated.cursorBlinking": true,
+    "window.zoomLevel": 1,
+    "workbench.colorCustomizations": {
+        "terminalCursor.foreground": "#00ffaa"
+    },
     "workbench.colorTheme": "One Dark Pro",
     "workbench.startupEditor": "none"
 }
