@@ -25,6 +25,9 @@ set -gx OPENSSL_PATH "$BREW_PREFIX/openssl@3"
 set -gx PAGER bat
 set -gx LIBRARY_PATH "$OPENSSL_PATH/lib/"
 
+# Don't use a pager by default in AWS calls
+set -gx AWS_PAGER ""
+
 # Yucky brew workaround for building apps
 # for pkg in openssl curl readline gettext ncurses icu4c sqlite zlib mysql-client tcl-tk libxml2
     # set -gx CFLAGS "-I/usr/local/opt/$pkg/include" $CFLAGS
@@ -42,11 +45,6 @@ set -gx GREP_COLOR "1;37;45"
 
 # set -q JAVA_HOME; or set -gx JAVA_HOME "/Users/giladpeleg/.asdf/installs/java/adoptopenjdk-11.0.11+9"
 set -q GRADLE_USER_HOME; or set -gx GRADLE_USER_HOME "$XDG_DATA_HOME/gradle"
-
-# Go settings
-set -gx GOPATH "$HOME/go"
-set -gx GOBIN "$GOPATH/bin"
-set -gx GOROOT "$BREW_PREFIX/go/libexec"
 
 # Rust - cargo
 set -gx CARGOBIN "$HOME/cargo/.bin"

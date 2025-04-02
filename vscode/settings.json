@@ -56,6 +56,7 @@
         "identifier": "mise"
     },
     "search.exclude": {
+        "package-lock.json": true,
         ".git/**": true,
         "**/*.code-search": true,
         "**/bower_components": true,
@@ -70,5 +71,18 @@
         "terminalCursor.foreground": "#00ffaa"
     },
     "workbench.colorTheme": "One Dark Pro",
-    "workbench.startupEditor": "none"
+    "workbench.startupEditor": "none",
+    "cline.disableBrowserTool": true,
+    "cline.mcpMarketplace.enabled": false,
+    "[mdx]": {
+        "editor.defaultFormatter": "unifiedjs.vscode-mdx"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[dockerfile]": {
+        "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+    },
+    "chat.editing.confirmEditRequestRetry": false,
+    "go.inferGopath": true
 }
