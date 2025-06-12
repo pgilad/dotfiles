@@ -2,7 +2,13 @@
     "[astro]": {
         "editor.defaultFormatter": "astro-build.astro-vscode"
     },
+    "[dockerfile]": {
+        "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+    },
     "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[jsonc]": {
@@ -10,6 +16,9 @@
     },
     "[markdown]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[mdx]": {
+        "editor.defaultFormatter": "unifiedjs.vscode-mdx"
     },
     "[ruby]": {
         "editor.defaultFormatter": "Shopify.ruby-lsp"
@@ -27,7 +36,11 @@
         "printEngine": "pprint",
         "width": 120
     },
+    "chat.editing.confirmEditRequestRetry": false,
+    "cline.disableBrowserTool": true,
+    "docker.extension.dockerEngineAvailabilityPrompt": false,
     "editor.fontSize": 13,
+    "editor.minimap.enabled": false,
     "editor.tabSize": 2,
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
@@ -48,41 +61,39 @@
         "scminput": false
     },
     "github.gitProtocol": "ssh",
+    "go.inferGopath": true,
     "grunt.autoDetect": "off",
     "gulp.autoDetect": "off",
     "jake.autoDetect": "off",
-    "rubyLsp.formatter": "none",
+    "rubyLsp.formatter": "auto",
     "rubyLsp.rubyVersionManager": {
         "identifier": "mise"
     },
     "search.exclude": {
-        "package-lock.json": true,
         ".git/**": true,
         "**/*.code-search": true,
         "**/bower_components": true,
-        "**/node_modules": true
+        "**/node_modules": true,
+        "package-lock.json": true
     },
     "telemetry.telemetryLevel": "off",
     "terminal.external.osxExec": "Alacritty.app",
-    "terminal.integrated.confirmOnExit": "always",
+    "terminal.integrated.confirmOnExit": "hasChildProcesses",
     "terminal.integrated.cursorBlinking": true,
+    "update.mode": "start",
+    "window.openFilesInNewWindow": "on",
+    "window.openFoldersInNewWindow": "on",
     "window.zoomLevel": 1,
     "workbench.colorCustomizations": {
         "terminalCursor.foreground": "#00ffaa"
     },
     "workbench.colorTheme": "One Dark Pro",
     "workbench.startupEditor": "none",
-    "cline.disableBrowserTool": true,
-    "cline.mcpMarketplace.enabled": false,
-    "[mdx]": {
-        "editor.defaultFormatter": "unifiedjs.vscode-mdx"
-    },
-    "[json]": {
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "javascript.inlayHints.parameterNames.enabled": "all",
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "[typescriptreact]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "[dockerfile]": {
-        "editor.defaultFormatter": "ms-azuretools.vscode-docker"
-    },
-    "chat.editing.confirmEditRequestRetry": false,
-    "go.inferGopath": true
+    "git.blame.editorDecoration.enabled": true
 }

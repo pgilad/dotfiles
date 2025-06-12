@@ -5,4 +5,5 @@ end
 
 # Try to improve startup time
 # starship init fish | source
-/opt/homebrew/bin/starship init fish --print-full-init | source
+# /opt/homebrew/bin/starship init fish --print-full-init | source
+/opt/homebrew/bin/starship init fish | source
