@@ -65,7 +65,6 @@
 
     # Fish shell config files
     ~/.config/fish/config.fish: fish/config.fish
-    ~/.config/fish/fishfile: fish/fishfile
     ~/.config/fish/conf.d:
       path: fish/conf.d/*.fish
       glob: true
