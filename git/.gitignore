@@ -48,3 +48,5 @@ mise.toml
 # redis stuff
 dump.rdb
 .ignore
+
+**/.claude/settings.local.json
