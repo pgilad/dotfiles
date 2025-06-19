@@ -1,129 +1,204 @@
+# ============================================================================
+# Fish Shell Global Environment Variables Configuration
+# ============================================================================
+# Author: Gilad Peleg
+# Last Updated: June 2025
+# Description: Global environment variables for Fish shell, organized by
+#              category and following XDG Base Directory specification
+# ============================================================================
+
+# ============================================================================
+# XDG Base Directory Specification
+# ============================================================================
+# Standard directories for configuration, data, cache, and runtime files
+set -q XDG_CONFIG_HOME; or set -gx XDG_CONFIG_HOME "$HOME/.config"
+set -q XDG_DATA_HOME; or set -gx XDG_DATA_HOME "$HOME/.local/share"
+set -q XDG_CACHE_HOME; or set -gx XDG_CACHE_HOME "$HOME/.cache"
+set -q XDG_RUNTIME_DIR; or set -gx XDG_RUNTIME_DIR "/tmp/runtime-$USER"
+
+# Custom directory for storing application history files
+set -gx APPLICATIONS_HISTORY_PATH "$XDG_DATA_HOME/history"
+
+# ============================================================================
+# Global System Settings
+# ============================================================================
+# Default editors and shell configuration
 set -gx EDITOR vim
 set -gx VISUAL vim
 set -gx SHELL /opt/homebrew/bin/fish
 
-# Ensure XDG variables are set
-set -q XDG_CONFIG_HOME; or set -gx XDG_CONFIG_HOME "$HOME/.config"
-set -q XDG_DATA_HOME; or set -gx XDG_DATA_HOME "$HOME/.local/share"
-set -q XDG_CACHE_HOME; or set -gx XDG_CACHE_HOME "$HOME/.cache"
-
-set -gx APPLICATIONS_HISTORY_PATH "$XDG_DATA_HOME/history"
-
-# Much faster than brew --prefix which depends on Ruby slow start time
-set -gx BREW_PREFIX /opt/homebrew/opt
-set -gx HOMEBREW_NO_ENV_HINTS 1
-
-set -gx GPG_TTY (tty)
-set -gx SSH_KEY_PATH "$HOME/.ssh"
-set -gx SSH_AUTH_SOCK "$HOME/.1password/agent.sock"
-
+# Locale settings for proper character encoding
 set -gx LANG en_US.UTF-8
 set -gx LC_ALL en_US.UTF-8
 
-set -gx OPENSSL_PATH "$BREW_PREFIX/openssl@3"
-
+# Default pager with syntax highlighting
 set -gx PAGER bat
-set -gx LIBRARY_PATH "$OPENSSL_PATH/lib/"
 
-# Don't use a pager by default in AWS calls
-set -gx AWS_PAGER ""
+# TTY setting for GPG operations
+set -gx GPG_TTY (tty)
 
-# Yucky brew workaround for building apps
-# for pkg in openssl curl readline gettext ncurses icu4c sqlite zlib mysql-client tcl-tk libxml2
-    # set -gx CFLAGS "-I/usr/local/opt/$pkg/include" $CFLAGS
-    # set -gx CPPFLAGS "-I/usr/local/opt/$pkg/include" $CPPFLAGS
-    # set -gx LD_RUN_PATH "/usr/local/opt/$pkg/lib" $LD_RUN_PATH
-    # set -gx LDFLAGS "-L/usr/local/opt/$pkg/lib" $LDFLAGS
-    # set -gx PKG_CONFIG_PATH "/usr/local/opt/$pkg/lib/pkgconfig" $PKG_CONFIG_PATH
-# end
-
-# Required for tinker builds of pyenv's python
-# set -gx PYTHON_CONFIGURE_OPTS "--with-tcltk-includes='-I$BREW_PREFIX/tcl-tk/include' --with-tcltk-libs='-L$BREW_PREFIX/tcl-tk/lib -ltcl8.6 -ltk8.6'"
-# set -gx DYLD_FALLBACK_LIBRARY_PATH "$OPENSSL_PATH/lib"
-
+# Color configuration for grep output
 set -gx GREP_COLOR "1;37;45"
 
-# set -q JAVA_HOME; or set -gx JAVA_HOME "/Users/giladpeleg/.asdf/installs/java/adoptopenjdk-11.0.11+9"
-set -q GRADLE_USER_HOME; or set -gx GRADLE_USER_HOME "$XDG_DATA_HOME/gradle"
+# ============================================================================
+# System Paths and Libraries
+# ============================================================================
+# Fast access to Homebrew prefix without calling slow `brew --prefix`
+set -gx BREW_PREFIX /opt/homebrew/opt
 
-# Rust - cargo
-set -gx CARGOBIN "$HOME/cargo/.bin"
+# OpenSSL configuration for secure connections
+set -gx OPENSSL_PATH "$BREW_PREFIX/openssl@3"
+set -gx LIBRARY_PATH "$OPENSSL_PATH/lib/"
 
-set -gx LESSHISTFILE "$APPLICATIONS_HISTORY_PATH/less_history"
-set -gx LESSKEY "$XDG_CONFIG_HOME/less/keys"
+# ============================================================================
+# Security and Authentication
+# ============================================================================
+# SSH configuration
+set -gx SSH_KEY_PATH "$HOME/.ssh"
+set -gx SSH_AUTH_SOCK "$HOME/.1password/agent.sock"
 
-# A hack for https://github.com/gatsbyjs/gatsby/issues/6654
-set -gx GATSBY_CONCURRENT_DOWNLOAD 25
-
-set -gx POETRY_VIRTUALENVS_PATH "$HOME/.virtualenvs"
-
-set -gx NPM_CONFIG_USERCONFIG "$XDG_CONFIG_HOME/npm/.npmrc"
-set -gx NPM_CONFIG_CACHE "$XDG_CACHE_HOME/npm"
-
-# Opt out of brew analytics
-set -gx HOMEBREW_NO_ANALYTICS 1
-
-# Python
-set -gx PIP_REQUIRE_VIRTUALENV true
-set -gx PIP_DEFAULT_TIMEOUT 30
-set -gx PIP_CACHE_DIR "$XDG_CACHE_HOME/pip"
-
-# Set pass password store location
+# Password manager configuration
 set -gx PASSWORD_STORE_DIR "$XDG_DATA_HOME/password-store"
+
+# Security settings
+set -gx NOCLOBBER 1
 
 # GPG Suite doesn't support a different home for gnupg :(
 # set -gx GNUPGHOME "$XDG_CONFIG_HOME/gnupg"
 
-# Ruby bundler
-set -gx BUNDLE_USER_CACHE "$XDG_CACHE_HOME/bundle"
-set -gx BUNDLE_USER_CONFIG "$XDG_CONFIG_HOME/bundle"
-set -gx BUNDLE_USER_PLUGIN "$XDG_DATA_HOME/bundle"
+# ============================================================================
+# Package Managers and Tools
+# ============================================================================
+# Homebrew configuration
+set -gx HOMEBREW_NO_ENV_HINTS 1
+set -gx HOMEBREW_NO_ANALYTICS 1
+set -gx HOMEBREW_CASK_OPTS --no-quarantine
 
-# Ruby GEM
-set -gx GEM_HOME "$XDG_DATA_HOME/gem"
-set -gx GEM_SPEC_CACHE "$XDG_CACHE_HOME/gem"
+# pipx configuration
+set -gx PIPX_BIN_DIR "$HOME/.local/bin"
 
-set -gx RUBY_CONFIGURE_OPTS "--with-openssl-dir=$OPENSSL_PATH --with-readline-dir=$BREW_PREFIX/readline --with-libyaml-dir=$BREW_PREFIX/libyaml"
-# set -gx SDKROOT (xcrun --show-sdk-path)
+# asdf version manager
+set -gx ASDF_CONFIG_FILE "$XDG_CONFIG_HOME/asdf/.asdfrc"
 
-# Docker - doesn't seem to work yet
-# set -gx DOCKER_CONFIG "$XDG_CONFIG_HOME/docker"
+# mise configuration (manual control preferred)
+set -gx MISE_FISH_AUTO_ACTIVATE 0
 
-# Set iPython and Jupyter paths
+# ============================================================================
+# Programming Languages and Runtimes
+# ============================================================================
+
+# --- Python ---
+set -gx PYTHONIOENCODING utf-8
+set -gx PYTHONDONTWRITEBYTECODE 1
+set -gx PYTHONUNBUFFERED 1
+set -gx PIP_REQUIRE_VIRTUALENV true
+set -gx PIP_DEFAULT_TIMEOUT 30
+set -gx PIP_CACHE_DIR "$XDG_CACHE_HOME/pip"
+set -gx POETRY_VIRTUALENVS_PATH "$HOME/.virtualenvs"
 set -gx IPYTHONDIR "$XDG_CONFIG_HOME/jupyter"
 set -gx JUPYTER_CONFIG_DIR "$XDG_CONFIG_HOME/jupyter"
 
-# Set NVM dir
+# --- Go ---
+set -gx GOPATH "$XDG_DATA_HOME/go"
+set -gx GOBIN "$GOPATH/bin"
+set -gx GO111MODULE on
+set -gx GOPROXY https://proxy.golang.org,direct
+
+# --- Rust ---
+set -gx CARGOBIN "$HOME/.cargo/bin"
+
+# --- Ruby ---
+set -gx GEM_HOME "$XDG_DATA_HOME/gem"
+set -gx GEM_SPEC_CACHE "$XDG_CACHE_HOME/gem"
+set -gx BUNDLE_USER_CACHE "$XDG_CACHE_HOME/bundle"
+set -gx BUNDLE_USER_CONFIG "$XDG_CONFIG_HOME/bundle"
+set -gx BUNDLE_USER_PLUGIN "$XDG_DATA_HOME/bundle"
+set -gx RUBY_CONFIGURE_OPTS "--with-openssl-dir=$OPENSSL_PATH --with-readline-dir=$BREW_PREFIX/readline --with-libyaml-dir=$BREW_PREFIX/libyaml"
+
+# --- Node.js and JavaScript ---
 set -gx NVM_DIR "$XDG_DATA_HOME/nvm"
 set -gx NODE_REPL_HISTORY "$APPLICATIONS_HISTORY_PATH/node_repl_history"
+set -gx NPM_CONFIG_USERCONFIG "$XDG_CONFIG_HOME/npm/.npmrc"
+set -gx NPM_CONFIG_CACHE "$XDG_CACHE_HOME/npm"
+set -gx BUN_INSTALL "$XDG_DATA_HOME/bun"
+set -gx DENO_DIR "$XDG_DATA_HOME/deno"
+set -gx DENO_INSTALL_ROOT "$XDG_DATA_HOME/deno/bin"
+set -gx PNPM_HOME "$XDG_DATA_HOME/pnpm"
+set -gx BABEL_CACHE_PATH "$XDG_CACHE_HOME/babel/babel.json"
+set -gx GATSBY_CONCURRENT_DOWNLOAD 25
 
-# Set Haskell stack dir
+# --- Java and JVM Languages ---
+# set -q JAVA_HOME; or set -gx JAVA_HOME "/Users/giladpeleg/.asdf/installs/java/adoptopenjdk-11.0.11+9"
+set -q GRADLE_USER_HOME; or set -gx GRADLE_USER_HOME "$XDG_DATA_HOME/gradle"
+set -gx LEIN_JVM_OPTS "-XX:+TieredCompilation -XX:TieredStopAtLevel=2"
+
+# --- Haskell ---
 set -gx STACK_ROOT "$XDG_DATA_HOME/stack"
 
-# Httpie
+# ============================================================================
+# DevOps and Cloud Tools
+# ============================================================================
+# AWS configuration
+set -gx AWS_PAGER ""
+
+# Docker configuration
+set -gx DOCKER_BUILDKIT 1
+set -gx COMPOSE_DOCKER_CLI_BUILD 1
+# set -gx DOCKER_CONFIG "$XDG_CONFIG_HOME/docker"
+
+# Terraform configuration
+set -gx TF_CLI_CONFIG_FILE "$XDG_CONFIG_HOME/terraform/.terraformrc"
+set -gx TF_DATA_DIR "$XDG_DATA_HOME/terraform"
+
+# Kubernetes configuration
+set -gx KUBECONFIG "$XDG_CONFIG_HOME/kubernetes/config"
+set -gx KUBECONFIGDIR "$XDG_CONFIG_HOME/kubernetes"
+
+# ============================================================================
+# CLI Tools and Utilities
+# ============================================================================
+# Shell and prompt configuration
+set -gx STARSHIP_CONFIG "$XDG_CONFIG_HOME/starship/starship.toml"
+set -gx HISTSIZE 10000
+set -gx SAVEHIST 10000
+
+# HTTP tools
 set -gx HTTPIE_CONFIG_DIR "$XDG_CONFIG_HOME/httpie"
 
-# Use build enhancement for Docker
-set -gx DOCKER_BUILDKIT 1
+# Text processing and pagers
+set -gx LESSHISTFILE "$APPLICATIONS_HISTORY_PATH/less_history"
+set -gx LESSKEY "$XDG_CONFIG_HOME/less/keys"
 
+# Database CLI tools
 set -gx REDISCLI_HISTFILE "$APPLICATIONS_HISTORY_PATH/redis_history"
 set -gx SQLITE_HISTORY "$APPLICATIONS_HISTORY_PATH/sqlite_history"
 
-set -gx BABEL_CACHE_PATH "$XDG_CACHE_HOME/babel/babel.json"
+# AI and Development Tools
+set -gx CLAUDE_CODE_USE_BEDROCK 1
 
-set -gx STARSHIP_CONFIG "$XDG_CONFIG_HOME/starship/starship.toml"
+# ============================================================================
+# Optional/Commented Configurations
+# ============================================================================
+# macOS SDK path (uncomment if needed for native compilation)
+# set -gx SDKROOT (xcrun --show-sdk-path)
 
-set -gx PIPX_BIN_DIR "$HOME/.local/bin"
-set -gx PATH $PATH $PIPX_BIN_DIR
+# Python build configuration for pyenv (uncomment if needed)
+# set -gx PYTHON_CONFIGURE_OPTS "--with-tcltk-includes='-I$BREW_PREFIX/tcl-tk/include' --with-tcltk-libs='-L$BREW_PREFIX/tcl-tk/lib -ltcl8.6 -ltk8.6'"
+# set -gx DYLD_FALLBACK_LIBRARY_PATH "$OPENSSL_PATH/lib"
 
-# Clojure lein
-set -gx LEIN_JVM_OPTS "-XX:+TieredCompilation -XX:TieredStopAtLevel=2"
+# Homebrew build workaround (uncomment if encountering build issues)
+# for pkg in openssl curl readline gettext ncurses icu4c sqlite zlib mysql-client tcl-tk libxml2
+# set -gx CFLAGS "-I/usr/local/opt/$pkg/include" $CFLAGS
+# set -gx CPPFLAGS "-I/usr/local/opt/$pkg/include" $CPPFLAGS
+# set -gx LD_RUN_PATH "/usr/local/opt/$pkg/lib" $LD_RUN_PATH
+# set -gx LDFLAGS "-L/usr/local/opt/$pkg/lib" $LDFLAGS
+# set -gx PKG_CONFIG_PATH "/usr/local/opt/$pkg/lib/pkgconfig" $PKG_CONFIG_PATH
+# end
 
-set -gx ASDF_CONFIG_FILE "$XDG_CONFIG_HOME/asdf/.asdfrc"
-
-set -gx MISE_FISH_AUTO_ACTIVATE 0
-
-
+# ============================================================================
+# PATH Configuration
+# ============================================================================
+# Add binary directories to PATH in priority order
 fish_add_path --path \
     /usr/local/sbin \
     /opt/homebrew/sbin \
@@ -134,5 +209,7 @@ fish_add_path --path \
     $BREW_PREFIX/curl/bin \
     $GOBIN \
     $CARGOBIN \
-    $XDG_DATA_HOME/npm-global-modules/bin
-
+    $XDG_DATA_HOME/npm-global-modules/bin \
+    $BUN_INSTALL/bin \
+    $DENO_INSTALL_ROOT \
+    $PNPM_HOME
