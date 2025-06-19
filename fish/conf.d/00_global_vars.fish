@@ -63,8 +63,8 @@ set -gx PASSWORD_STORE_DIR "$XDG_DATA_HOME/password-store"
 # Security settings
 set -gx NOCLOBBER 1
 
-# GPG Suite doesn't support a different home for gnupg :(
-# set -gx GNUPGHOME "$XDG_CONFIG_HOME/gnupg"
+# GPG configuration for better XDG compliance
+set -gx GNUPGHOME "$XDG_DATA_HOME/gnupg"
 
 # ============================================================================
 # Package Managers and Tools
@@ -77,8 +77,8 @@ set -gx HOMEBREW_CASK_OPTS --no-quarantine
 # pipx configuration
 set -gx PIPX_BIN_DIR "$HOME/.local/bin"
 
-# asdf version manager
-set -gx ASDF_CONFIG_FILE "$XDG_CONFIG_HOME/asdf/.asdfrc"
+# mise configuration
+set -gx MISE_CONFIG_FILE "$XDG_CONFIG_HOME/mise/config.toml"
 
 # mise configuration (manual control preferred)
 set -gx MISE_FISH_AUTO_ACTIVATE 0
@@ -175,6 +175,10 @@ set -gx SQLITE_HISTORY "$APPLICATIONS_HISTORY_PATH/sqlite_history"
 
 # AI and Development Tools
 set -gx CLAUDE_CODE_USE_BEDROCK 1
+
+# Modern Python tools
+set -gx UV_CACHE_DIR "$XDG_CACHE_HOME/uv"
+set -gx RUFF_CACHE_DIR "$XDG_CACHE_HOME/ruff"
 
 # ============================================================================
 # Optional/Commented Configurations

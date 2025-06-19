@@ -2,8 +2,8 @@ function venv --argument-names python_version venv_base_name --description 'Crea
   set -l python_bin
 
   if not test -n "$python_version"
-    # Use default python version set by asdf
-    set python_version (asdf current python | awk '{ print $2 }')
+    # Use default python version set by mise
+    set python_version (mise current python)
   end
   echo "Using python version of $python_version"
 
@@ -12,7 +12,7 @@ function venv --argument-names python_version venv_base_name --description 'Crea
   end
   echo "Using venv base name of $venv_base_name"
 
-  set python_bin (asdf where python)"/bin/python"
+  set python_bin (mise where python)"/bin/python"
   if not test -e $python_bin
     echo "Python version `$python_version` is not installed."
     return 1
@@ -24,5 +24,5 @@ function venv --argument-names python_version venv_base_name --description 'Crea
   $python_bin -m venv $HOME/.virtualenvs/$venv_name
   source $HOME/.virtualenvs/$venv_name/bin/activate.fish
 
-  asdf local python $venv_name
+  mise use python@$venv_name
 end

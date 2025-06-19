@@ -1,6 +1,6 @@
 function venv-activate --argument-names venv_base_name --description 'Enable virtualenv'
-  set -l python_version (asdf current python | awk '{ print $2 }')
-  set -l python_bin (asdf where python)"/bin/python"
+  set -l python_version (mise current python)
+  set -l python_bin (mise where python)"/bin/python"
 
   if not test -n "$venv_base_name"
     set venv_base_name (basename $PWD | tr . -)
