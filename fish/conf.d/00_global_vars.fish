@@ -63,8 +63,7 @@ set -gx PASSWORD_STORE_DIR "$XDG_DATA_HOME/password-store"
 # Security settings
 set -gx NOCLOBBER 1
 
-# GPG configuration for better XDG compliance
-set -gx GNUPGHOME "$XDG_DATA_HOME/gnupg"
+set -gx GNUPGHOME "$HOME/.gnupg"
 
 # ============================================================================
 # Package Managers and Tools
