@@ -15,7 +15,6 @@
     - "~/.config/fish/functions"
     - "~/.config/git"
     - "~/.config/karabiner"
-    - "~/.config/neofetch"
     - "~/.config/npm"
     - "~/.config/starship"
     - "~/.config/tmux"
@@ -135,9 +134,6 @@
     "~/Library/Application Support/Code/User/keybindings.json":
       path: vscode/keybindings.json
       if: "uname -s | grep --quiet --ignore-case darwin"
-
-    # Neofetch
-    ~/.config/neofetch/config.conf: neofetch/config.conf
 
     ~/.config/starship/starship.toml: starship/starship.toml
 
