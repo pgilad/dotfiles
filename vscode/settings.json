@@ -3,7 +3,7 @@
         "editor.defaultFormatter": "astro-build.astro-vscode"
     },
     "[dockerfile]": {
-        "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+        "editor.defaultFormatter": "ms-azuretools.vscode-containers"
     },
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -26,6 +26,9 @@
     "[typescript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
     "[yaml]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
@@ -39,11 +42,15 @@
     "chat.editing.confirmEditRequestRetry": false,
     "cline.disableBrowserTool": true,
     "docker.extension.dockerEngineAvailabilityPrompt": false,
+    "docker.extension.enableComposeLanguageServer": false,
     "editor.fontSize": 13,
     "editor.minimap.enabled": false,
     "editor.tabSize": 2,
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
+    "files.associations": {
+        "riemann.config": "clojure"
+    },
     "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 500,
     "files.watcherExclude": {
@@ -53,6 +60,8 @@
         "**/.venv/**": true,
         "**/node_modules/**": true
     },
+    "git.blame.editorDecoration.enabled": true,
+    "git.confirmSync": false,
     "git.openRepositoryInParentFolders": "never",
     "github.copilot.enable": {
         "*": true,
@@ -60,20 +69,24 @@
         "plaintext": false,
         "scminput": false
     },
+    "github.copilot.nextEditSuggestions.enabled": true,
     "github.gitProtocol": "ssh",
     "go.inferGopath": true,
+    "go.goroot": "/Users/gilad_peleg/.local/share/mise/installs/go/1.24.5",
     "grunt.autoDetect": "off",
     "gulp.autoDetect": "off",
     "jake.autoDetect": "off",
+    "javascript.inlayHints.parameterNames.enabled": "all",
+    "javascript.updateImportsOnFileMove.enabled": "always",
     "rubyLsp.formatter": "auto",
     "rubyLsp.rubyVersionManager": {
         "identifier": "mise"
     },
     "search.exclude": {
-        ".git/**": true,
         "**/*.code-search": true,
         "**/bower_components": true,
         "**/node_modules": true,
+        ".git/**": true,
         "package-lock.json": true
     },
     "telemetry.telemetryLevel": "off",
@@ -89,12 +102,6 @@
     },
     "workbench.colorTheme": "One Dark Pro",
     "workbench.startupEditor": "none",
-    "javascript.updateImportsOnFileMove.enabled": "always",
-    "javascript.inlayHints.parameterNames.enabled": "all",
-    "github.copilot.nextEditSuggestions.enabled": true,
-    "[typescriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "git.blame.editorDecoration.enabled": true,
-    "docker.extension.enableComposeLanguageServer": false
+    "editor.inlayHints.enabled": "offUnlessPressed",
+    "typescript.updateImportsOnFileMove.enabled": "always"
 }

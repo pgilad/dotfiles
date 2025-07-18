@@ -1,0 +1,5 @@
+# vi: ft=sshconfig
+
+Host homenas
+    User root
+    HostName 192.168.0.111

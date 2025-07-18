@@ -9,5 +9,10 @@
     "key": "shift+cmd+k",
     "command": "-editor.action.deleteLines",
     "when": "textInputFocus && !editorReadonly"
-  }
+  },
+  {
+    "key": "alt+cmd+t",
+    "command": "workbench.action.tasks.runTask",
+    "args": "Open in Typora"
+}
 ]
