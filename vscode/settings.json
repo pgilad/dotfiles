@@ -6,13 +6,13 @@
         "editor.defaultFormatter": "ms-azuretools.vscode-containers"
     },
     "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "biomejs.biome"
     },
     "[json]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "biomejs.biome"
     },
     "[jsonc]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "biomejs.biome"
     },
     "[markdown]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -24,14 +24,15 @@
         "editor.defaultFormatter": "Shopify.ruby-lsp"
     },
     "[typescript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "biomejs.biome"
     },
     "[typescriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "biomejs.biome"
     },
     "[yaml]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "biomejs.biome"
     },
+    "biome.requireConfiguration": true,
     "calva.paredit.defaultKeyMap": "strict",
     "calva.prettyPrintingOptions": {
         "enabled": false,
@@ -43,7 +44,9 @@
     "cline.disableBrowserTool": true,
     "docker.extension.dockerEngineAvailabilityPrompt": false,
     "docker.extension.enableComposeLanguageServer": false,
+    "editor.defaultFormatter": "biomejs.biome",
     "editor.fontSize": 13,
+    "editor.inlayHints.enabled": "offUnlessPressed",
     "editor.minimap.enabled": false,
     "editor.tabSize": 2,
     "explorer.confirmDelete": false,
@@ -63,36 +66,33 @@
     "git.blame.editorDecoration.enabled": true,
     "git.confirmSync": false,
     "git.openRepositoryInParentFolders": "never",
-    "github.copilot.enable": {
-        "*": true,
-        "markdown": false,
-        "plaintext": false,
-        "scminput": false
-    },
     "github.copilot.nextEditSuggestions.enabled": true,
     "github.gitProtocol": "ssh",
-    "go.inferGopath": true,
     "go.goroot": "/Users/gilad_peleg/.local/share/mise/installs/go/1.24.5",
+    "go.inferGopath": true,
     "grunt.autoDetect": "off",
     "gulp.autoDetect": "off",
     "jake.autoDetect": "off",
     "javascript.inlayHints.parameterNames.enabled": "all",
     "javascript.updateImportsOnFileMove.enabled": "always",
+    "prettier.requireConfig": true,
     "rubyLsp.formatter": "auto",
     "rubyLsp.rubyVersionManager": {
         "identifier": "mise"
     },
     "search.exclude": {
+        ".git/**": true,
         "**/*.code-search": true,
         "**/bower_components": true,
         "**/node_modules": true,
-        ".git/**": true,
         "package-lock.json": true
     },
+    "editor.wordWrap": "off",
     "telemetry.telemetryLevel": "off",
     "terminal.external.osxExec": "Alacritty.app",
     "terminal.integrated.confirmOnExit": "hasChildProcesses",
     "terminal.integrated.cursorBlinking": true,
+    "typescript.updateImportsOnFileMove.enabled": "always",
     "update.mode": "start",
     "window.openFilesInNewWindow": "on",
     "window.openFoldersInNewWindow": "on",
@@ -102,6 +102,11 @@
     },
     "workbench.colorTheme": "One Dark Pro",
     "workbench.startupEditor": "none",
-    "editor.inlayHints.enabled": "offUnlessPressed",
-    "typescript.updateImportsOnFileMove.enabled": "always"
+    "diffEditor.ignoreTrimWhitespace": false,
+    "[dockercompose]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[toml]": {
+        "editor.defaultFormatter": "tamasfe.even-better-toml"
+    }
 }

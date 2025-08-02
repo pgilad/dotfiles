@@ -1,3 +1,5 @@
+Include /Users/gilad_peleg/.config/colima/ssh_config
+
 # vi: ft=sshconfig
 
 Include config.d/*

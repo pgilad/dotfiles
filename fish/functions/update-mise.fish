@@ -1,7 +1,7 @@
 function update-mise --description 'Update various mise settings and versions'
-    set --local global_python 3.11
-    set --local global_java temurin-17
-    set --local global_node 20
+    set --local global_python 3.12
+    set --local global_java temurin-21
+    set --local global_node 24
 
     echo "Updating plugins"
     mise plugins update
@@ -12,27 +12,27 @@ function update-mise --description 'Update various mise settings and versions'
     echo
 
     echo "Installing latest python versions"
-    for python_version in 3.9 3.10 3.11 3.12
-        mise install python@latest:"$python_version"
+    for python_version in 3.12 3.13
+        mise install "python@$python_version"
     end
     echo
 
     echo "Setting latest python $global_python as global"
-    mise use -g python@latest:$global_python
+    mise use -g "python@$global_python"
     echo
 
     echo "Installing latest java versions"
     for java_version in 21 17 11
-        mise install java@latest:"temurin-$java_version"
+        mise install "java@temurin-$java_version"
     end
     echo
 
     echo "Setting latest java $global_java global"
-    mise use -g java@latest:$global_java
+    mise use -g java@$global_java
     echo
 
     echo "Setting latest node.js $global_node global"
-    mise use -g node@latest:$global_node
+    mise use -g "node@$global_node"
     echo
 
     for program in rust maven groovy scala gradle

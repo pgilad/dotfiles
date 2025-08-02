@@ -40,15 +40,14 @@ TERM_PROGRAM = "Alacritty"
 size = 17.0
 
 [font.bold]
-family = "Hack Nerd Font Mono"
 style = "Bold"
 
 [font.italic]
-family = "Hack Nerd Font Mono"
 style = "Italic"
 
 [font.normal]
-family = "Hack Nerd Font Mono"
+family = "Hack Nerd Font"
+# family = "MesloLGS Nerd Font Mono"
 style = "Regular"
 
 [[keyboard.bindings]]

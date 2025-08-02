@@ -214,6 +214,4 @@ fish_add_path --path \
     $GOBIN \
     $CARGOBIN \
     $XDG_DATA_HOME/npm-global-modules/bin \
-    $BUN_INSTALL/bin \
-    $DENO_INSTALL_ROOT \
-    $PNPM_HOME
+    $BUN_INSTALL/bin

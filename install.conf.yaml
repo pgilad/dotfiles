@@ -13,6 +13,7 @@
     - "~/.config/fish/completions"
     - "~/.config/fish/conf.d"
     - "~/.config/fish/functions"
+    - "~/.config/ghostty"
     - "~/.config/git"
     - "~/.config/karabiner"
     - "~/.config/npm"
@@ -102,8 +103,8 @@
     # ~/.ssh/config.d:
     # path: ssh/config.d/*
     # glob: true
-    ~/.ssh/config.d/pi:
-      path: ssh/config.d/pi
+    ~/.ssh/config.d/homelab:
+      path: ssh/config.d/homelab
     ~/.ssh/config.d/github-forter:
       path: ssh/config.d/github-forter
       if: "test -d ~/code/forter"
@@ -124,6 +125,11 @@
     # Alacritty
     ~/.config/alacritty/alacritty.toml:
       path: alacritty/alacritty.toml
+      if: "uname -s | grep --quiet --ignore-case darwin"
+
+    # Ghostty
+    ~/.config/ghostty/config:
+      path: ghostty/config
       if: "uname -s | grep --quiet --ignore-case darwin"
 
     # VSCode

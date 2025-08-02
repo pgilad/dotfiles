@@ -14,5 +14,13 @@
     "key": "alt+cmd+t",
     "command": "workbench.action.tasks.runTask",
     "args": "Open in Typora"
+},
+{
+  "key": "alt+cmd+\\",
+  "command": "workbench.action.splitEditor"
+},
+{
+  "key": "cmd+\\",
+  "command": "-workbench.action.splitEditor"
 }
 ]

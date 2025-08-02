@@ -1,0 +1,8 @@
+font-family = "Hack Nerd Font Mono"
+font-size = 16
+quit-after-last-window-closed = true
+maximize = true
+shell-integration = fish
+theme = Arthur
+command = /opt/homebrew/bin/fish --login
+window-save-state = always
