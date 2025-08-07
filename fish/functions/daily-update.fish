@@ -27,26 +27,16 @@ function daily-update --description 'Keep everything up to date'
     brew update-reset
     brew doctor
 
-    __echo-phase "Updating Fisher - Fish pkg manager"
-    fisher update
-
-    __echo-phase "Making sure brewfile is up-to-date"
-    brew bundle check --verbose --file="$XDG_CONFIG_HOME/brew/Brewfile"
-
-    __echo-phase "Generating external fish completions"
-    fish_generate_completions
-
     __echo-phase "Updating fish completions"
     fish_update_completions
 
     __echo-phase "Updating Mise"
+    pushd $(pwd)
+    cd ~
     mise upgrade
-
-    __echo-phase "Updating projects"
-    # repos-update
-
-    __echo-phase "Install dotfiles"
-    # install-dotfiles
+    mise plugins update
+    mise doctor
+    popd
 
     echo "Finished daily update routine 😄"
 end
